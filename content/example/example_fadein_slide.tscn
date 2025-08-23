@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://b48s20g0o33bc"]
+
+[ext_resource type="Script" uid="uid://curhhl5msjc3e" path="res://engine/slides/fadein_slide.gd" id="1_t66hr"]
+[ext_resource type="Texture2D" uid="uid://b7626k74i30bn" path="res://icon.svg" id="2_821s7"]
+
+[node name="ExampleFadeInSlide" type="Control" node_paths=PackedStringArray("elements_to_fade_in")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 1
+script = ExtResource("1_t66hr")
+elements_to_fade_in = [NodePath("ContenVBC/ElementLabel"), NodePath("ContenVBC/ElementLabel2"), NodePath("ContenVBC/ElementLabel3"), NodePath("TextureRect")]
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -819.0
+offset_top = -385.0
+offset_right = 820.0
+offset_bottom = -240.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContenVBC" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -55.0
+offset_right = 20.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="ElementLabel" type="Label" parent="ContenVBC"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Element1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ElementLabel2" type="Label" parent="ContenVBC"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Element2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ElementLabel3" type="Label" parent="ContenVBC"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Element3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1083.0
+offset_top = 167.0
+offset_right = 1211.0
+offset_bottom = 295.0
+texture = ExtResource("2_821s7")

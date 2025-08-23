@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciwolqdv6staj"]
+
+[ext_resource type="PackedScene" uid="uid://ddf7utr1vtc3d" path="res://content/template/example_title_layout_nobg.tscn" id="1_p6c7c"]
+
+[node name="SlideTitle" node_paths=PackedStringArray("elements_to_fade_in") instance=ExtResource("1_p6c7c")]
+elements_to_fade_in = [NodePath("IntroLabel"), NodePath("TitleControl"), NodePath("SubTitleLabel")]
+slide_title = "Title"
+
+[node name="IntroLabel" parent="." index="0"]
+text = "Hello!"
+
+[node name="TitleLabel" parent="TitleControl" index="1"]
+text = "This is [img]res://icon.svg[/img][color=\"112233\"]TalkieTalkie[/color]"
+
+[node name="SubTitleLabel" parent="." index="2"]
+text = "(an example presentation)"

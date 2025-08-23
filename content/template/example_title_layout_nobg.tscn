@@ -1,0 +1,118 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddf7utr1vtc3d"]
+
+[ext_resource type="Script" uid="uid://curhhl5msjc3e" path="res://engine/slides/fadein_slide.gd" id="1_e4maj"]
+
+[node name="ExampleTitleLayoutNoBg" type="Control" node_paths=PackedStringArray("elements_to_fade_in")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 1
+script = ExtResource("1_e4maj")
+elements_to_fade_in = [null, null, null, null]
+
+[node name="IntroLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -819.0
+offset_top = -251.0
+offset_right = 820.0
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0.196078, 0.196078, 0.196078, 1)
+theme_override_font_sizes/font_size = 80
+text = "Intro"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleControl" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Separator1" type="Panel" parent="TitleControl"]
+modulate = Color(1, 1, 1, 0.52549)
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -722.0
+offset_top = -99.0
+offset_right = 722.0
+offset_bottom = -71.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+
+[node name="TitleLabel" type="RichTextLabel" parent="TitleControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -819.5
+offset_top = -72.5
+offset_right = 819.5
+offset_bottom = 92.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator2" type="Panel" parent="TitleControl"]
+modulate = Color(1, 1, 1, 0.52549)
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -722.0
+offset_top = 93.0
+offset_right = 722.0
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+
+[node name="SubTitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -819.0
+offset_top = 107.0
+offset_right = 820.0
+offset_bottom = 272.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0.197937, 0.197937, 0.197937, 1)
+theme_override_font_sizes/font_size = 80
+text = "Subtitle"
+horizontal_alignment = 1
+vertical_alignment = 1

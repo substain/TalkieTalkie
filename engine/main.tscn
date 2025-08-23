@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4fiin221skal"]
+
+[ext_resource type="Script" uid="uid://b4ks1icxwrjw5" path="res://engine/main.gd" id="1_8fa7n"]
+[ext_resource type="PackedScene" uid="uid://dojqro0enav4e" path="res://engine/ui/ui.tscn" id="1_ymvtf"]
+[ext_resource type="Script" uid="uid://boh7ja07or1hp" path="res://engine/background.gd" id="3_8fa7n"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_8fa7n")
+
+[node name="SlideshowTimer" type="Timer" parent="."]
+
+[node name="UI" parent="." instance=ExtResource("1_ymvtf")]
+layer = 100
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -100
+script = ExtResource("3_8fa7n")
+
+[node name="Slides" type="CanvasLayer" parent="."]
+
+[connection signal="timeout" from="SlideshowTimer" to="." method="_on_slideshow_timer_timeout"]
+[connection signal="continue_slide" from="UI" to="." method="_on_ui_continue_slide"]
+[connection signal="jump_to_slide" from="UI" to="." method="_on_ui_jump_to_slide"]
+[connection signal="previous_slide" from="UI" to="." method="_on_ui_previous_slide"]
+[connection signal="set_slideshow_duration" from="UI" to="." method="_on_ui_set_slideshow_duration"]
+[connection signal="skip_slide" from="UI" to="." method="_on_ui_skip_slide"]
+[connection signal="toggle_slideshow" from="UI" to="." method="_on_ui_toggle_slideshow"]

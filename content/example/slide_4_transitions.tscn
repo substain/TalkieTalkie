@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://8iusfi7r8xlf"]
+
+[ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://content/template/example_text_layout_nobg.tscn" id="1_qd6b0"]
+[ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://engine/slides/slide_animation.gd" id="2_uu3o7"]
+
+[node name="SlideTransitions" instance=ExtResource("1_qd6b0")]
+slide_title = "Transitions"
+
+[node name="TitleLabel" parent="." index="0"]
+text = "Transitions"
+
+[node name="ElementLabel" type="Label" parent="ContentVBC" index="0"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• Slide Transitions and Animations within Slides are currently a WIP"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel" index="0"]
+script = ExtResource("2_uu3o7")
+
+[node name="ElementLabel2" type="Label" parent="ContentVBC" index="1"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• The current idea for Animations is:"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel2" index="0"]
+script = ExtResource("2_uu3o7")
+animation_dur = 0.35
+
+[node name="ElementLabel3" type="Label" parent="ContentVBC" index="2"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "    • Use AnimSlide, which collects all Animations in its children"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel3" index="0"]
+script = ExtResource("2_uu3o7")
+animation_dur = 0.7
+
+[node name="ElementLabel4" type="Label" parent="ContentVBC" index="3"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "    • As animations, use SlideAnimations and place it under the target Node"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel4" index="0"]
+script = ExtResource("2_uu3o7")
+animation_dur = 1.0

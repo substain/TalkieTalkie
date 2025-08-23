@@ -1,0 +1,219 @@
+[gd_scene load_steps=6 format=3 uid="uid://dojqro0enav4e"]
+
+[ext_resource type="Script" uid="uid://betclvvo6c5jo" path="res://engine/ui/ui.gd" id="1_n2tc0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oin5q"]
+bg_color = Color(0.241185, 0.299955, 0.438405, 0.533333)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eobuy"]
+bg_color = Color(0.56, 0.2632, 0.332453, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wb2ej"]
+bg_color = Color(0.38, 0.1368, 0.193547, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1q3dt"]
+bg_color = Color(0.48, 0.264, 0.3144, 1)
+
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("navigation_bar", "navigation_bar_hidden_pos_marker", "back_button", "continue_button", "skip_button", "fullscreen_button", "quit_button", "slideshow_button", "slideshow_duration_spin_box", "simple_slide_content_nav", "slide_content_nav_hidden_marker", "slide_button_hbox", "slide_index_label")]
+layer = 5
+script = ExtResource("1_n2tc0")
+navigation_bar = NodePath("NavigationBarMc")
+navigation_bar_hidden_pos_marker = NodePath("NavigationBarMc/NavigationBarHiddenMarker")
+back_button = NodePath("NavigationBarMc/NavigationButtonMc/HBoxContainer/BackButton")
+continue_button = NodePath("NavigationBarMc/NavigationButtonMc/HBoxContainer/ContinueButton")
+skip_button = NodePath("NavigationBarMc/NavigationButtonMc/HBoxContainer/SkipButton")
+fullscreen_button = NodePath("NavigationBarMc/NavigationButtonMc/HBoxContainer/WindowControlBox/FullscreenButton")
+quit_button = NodePath("NavigationBarMc/NavigationButtonMc/HBoxContainer/WindowControlBox/QuitButton")
+slideshow_button = NodePath("NavigationBarMc/NavigationButtonMc/HBoxContainer/SlideshowVBox/SlideshowButton")
+slideshow_duration_spin_box = NodePath("NavigationBarMc/NavigationButtonMc/HBoxContainer/SlideshowVBox/SlideshowDurationSpinBox")
+simple_slide_content_nav = NodePath("SimpleSlideContentNav")
+slide_content_nav_hidden_marker = NodePath("SimpleSlideContentNav/SlideContentNavHiddenMarker")
+slide_button_hbox = NodePath("SimpleSlideContentNav/SlideContentNavMc/SlideButtonHbox")
+slide_index_label = NodePath("SimpleSlideContentNav/SlideContentNavMc/SlideButtonHbox/SlideIndexLabel")
+
+[node name="SimpleSlideContentNav" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(600, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -65.0
+offset_right = 65.0
+offset_bottom = 58.0
+grow_horizontal = 2
+pivot_offset = Vector2(185, 58)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="SlideContentNavHiddenMarker" type="Marker2D" parent="SimpleSlideContentNav"]
+position = Vector2(0, -100)
+
+[node name="BackgroundPanel" type="Panel" parent="SimpleSlideContentNav"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oin5q")
+
+[node name="SlideContentNavMc" type="MarginContainer" parent="SimpleSlideContentNav"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="SlideButtonHbox" type="HBoxContainer" parent="SimpleSlideContentNav/SlideContentNavMc"]
+layout_mode = 2
+alignment = 1
+
+[node name="SeparatorMc" type="MarginContainer" parent="SimpleSlideContentNav/SlideContentNavMc/SlideButtonHbox"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="Separator" type="Panel" parent="SimpleSlideContentNav/SlideContentNavMc/SlideButtonHbox/SeparatorMc"]
+modulate = Color(1, 1, 1, 0.52549)
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="SlideIndexLabel" type="Label" parent="SimpleSlideContentNav/SlideContentNavMc/SlideButtonHbox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.096, 0.125467, 0.2, 0.756863)
+theme_override_font_sizes/font_size = 24
+text = "999/999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="NavigationBarMc" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -185.0
+offset_top = -117.0
+offset_right = 185.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(185, 58)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="NavigationBarHiddenMarker" type="Marker2D" parent="NavigationBarMc"]
+position = Vector2(0, 100)
+
+[node name="BackgroundPanel" type="Panel" parent="NavigationBarMc"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oin5q")
+
+[node name="NavigationButtonMc" type="MarginContainer" parent="NavigationBarMc"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NavigationBarMc/NavigationButtonMc"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="NavigationBarMc/NavigationButtonMc/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "◄◄"
+
+[node name="ContinueButton" type="Button" parent="NavigationBarMc/NavigationButtonMc/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "►"
+
+[node name="SkipButton" type="Button" parent="NavigationBarMc/NavigationButtonMc/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "►►"
+
+[node name="SeparatorMc1" type="MarginContainer" parent="NavigationBarMc/NavigationButtonMc/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="Separator" type="Panel" parent="NavigationBarMc/NavigationButtonMc/HBoxContainer/SeparatorMc1"]
+modulate = Color(1, 1, 1, 0.52549)
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="SlideshowVBox" type="VBoxContainer" parent="NavigationBarMc/NavigationButtonMc/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="SlideshowButton" type="Button" parent="NavigationBarMc/NavigationButtonMc/HBoxContainer/SlideshowVBox"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+toggle_mode = true
+text = "AUTO"
+
+[node name="SlideshowDurationSpinBox" type="SpinBox" parent="NavigationBarMc/NavigationButtonMc/HBoxContainer/SlideshowVBox"]
+layout_mode = 2
+min_value = 0.1
+max_value = 240.0
+step = 0.1
+value = 3.0
+alignment = 1
+suffix = "s"
+
+[node name="SeparatorMc2" type="MarginContainer" parent="NavigationBarMc/NavigationButtonMc/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="Separator" type="Panel" parent="NavigationBarMc/NavigationButtonMc/HBoxContainer/SeparatorMc2"]
+modulate = Color(1, 1, 1, 0.52549)
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="WindowControlBox" type="VBoxContainer" parent="NavigationBarMc/NavigationButtonMc/HBoxContainer"]
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="NavigationBarMc/NavigationButtonMc/HBoxContainer/WindowControlBox"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxFlat_eobuy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wb2ej")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1q3dt")
+text = "×"
+
+[node name="FullscreenButton" type="Button" parent="NavigationBarMc/NavigationButtonMc/HBoxContainer/WindowControlBox"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+toggle_mode = true
+text = "[  ]"
+
+[connection signal="pressed" from="NavigationBarMc/NavigationButtonMc/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="NavigationBarMc/NavigationButtonMc/HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="NavigationBarMc/NavigationButtonMc/HBoxContainer/SkipButton" to="." method="_on_skip_button_pressed"]
+[connection signal="toggled" from="NavigationBarMc/NavigationButtonMc/HBoxContainer/SlideshowVBox/SlideshowButton" to="." method="_on_slideshow_button_toggled"]
+[connection signal="value_changed" from="NavigationBarMc/NavigationButtonMc/HBoxContainer/SlideshowVBox/SlideshowDurationSpinBox" to="." method="_on_slideshow_duration_spin_box_value_changed"]
+[connection signal="pressed" from="NavigationBarMc/NavigationButtonMc/HBoxContainer/WindowControlBox/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="toggled" from="NavigationBarMc/NavigationButtonMc/HBoxContainer/WindowControlBox/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]

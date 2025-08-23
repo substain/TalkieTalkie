@@ -1,0 +1,37 @@
+[gd_scene load_steps=9 format=3 uid="uid://6x6xa75307sd"]
+
+[ext_resource type="PackedScene" uid="uid://c4fiin221skal" path="res://engine/main.tscn" id="1_gdns1"]
+[ext_resource type="PackedScene" uid="uid://c4m85ihv1jedf" path="res://content/example/example_background.tscn" id="2_o34i6"]
+[ext_resource type="PackedScene" uid="uid://ciwolqdv6staj" path="res://content/example/slide_1_title.tscn" id="3_f1qu8"]
+[ext_resource type="PackedScene" uid="uid://c4dp0lcwxox74" path="res://content/example/slide_2_setup.tscn" id="4_6sv8j"]
+[ext_resource type="PackedScene" uid="uid://g7nqgjyqndo7" path="res://content/example/slide_3_controls.tscn" id="5_2jfg0"]
+[ext_resource type="PackedScene" uid="uid://8iusfi7r8xlf" path="res://content/example/slide_4_transitions.tscn" id="6_wsuaq"]
+[ext_resource type="PackedScene" uid="uid://424xywruff3v" path="res://content/example/slide_5_various.tscn" id="7_oe70l"]
+[ext_resource type="PackedScene" uid="uid://dsx2v4kghiq3y" path="res://content/example/slide_6_final.tscn" id="8_2jfg0"]
+
+[node name="Main" instance=ExtResource("1_gdns1")]
+override_slide_index_from_last_session = true
+
+[node name="ExampleBackground1" parent="Background" index="0" instance=ExtResource("2_o34i6")]
+hue_values = Array[float]([0.0, 0.5, 0.3, 0.8])
+alpha_factor = 0.5
+hue_factor = 0.08
+
+[node name="SlideTitle" parent="Slides" index="0" instance=ExtResource("3_f1qu8")]
+
+[node name="SlideSetup" parent="Slides" index="1" instance=ExtResource("4_6sv8j")]
+visible = false
+
+[node name="SlideControls" parent="Slides" index="2" instance=ExtResource("5_2jfg0")]
+visible = false
+
+[node name="SlideTransitions" parent="Slides" index="3" instance=ExtResource("6_wsuaq")]
+visible = false
+
+[node name="SlideVarious" parent="Slides" index="4" instance=ExtResource("7_oe70l")]
+visible = false
+
+[node name="SlideFinal" parent="Slides" index="5" instance=ExtResource("8_2jfg0")]
+visible = false
+
+[connection signal="slide_changed" from="Background" to="Background/ExampleBackground1" method="_on_background_slide_changed"]

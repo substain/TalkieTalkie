@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=3 uid="uid://424xywruff3v"]
+
+[ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://content/template/example_text_layout_nobg.tscn" id="1_vot30"]
+[ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://engine/slides/slide_animation.gd" id="2_egq7i"]
+
+[node name="SlideVarious" instance=ExtResource("1_vot30")]
+slide_title = "Various"
+
+[node name="TitleLabel" parent="." index="0"]
+text = "Various"
+
+[node name="ElementLabel" type="Label" parent="ContentVBC" index="0"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• Currently there is no dynamic loading of scenes."
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel" index="0"]
+script = ExtResource("2_egq7i")
+animation_dur = 0.5
+sort_order = 2
+
+[node name="ElementLabel6" type="Label" parent="ContentVBC" index="1"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "    • This means having a lot of slides could lead to bad performance"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel6" index="0"]
+script = ExtResource("2_egq7i")
+animation_dur = 0.5
+sort_order = 3
+
+[node name="ElementLabel2" type="Label" parent="ContentVBC" index="2"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• There is also the possibilty to define Slides as Resources
+   and combine them with template/layout slides"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel2" index="0"]
+script = ExtResource("2_egq7i")
+animation_dur = 0.5
+sort_order = 4
+
+[node name="ElementLabel3" type="Label" parent="ContentVBC" index="3"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• Mouse Input is a bit buggy (due to unhandled input / mouse filter)"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel3" index="0"]
+script = ExtResource("2_egq7i")
+animation_dur = 0.5
+sort_order = 1
+
+[node name="ElementLabel4" type="Label" parent="ContentVBC" index="4"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• There are a lot of possibilities to be explored yet..."
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel4" index="0"]
+script = ExtResource("2_egq7i")
+animation_dur = 0.5
+sort_order = 6

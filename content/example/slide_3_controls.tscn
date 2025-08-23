@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://g7nqgjyqndo7"]
+
+[ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://content/template/example_text_layout_nobg.tscn" id="1_ftjhj"]
+
+[node name="SlideControls" instance=ExtResource("1_ftjhj")]
+slide_title = "Controls"
+
+[node name="TitleLabel" parent="." index="0"]
+text = "Controls (Default)"
+
+[node name="ContinueLabel" type="Label" parent="ContentVBC" index="0"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• Right/Down/Space/Left Click to continue forward"
+vertical_alignment = 1
+
+[node name="SkipLabel" type="Label" parent="ContentVBC" index="1"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• PageDown to skip (only forward to full slides)"
+vertical_alignment = 1
+
+[node name="BackLabel" type="Label" parent="ContentVBC" index="2"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• Left/Up/PageUp to go back"
+vertical_alignment = 1
+
+[node name="UILabel" type="Label" parent="ContentVBC" index="3"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• F1/Tab/Right Click to show UI"
+vertical_alignment = 1
+
+[node name="FullscreenLabel" type="Label" parent="ContentVBC" index="4"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• F12 for fullscreen"
+vertical_alignment = 1
+
+[node name="QuitLabel" type="Label" parent="ContentVBC" index="5"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• ESC to quit"
+vertical_alignment = 1
