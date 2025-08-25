@@ -2,6 +2,8 @@
 <img align="right" width="100" height="100" src="https://github.com/substain/TalkieTalkie/blob/main/icon.svg">
 A presentation tool/framework to create presentations within Godot.
 
+The example presentation can also be found at [https://substain.itch.io/talkietalkie](https://substain.itch.io/talkietalkie).
+
 ## Quickstart: How to create a new presentation
 
 1) Check out the example_main Scene for a quick overview
