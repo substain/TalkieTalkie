@@ -7,12 +7,12 @@ signal quit_pressed
 signal slideshow_toggled(toggled_on: bool)
 signal slideshow_duration_changed(new_duration: float)
 
-@export var back_button: Button
-@export var continue_button: Button
-@export var skip_button: Button
-@export var fullscreen_button: Button
-@export var quit_button: Button
-@export var slideshow_button: Button
+@export var back_button: BaseButton
+@export var continue_button: BaseButton
+@export var skip_button: BaseButton
+@export var fullscreen_button: BaseButton
+@export var quit_button: BaseButton
+@export var slideshow_button: BaseButton
 @export var slideshow_duration_spin_box: SpinBox
 
 var fullscreen_active: bool

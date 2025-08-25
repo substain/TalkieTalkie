@@ -13,8 +13,8 @@ content.example2.background;a node for the background;ein Node für den Hintergr
 content.example2.use_inherited_scenes;A good idea might be to use inherited scenes\n(see this example presentation);Es kann eine gute Idee sein, Inherited Scenes zu benutzen\n(wie in dieser Beispiel-Präsentation)
 content.example3.controls;Controls (Default);Steuerung (Standard)
 content.example3.continue;Right/Down/Space/Left Click to continue;Rechts/Nach Unten/Space/Linksklick um fortzufahren
-content.example3.skip;PageDown to skip;Bild ab zum Überspringen
-content.example3.back;Left/Up/PageUp to go back;Links/Nach Oben/Bild um zurück zu navigieren
+content.example3.skip;PageDown to skip;Bild Ab zum Überspringen
+content.example3.back;Left/Up/PageUp to go back;Links/Nach Oben/Bild Auf, um zurück zu navigieren
 content.example3.ui;F1/Tab/Right Click to show UI;F1/Tab/Rechtsklick, um die UI anzuzeigen
 content.example3.fullscreen;F12 for fullscreen;F12 für Vollbild
-content.example3.quit;ESC to quit;ESC zum Verlassen
+content.example3.quit;ESC to quit (not in the Browser);ESC zum Verlassen (nicht im Browser)

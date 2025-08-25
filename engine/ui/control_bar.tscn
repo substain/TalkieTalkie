@@ -1,6 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://bexrbitexofj5"]
+[gd_scene load_steps=16 format=3 uid="uid://bexrbitexofj5"]
 
 [ext_resource type="Script" uid="uid://bu36q2n7ew2bc" path="res://engine/ui/control_bar.gd" id="1_1yaeh"]
+[ext_resource type="Texture2D" uid="uid://dcwampaec7u4d" path="res://style/ui/back.svg" id="2_04np7"]
+[ext_resource type="Texture2D" uid="uid://cr2dyude0la27" path="res://style/ui/continue.svg" id="2_c07j1"]
+[ext_resource type="Texture2D" uid="uid://c1o0auj6d0cva" path="res://style/ui/back_pressed.svg" id="3_o1rm5"]
+[ext_resource type="Texture2D" uid="uid://bp8vp2o2r3syb" path="res://style/ui/continue_pressed.svg" id="3_unu3c"]
+[ext_resource type="Texture2D" uid="uid://cbivgtnhuyxyn" path="res://style/ui/continue_hover.svg" id="4_66pkw"]
+[ext_resource type="Texture2D" uid="uid://yimlrg4vlqgu" path="res://style/ui/back_hover.svg" id="4_a0385"]
+[ext_resource type="Texture2D" uid="uid://dii1cpoahx2gs" path="res://style/ui/skip.svg" id="8_1ies0"]
+[ext_resource type="Texture2D" uid="uid://dgixigs0mnna2" path="res://style/ui/skip_pressed.svg" id="9_awgs5"]
+[ext_resource type="Texture2D" uid="uid://dyl14gsp4h0fi" path="res://style/ui/skip_hover.svg" id="10_m858w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oin5q"]
 bg_color = Color(0.241185, 0.299955, 0.438405, 0.533333)
@@ -58,26 +67,29 @@ theme_override_constants/margin_bottom = 12
 [node name="HBoxContainer" type="HBoxContainer" parent="NavigationButtonMc"]
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="NavigationButtonMc/HBoxContainer"]
+[node name="BackButton" type="TextureButton" parent="NavigationButtonMc/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 30
-text = "◄◄"
+texture_normal = ExtResource("2_04np7")
+texture_pressed = ExtResource("3_o1rm5")
+texture_hover = ExtResource("4_a0385")
 
-[node name="ContinueButton" type="Button" parent="NavigationButtonMc/HBoxContainer"]
+[node name="ContinueButton" type="TextureButton" parent="NavigationButtonMc/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 30
-text = "►"
+texture_normal = ExtResource("2_c07j1")
+texture_pressed = ExtResource("3_unu3c")
+texture_hover = ExtResource("4_66pkw")
 
-[node name="SkipButton" type="Button" parent="NavigationButtonMc/HBoxContainer"]
+[node name="SkipButton" type="TextureButton" parent="NavigationButtonMc/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 30
-text = "►►"
+texture_normal = ExtResource("8_1ies0")
+texture_pressed = ExtResource("9_awgs5")
+texture_hover = ExtResource("10_m858w")
 
 [node name="VSeparator" type="VSeparator" parent="NavigationButtonMc/HBoxContainer"]
 modulate = Color(1, 1, 1, 0.52549)
