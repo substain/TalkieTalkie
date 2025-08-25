@@ -1,6 +1,8 @@
 # TalkieTalkie
+<img align="right" width="100" height="100" src="https://github.com/substain/TalkieTalkie/blob/main/icon.svg">
+A presentation tool/framework to create presentations within Godot.
 
-## How to quickly create a new presentation
+## Quickstart: How to create a new presentation
 
 1) Check out the example_main Scene for a quick overview
 2) Create your own inherited scene from engine/main.tscn (maybe to your own folder in content/)
