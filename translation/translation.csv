@@ -1,0 +1,20 @@
+keys;en;de
+ui.settings.language;Language;Sprache (Language)
+ui.settings.overall_volume;Volume;Lautstärke
+ui.settings.mute;Mute;Stumm
+content.example1.hello;Hello!;Hallo!
+content.example1.this_is_x;This is {0};Das ist {0}
+content.example1.an_example_presentation;(an example presentation);(eine Beispiel-Präsentation)
+content.example2.setup;Setup;Aufbau
+content.example2.presentation_combined;A presentation is combined with the following nodes:;Eine Präsentation wird durch folgende Nodes zusammengesetzt:
+content.example2.main_scene;a Main scene (with main.gd) with a UI Node;eine Main-Szene (mit main.gd) mit einem UI-Node
+content.example2.slide_node;at least one Slide node (any class inheriting from slide.gd);mindestens ein Slide Node (irgendeine Klasse, die von slide.gd erbt)
+content.example2.background;a node for the background;ein Node für den Hintergrund
+content.example2.use_inherited_scenes;A good idea might be to use inherited scenes\n(see this example presentation);Es kann eine gute Idee sein, Inherited Scenes zu benutzen\n(wie in dieser Beispiel-Präsentation)
+content.example3.controls;Controls (Default);Steuerung (Standard)
+content.example3.continue;Right/Down/Space/Left Click to continue;Rechts/Nach Unten/Space/Linksklick um fortzufahren
+content.example3.skip;PageDown to skip;Bild ab zum Überspringen
+content.example3.back;Left/Up/PageUp to go back;Links/Nach Oben/Bild um zurück zu navigieren
+content.example3.ui;F1/Tab/Right Click to show UI;F1/Tab/Rechtsklick, um die UI anzuzeigen
+content.example3.fullscreen;F12 for fullscreen;F12 für Vollbild
+content.example3.quit;ESC to quit;ESC zum Verlassen

@@ -2,10 +2,15 @@ class_name Slide extends CanvasItem
 
 @export var slide_title: String
 
+## Nodes that have a "text" property to be translated with the given translation_target
+@export var translations: Dictionary[Node, TranslationTarget]
+
 var order_index: int
 
 func _ready() -> void:
 	reset()
+	Preferences.language_changed.connect(translate)
+	translate()
 	
 ## reset the current slides progress
 func reset() -> void:
@@ -22,3 +27,7 @@ func continue_slide() -> bool:
 ## Retunrs true if the current slide is finished.
 func is_finished() -> bool:
 	return true
+
+func translate() -> void:
+	for translation_node: Node in translations:
+		translations[translation_node].translate(translation_node)

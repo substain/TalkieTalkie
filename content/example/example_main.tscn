@@ -1,29 +1,139 @@
-[gd_scene load_steps=9 format=3 uid="uid://6x6xa75307sd"]
+[gd_scene load_steps=25 format=3 uid="uid://6x6xa75307sd"]
 
 [ext_resource type="PackedScene" uid="uid://c4fiin221skal" path="res://engine/main.tscn" id="1_gdns1"]
 [ext_resource type="PackedScene" uid="uid://c4m85ihv1jedf" path="res://content/example/example_background.tscn" id="2_o34i6"]
 [ext_resource type="PackedScene" uid="uid://ciwolqdv6staj" path="res://content/example/slide_1_title.tscn" id="3_f1qu8"]
 [ext_resource type="PackedScene" uid="uid://c4dp0lcwxox74" path="res://content/example/slide_2_setup.tscn" id="4_6sv8j"]
+[ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://engine/translation_target.gd" id="4_wsuaq"]
 [ext_resource type="PackedScene" uid="uid://g7nqgjyqndo7" path="res://content/example/slide_3_controls.tscn" id="5_2jfg0"]
 [ext_resource type="PackedScene" uid="uid://8iusfi7r8xlf" path="res://content/example/slide_4_transitions.tscn" id="6_wsuaq"]
 [ext_resource type="PackedScene" uid="uid://424xywruff3v" path="res://content/example/slide_5_various.tscn" id="7_oe70l"]
 [ext_resource type="PackedScene" uid="uid://dsx2v4kghiq3y" path="res://content/example/slide_6_final.tscn" id="8_2jfg0"]
+
+[sub_resource type="Resource" id="Resource_u3ctn"]
+script = ExtResource("4_wsuaq")
+translation_key = "content.example1.this_is_x"
+positional_placeholders = Array[String](["[img]res://icon.svg[/img][color=\"112233\"]TalkieTalkie[/color]"])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_l70vv"]
+script = ExtResource("4_wsuaq")
+translation_key = "content.example1.hello"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_jk5wk"]
+script = ExtResource("4_wsuaq")
+translation_key = "content.example1.an_example_presentation"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_50061"]
+script = ExtResource("4_wsuaq")
+translation_key = "content.example2.presentation_combined"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_au0wi"]
+script = ExtResource("4_wsuaq")
+translation_key = "content.example2.main_scene"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_4ty74"]
+script = ExtResource("4_wsuaq")
+translation_key = "content.example2.slide_node"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_4645t"]
+script = ExtResource("4_wsuaq")
+translation_key = "content.example2.background"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_ud4g4"]
+script = ExtResource("4_wsuaq")
+translation_key = "content.example2.use_inherited_scenes"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_s1h0b"]
+script = ExtResource("4_wsuaq")
+translation_key = "content.example3.controls"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_hghnn"]
+script = ExtResource("4_wsuaq")
+translation_key = "content.example3.continue"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_gopwr"]
+script = ExtResource("4_wsuaq")
+translation_key = "content.example3.skip"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_8lxvm"]
+script = ExtResource("4_wsuaq")
+translation_key = "content.example3.back"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_2lvuw"]
+script = ExtResource("4_wsuaq")
+translation_key = "content.example3.ui"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_yma5t"]
+script = ExtResource("4_wsuaq")
+translation_key = "content.example3.fullscreen"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_ftjhj"]
+script = ExtResource("4_wsuaq")
+translation_key = "content.example3.quit"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [node name="Main" instance=ExtResource("1_gdns1")]
 override_slide_index_from_last_session = true
 
 [node name="ExampleBackground1" parent="Background" index="0" instance=ExtResource("2_o34i6")]
 hue_values = Array[float]([0.0, 0.5, 0.3, 0.8])
-alpha_factor = 0.5
-hue_factor = 0.08
 
-[node name="SlideTitle" parent="Slides" index="0" instance=ExtResource("3_f1qu8")]
+[node name="SlideTitle" parent="Slides" index="0" node_paths=PackedStringArray("translations") instance=ExtResource("3_f1qu8")]
+translations = {
+NodePath("TitleControl/TitleLabel"): SubResource("Resource_u3ctn"),
+NodePath("IntroLabel"): SubResource("Resource_l70vv"),
+NodePath("SubTitleLabel"): SubResource("Resource_jk5wk")
+}
 
-[node name="SlideSetup" parent="Slides" index="1" instance=ExtResource("4_6sv8j")]
+[node name="SlideSetup" parent="Slides" index="1" node_paths=PackedStringArray("translations") instance=ExtResource("4_6sv8j")]
 visible = false
+translations = {
+NodePath("ContentVBC/ElementLabel"): SubResource("Resource_50061"),
+NodePath("ContentVBC/ElementLabel2"): SubResource("Resource_au0wi"),
+NodePath("ContentVBC/ElementLabel3"): SubResource("Resource_4ty74"),
+NodePath("ContentVBC/ElementLabel4"): SubResource("Resource_4645t"),
+NodePath("ContentVBC/ElementLabel5"): SubResource("Resource_ud4g4")
+}
 
-[node name="SlideControls" parent="Slides" index="2" instance=ExtResource("5_2jfg0")]
+[node name="SlideControls" parent="Slides" index="2" node_paths=PackedStringArray("translations") instance=ExtResource("5_2jfg0")]
 visible = false
+translations = {
+NodePath("TitleLabel"): SubResource("Resource_s1h0b"),
+NodePath("ContentVBC/ContinueLabel"): SubResource("Resource_hghnn"),
+NodePath("ContentVBC/SkipLabel"): SubResource("Resource_gopwr"),
+NodePath("ContentVBC/BackLabel"): SubResource("Resource_8lxvm"),
+NodePath("ContentVBC/UILabel"): SubResource("Resource_2lvuw"),
+NodePath("ContentVBC/FullscreenLabel"): SubResource("Resource_yma5t"),
+NodePath("ContentVBC/QuitLabel"): SubResource("Resource_ftjhj")
+}
 
 [node name="SlideTransitions" parent="Slides" index="3" instance=ExtResource("6_wsuaq")]
 visible = false

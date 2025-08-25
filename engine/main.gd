@@ -35,6 +35,7 @@ var transition_tween: Tween = null
 var last_from_slide: Slide = null
 
 func _ready() -> void:
+	SlideHelper.main = self
 	extract_num_regex.compile("\\d+")
 	slide_instances = collect_slides_in_children(self)
 	
@@ -57,12 +58,14 @@ func _ready() -> void:
 	set_slide(slide_index, true)
 	show_only_current_slide()
 		
-	ui.set_slideshow_active(slideshow_timer.autostart == true)
-	ui.update_slideshow_duration(slideshow_timer.wait_time)
+	ui.control_bar.set_slideshow_active(slideshow_timer.autostart == true)
+	ui.control_bar.update_slideshow_duration(slideshow_timer.wait_time)
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("continue"):
 		do_continue()
+		
+		
 		
 	if event.is_action_pressed("skip_slide"):
 		do_skip_slide()
@@ -77,7 +80,7 @@ func _input(event: InputEvent) -> void:
 		ui.set_ui_visible(true)
 		
 	if event.is_action_pressed("fullscreen"):
-		ui.toggle_fullscreen()
+		ui.control_bar.toggle_fullscreen()
 
 	if event.is_action_pressed("quit"):
 		ui.quit()
@@ -94,7 +97,7 @@ func do_continue(automatic: bool = false) -> void:
 		return
 	
 	var was_finished: bool = current_slide.continue_slide()
-	ui.set_is_slide_finished(current_slide.is_finished())
+	ui.control_bar.set_is_slide_finished(current_slide.is_finished())
 	if !was_finished:
 		return
 		
@@ -124,7 +127,7 @@ func go_back_slide(automatic: bool = false) -> void:
 func skip_to_current_slide_full() -> void:
 	#print("skip to slide: ", new_index)
 	current_slide.show_full()
-	ui.set_is_slide_finished(true)
+	ui.control_bar.set_is_slide_finished(true)
 	show_only_current_slide()
 	
 func transition_to_slide(from_slide: Slide, to_slide: Slide, transition: Callable) -> void:
@@ -154,6 +157,7 @@ func change_slide(change: int) -> bool:
 	if previous_slide_index == slide_index:
 		return false
 	current_slide = slide_instances[slide_index]
+	SlideHelper.current_slide = slide_instances[slide_index]
 	current_slide.reset()
 	update_ui_slide_status()
 	background.slide_changed.emit(current_slide)
@@ -166,6 +170,7 @@ func set_slide(new_index: int, force_set: bool = false) -> bool:
 	if previous_slide_index == slide_index && !force_set:
 		return false
 	current_slide = slide_instances[slide_index]
+	SlideHelper.current_slide = slide_instances[slide_index]
 	current_slide.reset()
 	update_ui_slide_status()
 	background.slide_changed.emit(current_slide)
@@ -177,11 +182,12 @@ func change_slide_index(change: int) -> void:
 func set_slide_index(new_index: int) -> void:
 	slide_index = clamp(new_index, 0, slide_instances.size()-1)
 	Preferences.set_presentation_progress(slide_index, get_tree().current_scene.scene_file_path)
+	
 	ui.set_current_slide(slide_index)
 	
 func update_ui_slide_status() -> void:
-	ui.set_slide_status_flags(slide_index == 0, slide_index == slide_instances.size()-1)
-	ui.set_is_slide_finished(slide_instances[slide_index].is_finished())
+	ui.control_bar.set_slide_status_flags(slide_index == 0, slide_index == slide_instances.size()-1)
+	ui.control_bar.set_is_slide_finished(slide_instances[slide_index].is_finished())
 
 func _on_ui_continue_slide() -> void:
 	do_continue()

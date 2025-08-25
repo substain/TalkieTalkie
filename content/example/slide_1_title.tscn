@@ -1,10 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://ciwolqdv6staj"]
+[gd_scene load_steps=6 format=3 uid="uid://ciwolqdv6staj"]
 
 [ext_resource type="PackedScene" uid="uid://ddf7utr1vtc3d" path="res://content/template/example_title_layout_nobg.tscn" id="1_p6c7c"]
+[ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://engine/translation_target.gd" id="2_l70vv"]
 
-[node name="SlideTitle" node_paths=PackedStringArray("elements_to_fade_in") instance=ExtResource("1_p6c7c")]
+[sub_resource type="Resource" id="Resource_u3ctn"]
+script = ExtResource("2_l70vv")
+translation_key = "content.example1.this_is_x"
+positional_placeholders = Array[String](["[img]res://icon.svg[/img][color=\"112233\"]TalkieTalkie[/color]"])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_l70vv"]
+script = ExtResource("2_l70vv")
+translation_key = "content.example1.hello"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_jk5wk"]
+script = ExtResource("2_l70vv")
+translation_key = "content.example1.an_example_presentation"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[node name="SlideTitle" node_paths=PackedStringArray("elements_to_fade_in", "translations") instance=ExtResource("1_p6c7c")]
 elements_to_fade_in = [NodePath("IntroLabel"), NodePath("TitleControl"), NodePath("SubTitleLabel")]
 slide_title = "Title"
+translations = {
+NodePath("TitleControl/TitleLabel"): SubResource("Resource_u3ctn"),
+NodePath("IntroLabel"): SubResource("Resource_l70vv"),
+NodePath("SubTitleLabel"): SubResource("Resource_jk5wk")
+}
 
 [node name="IntroLabel" parent="." index="0"]
 text = "Hello!"

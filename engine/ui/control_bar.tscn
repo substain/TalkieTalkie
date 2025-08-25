@@ -1,0 +1,146 @@
+[gd_scene load_steps=7 format=3 uid="uid://bexrbitexofj5"]
+
+[ext_resource type="Script" uid="uid://bu36q2n7ew2bc" path="res://engine/ui/control_bar.gd" id="1_1yaeh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oin5q"]
+bg_color = Color(0.241185, 0.299955, 0.438405, 0.533333)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2tc0"]
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eobuy"]
+bg_color = Color(0.56, 0.2632, 0.332453, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wb2ej"]
+bg_color = Color(0.38, 0.1368, 0.193547, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1q3dt"]
+bg_color = Color(0.48, 0.264, 0.3144, 1)
+
+[node name="ControlBar" type="MarginContainer" node_paths=PackedStringArray("back_button", "continue_button", "skip_button", "fullscreen_button", "quit_button", "slideshow_button", "slideshow_duration_spin_box")]
+offset_right = 398.0
+offset_bottom = 117.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+script = ExtResource("1_1yaeh")
+back_button = NodePath("NavigationButtonMc/HBoxContainer/BackButton")
+continue_button = NodePath("NavigationButtonMc/HBoxContainer/ContinueButton")
+skip_button = NodePath("NavigationButtonMc/HBoxContainer/SkipButton")
+fullscreen_button = NodePath("NavigationButtonMc/HBoxContainer/WindowControlBox/FullscreenButton")
+quit_button = NodePath("NavigationButtonMc/HBoxContainer/WindowControlBox/QuitButton")
+slideshow_button = NodePath("NavigationButtonMc/HBoxContainer/SlideshowVBox/SlideshowButton")
+slideshow_duration_spin_box = NodePath("NavigationButtonMc/HBoxContainer/SlideshowVBox/SlideshowDurationSpinBox")
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oin5q")
+
+[node name="NavigationButtonMc" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NavigationButtonMc"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="NavigationButtonMc/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "◄◄"
+
+[node name="ContinueButton" type="Button" parent="NavigationButtonMc/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "►"
+
+[node name="SkipButton" type="Button" parent="NavigationButtonMc/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "►►"
+
+[node name="VSeparator" type="VSeparator" parent="NavigationButtonMc/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.52549)
+custom_minimum_size = Vector2(10, 60)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxFlat_n2tc0")
+
+[node name="SlideshowVBox" type="VBoxContainer" parent="NavigationButtonMc/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="SlideshowButton" type="Button" parent="NavigationButtonMc/HBoxContainer/SlideshowVBox"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 18
+toggle_mode = true
+text = "AUTO"
+
+[node name="SlideshowDurationSpinBox" type="SpinBox" parent="NavigationButtonMc/HBoxContainer/SlideshowVBox"]
+layout_mode = 2
+min_value = 0.1
+max_value = 240.0
+step = 0.1
+value = 3.0
+alignment = 1
+suffix = "s"
+
+[node name="VSeparator2" type="VSeparator" parent="NavigationButtonMc/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.52549)
+custom_minimum_size = Vector2(10, 60)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxFlat_n2tc0")
+
+[node name="WindowControlBox" type="VBoxContainer" parent="NavigationButtonMc/HBoxContainer"]
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="NavigationButtonMc/HBoxContainer/WindowControlBox"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxFlat_eobuy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wb2ej")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1q3dt")
+text = "×"
+
+[node name="FullscreenButton" type="Button" parent="NavigationButtonMc/HBoxContainer/WindowControlBox"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 20
+toggle_mode = true
+text = "[  ]"
+
+[connection signal="pressed" from="NavigationButtonMc/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="NavigationButtonMc/HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="NavigationButtonMc/HBoxContainer/SkipButton" to="." method="_on_skip_button_pressed"]
+[connection signal="toggled" from="NavigationButtonMc/HBoxContainer/SlideshowVBox/SlideshowButton" to="." method="_on_slideshow_button_toggled"]
+[connection signal="value_changed" from="NavigationButtonMc/HBoxContainer/SlideshowVBox/SlideshowDurationSpinBox" to="." method="_on_slideshow_duration_spin_box_value_changed"]
+[connection signal="pressed" from="NavigationButtonMc/HBoxContainer/WindowControlBox/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="toggled" from="NavigationButtonMc/HBoxContainer/WindowControlBox/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]

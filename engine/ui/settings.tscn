@@ -1,0 +1,99 @@
+[gd_scene load_steps=2 format=3 uid="uid://hbvk7dsw6lru"]
+
+[ext_resource type="Script" uid="uid://dq0nd5bo0tp00" path="res://engine/ui/settings.gd" id="1_pss60"]
+
+[node name="Settings" type="MarginContainer" node_paths=PackedStringArray("open_button", "lang_option_button", "overall_volume_slider", "overall_volume_mute_button", "settings_container")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -140.0
+offset_bottom = 183.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+script = ExtResource("1_pss60")
+open_button = NodePath("VBoxContainer/OpenButton")
+lang_option_button = NodePath("VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/LangVBox/LangOptionButton")
+overall_volume_slider = NodePath("VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox/OverallVolumeSlider")
+overall_volume_mute_button = NodePath("VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox/OverallVolumeMuteButton")
+settings_container = NodePath("VBoxContainer/SettingsContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="OpenButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+focus_mode = 0
+text = "..."
+
+[node name="SettingsContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TabNavigationMc" type="MarginContainer" parent="VBoxContainer/SettingsContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="SettingVBox" type="VBoxContainer" parent="VBoxContainer/SettingsContainer/TabNavigationMc"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="LangVBox" type="VBoxContainer" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox"]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="LanguageLabel" type="Label" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/LangVBox"]
+layout_mode = 2
+text = "ui.settings.language"
+horizontal_alignment = 1
+
+[node name="LangOptionButton" type="OptionButton" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/LangVBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_1/text = "Deutsch"
+popup/item_1/id = 1
+
+[node name="OverallVolumeVBox" type="VBoxContainer" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="LanguageLabel" type="Label" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox"]
+layout_mode = 2
+text = "ui.settings.overall_volume"
+horizontal_alignment = 1
+
+[node name="OverallVolumeSlider" type="HSlider" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="OverallVolumeMuteButton" type="CheckBox" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "ui.settings.mute"
+
+[connection signal="pressed" from="VBoxContainer/OpenButton" to="." method="_on_open_button_pressed"]
+[connection signal="item_selected" from="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/LangVBox/LangOptionButton" to="." method="_on_lang_option_button_item_selected"]
+[connection signal="drag_ended" from="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox/OverallVolumeSlider" to="." method="_on_overall_volume_slider_drag_ended"]
+[connection signal="value_changed" from="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox/OverallVolumeSlider" to="." method="_on_overall_volume_slider_value_changed"]
+[connection signal="toggled" from="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox/OverallVolumeMuteButton" to="." method="_on_overall_volume_mute_button_toggled"]

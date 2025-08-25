@@ -1,9 +1,61 @@
-[gd_scene load_steps=2 format=3 uid="uid://g7nqgjyqndo7"]
+[gd_scene load_steps=10 format=3 uid="uid://g7nqgjyqndo7"]
 
 [ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://content/template/example_text_layout_nobg.tscn" id="1_ftjhj"]
+[ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://engine/translation_target.gd" id="2_ftjhj"]
 
-[node name="SlideControls" instance=ExtResource("1_ftjhj")]
+[sub_resource type="Resource" id="Resource_s1h0b"]
+script = ExtResource("2_ftjhj")
+translation_key = "content.example3.controls"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_hghnn"]
+script = ExtResource("2_ftjhj")
+translation_key = "content.example3.continue"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_gopwr"]
+script = ExtResource("2_ftjhj")
+translation_key = "content.example3.skip"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_8lxvm"]
+script = ExtResource("2_ftjhj")
+translation_key = "content.example3.back"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_2lvuw"]
+script = ExtResource("2_ftjhj")
+translation_key = "content.example3.ui"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_yma5t"]
+script = ExtResource("2_ftjhj")
+translation_key = "content.example3.fullscreen"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_ftjhj"]
+script = ExtResource("2_ftjhj")
+translation_key = "content.example3.quit"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[node name="SlideControls" node_paths=PackedStringArray("translations") instance=ExtResource("1_ftjhj")]
 slide_title = "Controls"
+translations = {
+NodePath("TitleLabel"): SubResource("Resource_s1h0b"),
+NodePath("ContentVBC/ContinueLabel"): SubResource("Resource_hghnn"),
+NodePath("ContentVBC/SkipLabel"): SubResource("Resource_gopwr"),
+NodePath("ContentVBC/BackLabel"): SubResource("Resource_8lxvm"),
+NodePath("ContentVBC/UILabel"): SubResource("Resource_2lvuw"),
+NodePath("ContentVBC/FullscreenLabel"): SubResource("Resource_yma5t"),
+NodePath("ContentVBC/QuitLabel"): SubResource("Resource_ftjhj")
+}
 
 [node name="TitleLabel" parent="." index="0"]
 text = "Controls (Default)"
@@ -13,7 +65,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "• Right/Down/Space/Left Click to continue forward"
+text = "• content.example3.continue"
 vertical_alignment = 1
 
 [node name="SkipLabel" type="Label" parent="ContentVBC" index="1"]
@@ -21,7 +73,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "• PageDown to skip (only forward to full slides)"
+text = "• content.example3.skip"
 vertical_alignment = 1
 
 [node name="BackLabel" type="Label" parent="ContentVBC" index="2"]
@@ -29,7 +81,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "• Left/Up/PageUp to go back"
+text = "• content.example3.back"
 vertical_alignment = 1
 
 [node name="UILabel" type="Label" parent="ContentVBC" index="3"]
@@ -37,7 +89,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "• F1/Tab/Right Click to show UI"
+text = "• content.example3.ui"
 vertical_alignment = 1
 
 [node name="FullscreenLabel" type="Label" parent="ContentVBC" index="4"]
@@ -45,7 +97,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "• F12 for fullscreen"
+text = "• content.example3.fullscreen"
 vertical_alignment = 1
 
 [node name="QuitLabel" type="Label" parent="ContentVBC" index="5"]
@@ -53,5 +105,5 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "• ESC to quit"
+text = "• content.example3.quit"
 vertical_alignment = 1

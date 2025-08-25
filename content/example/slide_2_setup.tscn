@@ -1,13 +1,51 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4dp0lcwxox74"]
+[gd_scene load_steps=9 format=3 uid="uid://c4dp0lcwxox74"]
 
 [ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://content/template/example_text_layout_nobg.tscn" id="1_nbir4"]
+[ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://engine/translation_target.gd" id="2_4ty74"]
 [ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://engine/slides/slide_animation.gd" id="2_au0wi"]
 
-[node name="SlideSetup" instance=ExtResource("1_nbir4")]
+[sub_resource type="Resource" id="Resource_50061"]
+script = ExtResource("2_4ty74")
+translation_key = "content.example2.presentation_combined"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_au0wi"]
+script = ExtResource("2_4ty74")
+translation_key = "content.example2.main_scene"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_4ty74"]
+script = ExtResource("2_4ty74")
+translation_key = "content.example2.slide_node"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_4645t"]
+script = ExtResource("2_4ty74")
+translation_key = "content.example2.background"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_ud4g4"]
+script = ExtResource("2_4ty74")
+translation_key = "content.example2.use_inherited_scenes"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[node name="SlideSetup" node_paths=PackedStringArray("translations") instance=ExtResource("1_nbir4")]
 slide_title = "Setup"
+translations = {
+NodePath("ContentVBC/ElementLabel"): SubResource("Resource_50061"),
+NodePath("ContentVBC/ElementLabel2"): SubResource("Resource_au0wi"),
+NodePath("ContentVBC/ElementLabel3"): SubResource("Resource_4ty74"),
+NodePath("ContentVBC/ElementLabel4"): SubResource("Resource_4645t"),
+NodePath("ContentVBC/ElementLabel5"): SubResource("Resource_ud4g4")
+}
 
 [node name="TitleLabel" parent="." index="0"]
-text = "Setup"
+text = "content.example2.setup"
 
 [node name="TargetFadeAnimation" type="Node" parent="." index="1" node_paths=PackedStringArray("targets")]
 script = ExtResource("2_au0wi")
@@ -19,7 +57,7 @@ sort_order = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "• A presentation is combined with the following nodes:"
+text = "• content.example2.presentation_combined"
 vertical_alignment = 1
 
 [node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel" index="0"]
@@ -30,21 +68,21 @@ animation_dur = 0.5
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "     • a Main scene (with main.gd) with a UI Node"
+text = "     • content.example2.main_scene"
 vertical_alignment = 1
 
 [node name="ElementLabel3" type="Label" parent="ContentVBC" index="2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "     • at least one Slide scene (any class inheriting from slide.gd)"
+text = "     • content.example2.slide_node"
 vertical_alignment = 1
 
 [node name="ElementLabel4" type="Label" parent="ContentVBC" index="3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "     • a node for the background"
+text = "     • content.example2.background"
 vertical_alignment = 1
 
 [node name="ElementLabel5" type="Label" parent="ContentVBC" index="4"]
@@ -52,8 +90,7 @@ custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "• A good idea might be to use inherited scenes
- (see this example presentation)"
+text = "• content.example2.use_inherited_scenes"
 vertical_alignment = 1
 autowrap_mode = 2
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://424xywruff3v"]
+[gd_scene load_steps=4 format=3 uid="uid://424xywruff3v"]
 
 [ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://content/template/example_text_layout_nobg.tscn" id="1_vot30"]
 [ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://engine/slides/slide_animation.gd" id="2_egq7i"]
+[ext_resource type="Script" uid="uid://7d8yi8qqlkvr" path="res://engine/slide_link.gd" id="3_egq7i"]
 
 [node name="SlideVarious" instance=ExtResource("1_vot30")]
 slide_title = "Various"
@@ -62,7 +63,23 @@ script = ExtResource("2_egq7i")
 animation_dur = 0.5
 sort_order = 1
 
-[node name="ElementLabel4" type="Label" parent="ContentVBC" index="4"]
+[node name="ElementLabel4" type="RichTextLabel" parent="ContentVBC" index="4"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "• The slides can be translated (slides [url=\"0\"]1[/url], [url=\"1\"]2[/url], [url=\"2\"]3[/url] in this presentation)"
+fit_content = true
+vertical_alignment = 1
+script = ExtResource("3_egq7i")
+
+[node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel4" index="1"]
+script = ExtResource("2_egq7i")
+animation_dur = 0.5
+sort_order = 6
+
+[node name="ElementLabel5" type="Label" parent="ContentVBC" index="5"]
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -70,7 +87,9 @@ theme_override_font_sizes/font_size = 50
 text = "• There are a lot of possibilities to be explored yet..."
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel4" index="0"]
+[node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel5" index="0"]
 script = ExtResource("2_egq7i")
 animation_dur = 0.5
 sort_order = 6
+
+[connection signal="meta_clicked" from="ContentVBC/ElementLabel4" to="ContentVBC/ElementLabel4" method="_on_meta_clicked"]
