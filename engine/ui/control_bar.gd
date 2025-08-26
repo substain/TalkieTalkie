@@ -20,6 +20,7 @@ var fullscreen_active: bool
 var is_first_slide: bool = false
 var is_last_slide: bool = false
 var is_slide_finished: bool = false
+var is_slide_at_start: bool = true
 var is_slideshow_active: bool = false
 var slideshow_duration: float
 
@@ -31,7 +32,7 @@ func set_ui_disabled(is_disabled_new: bool) -> void:
 	slideshow_button.disabled = is_disabled_new
 	if is_disabled_new:
 		set_slide_status_flags(true, true)
-		set_is_slide_finished(true)
+		set_slide_progress_flags(true, true)
 		
 func set_fullscreen_active(is_active_new: bool) -> void:
 	fullscreen_active = is_active_new
@@ -63,8 +64,9 @@ func _on_slideshow_button_toggled(toggled_on: bool) -> void:
 func _on_slideshow_duration_spin_box_value_changed(value: float) -> void:
 	slideshow_duration_changed.emit(value)
 
-func set_is_slide_finished(is_slide_finished_new: bool) -> void:
+func set_slide_progress_flags(is_slide_at_start_new: bool, is_slide_finished_new: bool) -> void:
 	is_slide_finished = is_slide_finished_new
+	is_slide_at_start = is_slide_at_start_new
 	update_navigation_buttons()
 
 func set_slide_status_flags(is_first_slide_new: bool, is_last_slide_new: bool) -> void:
@@ -73,7 +75,7 @@ func set_slide_status_flags(is_first_slide_new: bool, is_last_slide_new: bool) -
 	update_navigation_buttons()
 	
 func update_navigation_buttons() -> void:
-	back_button.disabled = is_first_slide
+	back_button.disabled = is_first_slide && is_slide_at_start
 	continue_button.disabled = is_last_slide && is_slide_finished
 	skip_button.disabled = is_last_slide && is_slide_finished
 	slideshow_button.disabled = is_last_slide && is_slide_finished

@@ -23,8 +23,12 @@ func show_full() -> void:
 ## Continues the current slide progress. Returns true if the full slide is shown.
 func continue_slide() -> bool:
 	return true
+	
+## Returns true if the current slide is at the start position
+func is_at_start() -> bool:
+	return true
 
-## Retunrs true if the current slide is finished.
+## Returns true if the current slide is finished.
 func is_finished() -> bool:
 	return true
 

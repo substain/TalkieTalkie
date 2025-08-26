@@ -65,8 +65,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("continue"):
 		do_continue()
 		
-		
-		
 	if event.is_action_pressed("skip_slide"):
 		do_skip_slide()
 		
@@ -97,7 +95,7 @@ func do_continue(automatic: bool = false) -> void:
 		return
 	
 	var was_finished: bool = current_slide.continue_slide()
-	ui.control_bar.set_is_slide_finished(current_slide.is_finished())
+	ui.control_bar.set_slide_progress_flags(current_slide.is_at_start(), current_slide.is_finished())
 	if !was_finished:
 		return
 		
@@ -121,13 +119,19 @@ func do_skip_slide(automatic: bool = false) -> void:
 func go_back_slide(automatic: bool = false) -> void:
 	if !automatic && manual_navigation_stops_slideshow:
 		stop_slideshow()
+		
+	if slide_index == 0:
+		current_slide.reset()
+		ui.control_bar.set_slide_progress_flags(current_slide.is_at_start(), current_slide.is_finished())
+		return
+		
 	change_slide(-1)
 	skip_to_current_slide_full()
 
 func skip_to_current_slide_full() -> void:
 	#print("skip to slide: ", new_index)
 	current_slide.show_full()
-	ui.control_bar.set_is_slide_finished(true)
+	ui.control_bar.set_slide_progress_flags(current_slide.is_at_start(), true)
 	show_only_current_slide()
 	
 func transition_to_slide(from_slide: Slide, to_slide: Slide, transition: Callable) -> void:
@@ -187,7 +191,7 @@ func set_slide_index(new_index: int) -> void:
 	
 func update_ui_slide_status() -> void:
 	ui.control_bar.set_slide_status_flags(slide_index == 0, slide_index == slide_instances.size()-1)
-	ui.control_bar.set_is_slide_finished(slide_instances[slide_index].is_finished())
+	ui.control_bar.set_slide_progress_flags(slide_instances[slide_index].is_at_start(), slide_instances[slide_index].is_finished())
 
 func _on_ui_continue_slide() -> void:
 	do_continue()

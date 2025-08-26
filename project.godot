@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="TalkieTalkie"
-config/version="0.0.1"
+config/version="0.0.5"
 run/main_scene="uid://6x6xa75307sd"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
@@ -37,7 +37,6 @@ gdscript/warnings/unsafe_call_argument=1
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [input]
 

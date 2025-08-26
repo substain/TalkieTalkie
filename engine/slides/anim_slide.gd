@@ -49,7 +49,10 @@ func continue_slide() -> bool:
 
 func is_finished() -> bool:
 	return current_anim_step >= anim_steps
-		
+			
+func is_at_start() -> bool:
+	return current_anim_step == 0
+	
 static func compare_by_sort_order(a: SlideAnimation, b: SlideAnimation) -> int:
 	if a.sort_order != b.sort_order:
 		return a.sort_order < b.sort_order

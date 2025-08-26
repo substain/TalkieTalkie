@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bexrbitexofj5"]
+[gd_scene load_steps=19 format=3 uid="uid://bexrbitexofj5"]
 
 [ext_resource type="Script" uid="uid://bu36q2n7ew2bc" path="res://engine/ui/control_bar.gd" id="1_1yaeh"]
 [ext_resource type="Texture2D" uid="uid://dcwampaec7u4d" path="res://style/ui/back.svg" id="2_04np7"]
@@ -7,9 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://bp8vp2o2r3syb" path="res://style/ui/continue_pressed.svg" id="3_unu3c"]
 [ext_resource type="Texture2D" uid="uid://cbivgtnhuyxyn" path="res://style/ui/continue_hover.svg" id="4_66pkw"]
 [ext_resource type="Texture2D" uid="uid://yimlrg4vlqgu" path="res://style/ui/back_hover.svg" id="4_a0385"]
+[ext_resource type="Texture2D" uid="uid://bdnuj3k8yforc" path="res://style/ui/back_disabled.svg" id="5_o1rm5"]
 [ext_resource type="Texture2D" uid="uid://dii1cpoahx2gs" path="res://style/ui/skip.svg" id="8_1ies0"]
+[ext_resource type="Texture2D" uid="uid://caebaxc6yipme" path="res://style/ui/continue_disabled.svg" id="9_a0385"]
 [ext_resource type="Texture2D" uid="uid://dgixigs0mnna2" path="res://style/ui/skip_pressed.svg" id="9_awgs5"]
 [ext_resource type="Texture2D" uid="uid://dyl14gsp4h0fi" path="res://style/ui/skip_hover.svg" id="10_m858w"]
+[ext_resource type="Texture2D" uid="uid://2jpcoabjx1f6" path="res://style/ui/skip_disabled.svg" id="13_1ies0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oin5q"]
 bg_color = Color(0.241185, 0.299955, 0.438405, 0.533333)
@@ -74,6 +77,7 @@ focus_mode = 0
 texture_normal = ExtResource("2_04np7")
 texture_pressed = ExtResource("3_o1rm5")
 texture_hover = ExtResource("4_a0385")
+texture_disabled = ExtResource("5_o1rm5")
 
 [node name="ContinueButton" type="TextureButton" parent="NavigationButtonMc/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
@@ -82,6 +86,7 @@ focus_mode = 0
 texture_normal = ExtResource("2_c07j1")
 texture_pressed = ExtResource("3_unu3c")
 texture_hover = ExtResource("4_66pkw")
+texture_disabled = ExtResource("9_a0385")
 
 [node name="SkipButton" type="TextureButton" parent="NavigationButtonMc/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
@@ -90,6 +95,7 @@ focus_mode = 0
 texture_normal = ExtResource("8_1ies0")
 texture_pressed = ExtResource("9_awgs5")
 texture_hover = ExtResource("10_m858w")
+texture_disabled = ExtResource("13_1ies0")
 
 [node name="VSeparator" type="VSeparator" parent="NavigationButtonMc/HBoxContainer"]
 modulate = Color(1, 1, 1, 0.52549)
