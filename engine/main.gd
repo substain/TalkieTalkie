@@ -83,6 +83,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("quit"):
 		ui.quit()
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton && (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT && (event as InputEventMouseButton).pressed:
 		do_continue()
