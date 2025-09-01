@@ -38,8 +38,8 @@ static func is_web() -> bool:
 	return OS.has_feature("web")
 	
 static func is_mobile() -> bool:
-	return OS.get_name() == ANDROID_OS_NAME || OS.get_name() == IOS_OS_NAME
-	
+	return OS.get_name() == ANDROID_OS_NAME || OS.get_name() == IOS_OS_NAME || OS.has_feature("web_android") || OS.has_feature("web_ios") 
+
 static func get_talkie_talkie_version() -> String:
 	return "v" + ProjectSettings.get_setting("application/config/version")
 

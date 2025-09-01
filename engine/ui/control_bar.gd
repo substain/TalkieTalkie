@@ -44,25 +44,25 @@ func set_fullscreen_active(is_active_new: bool) -> void:
 func toggle_fullscreen() -> void:
 	set_fullscreen_active(!fullscreen_active)
 	
-func _on__continue_button_pressed() -> void:
+func _on_continue_button_pressed() -> void:
 	continue_pressed.emit()
 	
-func _on__back_button_pressed() -> void:
+func _on_back_button_pressed() -> void:
 	back_pressed.emit()
 
-func _on__skip_button_pressed() -> void:
+func _on_skip_button_pressed() -> void:
 	skip_pressed.emit()
 
-func _on__quit_button_pressed() -> void:
+func _on_quit_button_pressed() -> void:
 	quit_pressed.emit()
 
-func _on__fullscreen_button_toggled(toggled_on: bool) -> void:
+func _on_fullscreen_button_toggled(toggled_on: bool) -> void:
 	set_fullscreen_active(toggled_on)
 	
-func _on__slideshow_button_toggled(toggled_on: bool) -> void:
+func _on_slideshow_button_toggled(toggled_on: bool) -> void:
 	slideshow_toggled.emit(toggled_on)
 	
-func _on__slideshow_duration_spin_box_value_changed(value: float) -> void:
+func _on_slideshow_duration_spin_box_value_changed(value: float) -> void:
 	slideshow_duration_changed.emit(value)
 
 func set_slide_progress_flags(is_slide_at_start_new: bool, is_slide_finished_new: bool) -> void:

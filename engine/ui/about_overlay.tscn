@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpy50hmoy7l80"]
+[gd_scene load_steps=5 format=3 uid="uid://bpy50hmoy7l80"]
 
 [ext_resource type="Script" uid="uid://dchl8plueo4d8" path="res://engine/ui/about_overlay.gd" id="1_6h1sh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6h1sh"]
+bg_color = Color(0.56, 0.2632, 0.332453, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ukib2"]
+bg_color = Color(0.38, 0.1368, 0.193547, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hnkw3"]
+bg_color = Color(0.48, 0.264, 0.3144, 1)
 
 [node name="AboutOverlay" type="CanvasLayer" node_paths=PackedStringArray("talkie_talkie_label", "godot_label", "about_talkie_talkie_label", "about_godot_label")]
 script = ExtResource("1_6h1sh")
@@ -54,14 +63,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CloseButton" type="Button" parent="PanelContainer/VBoxContainer/TitleHBox"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -28.0
-offset_bottom = 31.0
+offset_left = -50.0
+offset_bottom = 28.0
 grow_horizontal = 0
-text = "[x]"
+focus_mode = 0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxFlat_6h1sh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ukib2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hnkw3")
+text = "×"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(600, 400)

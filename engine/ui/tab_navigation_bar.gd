@@ -29,7 +29,7 @@ func set_available_slides(slides: Array[Slide]) -> void:
 		_slide_navigation_hbox.add_child(slide_nav_button)
 		_slide_navigation_hbox.move_child(slide_nav_button, target_slide_index)
 		
-	update__slide_index_label()
+	update_slide_index_label()
 	
 func _slide_nav_button_pressed(slide_index: int) -> void:
 	jump_to_slide.emit(slide_index)
@@ -41,7 +41,7 @@ func set_current_slide(slide_index: int) -> void:
 		_slide_nav_dictionary[slide_index].button_pressed = true
 	_slide_nav_dictionary[slide_index].get("theme_override_styles/normal").bg_color = Color.html("636f63d3")
 
-	update__slide_index_label()
+	update_slide_index_label()
 	
-func update__slide_index_label() -> void:
+func update_slide_index_label() -> void:
 	_slide_index_label.text = str(current_slide_index+1) + " / " + str(num_slides)

@@ -9,7 +9,6 @@
 [node name="UI" type="CanvasLayer" node_paths=PackedStringArray("control_bar", "_control_bar_pivot", "_control_bar_hidden_pos_marker", "tab_navigation_bar", "_tab_navigation_pivot", "_tab_navigation_bar_hidden_marker", "settings", "_settings_pivot", "_settings_hidden_marker", "_toggle_ui_button", "about_overlay")]
 layer = 5
 script = ExtResource("1_n2tc0")
-is_ui_visible = true
 control_bar = NodePath("ControlBarPivot/ControlBar")
 _control_bar_pivot = NodePath("ControlBarPivot")
 _control_bar_hidden_pos_marker = NodePath("ControlBarPivot/ControlBarHiddenMarker")
@@ -100,6 +99,7 @@ text = "UI
 
 [node name="AboutOverlay" parent="." instance=ExtResource("5_liuq1")]
 layer = 60
+visible = false
 
 [connection signal="jump_to_slide" from="TabNavigationPivot/TabNavigationBar" to="." method="_on_tab_navigation_bar_jump_to_slide"]
 [connection signal="back_pressed" from="ControlBarPivot/ControlBar" to="." method="_on_control_bar_back_pressed"]
