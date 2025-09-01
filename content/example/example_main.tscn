@@ -103,6 +103,9 @@ metadata/_custom_type_script = "uid://dnjg462pg7agr"
 [node name="Main" instance=ExtResource("1_gdns1")]
 override_slide_index_from_last_session = true
 
+[node name="UI" parent="." index="1"]
+layer = 50
+
 [node name="ExampleBackground1" parent="Background" index="0" instance=ExtResource("2_o34i6")]
 hue_values = Array[float]([0.0, 0.5, 0.3, 0.8])
 

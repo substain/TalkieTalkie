@@ -1,0 +1,8 @@
+[gd_resource type="StyleBoxFlat" format=3 uid="uid://dm465lemag1a3"]
+
+[resource]
+bg_color = Color(0.241185, 0.299955, 0.438405, 0.533333)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12

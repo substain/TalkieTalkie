@@ -1,0 +1,61 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://qkwtsoeipsdo"]
+
+[ext_resource type="StyleBox" uid="uid://dm465lemag1a3" path="res://style/panel_stylebox.tres" id="1_ikeqk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyovq"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.0576, 0.10928, 0.24, 0.823529)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dr6ht"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.4424, 0.47572, 0.56, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ikeqk"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.72, 0.799333, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_dyovq"]
+content_margin_left = 0.0
+content_margin_top = 4.0
+content_margin_right = 0.0
+content_margin_bottom = 4.0
+color = Color(0.5, 0.5, 0.5, 1)
+vertical = true
+
+[resource]
+Button/styles/pressed = SubResource("StyleBoxFlat_dyovq")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_dr6ht")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_ikeqk")
+LabelHeader/base_type = &"Label"
+LabelHeader/colors/font_color = Color(0.564706, 0.678431, 0.909804, 1)
+LabelHeader/font_sizes/font_size = 20
+LabelHeaderMain/base_type = &"Label"
+LabelHeaderMain/colors/font_color = Color(0.737255, 0.807843, 0.94902, 1)
+LabelHeaderMain/font_sizes/font_size = 24
+Panel/styles/panel = ExtResource("1_ikeqk")
+PanelContainer/styles/panel = ExtResource("1_ikeqk")
+VSeparator/styles/separator = SubResource("StyleBoxLine_dyovq")

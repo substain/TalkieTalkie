@@ -15,7 +15,6 @@ func _ready() -> void:
 	animations.sort_custom(compare_by_sort_order)
 	anim_steps = animations.size()
 	
-	
 func reset() -> void:
 	for tween in fade_tweens:
 		tween.kill()
@@ -71,5 +70,4 @@ static func collect_anims_in_children(node: Node, current_index: int) -> Array[S
 		res.append_array(children_nodes)
 		if res.size() > 0:
 			current_index = res[res.size()-1].tree_index + 1
-				
 	return res

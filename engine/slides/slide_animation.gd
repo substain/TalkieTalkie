@@ -8,10 +8,12 @@ class_name SlideAnimation extends Node
 ## The order of animations. Higher sort order means later execution. For equal numbers, the tree order is used.
 @export var sort_order: int = 0
 
-var fade_tweens: Array[Tween] = []
+var _fade_tweens: Array[Tween] = []
+
+## Set via AnimSlide, used for ordering
 var tree_index: int = 0
 
-var fade_tween: Tween = null
+var _fade_tween: Tween = null
 
 func _ready() -> void:
 	assign_target()
@@ -22,11 +24,11 @@ func assign_target() -> void:
 		targets = [get_parent()]
 
 func reset() -> void:
-	for tween in fade_tweens:
+	for tween in _fade_tweens:
 		if is_instance_valid(tween):
 			tween.kill()
 		
-	fade_tweens.clear()
+	_fade_tweens.clear()
 	for target: CanvasItem in targets:
 		if !is_instance_valid(target):
 			push_warning("found invalid slide animation reference in ", self.name)
@@ -38,19 +40,19 @@ func animate() -> void:
 		skip_to_finish()
 		return
 		
-	if is_instance_valid(fade_tween):
-		fade_tween.kill()
+	if is_instance_valid(_fade_tween):
+		_fade_tween.kill()
 		
-	fade_tween = create_tween().set_parallel(true)
+	_fade_tween = create_tween().set_parallel(true)
 	
 	for target: CanvasItem in targets:
-		fade_tween.tween_property(target, "modulate:a", 1.0, animation_dur)
+		_fade_tween.tween_property(target, "modulate:a", 1.0, animation_dur)
 	
-	fade_tweens.append(fade_tween)
+	_fade_tweens.append(_fade_tween)
 
 func skip_to_finish() -> void:
-	if is_instance_valid(fade_tween):
-		fade_tween.kill()
+	if is_instance_valid(_fade_tween):
+		_fade_tween.kill()
 		
 	for target: CanvasItem in targets:
 		target.modulate.a = 1.0

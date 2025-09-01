@@ -1,13 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://esc364srw4ym"]
+[gd_scene load_steps=3 format=3 uid="uid://esc364srw4ym"]
 
 [ext_resource type="Script" uid="uid://dgq10u03ltlys" path="res://engine/ui/tab_navigation_bar.gd" id="1_o5gwj"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oin5q"]
-bg_color = Color(0.241185, 0.299955, 0.438405, 0.533333)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2tc0"]
 corner_radius_top_left = 2
@@ -17,7 +10,7 @@ corner_radius_bottom_left = 2
 expand_margin_left = 1.0
 expand_margin_right = 1.0
 
-[node name="TabNavigationBar" type="MarginContainer" node_paths=PackedStringArray("slide_navigation_hbox", "slide_index_label")]
+[node name="TabNavigationBar" type="MarginContainer" node_paths=PackedStringArray("_slide_navigation_hbox", "_slide_index_label")]
 custom_minimum_size = Vector2(500, 0.195)
 anchors_preset = 5
 anchor_left = 0.5
@@ -33,12 +26,11 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 script = ExtResource("1_o5gwj")
-slide_navigation_hbox = NodePath("TabNavigationMc/SlideNavigationHbox")
-slide_index_label = NodePath("TabNavigationMc/SlideNavigationHbox/SlidePositionLabel")
+_slide_navigation_hbox = NodePath("TabNavigationMc/SlideNavigationHbox")
+_slide_index_label = NodePath("TabNavigationMc/SlideNavigationHbox/SlidePositionLabel")
 
 [node name="BackgroundPanel" type="Panel" parent="."]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_oin5q")
 
 [node name="TabNavigationMc" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(10, 0)

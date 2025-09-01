@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://hbvk7dsw6lru"]
+[gd_scene load_steps=3 format=3 uid="uid://hbvk7dsw6lru"]
 
 [ext_resource type="Script" uid="uid://dq0nd5bo0tp00" path="res://engine/ui/settings.gd" id="1_pss60"]
+[ext_resource type="Texture2D" uid="uid://b7626k74i30bn" path="res://icon.svg" id="2_ckigq"]
 
-[node name="Settings" type="MarginContainer" node_paths=PackedStringArray("open_button", "lang_option_button", "overall_volume_slider", "overall_volume_mute_button", "settings_container")]
+[node name="Settings" type="MarginContainer" node_paths=PackedStringArray("open_button", "lang_option_button", "overall_volume_slider", "overall_volume_mute_button", "settings_container", "dummy_ui_replacement_button", "about_button")]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -14,21 +15,34 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 script = ExtResource("1_pss60")
-open_button = NodePath("VBoxContainer/OpenButton")
+open_button = NodePath("VBoxContainer/HBoxContainer/OpenButton")
 lang_option_button = NodePath("VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/LangVBox/LangOptionButton")
 overall_volume_slider = NodePath("VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox/OverallVolumeSlider")
 overall_volume_mute_button = NodePath("VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox/OverallVolumeMuteButton")
 settings_container = NodePath("VBoxContainer/SettingsContainer")
+dummy_ui_replacement_button = NodePath("VBoxContainer/HBoxContainer/DummyButtonForUIReplacement")
+about_button = NodePath("VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/AboutHBox/AboutButton")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="OpenButton" type="Button" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="OpenButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 focus_mode = 0
 text = "..."
+
+[node name="DummyButtonForUIReplacement" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+focus_mode = 0
+text = "XXX"
 
 [node name="SettingsContainer" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -85,6 +99,7 @@ horizontal_alignment = 1
 layout_mode = 2
 max_value = 1.0
 step = 0.01
+value = 0.5
 
 [node name="OverallVolumeMuteButton" type="CheckBox" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox"]
 layout_mode = 2
@@ -92,8 +107,20 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "ui.settings.mute"
 
-[connection signal="pressed" from="VBoxContainer/OpenButton" to="." method="_on_open_button_pressed"]
+[node name="AboutHBox" type="HBoxContainer" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox"]
+layout_mode = 2
+alignment = 2
+
+[node name="AboutButton" type="Button" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/AboutHBox"]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+text = "vX.X.XX"
+icon = ExtResource("2_ckigq")
+expand_icon = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/OpenButton" to="." method="_on_open_button_pressed"]
 [connection signal="item_selected" from="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/LangVBox/LangOptionButton" to="." method="_on_lang_option_button_item_selected"]
 [connection signal="drag_ended" from="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox/OverallVolumeSlider" to="." method="_on_overall_volume_slider_drag_ended"]
 [connection signal="value_changed" from="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox/OverallVolumeSlider" to="." method="_on_overall_volume_slider_value_changed"]
 [connection signal="toggled" from="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox/OverallVolumeMuteButton" to="." method="_on_overall_volume_mute_button_toggled"]
+[connection signal="pressed" from="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/AboutHBox/AboutButton" to="." method="_on_about_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bexrbitexofj5"]
+[gd_scene load_steps=18 format=3 uid="uid://bexrbitexofj5"]
 
 [ext_resource type="Script" uid="uid://bu36q2n7ew2bc" path="res://engine/ui/control_bar.gd" id="1_1yaeh"]
 [ext_resource type="Texture2D" uid="uid://dcwampaec7u4d" path="res://style/ui/back.svg" id="2_04np7"]
@@ -13,13 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://dgixigs0mnna2" path="res://style/ui/skip_pressed.svg" id="9_awgs5"]
 [ext_resource type="Texture2D" uid="uid://dyl14gsp4h0fi" path="res://style/ui/skip_hover.svg" id="10_m858w"]
 [ext_resource type="Texture2D" uid="uid://2jpcoabjx1f6" path="res://style/ui/skip_disabled.svg" id="13_1ies0"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oin5q"]
-bg_color = Color(0.241185, 0.299955, 0.438405, 0.533333)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2tc0"]
 corner_radius_top_left = 2
@@ -38,7 +31,7 @@ bg_color = Color(0.38, 0.1368, 0.193547, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1q3dt"]
 bg_color = Color(0.48, 0.264, 0.3144, 1)
 
-[node name="ControlBar" type="MarginContainer" node_paths=PackedStringArray("back_button", "continue_button", "skip_button", "fullscreen_button", "quit_button", "slideshow_button", "slideshow_duration_spin_box")]
+[node name="ControlBar" type="MarginContainer" node_paths=PackedStringArray("_back_button", "_continue_button", "_skip_button", "_fullscreen_button", "_quit_button", "_slideshow_button", "_slideshow_duration_spin_box")]
 offset_right = 398.0
 offset_bottom = 117.0
 size_flags_horizontal = 4
@@ -48,17 +41,16 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 script = ExtResource("1_1yaeh")
-back_button = NodePath("NavigationButtonMc/HBoxContainer/BackButton")
-continue_button = NodePath("NavigationButtonMc/HBoxContainer/ContinueButton")
-skip_button = NodePath("NavigationButtonMc/HBoxContainer/SkipButton")
-fullscreen_button = NodePath("NavigationButtonMc/HBoxContainer/WindowControlBox/FullscreenButton")
-quit_button = NodePath("NavigationButtonMc/HBoxContainer/WindowControlBox/QuitButton")
-slideshow_button = NodePath("NavigationButtonMc/HBoxContainer/SlideshowVBox/SlideshowButton")
-slideshow_duration_spin_box = NodePath("NavigationButtonMc/HBoxContainer/SlideshowVBox/SlideshowDurationSpinBox")
+_back_button = NodePath("NavigationButtonMc/HBoxContainer/BackButton")
+_continue_button = NodePath("NavigationButtonMc/HBoxContainer/ContinueButton")
+_skip_button = NodePath("NavigationButtonMc/HBoxContainer/SkipButton")
+_fullscreen_button = NodePath("NavigationButtonMc/HBoxContainer/WindowControlBox/FullscreenButton")
+_quit_button = NodePath("NavigationButtonMc/HBoxContainer/WindowControlBox/QuitButton")
+_slideshow_button = NodePath("NavigationButtonMc/HBoxContainer/SlideshowVBox/SlideshowButton")
+_slideshow_duration_spin_box = NodePath("NavigationButtonMc/HBoxContainer/SlideshowVBox/SlideshowDurationSpinBox")
 
 [node name="BackgroundPanel" type="Panel" parent="."]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_oin5q")
 
 [node name="NavigationButtonMc" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -73,6 +65,7 @@ layout_mode = 2
 [node name="BackButton" type="TextureButton" parent="NavigationButtonMc/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+size_flags_vertical = 4
 focus_mode = 0
 texture_normal = ExtResource("2_04np7")
 texture_pressed = ExtResource("3_o1rm5")
@@ -82,6 +75,7 @@ texture_disabled = ExtResource("5_o1rm5")
 [node name="ContinueButton" type="TextureButton" parent="NavigationButtonMc/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+size_flags_vertical = 4
 focus_mode = 0
 texture_normal = ExtResource("2_c07j1")
 texture_pressed = ExtResource("3_unu3c")
@@ -91,6 +85,7 @@ texture_disabled = ExtResource("9_a0385")
 [node name="SkipButton" type="TextureButton" parent="NavigationButtonMc/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+size_flags_vertical = 4
 focus_mode = 0
 texture_normal = ExtResource("8_1ies0")
 texture_pressed = ExtResource("9_awgs5")

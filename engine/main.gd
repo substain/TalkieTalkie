@@ -5,8 +5,6 @@ extends Node
 ## A simple slideshow feature (automatic continueing slides) can be activated by enabling "Autostart"
 ## in the SlideshowTimer node, and setting "Wait Time" to the desired delay.
 
-static var extract_num_regex: RegEx = RegEx.new()
-
 ## the current index of the slide 
 @export var slide_index: int = 0
 
@@ -34,10 +32,9 @@ var current_slide: Slide = null
 var transition_tween: Tween = null
 var last_from_slide: Slide = null
 
-func _ready() -> void:
+func _ready() -> void:	
 	SlideHelper.main = self
-	extract_num_regex.compile("\\d+")
-	slide_instances = collect_slides_in_children(self)
+	slide_instances = Util.collect_slides_in_children(self)
 	
 	if override_slide_index_from_last_session && Preferences.last_presentation_scene == get_tree().current_scene.scene_file_path:
 		slide_index = Preferences.last_slide
@@ -49,7 +46,7 @@ func _ready() -> void:
 		return
 
 	if use_slide_numbering_order:
-		slide_instances.sort_custom(compare_by_last_number)
+		slide_instances.sort_custom(Util.compare_by_last_number)
 	
 	for i: int in slide_instances.size():
 		slide_instances[i].order_index = i 
@@ -62,6 +59,9 @@ func _ready() -> void:
 	ui.control_bar.update_slideshow_duration(slideshow_timer.wait_time)
 	
 func _input(event: InputEvent) -> void:
+	if ui.has_overlay:
+		return
+	
 	if event.is_action_pressed("continue"):
 		do_continue()
 		
@@ -81,8 +81,7 @@ func _input(event: InputEvent) -> void:
 		ui.control_bar.toggle_fullscreen()
 
 	if event.is_action_pressed("quit"):
-		ui.quit()
-
+		ui.quit()		
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton && (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT && (event as InputEventMouseButton).pressed:
@@ -203,28 +202,6 @@ func _on_ui_previous_slide() -> void:
 func _on_ui_skip_slide() -> void:
 	do_skip_slide()
 
-	
-static func compare_by_last_number(a: Slide, b: Slide) -> int:
-	return last_number_or_zero(a.name) < last_number_or_zero(b.name)
-	
-static func last_number_or_zero(str_name: String) -> int:
-	var numbers_in_string: Array[RegExMatch] = extract_num_regex.search_all(str_name)
-	if numbers_in_string.size() == 0:
-		return 0
-	var res: int = int(numbers_in_string[numbers_in_string.size()-1].subject)
-	return res
-		
-static func collect_slides_in_children(node: Node) -> Array[Slide]:
-	var res: Array[Slide] = []
-	if node is Slide:
-		res.append(node as Slide)
-		
-	for child: Node in node.get_children():
-		var children_nodes: Array[Slide]= collect_slides_in_children(child)
-		res.append_array(children_nodes)
-				
-	return res
-	
 func _on_slideshow_timer_timeout() -> void:
 	do_continue(true)
 	if slide_index == slide_instances.size()-1 && slide_instances[slide_index].is_finished():
