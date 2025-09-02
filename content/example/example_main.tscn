@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://6x6xa75307sd"]
+[gd_scene load_steps=28 format=3 uid="uid://6x6xa75307sd"]
 
 [ext_resource type="PackedScene" uid="uid://c4fiin221skal" path="res://engine/main.tscn" id="1_gdns1"]
 [ext_resource type="PackedScene" uid="uid://c4m85ihv1jedf" path="res://content/example/example_background.tscn" id="2_o34i6"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://8iusfi7r8xlf" path="res://content/example/slide_4_transitions.tscn" id="6_wsuaq"]
 [ext_resource type="PackedScene" uid="uid://424xywruff3v" path="res://content/example/slide_5_various.tscn" id="7_oe70l"]
 [ext_resource type="PackedScene" uid="uid://dsx2v4kghiq3y" path="res://content/example/slide_6_final.tscn" id="8_2jfg0"]
+[ext_resource type="Script" uid="uid://deou7up6h48pg" path="res://engine/slide_creator.gd" id="10_oe70l"]
+[ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://content/template/example_text_layout_nobg.tscn" id="11_eqyva"]
+[ext_resource type="PackedScene" uid="uid://u5p5x65m3ulh" path="res://engine/slides/slide_element_dummy.tscn" id="12_2qdjp"]
 
 [sub_resource type="Resource" id="Resource_u3ctn"]
 script = ExtResource("4_wsuaq")
@@ -146,5 +149,21 @@ visible = false
 
 [node name="SlideFinal" parent="Slides" index="5" instance=ExtResource("8_2jfg0")]
 visible = false
+
+[node name="SlideCreator" type="Node" parent="." index="4" node_paths=PackedStringArray("target_parent")]
+script = ExtResource("10_oe70l")
+input_text = "# Example
+Some content
+* and bulletcontent
+
+
+# Example2
+Some Content, Part 2
+* one bullet
+   * bullet with spaces in front
+* another bullet"
+slide_scene = ExtResource("11_eqyva")
+content_scene = ExtResource("12_2qdjp")
+target_parent = NodePath("../Slides")
 
 [connection signal="slide_changed" from="Background" to="Background/ExampleBackground1" method="_on_background_slide_changed"]

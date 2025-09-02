@@ -45,3 +45,9 @@ static func get_talkie_talkie_version() -> String:
 
 static func get_godot_version() -> String:
 	return Engine.get_version_info()["string"]
+
+static func make_instantiated_scene_local(target_node: Node, new_owner: Node) -> void:
+	target_node.scene_file_path = ""
+	target_node.owner = new_owner
+	for child: Node in target_node.get_children():
+		make_instantiated_scene_local(child, new_owner)

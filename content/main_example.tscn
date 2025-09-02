@@ -1,0 +1,134 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6w1pb2k3lr18"]
+
+[ext_resource type="PackedScene" uid="uid://c4fiin221skal" path="res://engine/main.tscn" id="1_onra5"]
+[ext_resource type="Script" uid="uid://emii6ih5lh0j" path="res://engine/slides/anim_slide.gd" id="2_85w08"]
+[ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://engine/translation_target.gd" id="3_slm04"]
+[ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://engine/slides/slide_animation.gd" id="4_j14xj"]
+
+[sub_resource type="Resource" id="Resource_4ty74"]
+script = ExtResource("3_slm04")
+translation_key = "content.example2.slide_node"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[node name="Main" instance=ExtResource("1_onra5")]
+
+[node name="ColorRect" type="ColorRect" parent="Background" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SlideSetup" type="Control" parent="Slides" index="0" node_paths=PackedStringArray("translations")]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 1
+script = ExtResource("2_85w08")
+slide_title = "Setup"
+translations = {
+null: SubResource("Resource_4ty74")
+}
+
+[node name="TitleLabel" type="Label" parent="Slides/SlideSetup" index="0"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -819.5
+offset_top = 48.0
+offset_right = 819.5
+offset_bottom = 193.0
+grow_horizontal = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "content.example2.setup"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TargetFadeAnimation" type="Node" parent="Slides/SlideSetup" index="1" node_paths=PackedStringArray("targets")]
+script = ExtResource("4_j14xj")
+animation_dur = 0.5
+targets = [NodePath("../ContentVBC/ElementLabel2"), NodePath("../ContentVBC/ElementLabel3"), NodePath("../ContentVBC/ElementLabel4")]
+sort_order = 1
+
+[node name="Separator1" type="Panel" parent="Slides/SlideSetup" index="2"]
+modulate = Color(1, 1, 1, 0.52549)
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -718.0
+offset_top = 193.0
+offset_right = 726.0
+offset_bottom = 199.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+
+[node name="ContentVBC" type="VBoxContainer" parent="Slides/SlideSetup" index="3"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -763.0
+offset_top = -221.0
+offset_right = 763.0
+offset_bottom = 399.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="ElementLabel" type="Label" parent="Slides/SlideSetup/ContentVBC" index="0"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• content.example2.presentation_combined"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="Slides/SlideSetup/ContentVBC/ElementLabel" index="0"]
+script = ExtResource("4_j14xj")
+animation_dur = 0.5
+
+[node name="ElementLabel2" type="Label" parent="Slides/SlideSetup/ContentVBC" index="1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "     •  Text"
+vertical_alignment = 1
+
+[node name="ElementLabel3" type="Label" parent="Slides/SlideSetup/ContentVBC" index="2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "     • content.example2.slide_node"
+vertical_alignment = 1
+
+[node name="ElementLabel4" type="Label" parent="Slides/SlideSetup/ContentVBC" index="3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "     • content.example2.background"
+vertical_alignment = 1
+
+[node name="ElementLabel5" type="Label" parent="Slides/SlideSetup/ContentVBC" index="4"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• content.example2.use_inherited_scenes"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="FadeAnimation" type="Node" parent="Slides/SlideSetup/ContentVBC/ElementLabel5" index="0"]
+script = ExtResource("4_j14xj")
+animation_dur = 0.5
+sort_order = 2
