@@ -19,7 +19,6 @@ func _ready() -> void:
 	assign_target()
 		
 func assign_target() -> void:
-
 	if targets.size() == 0 && get_parent() is CanvasItem:
 		targets = [get_parent()]
 

@@ -9,6 +9,8 @@ class_name TranslationTarget extends Resource
 var text_template: String = ""
 
 func translate(target_element: Node) -> void:
+	if target_element == null:
+		return
 	if !("text" in target_element):
 		push_warning("can only translate controls with a text property")
 		return

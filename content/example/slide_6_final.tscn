@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsx2v4kghiq3y"]
+[gd_scene load_steps=3 format=3 uid="uid://dsx2v4kghiq3y"]
 
 [ext_resource type="PackedScene" uid="uid://ddf7utr1vtc3d" path="res://content/template/example_title_layout_nobg.tscn" id="1_5dq7b"]
+[ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://engine/slides/slide_animation.gd" id="2_wotk1"]
 
-[node name="SlideFinal" node_paths=PackedStringArray("elements_to_fade_in") instance=ExtResource("1_5dq7b")]
-elements_to_fade_in = []
+[node name="SlideFinal" instance=ExtResource("1_5dq7b")]
 slide_title = "Final"
 
 [node name="IntroLabel" parent="." index="0"]
@@ -11,6 +11,10 @@ text = ""
 
 [node name="TitleLabel" parent="TitleControl" index="1"]
 text = "fin."
+
+[node name="FadeAnimation" type="Node" parent="TitleControl" index="3"]
+script = ExtResource("2_wotk1")
+animation_dur = 0.5
 
 [node name="SubTitleLabel" parent="." index="2"]
 text = ""

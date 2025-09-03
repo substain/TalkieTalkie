@@ -1,15 +1,14 @@
 [gd_scene load_steps=2 format=3 uid="uid://ddf7utr1vtc3d"]
 
-[ext_resource type="Script" uid="uid://curhhl5msjc3e" path="res://engine/slides/fadein_slide.gd" id="1_e4maj"]
+[ext_resource type="Script" uid="uid://emii6ih5lh0j" path="res://engine/slides/anim_slide.gd" id="1_y6n77"]
 
-[node name="ExampleTitleLayoutNoBg" type="Control" node_paths=PackedStringArray("elements_to_fade_in")]
+[node name="ExampleTitleLayoutNoBg" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 1
-script = ExtResource("1_e4maj")
-elements_to_fade_in = [null, null, null, null]
+script = ExtResource("1_y6n77")
 
 [node name="IntroLabel" type="Label" parent="."]
 layout_mode = 1

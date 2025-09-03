@@ -115,7 +115,7 @@ static func set_title(instantiated_slide: Slide, new_title: String, title_node_p
 	@warning_ignore("unsafe_property_access") # We already enssured that property exists.
 	title_node.text = new_title
 
-static func set_contents(instantiated_slide: Slide, new_contents: Array[String], content_parent_node_path: String, content_scene: PackedScene, combine_content_lines: bool) -> void:
+static func set_contents(instantiated_slide: Slide, new_contents: Array[String], content_parent_node_path: String, content_scene_to_use: PackedScene, do_combine_content_lines: bool) -> void:
 	if content_parent_node_path == null || !instantiated_slide.has_node(content_parent_node_path):
 		push_warning("Could not find content parent node path '" + content_parent_node_path + "' in the instantiated scene. Will not set contents in the created slide.")
 		return
@@ -124,19 +124,19 @@ static func set_contents(instantiated_slide: Slide, new_contents: Array[String],
 	for child: Node in content_parent_node.get_children():
 		child.free()
 		
-	if content_scene == null:
+	if content_scene_to_use == null:
 		push_warning("Cannot instantiate null content scenes. Created slides will have no content. Ensure content_scene_to_use is set in the edtior.")
 		return
 
-	if combine_content_lines:
-		create_content_node(content_parent_node, content_scene, "\n".join(new_contents))
+	if do_combine_content_lines:
+		create_content_node(content_parent_node, content_scene_to_use, "\n".join(new_contents))
 	else:
 		for content_line: String in new_contents:
-			create_content_node(content_parent_node, content_scene, content_line)
+			create_content_node(content_parent_node, content_scene_to_use, content_line)
 
 
-static func create_content_node(content_parent: Node, content_scene: PackedScene, content_text: String) -> void:
-	var content_node: Control = content_scene.instantiate() as Control
+static func create_content_node(content_parent: Node, content_scene_to_use: PackedScene, content_text: String) -> void:
+	var content_node: Control = content_scene_to_use.instantiate() as Control
 	content_parent.add_child(content_node)
 	Util.make_instantiated_scene_local(content_node, content_parent.get_tree().edited_scene_root)
 	if !("text" in content_node):
