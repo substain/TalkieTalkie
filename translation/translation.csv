@@ -4,7 +4,7 @@ ui.settings.overall_volume;Volume;Lautstärke
 ui.settings.mute;Mute;Stumm
 content.example1.hello;Hello!;Hallo!
 content.example1.this_is_x;This is {0};Das ist {0}
-content.example1.an_example_presentation;(an example presentation);(eine Beispiel-Präsentation)
+content.example1.an_example_presentation;an example presentation;eine Beispiel-Präsentation
 content.example2.setup;Setup;Aufbau
 content.example2.presentation_combined;A presentation is combined with the following nodes:;Eine Präsentation wird durch folgende Nodes zusammengesetzt:
 content.example2.main_scene;a Main scene (with main.gd) with a UI Node;eine Main-Szene (mit main.gd) mit einem UI-Node

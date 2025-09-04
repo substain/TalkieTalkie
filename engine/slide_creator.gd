@@ -108,7 +108,7 @@ static func set_title(instantiated_slide: Slide, new_title: String, title_node_p
 		return
 	
 	var title_node: Node = instantiated_slide.get_node(title_node_path)
-	if !("text" in title_node):
+	if !Util.has_text_property(title_node):
 		push_warning("Can only set title text on a control with a text property, but '", title_node.name, "' does not have a text property. Setting a title will be skipped.")
 		return
 	
@@ -139,7 +139,7 @@ static func create_content_node(content_parent: Node, content_scene_to_use: Pack
 	var content_node: Control = content_scene_to_use.instantiate() as Control
 	content_parent.add_child(content_node)
 	Util.make_instantiated_scene_local(content_node, content_parent.get_tree().edited_scene_root)
-	if !("text" in content_node):
+	if !Util.has_text_property(content_node):
 		push_warning("can only set content text on a control with a text property, but '", content_node.name, "' does not have a text property. Setting contents will be skipped.")
 		return
 	

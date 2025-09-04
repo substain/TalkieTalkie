@@ -1,57 +1,60 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4dp0lcwxox74"]
+[gd_scene load_steps=10 format=3 uid="uid://c4dp0lcwxox74"]
 
 [ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://content/template/example_text_layout_nobg.tscn" id="1_nbir4"]
-[ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://engine/translation_target.gd" id="2_4ty74"]
+[ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://engine/translation/translation_target.gd" id="2_4ty74"]
 [ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://engine/slides/slide_animation.gd" id="2_au0wi"]
 
 [sub_resource type="Resource" id="Resource_50061"]
 script = ExtResource("2_4ty74")
-translation_key = "content.example2.presentation_combined"
-positional_placeholders = Array[String]([])
-metadata/_custom_type_script = "uid://dnjg462pg7agr"
-
-[sub_resource type="Resource" id="Resource_au0wi"]
-script = ExtResource("2_4ty74")
-translation_key = "content.example2.main_scene"
-positional_placeholders = Array[String]([])
-metadata/_custom_type_script = "uid://dnjg462pg7agr"
-
-[sub_resource type="Resource" id="Resource_4ty74"]
-script = ExtResource("2_4ty74")
-translation_key = "content.example2.slide_node"
+translation_key = "content.example2.setup"
 positional_placeholders = Array[String]([])
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [sub_resource type="Resource" id="Resource_4645t"]
 script = ExtResource("2_4ty74")
-translation_key = "content.example2.background"
+translation_key = "content.example2.presentation_combined"
 positional_placeholders = Array[String]([])
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [sub_resource type="Resource" id="Resource_ud4g4"]
 script = ExtResource("2_4ty74")
+translation_key = "content.example2.main_scene"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_au0wi"]
+script = ExtResource("2_4ty74")
+translation_key = "content.example2.slide_node"
+positional_placeholders = Array[String](["content.example2.slide_node"])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_4ty74"]
+script = ExtResource("2_4ty74")
+translation_key = "content.example2.background"
+positional_placeholders = Array[String]([])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_g472g"]
+script = ExtResource("2_4ty74")
 translation_key = "content.example2.use_inherited_scenes"
 positional_placeholders = Array[String]([])
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
-[node name="SlideSetup" node_paths=PackedStringArray("translations") instance=ExtResource("1_nbir4")]
+[node name="SlideSetup" instance=ExtResource("1_nbir4")]
 slide_title = "Setup"
-translations = {
-NodePath("ContentVBC/ElementLabel"): SubResource("Resource_50061"),
-NodePath("ContentVBC/ElementLabel2"): SubResource("Resource_au0wi"),
-NodePath("ContentVBC/ElementLabel3"): SubResource("Resource_4ty74"),
-NodePath("ContentVBC/ElementLabel4"): SubResource("Resource_4645t"),
-NodePath("ContentVBC/ElementLabel5"): SubResource("Resource_ud4g4")
-}
 
-[node name="TitleLabel" parent="." index="0"]
-text = "content.example2.setup"
+[node name="Translations" parent="." index="0" node_paths=PackedStringArray("target_nodes")]
+target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/ElementLabel"), NodePath("../ContentVBC/ElementLabel2"), NodePath("../ContentVBC/ElementLabel3"), NodePath("../ContentVBC/ElementLabel4"), NodePath("../ContentVBC/ElementLabel5")]
+translation_targets = Array[ExtResource("2_4ty74")]([SubResource("Resource_50061"), SubResource("Resource_4645t"), SubResource("Resource_ud4g4"), SubResource("Resource_au0wi"), SubResource("Resource_4ty74"), SubResource("Resource_g472g")])
 
 [node name="TargetFadeAnimation" type="Node" parent="." index="1" node_paths=PackedStringArray("targets")]
 script = ExtResource("2_au0wi")
 animation_dur = 0.5
 targets = [NodePath("../ContentVBC/ElementLabel2"), NodePath("../ContentVBC/ElementLabel3"), NodePath("../ContentVBC/ElementLabel4")]
 sort_order = 1
+
+[node name="TitleLabel" parent="." index="2"]
+text = "content.example2.setup"
 
 [node name="ElementLabel" type="Label" parent="ContentVBC" index="0"]
 layout_mode = 2

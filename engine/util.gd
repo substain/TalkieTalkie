@@ -51,3 +51,6 @@ static func make_instantiated_scene_local(target_node: Node, new_owner: Node) ->
 	target_node.owner = new_owner
 	for child: Node in target_node.get_children():
 		make_instantiated_scene_local(child, new_owner)
+
+static func has_text_property(node: Node) -> bool:
+	return "text" in node

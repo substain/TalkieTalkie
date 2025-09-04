@@ -1,51 +1,49 @@
 [gd_scene load_steps=7 format=3 uid="uid://ciwolqdv6staj"]
 
 [ext_resource type="PackedScene" uid="uid://ddf7utr1vtc3d" path="res://content/template/example_title_layout_nobg.tscn" id="1_p6c7c"]
-[ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://engine/translation_target.gd" id="2_l70vv"]
+[ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://engine/translation/translation_target.gd" id="2_u3ctn"]
 [ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://engine/slides/slide_animation.gd" id="3_u3ctn"]
 
-[sub_resource type="Resource" id="Resource_u3ctn"]
-script = ExtResource("2_l70vv")
-translation_key = "content.example1.this_is_x"
-positional_placeholders = Array[String](["[img]res://icon.svg[/img][color=\"112233\"]TalkieTalkie[/color]"])
-metadata/_custom_type_script = "uid://dnjg462pg7agr"
-
-[sub_resource type="Resource" id="Resource_l70vv"]
-script = ExtResource("2_l70vv")
+[sub_resource type="Resource" id="Resource_jk5wk"]
+script = ExtResource("2_u3ctn")
 translation_key = "content.example1.hello"
 positional_placeholders = Array[String]([])
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
-[sub_resource type="Resource" id="Resource_jk5wk"]
-script = ExtResource("2_l70vv")
+[sub_resource type="Resource" id="Resource_msju5"]
+script = ExtResource("2_u3ctn")
+translation_key = "content.example1.this_is_x"
+positional_placeholders = Array[String](["[img]res://icon.svg[/img][color=\\\"112233\\\"]TalkieTalkie[/color]"])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_wa3te"]
+script = ExtResource("2_u3ctn")
 translation_key = "content.example1.an_example_presentation"
 positional_placeholders = Array[String]([])
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
-[node name="SlideTitle" node_paths=PackedStringArray("translations") instance=ExtResource("1_p6c7c")]
+[node name="SlideTitle" instance=ExtResource("1_p6c7c")]
 slide_title = "Title"
-translations = {
-NodePath("TitleControl/TitleLabel"): SubResource("Resource_u3ctn"),
-NodePath("IntroLabel"): SubResource("Resource_l70vv"),
-NodePath("SubTitleLabel"): SubResource("Resource_jk5wk")
-}
 
-[node name="IntroLabel" parent="." index="0"]
-text = "Hello!"
+[node name="Translations" parent="." index="0"]
+translation_targets = Array[ExtResource("2_u3ctn")]([SubResource("Resource_jk5wk"), SubResource("Resource_msju5"), SubResource("Resource_wa3te")])
+
+[node name="IntroLabel" parent="." index="1"]
+text = "content.example1.hello"
 
 [node name="FadeAnimation" type="Node" parent="IntroLabel" index="0"]
 script = ExtResource("3_u3ctn")
 animation_dur = 0.5
 
 [node name="TitleLabel" parent="TitleControl" index="1"]
-text = "This is [img]res://icon.svg[/img][color=\"112233\"]TalkieTalkie[/color]"
+text = "content.example1.this_is_x"
 
 [node name="FadeAnimation" type="Node" parent="TitleControl" index="3"]
 script = ExtResource("3_u3ctn")
 animation_dur = 0.5
 
-[node name="SubTitleLabel" parent="." index="2"]
-text = "(an example presentation)"
+[node name="SubTitleLabel" parent="." index="3"]
+text = "(content.example1.an_example_presentation)"
 
 [node name="FadeAnimation" type="Node" parent="SubTitleLabel" index="0"]
 script = ExtResource("3_u3ctn")

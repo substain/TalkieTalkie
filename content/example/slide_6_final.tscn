@@ -6,7 +6,7 @@
 [node name="SlideFinal" instance=ExtResource("1_5dq7b")]
 slide_title = "Final"
 
-[node name="IntroLabel" parent="." index="0"]
+[node name="IntroLabel" parent="." index="1"]
 text = ""
 
 [node name="TitleLabel" parent="TitleControl" index="1"]
@@ -16,5 +16,5 @@ text = "fin."
 script = ExtResource("2_wotk1")
 animation_dur = 0.5
 
-[node name="SubTitleLabel" parent="." index="2"]
+[node name="SubTitleLabel" parent="." index="3"]
 text = ""

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddf7utr1vtc3d"]
+[gd_scene load_steps=3 format=3 uid="uid://ddf7utr1vtc3d"]
 
 [ext_resource type="Script" uid="uid://emii6ih5lh0j" path="res://engine/slides/anim_slide.gd" id="1_y6n77"]
+[ext_resource type="Script" uid="uid://cemii7i4pkkpt" path="res://engine/translation/translations.gd" id="2_ra6xe"]
 
 [node name="ExampleTitleLayoutNoBg" type="Control"]
 layout_mode = 3
@@ -9,6 +10,10 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 1
 script = ExtResource("1_y6n77")
+
+[node name="Translations" type="Node" parent="." node_paths=PackedStringArray("target_nodes")]
+script = ExtResource("2_ra6xe")
+target_nodes = [NodePath("../IntroLabel"), NodePath("../TitleControl/TitleLabel"), NodePath("../SubTitleLabel")]
 
 [node name="IntroLabel" type="Label" parent="."]
 layout_mode = 1

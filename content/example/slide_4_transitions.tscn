@@ -6,7 +6,7 @@
 [node name="SlideTransitions" instance=ExtResource("1_qd6b0")]
 slide_title = "Transitions"
 
-[node name="TitleLabel" parent="." index="0"]
+[node name="TitleLabel" parent="." index="1"]
 text = "Transitions"
 
 [node name="ElementLabel" type="Label" parent="ContentVBC" index="0"]

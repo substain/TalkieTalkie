@@ -1,64 +1,59 @@
 [gd_scene load_steps=10 format=3 uid="uid://g7nqgjyqndo7"]
 
 [ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://content/template/example_text_layout_nobg.tscn" id="1_ftjhj"]
-[ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://engine/translation_target.gd" id="2_ftjhj"]
+[ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://engine/translation/translation_target.gd" id="2_ftjhj"]
 
-[sub_resource type="Resource" id="Resource_s1h0b"]
+[sub_resource type="Resource" id="Resource_ftjhj"]
 script = ExtResource("2_ftjhj")
 translation_key = "content.example3.controls"
 positional_placeholders = Array[String]([])
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
-[sub_resource type="Resource" id="Resource_hghnn"]
+[sub_resource type="Resource" id="Resource_s1h0b"]
 script = ExtResource("2_ftjhj")
 translation_key = "content.example3.continue"
 positional_placeholders = Array[String]([])
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
-[sub_resource type="Resource" id="Resource_gopwr"]
+[sub_resource type="Resource" id="Resource_hghnn"]
 script = ExtResource("2_ftjhj")
 translation_key = "content.example3.skip"
 positional_placeholders = Array[String]([])
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
-[sub_resource type="Resource" id="Resource_8lxvm"]
+[sub_resource type="Resource" id="Resource_gopwr"]
 script = ExtResource("2_ftjhj")
 translation_key = "content.example3.back"
 positional_placeholders = Array[String]([])
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
-[sub_resource type="Resource" id="Resource_2lvuw"]
+[sub_resource type="Resource" id="Resource_8lxvm"]
 script = ExtResource("2_ftjhj")
 translation_key = "content.example3.ui"
 positional_placeholders = Array[String]([])
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
-[sub_resource type="Resource" id="Resource_yma5t"]
+[sub_resource type="Resource" id="Resource_2lvuw"]
 script = ExtResource("2_ftjhj")
 translation_key = "content.example3.fullscreen"
 positional_placeholders = Array[String]([])
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
-[sub_resource type="Resource" id="Resource_ftjhj"]
+[sub_resource type="Resource" id="Resource_yma5t"]
 script = ExtResource("2_ftjhj")
 translation_key = "content.example3.quit"
 positional_placeholders = Array[String]([])
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
-[node name="SlideControls" node_paths=PackedStringArray("translations") instance=ExtResource("1_ftjhj")]
+[node name="SlideControls" instance=ExtResource("1_ftjhj")]
 slide_title = "Controls"
-translations = {
-NodePath("TitleLabel"): SubResource("Resource_s1h0b"),
-NodePath("ContentVBC/ContinueLabel"): SubResource("Resource_hghnn"),
-NodePath("ContentVBC/SkipLabel"): SubResource("Resource_gopwr"),
-NodePath("ContentVBC/BackLabel"): SubResource("Resource_8lxvm"),
-NodePath("ContentVBC/UILabel"): SubResource("Resource_2lvuw"),
-NodePath("ContentVBC/FullscreenLabel"): SubResource("Resource_yma5t"),
-NodePath("ContentVBC/QuitLabel"): SubResource("Resource_ftjhj")
-}
 
-[node name="TitleLabel" parent="." index="0"]
-text = "Controls (Default)"
+[node name="Translations" parent="." index="0" node_paths=PackedStringArray("target_nodes")]
+target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/ContinueLabel"), NodePath("../ContentVBC/SkipLabel"), NodePath("../ContentVBC/BackLabel"), NodePath("../ContentVBC/UILabel"), NodePath("../ContentVBC/FullscreenLabel"), NodePath("../ContentVBC/QuitLabel")]
+translation_targets = Array[ExtResource("2_ftjhj")]([SubResource("Resource_ftjhj"), SubResource("Resource_s1h0b"), SubResource("Resource_hghnn"), SubResource("Resource_gopwr"), SubResource("Resource_8lxvm"), SubResource("Resource_2lvuw"), SubResource("Resource_yma5t")])
+
+[node name="TitleLabel" parent="." index="1"]
+text = "content.example3.controls"
 
 [node name="ContinueLabel" type="Label" parent="ContentVBC" index="0"]
 layout_mode = 2
