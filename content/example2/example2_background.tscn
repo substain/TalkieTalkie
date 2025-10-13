@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://btkg41j6pn1x5"]
+
+[ext_resource type="Texture2D" uid="uid://b7626k74i30bn" path="res://icon.svg" id="1_122aw"]
+
+[node name="Example2Background" type="Node2D"]
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+scroll_scale = Vector2(-1, -1)
+repeat_size = Vector2(300, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2"]
+modulate = Color(0.615686, 1, 1, 1)
+position = Vector2(-146, 83)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_122aw")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_offset = Vector2(-228, -113)
+repeat_size = Vector2(200, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+modulate = Color(0.615686, 1, 1, 1)
+position = Vector2(-73, 33)
+texture = ExtResource("1_122aw")

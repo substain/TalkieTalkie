@@ -92,7 +92,7 @@ func instantiate_slide(slide_info: SlideInfo) -> Slide:
 	
 	var slide: Slide = slide_scene.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE) as Slide
 	target_parent_node.add_child(slide)
-	slide.name = slide_target_title
+	slide.name = slide_target_title.replace(" ", "_")
 	Util.make_instantiated_scene_local(slide, get_tree().edited_scene_root)
 	
 	set_title(slide, slide_info.title, slide_title_path)

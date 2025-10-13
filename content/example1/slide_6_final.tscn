@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dsx2v4kghiq3y"]
 
-[ext_resource type="PackedScene" uid="uid://ddf7utr1vtc3d" path="res://content/template/example_title_layout_nobg.tscn" id="1_5dq7b"]
+[ext_resource type="PackedScene" uid="uid://ddf7utr1vtc3d" path="res://content/example1/template/example_title_layout_nobg.tscn" id="1_5dq7b"]
 [ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://engine/slides/slide_animation.gd" id="2_wotk1"]
 
 [node name="SlideFinal" instance=ExtResource("1_5dq7b")]

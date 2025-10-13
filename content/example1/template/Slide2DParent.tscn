@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://def2yw2bdaar8"]
+
+[ext_resource type="Texture2D" uid="uid://b7626k74i30bn" path="res://icon.svg" id="1_5mjom"]
+
+[node name="Slide2dParent" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5mjom")

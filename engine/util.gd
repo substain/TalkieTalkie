@@ -54,3 +54,6 @@ static func make_instantiated_scene_local(target_node: Node, new_owner: Node) ->
 
 static func has_text_property(node: Node) -> bool:
 	return "text" in node
+	
+static func has_position_property(node: Node) -> bool:
+	return "position" in node

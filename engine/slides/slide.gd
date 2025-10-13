@@ -2,6 +2,9 @@ class_name Slide extends CanvasItem
 
 @export var slide_title: String
 
+## Overrides the default transition from the previous slide to this slide
+@export var in_transition_override: Transition = null
+
 var order_index: int
 
 func _ready() -> void:

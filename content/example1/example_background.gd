@@ -10,6 +10,7 @@ class_name ExampleBackground extends TextureRect
 var change_slide_tween: Tween = null
 
 func _ready() -> void:
+	SlideHelper.slide_changed.connect(_on_slide_changed)
 	color_rect.color.a = 0.0
 
 func tween_overlay(hue: float) -> void:
@@ -24,5 +25,5 @@ func custom_overlay_tween(progress: float) -> void:
 	color_rect.color.a = slide_change_anim_curve.sample(progress) * alpha_factor
 
 
-func _on_background_slide_changed(new_slide: Slide) -> void:
+func _on_slide_changed(new_slide: Slide) -> void:
 	tween_overlay(hue_values[new_slide.order_index % hue_values.size()])

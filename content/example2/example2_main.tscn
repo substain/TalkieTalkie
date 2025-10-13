@@ -1,0 +1,785 @@
+[gd_scene load_steps=22 format=3 uid="uid://ch8hou0kjxu83"]
+
+[ext_resource type="PackedScene" uid="uid://c4fiin221skal" path="res://engine/main.tscn" id="1_287gb"]
+[ext_resource type="Script" uid="uid://deou7up6h48pg" path="res://engine/slide_creator.gd" id="2_e08ks"]
+[ext_resource type="PackedScene" uid="uid://btkg41j6pn1x5" path="res://content/example2/example2_background.tscn" id="2_nnfod"]
+[ext_resource type="Script" uid="uid://vhq5381tygcu" path="res://engine/main/main_2d.gd" id="2_xt4ha"]
+[ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://content/example1/template/example_text_layout_nobg.tscn" id="3_muu1o"]
+[ext_resource type="Script" uid="uid://dxc3enjoi52u6" path="res://engine/mapper/slide_2d_line_mapper.gd" id="3_nnfod"]
+[ext_resource type="Script" uid="uid://dk3t4yybco1lu" path="res://engine/transitions/move_transition_2d.gd" id="3_qhu1t"]
+[ext_resource type="PackedScene" uid="uid://u5p5x65m3ulh" path="res://engine/slides/slide_element_dummy.tscn" id="4_ci1gk"]
+[ext_resource type="Script" uid="uid://emii6ih5lh0j" path="res://engine/slides/anim_slide.gd" id="7_4ofd2"]
+[ext_resource type="Script" uid="uid://cemii7i4pkkpt" path="res://engine/translation/translations.gd" id="8_l687c"]
+[ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://engine/slides/slide_animation.gd" id="9_0fauf"]
+[ext_resource type="Script" uid="uid://bkxqabfpf38df" path="res://content/example2/example_player.gd" id="10_0fauf"]
+[ext_resource type="Texture2D" uid="uid://caebaxc6yipme" path="res://style/ui/continue_disabled.svg" id="10_l687c"]
+
+[sub_resource type="Resource" id="Resource_hqbug"]
+script = ExtResource("3_qhu1t")
+duration = 0.5
+metadata/_custom_type_script = "uid://dk3t4yybco1lu"
+
+[sub_resource type="Gradient" id="Gradient_qhu1t"]
+offsets = PackedFloat32Array(0, 0.162162, 0.599509, 0.923833)
+colors = PackedColorArray(0.0302499, 0.261618, 0.264822, 1, 0.290536, 0.189406, 0.259708, 1, 0.376229, 0.542861, 0.603606, 1, 0.0302499, 0.261618, 0.264822, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hqbug"]
+gradient = SubResource("Gradient_qhu1t")
+width = 500
+height = 500
+fill_to = Vector2(0.25641, 1)
+
+[sub_resource type="Resource" id="Resource_qhu1t"]
+script = ExtResource("3_qhu1t")
+duration = 1.0
+metadata/_custom_type_script = "uid://dk3t4yybco1lu"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l687c"]
+radius = 50.0
+
+[sub_resource type="Gradient" id="Gradient_0fauf"]
+colors = PackedColorArray(0, 0, 0, 1, 0.899429, 0.599078, 0.479555, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xt4ha"]
+gradient = SubResource("Gradient_0fauf")
+width = 300
+height = 20
+fill_from = Vector2(0.490446, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l687c"]
+size = Vector2(36170, 20)
+
+[node name="Main" node_paths=PackedStringArray("camera") instance=ExtResource("1_287gb")]
+script = ExtResource("2_xt4ha")
+camera = NodePath("Camera2D")
+default_transition = SubResource("Resource_hqbug")
+
+[node name="Background" parent="." index="2"]
+follow_viewport_enabled = true
+
+[node name="ExampleBackground2" parent="Background" index="0" instance=ExtResource("2_nnfod")]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Background" index="1"]
+position = Vector2(11938.3, 915.5)
+scale = Vector2(62.763, 15.27)
+texture = SubResource("GradientTexture2D_hqbug")
+
+[node name="Slide2DMapper" type="Node2D" parent="." index="3" node_paths=PackedStringArray("target_parent")]
+script = ExtResource("3_nnfod")
+target_parent = NodePath(".")
+slide_separation = Vector2(50, 0)
+
+[node name="Slide2D_Example_1" type="Control" parent="Slide2DMapper" index="0"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 1
+script = ExtResource("7_4ofd2")
+slide_title = "2D Example 1"
+
+[node name="Translations" type="Node" parent="Slide2DMapper/Slide2D_Example_1" index="0" node_paths=PackedStringArray("target_nodes")]
+script = ExtResource("8_l687c")
+target_nodes = [NodePath("../TitleLabel")]
+
+[node name="TitleLabel" type="Label" parent="Slide2DMapper/Slide2D_Example_1" index="1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -819.5
+offset_top = 48.0
+offset_right = 819.5
+offset_bottom = 193.0
+grow_horizontal = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "2D Example 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator1" type="Panel" parent="Slide2DMapper/Slide2D_Example_1" index="2"]
+modulate = Color(1, 1, 1, 0.52549)
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -718.0
+offset_top = 193.0
+offset_right = 726.0
+offset_bottom = 199.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+
+[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/Slide2D_Example_1" index="3"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -763.0
+offset_top = -221.0
+offset_right = 763.0
+offset_bottom = 399.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="SlideContentElement" type="Label" parent="Slide2DMapper/Slide2D_Example_1/ContentVBC" index="0"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• Some content"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slide2D_Example_1/ContentVBC/SlideContentElement" index="0"]
+script = ExtResource("9_0fauf")
+
+[node name="@Label@35774" type="Label" parent="Slide2DMapper/Slide2D_Example_1/ContentVBC" index="1"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• and bulletcontent"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slide2D_Example_1/ContentVBC/@Label@35774" index="0"]
+script = ExtResource("9_0fauf")
+
+[node name="Slide2D_Example_2" type="Control" parent="Slide2DMapper" index="1"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 1
+script = ExtResource("7_4ofd2")
+slide_title = "2D Example 2"
+
+[node name="Translations" type="Node" parent="Slide2DMapper/Slide2D_Example_2" index="0" node_paths=PackedStringArray("target_nodes")]
+script = ExtResource("8_l687c")
+target_nodes = [NodePath("../TitleLabel")]
+
+[node name="TitleLabel" type="Label" parent="Slide2DMapper/Slide2D_Example_2" index="1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -819.5
+offset_top = 48.0
+offset_right = 819.5
+offset_bottom = 193.0
+grow_horizontal = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "2D Example 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator1" type="Panel" parent="Slide2DMapper/Slide2D_Example_2" index="2"]
+modulate = Color(1, 1, 1, 0.52549)
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -718.0
+offset_top = 193.0
+offset_right = 726.0
+offset_bottom = 199.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+
+[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/Slide2D_Example_2" index="3"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -763.0
+offset_top = -221.0
+offset_right = 763.0
+offset_bottom = 399.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="SlideContentElement" type="Label" parent="Slide2DMapper/Slide2D_Example_2/ContentVBC" index="0"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• More content"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slide2D_Example_2/ContentVBC/SlideContentElement" index="0"]
+script = ExtResource("9_0fauf")
+
+[node name="@Label@35775" type="Label" parent="Slide2DMapper/Slide2D_Example_2/ContentVBC" index="1"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• and even more content"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slide2D_Example_2/ContentVBC/@Label@35775" index="0"]
+script = ExtResource("9_0fauf")
+
+[node name="Slide2D_Example_3" type="Control" parent="Slide2DMapper" index="2"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 1
+script = ExtResource("7_4ofd2")
+slide_title = "2D Example 3"
+
+[node name="Translations" type="Node" parent="Slide2DMapper/Slide2D_Example_3" index="0" node_paths=PackedStringArray("target_nodes")]
+script = ExtResource("8_l687c")
+target_nodes = [NodePath("../TitleLabel")]
+
+[node name="TitleLabel" type="Label" parent="Slide2DMapper/Slide2D_Example_3" index="1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -819.5
+offset_top = 48.0
+offset_right = 819.5
+offset_bottom = 193.0
+grow_horizontal = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "2D Example 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator1" type="Panel" parent="Slide2DMapper/Slide2D_Example_3" index="2"]
+modulate = Color(1, 1, 1, 0.52549)
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -718.0
+offset_top = 193.0
+offset_right = 726.0
+offset_bottom = 199.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+
+[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/Slide2D_Example_3" index="3"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -763.0
+offset_top = -221.0
+offset_right = 763.0
+offset_bottom = 399.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="SlideContentElement" type="Label" parent="Slide2DMapper/Slide2D_Example_3/ContentVBC" index="0"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• More content"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slide2D_Example_3/ContentVBC/SlideContentElement" index="0"]
+script = ExtResource("9_0fauf")
+
+[node name="@Label@35776" type="Label" parent="Slide2DMapper/Slide2D_Example_3/ContentVBC" index="1"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• and even more content"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slide2D_Example_3/ContentVBC/@Label@35776" index="0"]
+script = ExtResource("9_0fauf")
+
+[node name="Slide2D_Example_4" type="Control" parent="Slide2DMapper" index="3"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 1
+script = ExtResource("7_4ofd2")
+slide_title = "2D Example 4"
+
+[node name="Translations" type="Node" parent="Slide2DMapper/Slide2D_Example_4" index="0" node_paths=PackedStringArray("target_nodes")]
+script = ExtResource("8_l687c")
+target_nodes = [NodePath("../TitleLabel")]
+
+[node name="TitleLabel" type="Label" parent="Slide2DMapper/Slide2D_Example_4" index="1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -819.5
+offset_top = 48.0
+offset_right = 819.5
+offset_bottom = 193.0
+grow_horizontal = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "2D Example 4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator1" type="Panel" parent="Slide2DMapper/Slide2D_Example_4" index="2"]
+modulate = Color(1, 1, 1, 0.52549)
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -718.0
+offset_top = 193.0
+offset_right = 726.0
+offset_bottom = 199.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+
+[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/Slide2D_Example_4" index="3"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -763.0
+offset_top = -221.0
+offset_right = 763.0
+offset_bottom = 399.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="SlideContentElement" type="Label" parent="Slide2DMapper/Slide2D_Example_4/ContentVBC" index="0"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• More content"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slide2D_Example_4/ContentVBC/SlideContentElement" index="0"]
+script = ExtResource("9_0fauf")
+
+[node name="@Label@35777" type="Label" parent="Slide2DMapper/Slide2D_Example_4/ContentVBC" index="1"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• and even more content"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slide2D_Example_4/ContentVBC/@Label@35777" index="0"]
+script = ExtResource("9_0fauf")
+
+[node name="Slide2D_Example_5" type="Control" parent="Slide2DMapper" index="4"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 1
+script = ExtResource("7_4ofd2")
+slide_title = "2D Example 1"
+
+[node name="Translations" type="Node" parent="Slide2DMapper/Slide2D_Example_5" index="0" node_paths=PackedStringArray("target_nodes")]
+script = ExtResource("8_l687c")
+target_nodes = [NodePath("../TitleLabel")]
+
+[node name="TitleLabel" type="Label" parent="Slide2DMapper/Slide2D_Example_5" index="1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -819.5
+offset_top = 48.0
+offset_right = 819.5
+offset_bottom = 193.0
+grow_horizontal = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "2D Example 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator1" type="Panel" parent="Slide2DMapper/Slide2D_Example_5" index="2"]
+modulate = Color(1, 1, 1, 0.52549)
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -718.0
+offset_top = 193.0
+offset_right = 726.0
+offset_bottom = 199.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+
+[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/Slide2D_Example_5" index="3"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -763.0
+offset_top = -221.0
+offset_right = 763.0
+offset_bottom = 399.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="SlideContentElement" type="Label" parent="Slide2DMapper/Slide2D_Example_5/ContentVBC" index="0"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• Some content"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slide2D_Example_5/ContentVBC/SlideContentElement" index="0"]
+script = ExtResource("9_0fauf")
+
+[node name="@Label@35778" type="Label" parent="Slide2DMapper/Slide2D_Example_5/ContentVBC" index="1"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• and bulletcontent"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slide2D_Example_5/ContentVBC/@Label@35778" index="0"]
+script = ExtResource("9_0fauf")
+
+[node name="Slide2D_Example_6" type="Control" parent="Slide2DMapper" index="5"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 1
+script = ExtResource("7_4ofd2")
+slide_title = "2D Example 2"
+
+[node name="Translations" type="Node" parent="Slide2DMapper/Slide2D_Example_6" index="0" node_paths=PackedStringArray("target_nodes")]
+script = ExtResource("8_l687c")
+target_nodes = [NodePath("../TitleLabel")]
+
+[node name="TitleLabel" type="Label" parent="Slide2DMapper/Slide2D_Example_6" index="1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -819.5
+offset_top = 48.0
+offset_right = 819.5
+offset_bottom = 193.0
+grow_horizontal = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "2D Example 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator1" type="Panel" parent="Slide2DMapper/Slide2D_Example_6" index="2"]
+modulate = Color(1, 1, 1, 0.52549)
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -718.0
+offset_top = 193.0
+offset_right = 726.0
+offset_bottom = 199.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+
+[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/Slide2D_Example_6" index="3"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -763.0
+offset_top = -221.0
+offset_right = 763.0
+offset_bottom = 399.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="SlideContentElement" type="Label" parent="Slide2DMapper/Slide2D_Example_6/ContentVBC" index="0"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• More content"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slide2D_Example_6/ContentVBC/SlideContentElement" index="0"]
+script = ExtResource("9_0fauf")
+
+[node name="@Label@35779" type="Label" parent="Slide2DMapper/Slide2D_Example_6/ContentVBC" index="1"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• and even more content"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slide2D_Example_6/ContentVBC/@Label@35779" index="0"]
+script = ExtResource("9_0fauf")
+
+[node name="Slide2D_Example_7" type="Control" parent="Slide2DMapper" index="6"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 1
+script = ExtResource("7_4ofd2")
+slide_title = "2D Example 3"
+
+[node name="Translations" type="Node" parent="Slide2DMapper/Slide2D_Example_7" index="0" node_paths=PackedStringArray("target_nodes")]
+script = ExtResource("8_l687c")
+target_nodes = [NodePath("../TitleLabel")]
+
+[node name="TitleLabel" type="Label" parent="Slide2DMapper/Slide2D_Example_7" index="1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -819.5
+offset_top = 48.0
+offset_right = 819.5
+offset_bottom = 193.0
+grow_horizontal = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "2D Example 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator1" type="Panel" parent="Slide2DMapper/Slide2D_Example_7" index="2"]
+modulate = Color(1, 1, 1, 0.52549)
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -718.0
+offset_top = 193.0
+offset_right = 726.0
+offset_bottom = 199.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+
+[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/Slide2D_Example_7" index="3"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -763.0
+offset_top = -221.0
+offset_right = 763.0
+offset_bottom = 399.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="SlideContentElement" type="Label" parent="Slide2DMapper/Slide2D_Example_7/ContentVBC" index="0"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• More content"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slide2D_Example_7/ContentVBC/SlideContentElement" index="0"]
+script = ExtResource("9_0fauf")
+
+[node name="@Label@35780" type="Label" parent="Slide2DMapper/Slide2D_Example_7/ContentVBC" index="1"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• and even more content"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slide2D_Example_7/ContentVBC/@Label@35780" index="0"]
+script = ExtResource("9_0fauf")
+
+[node name="SlideCreator" type="Node" parent="Slide2DMapper/Slide2D_Example_7" index="4" node_paths=PackedStringArray("target_parent")]
+script = ExtResource("2_e08ks")
+input_text = "# 2D Example 1
+* Some content
+* and bulletcontent
+
+# 2D Example 2
+* More content
+* and even more content
+
+# 2D Example 3
+* More content
+* and even more content
+
+# 2D Example 4
+* More content
+* and even more content"
+slide_scene = ExtResource("3_muu1o")
+content_scene = ExtResource("4_ci1gk")
+target_parent = NodePath("../..")
+ignore_if_slide_name_exists = false
+
+[node name="Slide2D_Example_8" type="Control" parent="Slide2DMapper" index="7"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 1
+script = ExtResource("7_4ofd2")
+slide_title = "2D Example 4"
+
+[node name="Translations" type="Node" parent="Slide2DMapper/Slide2D_Example_8" index="0" node_paths=PackedStringArray("target_nodes")]
+script = ExtResource("8_l687c")
+target_nodes = [NodePath("../TitleLabel")]
+
+[node name="TitleLabel" type="Label" parent="Slide2DMapper/Slide2D_Example_8" index="1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -819.5
+offset_top = 48.0
+offset_right = 819.5
+offset_bottom = 193.0
+grow_horizontal = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "2D Example 4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator1" type="Panel" parent="Slide2DMapper/Slide2D_Example_8" index="2"]
+modulate = Color(1, 1, 1, 0.52549)
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -718.0
+offset_top = 193.0
+offset_right = 726.0
+offset_bottom = 199.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+
+[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/Slide2D_Example_8" index="3"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -763.0
+offset_top = -221.0
+offset_right = 763.0
+offset_bottom = 399.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="SlideContentElement" type="Label" parent="Slide2DMapper/Slide2D_Example_8/ContentVBC" index="0"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• More content"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slide2D_Example_8/ContentVBC/SlideContentElement" index="0"]
+script = ExtResource("9_0fauf")
+
+[node name="@Label@35781" type="Label" parent="Slide2DMapper/Slide2D_Example_8/ContentVBC" index="1"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "• and even more content"
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slide2D_Example_8/ContentVBC/@Label@35781" index="0"]
+script = ExtResource("9_0fauf")
+
+[node name="Camera2D" type="Camera2D" parent="." index="4"]
+zoom = Vector2(0.8, 0.8)
+
+[node name="ExamplePlayer2D" type="CharacterBody2D" parent="." index="5"]
+position = Vector2(749, -184)
+script = ExtResource("10_0fauf")
+move_transition = SubResource("Resource_qhu1t")
+
+[node name="Sprite2D" type="Sprite2D" parent="ExamplePlayer2D" index="0"]
+position = Vector2(12, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("10_l687c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExamplePlayer2D" index="1"]
+shape = SubResource("CircleShape2D_l687c")
+
+[node name="Ground" type="StaticBody2D" parent="." index="6"]
+position = Vector2(0, 1080)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground" index="0"]
+position = Vector2(13283, -10.5)
+scale = Vector2(89.5533, -0.05)
+texture = SubResource("GradientTexture2D_xt4ha")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" index="1"]
+position = Vector2(8085, 0)
+shape = SubResource("RectangleShape2D_l687c")
