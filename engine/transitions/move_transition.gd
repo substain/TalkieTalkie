@@ -1,5 +1,6 @@
 class_name MoveTransition
 extends Transition
+
 ## Move transition according to the provided direction.
 ## Note that this transition is intended for a basic control node setup.
 
@@ -8,16 +9,16 @@ const visible_pos: Vector2 = Vector2.ZERO
 ## The direction a slide is wiped towards
 @export var slide_move_direction: Vector2 = Vector2.LEFT
 
-@warning_ignore_start("unsafe_property_access")
+## Duck Typing because we may have the same property but not the same base nodes
+@warning_ignore_start("unsafe_property_access") 
+
 func start_transition(from_slide: Slide, to_slide: Slide) -> Tween:
-	
 	if !Util.has_position_property(from_slide):
-		push_warning("WipeTransition expects both slides to have a 'position' property, but '", from_slide, "' does not have one. Stopping the transition.")
+		push_warning("MoveTransition expects both slides to have a 'position' property, but '", from_slide, "' does not have one. Stopping the transition.")
 		return
 	if !Util.has_position_property(to_slide):
-		push_warning("WipeTransition expects both slides to have a 'position' property, but '", from_slide, "' does not have one. Stopping the transition.")
+		push_warning("MoveTransition expects both slides to have a 'position' property, but '", from_slide, "' does not have one. Stopping the transition.")
 		return
-	
 	
 	from_slide.modulate.a = 1.0
 	to_slide.modulate.a = 1.0
@@ -37,10 +38,11 @@ func start_transition(from_slide: Slide, to_slide: Slide) -> Tween:
 	tween.finished.connect(_clean_up.bind(from_slide, to_slide))
 	return tween
 
+func on_finish_transition(_previous_from_slide: Slide) -> void:
+	pass
 
 func _clean_up(from_slide: Slide, to_slide: Slide) -> void:
 	from_slide.modulate.a = 0.0
 	from_slide.position = visible_pos
 	to_slide.position = visible_pos
-
 @warning_ignore_restore("unsafe_property_access")

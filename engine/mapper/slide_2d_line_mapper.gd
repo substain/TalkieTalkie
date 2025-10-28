@@ -2,13 +2,11 @@ class_name Slide2DLineMapper
 extends Node2D
 
 ## Maps the slides to 2D world positions on a straight line.
-## Also initializes the 2D context for the SlideHelper autoload, which is used for 2D transition.
+## Also sets the slide center positions for the 2D context for the SlideHelper autoload, which is used for 2D transition.
 
 @export var target_parent: Node2D
 @export var slide_separation: Vector2 = Vector2(200, 0)
 @export var slide_parent_scene: PackedScene = null
-
-
 
 func _ready() -> void:
 	if target_parent == null:
@@ -30,7 +28,6 @@ func map_slides_to_2d() -> void:
 	for i: int in children.size():
 		var child: Slide = children[i]
 		var new_pos: Vector2 = i*(slide_size * direction + slide_separation)
-		print("child: ", child.name, " newpos:", new_pos)
 
 		var slide_parent: Node2D = null
 		if slide_parent_scene != null:

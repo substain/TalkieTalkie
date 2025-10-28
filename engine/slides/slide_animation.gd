@@ -57,7 +57,7 @@ func is_valid() -> bool:
 	return targets.size() > 0
 
 func _clear_tweens() -> void:
-	for tween in _anim_tweens:
+	for tween: Tween in _anim_tweens:
 		if is_instance_valid(tween):
 			tween.kill()
 		

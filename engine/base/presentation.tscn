@@ -1,22 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4fiin221skal"]
+[gd_scene load_steps=4 format=3 uid="uid://c4fiin221skal"]
 
-[ext_resource type="Script" uid="uid://b4ks1icxwrjw5" path="res://engine/main/main.gd" id="1_8fa7n"]
+[ext_resource type="Script" uid="uid://b4ks1icxwrjw5" path="res://engine/base/presentation.gd" id="1_8fa7n"]
 [ext_resource type="PackedScene" uid="uid://dojqro0enav4e" path="res://engine/ui/ui.tscn" id="1_ymvtf"]
+[ext_resource type="PackedScene" uid="uid://biybkd8ytuhhn" path="res://engine/base/slide_controller.tscn" id="3_dw1e4"]
 
-[node name="Main" type="Node" node_paths=PackedStringArray("ui", "slideshow_timer")]
+[node name="Presentation" type="Node" node_paths=PackedStringArray("ui", "slide_controller")]
 script = ExtResource("1_8fa7n")
 ui = NodePath("UI")
-slideshow_timer = NodePath("SlideshowTimer")
-
-[node name="SlideshowTimer" type="Timer" parent="."]
+slide_controller = NodePath("SlideController")
 
 [node name="UI" parent="." instance=ExtResource("1_ymvtf")]
 layer = 100
 
+[node name="SlideController" parent="." instance=ExtResource("3_dw1e4")]
+
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -100
 
-[connection signal="timeout" from="SlideshowTimer" to="." method="_on_slideshow_timer_timeout"]
 [connection signal="continue_slide" from="UI" to="." method="_on_ui_continue_slide"]
 [connection signal="jump_to_slide" from="UI" to="." method="_on_ui_jump_to_slide"]
 [connection signal="previous_slide" from="UI" to="." method="_on_ui_previous_slide"]

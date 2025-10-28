@@ -28,6 +28,7 @@ SlideHelper="*res://engine/autoload/slide_helper.gd"
 [debug]
 
 gdscript/warnings/untyped_declaration=2
+gdscript/warnings/inferred_declaration=1
 gdscript/warnings/unsafe_property_access=1
 gdscript/warnings/unsafe_method_access=1
 gdscript/warnings/unsafe_call_argument=1
@@ -110,6 +111,10 @@ move_down={
 [internationalization]
 
 locale/translations=PackedStringArray("res://translation/translation.de.translation", "res://translation/translation.en.translation")
+
+[layer_names]
+
+2d_physics/layer_2="Player"
 
 [rendering]
 

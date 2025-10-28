@@ -1,16 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddevahegd5vcv"]
 
-[ext_resource type="Script" uid="uid://emii6ih5lh0j" path="res://engine/slides/anim_slide.gd" id="1_vy5bf"]
-[ext_resource type="Texture2D" uid="uid://b7626k74i30bn" path="res://icon.svg" id="2_ge02v"]
-[ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://engine/slides/slide_animation.gd" id="2_tiowy"]
+[ext_resource type="Script" uid="uid://emii6ih5lh0j" path="res://engine/slides/anim_slide.gd" id="1_ue0yv"]
+[ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://engine/slides/slide_animation.gd" id="2_joi4n"]
+[ext_resource type="Texture2D" uid="uid://b7626k74i30bn" path="res://icon.svg" id="3_5wpn4"]
 
-[node name="ExampleAnimSlide" type="Control"]
+[node name="ExampleBaseAnimSlide" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 1
-script = ExtResource("1_vy5bf")
+script = ExtResource("1_ue0yv")
 
 [node name="TitleLabel" type="Label" parent="."]
 layout_mode = 1
@@ -56,7 +56,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="FadeAnimation" type="Node" parent="VBoxContainer/ElementLabel"]
-script = ExtResource("2_tiowy")
+script = ExtResource("2_joi4n")
 
 [node name="ElementLabel2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -67,7 +67,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="FadeAnimation" type="Node" parent="VBoxContainer/ElementLabel2"]
-script = ExtResource("2_tiowy")
+script = ExtResource("2_joi4n")
 animation_dur = 1.0
 sort_order = 4
 
@@ -85,8 +85,8 @@ offset_left = 1083.0
 offset_top = 167.0
 offset_right = 1211.0
 offset_bottom = 295.0
-texture = ExtResource("2_ge02v")
+texture = ExtResource("3_5wpn4")
 
 [node name="TargetFadeAnimation" type="Node" parent="." node_paths=PackedStringArray("targets")]
-script = ExtResource("2_tiowy")
+script = ExtResource("2_joi4n")
 targets = [NodePath("../VBoxContainer/ElementLabel3"), NodePath("../TextureRect")]

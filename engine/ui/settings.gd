@@ -29,7 +29,6 @@ func set_settings_extended(is_extended_new: bool) -> void:
 
 func _on_open_button_pressed() -> void:
 	toggle_settings_extended()
-	#print("dummy ui pos:" , dummy_ui_position, " current pos: ", dummy_ui_replacement_button.global_position)
 
 func _load_values() -> void:
 	change_locale(Preferences.language)

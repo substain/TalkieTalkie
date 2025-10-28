@@ -12,3 +12,6 @@ func start_transition(_from_slide: Slide, to_slide: Slide) -> Tween:
 	context.camera_tween = to_slide.create_tween()
 	context.camera_tween.tween_property(camera, "global_position", global_pos_to, duration)
 	return context.camera_tween
+	
+func on_finish_transition(_previous_from_slide: Slide) -> void:
+	pass

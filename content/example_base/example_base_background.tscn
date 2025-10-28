@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c4m85ihv1jedf"]
 
-[ext_resource type="Script" uid="uid://ddtg8jdo1v45q" path="res://content/example1/example_background.gd" id="1_gmono"]
+[ext_resource type="Script" uid="uid://ddtg8jdo1v45q" path="res://content/example_base/example_base_background.gd" id="1_8a0vr"]
 
 [sub_resource type="Gradient" id="Gradient_a8j3n"]
 colors = PackedColorArray(0.729642, 0.966782, 0.858131, 1, 1, 0.843137, 1, 1)
@@ -15,14 +15,14 @@ bake_resolution = 200
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.101064, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[node name="ExampleBackground1" type="TextureRect"]
+[node name="ExampleBaseBackground" type="TextureRect"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_e0dg8")
-script = ExtResource("1_gmono")
+script = ExtResource("1_8a0vr")
 slide_change_anim_curve = SubResource("Curve_gmono")
 
 [node name="ColorRect" type="ColorRect" parent="."]

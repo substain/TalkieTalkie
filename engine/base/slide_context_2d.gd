@@ -10,8 +10,8 @@ var slide_center_locations: Dictionary[Vector2, Slide]
 func _init(slide_size_new: Vector2, camera_new: Camera2D) -> void:
 	slide_size = slide_size_new
 	slide_center_offset = slide_size_new / 2
-	
 	camera = camera_new
+	slide_context_type = SlideContextType.NODE_2D
 	
 func get_slide_center_position(slide: Slide) -> Vector2:
 	return (slide.get_parent() as Node2D).global_position + slide_center_offset

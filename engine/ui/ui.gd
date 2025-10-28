@@ -59,6 +59,8 @@ var has_overlay: bool = false
 func _ready() -> void:
 	setup_mobile()
 	
+	SlideHelper.ui = self
+	
 	_control_bar_visible_pos = _control_bar_pivot.global_position
 	_control_bar_hidden_pos = _control_bar_hidden_pos_marker.global_position
 	_tab_navigation_bar_visible_pos = _tab_navigation_pivot.global_position
@@ -152,8 +154,8 @@ func _on_control_bar_slideshow_duration_changed(new_duration: float) -> void:
 func _on_control_bar_slideshow_toggled(toggled_on: bool) -> void:
 	toggle_slideshow.emit(toggled_on)
 
-func set_slideshow_active(is_slideshow_active_new: bool) -> void:
-	control_bar.set_slideshow_active(is_slideshow_active_new)
+func set_auto_slideshow_active(is_slideshow_active_new: bool) -> void:
+	control_bar.set_auto_slideshow_active(is_slideshow_active_new)
 
 func _on_show_ui_button_toggled(toggled_on: bool) -> void:
 	set_ui_visible(toggled_on)

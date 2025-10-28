@@ -1,0 +1,77 @@
+[gd_scene load_steps=17 format=3 uid="uid://6x6xa75307sd"]
+
+[ext_resource type="PackedScene" uid="uid://c4fiin221skal" path="res://engine/base/presentation.tscn" id="1_janv2"]
+[ext_resource type="Script" uid="uid://b8pqmhx61eehf" path="res://engine/transitions/transition.gd" id="2_mu1ha"]
+[ext_resource type="PackedScene" uid="uid://c4m85ihv1jedf" path="res://content/example_base/example_base_background.tscn" id="3_ndiw7"]
+[ext_resource type="Script" uid="uid://deou7up6h48pg" path="res://engine/utility/slide_creator.gd" id="4_vye0f"]
+[ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://content/example_base/template/example_text_layout_nobg.tscn" id="5_6agrk"]
+[ext_resource type="PackedScene" uid="uid://u5p5x65m3ulh" path="res://engine/slides/slide_element_dummy.tscn" id="6_qcjxg"]
+[ext_resource type="PackedScene" uid="uid://ciwolqdv6staj" path="res://content/example_base/slide_1_title.tscn" id="7_7sfr6"]
+[ext_resource type="PackedScene" uid="uid://c4dp0lcwxox74" path="res://content/example_base/slide_2_setup.tscn" id="8_nlnoq"]
+[ext_resource type="PackedScene" uid="uid://g7nqgjyqndo7" path="res://content/example_base/slide_3_controls.tscn" id="9_jg62n"]
+[ext_resource type="PackedScene" uid="uid://8iusfi7r8xlf" path="res://content/example_base/slide_4_transitions.tscn" id="10_hxvdo"]
+[ext_resource type="Script" uid="uid://4sjmsikuxmyp" path="res://engine/transitions/move_transition.gd" id="11_8uw3r"]
+[ext_resource type="PackedScene" uid="uid://424xywruff3v" path="res://content/example_base/slide_5_various.tscn" id="12_3hxdd"]
+[ext_resource type="PackedScene" uid="uid://dsx2v4kghiq3y" path="res://content/example_base/slide_6_final.tscn" id="13_2ftvy"]
+
+[sub_resource type="Resource" id="Resource_qkey0"]
+script = ExtResource("2_mu1ha")
+duration = 0.5
+metadata/_custom_type_script = "uid://b8pqmhx61eehf"
+
+[sub_resource type="Resource" id="Resource_2csv3"]
+script = ExtResource("11_8uw3r")
+duration = 0.5
+metadata/_custom_type_script = "uid://4sjmsikuxmyp"
+
+[sub_resource type="Resource" id="Resource_qcjjf"]
+script = ExtResource("11_8uw3r")
+duration = 0.5
+metadata/_custom_type_script = "uid://4sjmsikuxmyp"
+
+[node name="ExampleBasePresentation" instance=ExtResource("1_janv2")]
+override_slide_index_from_last_session = true
+default_transition = SubResource("Resource_qkey0")
+
+[node name="UI" parent="." index="0"]
+layer = 50
+
+[node name="ExampleBaseBackground1" parent="Background" index="0" instance=ExtResource("3_ndiw7")]
+hue_values = Array[float]([0.0, 0.5, 0.3, 0.8])
+
+[node name="SlideCreator" type="Node" parent="." index="3" node_paths=PackedStringArray("target_parent")]
+script = ExtResource("4_vye0f")
+input_text = "# Example
+Some content
+* and bulletcontent
+
+
+# Example2
+Some Content, Part 2
+* one bullet
+   * bullet with spaces in front
+* another bullet"
+slide_scene = ExtResource("5_6agrk")
+content_scene = ExtResource("6_qcjxg")
+target_parent = NodePath("../Slides")
+
+[node name="Slides" type="CanvasLayer" parent="." index="4"]
+
+[node name="SlideTitle" parent="Slides" index="0" instance=ExtResource("7_7sfr6")]
+
+[node name="SlideSetup" parent="Slides" index="1" instance=ExtResource("8_nlnoq")]
+visible = false
+
+[node name="SlideControls" parent="Slides" index="2" instance=ExtResource("9_jg62n")]
+visible = false
+
+[node name="SlideTransitions" parent="Slides" index="3" instance=ExtResource("10_hxvdo")]
+visible = false
+in_transition_override = SubResource("Resource_2csv3")
+
+[node name="SlideVarious" parent="Slides" index="4" instance=ExtResource("12_3hxdd")]
+visible = false
+in_transition_override = SubResource("Resource_qcjjf")
+
+[node name="SlideFinal" parent="Slides" index="5" instance=ExtResource("13_2ftvy")]
+visible = false

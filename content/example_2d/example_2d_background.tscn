@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b7626k74i30bn" path="res://icon.svg" id="1_122aw"]
 
-[node name="Example2Background" type="Node2D"]
+[node name="Example2DBackground" type="Node2D"]
 
 [node name="Parallax2D2" type="Parallax2D" parent="."]
 scroll_scale = Vector2(-1, -1)

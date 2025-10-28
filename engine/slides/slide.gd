@@ -21,6 +21,10 @@ func show_full() -> void:
 ## Continues the current slide progress. Returns true if the full slide is shown.
 func continue_slide() -> bool:
 	return true
+
+## Sets the current slide progress to the given position, like a "seek" function. Similar to continue_slide(), this returns true if the full slide is shown.
+func set_progress(relative_progress: float) -> bool:
+	return true
 	
 ## Returns true if the current slide is at the start position
 func is_at_start() -> bool:

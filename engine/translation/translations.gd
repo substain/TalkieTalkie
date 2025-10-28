@@ -10,7 +10,7 @@ class TranslationTemplate:
 
 	func translate() -> String:
 		var res: String = template_text
-		for tt in translation_targets:
+		for tt: TranslationTarget in translation_targets:
 			var this_translation: String = tr(tt.translation_key).format(tt.positional_placeholders)
 			res = res.replace(tt.translation_key, this_translation)
 		

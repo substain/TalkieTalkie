@@ -1,4 +1,4 @@
-class_name ExampleBackground extends TextureRect
+class_name ExampleBaseBackground extends TextureRect
 
 @export var slide_change_anim_duration: float = 1.5
 @export var slide_change_anim_curve: Curve

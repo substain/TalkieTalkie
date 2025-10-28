@@ -81,10 +81,10 @@ func update_navigation_buttons() -> void:
 	_skip_button.disabled = is_last_slide && is_slide_finished
 	_slideshow_button.disabled = is_last_slide && is_slide_finished
 	
-func set_slideshow_active(is_slideshow_active_new: bool) -> void:
+func set_auto_slideshow_active(is_slideshow_active_new: bool) -> void:
 	is_slideshow_active = is_slideshow_active_new
 	_slideshow_button.set_pressed_no_signal(is_slideshow_active_new)
 	
-func update_slideshow_duration(slideshow_duration_new: float) -> void:
+func update_auto_slideshow_duration(slideshow_duration_new: float) -> void:
 	slideshow_duration = slideshow_duration_new
 	_slideshow_duration_spin_box.set_value_no_signal(slideshow_duration_new)

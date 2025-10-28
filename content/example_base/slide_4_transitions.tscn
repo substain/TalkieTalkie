@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://8iusfi7r8xlf"]
 
-[ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://content/example1/template/example_text_layout_nobg.tscn" id="1_qd6b0"]
+[ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://content/example_base/template/example_text_layout_nobg.tscn" id="1_qd6b0"]
 [ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://engine/slides/slide_animation.gd" id="2_uu3o7"]
 [ext_resource type="Script" uid="uid://baueqijlwnlx" path="res://engine/slides/slide_move_animation.gd" id="3_udv5u"]
 
