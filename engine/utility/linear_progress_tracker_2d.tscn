@@ -5,14 +5,22 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4630g"]
 size = Vector2(1600, 1500)
 
-[node name="LinearProgressTracker2D" type="Area2D"]
+[node name="LinearProgressTracker2D" type="Area2D" node_paths=PackedStringArray("start_point", "end_point")]
 collision_layer = 0
 collision_mask = 2
 monitorable = false
 script = ExtResource("1_nfq4q")
+start_point = NodePath("StartPoint")
+end_point = NodePath("EndPoint")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4630g")
+
+[node name="StartPoint" type="Marker2D" parent="."]
+position = Vector2(-799, 0)
+
+[node name="EndPoint" type="Marker2D" parent="."]
+position = Vector2(799, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

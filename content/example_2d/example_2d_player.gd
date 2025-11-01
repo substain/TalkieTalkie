@@ -118,23 +118,18 @@ func teleport_to_slide(slide: Slide) -> void:
 func walk_to_slide(target_pos: Vector2, slide_context: SlideContext2D) -> void:
 	var max_pos_x_distance: float = slide_context.slide_center_offset.x * TELEPORT_MAX_DIST_FACTOR
 	var target_pos_x_distance: float = slide_context.slide_center_offset.x * SL_SWITCH_TARGET_POS
-	#move_tween = get_tree().create_tween()
-	var target_pos_displaced: Vector2
-	if target_pos.x-global_position.x > 0: #target.x > global_pos.x, target is right from player
+	if target_pos.x-global_position.x > 0: #  target is right from player
 		
 		# ensure player is close enough
 		var min_target_pos_x: float = target_pos.x - max_pos_x_distance
 		if global_position.x < min_target_pos_x:
 			global_position.x = min_target_pos_x
 
-		#target_pos_displaced = Vector2(target_pos.x - slide_context.slide_center_offset.x * 0.8, global_position.y)
-
 		slide_switch_target_pos_x = target_pos.x - target_pos_x_distance
 		slide_switch_movement_x = 1
 		
-	else:  #target.x < global_pos.x, target is left from player
-		#target_pos_displaced = Vector2(target_pos.x + slide_context.slide_center_offset.x * 0.8, global_position.y)
-		
+	else:  # target is left from player
+				
 		# ensure player is close enough
 		var max_target_pos_x: float = target_pos.x + max_pos_x_distance
 		if global_position.x > max_target_pos_x:
@@ -142,9 +137,7 @@ func walk_to_slide(target_pos: Vector2, slide_context: SlideContext2D) -> void:
 
 		slide_switch_target_pos_x = target_pos.x + target_pos_x_distance
 		slide_switch_movement_x = -1
-	
-	#move_tween.tween_property(self, "global_position", target_pos_displaced, 0.5)
-	
+		
 func fall_to_slide(target_pos: Vector2) -> void:
 	slide_switch_movement_x = 0.0
 

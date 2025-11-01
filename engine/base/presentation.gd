@@ -50,7 +50,7 @@ func _ready() -> void:
 		slide_instances.sort_custom(Util.compare_by_last_number)
 	
 	for i: int in slide_instances.size():
-		slide_instances[i].order_index = i 
+		slide_instances[i].set_order_index(i)
 	ui.set_available_slides(slide_instances)
 	
 	ui.control_bar.set_auto_slideshow_active(slide_controller.auto_slideshow_timer.autostart == true)

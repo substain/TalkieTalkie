@@ -11,11 +11,13 @@ var default_transition: Transition
 
 var transition_tween: Tween = null
 var last_from_slide: Slide = null
+var last_transition: Transition
 
 func init(slide_instances_new: Array[Slide], default_transition_new: Transition, manual_navigation_stops_slideshow_new: bool, has_faulty_configuration: bool) -> void:
 	slide_instances = slide_instances_new
 	default_transition = default_transition_new
 	manual_navigation_stops_slideshow = manual_navigation_stops_slideshow_new
+	SlideHelper.slide_controller = self
 	if has_faulty_configuration:
 		auto_slideshow_timer.stop()
 		
@@ -37,10 +39,25 @@ func do_continue(automatic: bool = false) -> void:
 		
 	var previous_slide: Slide = current_slide
 	
-	change_slide(1)
+	var has_next_slide: bool = change_slide(1)
+	
+	if !has_next_slide:
+		return
 
 	var used_transition: Transition = current_slide.in_transition_override if current_slide.in_transition_override != null else default_transition
 	transition_to_slide(previous_slide, current_slide, used_transition)
+
+func set_slide_progress(slide_index_new: int, rel_progress: float) -> void:
+	if manual_navigation_stops_slideshow:
+		stop_auto_slideshow()
+		
+	var used_slide_index: int = clampi(slide_index_new, 0, slide_instances.size()-1)
+			
+	set_slide(used_slide_index)
+
+	current_slide.set_progress(rel_progress)
+	
+	SlideHelper.ui.control_bar.set_slide_progress_flags(current_slide.is_at_start(), current_slide.is_finished())
 
 func do_skip_slide(automatic: bool = false) -> void:
 	if !automatic && manual_navigation_stops_slideshow:
@@ -72,10 +89,11 @@ func skip_to_current_slide_full() -> void:
 func transition_to_slide(from_slide: Slide, to_slide: Slide, transition: Transition) -> void:
 	if is_instance_valid(transition_tween):
 		transition_tween.kill()
-		transition.on_finish_transition.call(last_from_slide)
+		last_transition.on_finish_transition.call(last_from_slide)
 		
 	transition_tween = transition.start_transition.call(from_slide, to_slide)
 	last_from_slide = from_slide
+	last_transition = transition
 
 func show_only_current_slide() -> void:
 	if is_instance_valid(transition_tween):
@@ -156,11 +174,3 @@ func _on_auto_slideshow_timer_timeout() -> void:
 	do_continue(true)
 	if slide_index == slide_instances.size()-1 && slide_instances[slide_index].is_finished():
 		stop_auto_slideshow(true)
-
-func set_slide_progress(slide_index_new: int, rel_progress: float) -> void:
-	set_slide_index(slide_index_new)
-	
-	if !automatic && manual_navigation_stops_slideshow:
-		stop_auto_slideshow()
-	
-	SlideHelper.ui.control_bar.set_slide_progress_flags(current_slide.is_at_start(), current_slide.is_finished())

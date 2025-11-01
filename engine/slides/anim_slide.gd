@@ -1,9 +1,9 @@
-class_name ExampleBaseAnimSlide extends Slide
+class_name AnimSlide extends Slide
 
 ## uses animations defined by SlideAnimation Nodes in children to animate the slide
 
 var anim_steps: int = 0
-var current_anim_step: int = 0
+var current_anim_step: int = -1
 
 var fade_tween: Tween = null
 var fade_tweens: Array[Tween] = []
@@ -26,7 +26,7 @@ func reset() -> void:
 			push_warning("found invalid slide animation reference in ", self.name)
 		element.reset()
 		
-	current_anim_step = 0
+	current_anim_step = -1
 	
 func show_full() -> void:
 	for animation: SlideAnimation in animations:
@@ -35,6 +35,8 @@ func show_full() -> void:
 	current_anim_step = anim_steps
 
 func continue_slide() -> bool:
+	current_anim_step += 1
+	
 	if is_finished(): 
 		return true
 		
@@ -43,39 +45,44 @@ func continue_slide() -> bool:
 	
 	animations[current_anim_step].animate()
 
-	current_anim_step += 1
 	return false
 	
 func set_progress(relative_progress: float) -> bool:
-	var requested_anim_step: int = get_anim_index_by_progress(anim_steps, relative_progress)
+	var requested_step: int = get_anim_index_by_progress(anim_steps, relative_progress)
 	
-	if requested_anim_step == current_anim_step:
+	if requested_step == current_anim_step:
 		return is_finished()
 		
+	if requested_step == current_anim_step + 1:
+		return continue_slide()
+
+	if requested_step < 0:
+		reset()
+		return false
+	elif requested_step >= anim_steps:
+		show_full()
+		return true
+		
 	for animation_index: int in anim_steps:
-		if animation_index < requested_anim_step:
+		if animation_index < requested_step:
 			animations[animation_index].skip_to_finish()
 			continue
 		
-		if animation_index > requested_anim_step:
+		if animation_index > requested_step:
 			animations[animation_index].reset()
 			continue
-			
-	if current_anim_step < requested_anim_step:
-		animations[requested_anim_step].animate()
+
+	if current_anim_step < requested_step:
+		animations[requested_step].animate()
 	else:
-		animations[requested_anim_step].skip_to_finish()
-		
+		animations[requested_step].skip_to_finish()
 	
 	if is_finished(): 
 		return true
 	
-	current_anim_step = requested_anim_step
-	# TODO ?
-
+	current_anim_step = requested_step
 	return false
-	
-	
+
 func is_finished() -> bool:
 	return current_anim_step >= anim_steps
 			
@@ -103,4 +110,4 @@ static func collect_anims_in_children(node: Node, current_index: int) -> Array[S
 	return res
 
 static func get_anim_index_by_progress(given_anim_steps: int, progress: float) -> int:
-	return roundi(float(given_anim_steps) * progress)
+	return roundi(float(given_anim_steps) * progress)-1

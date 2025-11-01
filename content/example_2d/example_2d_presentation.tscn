@@ -157,6 +157,7 @@ vertical_alignment = 1
 script = ExtResource("9_yb4jm")
 
 [node name="LinearProgressTracker2D" parent="Slide2DMapper/Slide2D_Example_1" index="4" instance=ExtResource("10_n0igl")]
+position = Vector2(984, 535)
 
 [node name="Slide2D_Example_2" type="Control" parent="Slide2DMapper" index="1"]
 layout_mode = 3

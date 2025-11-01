@@ -26,4 +26,4 @@ func custom_overlay_tween(progress: float) -> void:
 
 
 func _on_slide_changed(new_slide: Slide) -> void:
-	tween_overlay(hue_values[new_slide.order_index % hue_values.size()])
+	tween_overlay(hue_values[new_slide.get_order_index() % hue_values.size()])

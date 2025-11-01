@@ -21,7 +21,7 @@ func set_available_slides(slides: Array[Slide]) -> void:
 	num_slides = slides.size()
 	
 	for slide: Slide in slides:
-		var target_slide_index: int = slide.order_index
+		var target_slide_index: int = slide.get_order_index()
 		var slide_nav_button: Button = _SLIDE_NAVIGATION_TAB.instantiate()
 		slide_nav_button.pressed.connect(_slide_nav_button_pressed.bind(target_slide_index))
 		simple_slide_buttons.append(slide_nav_button)
