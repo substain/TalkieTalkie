@@ -6,38 +6,33 @@
 
 [sub_resource type="Resource" id="Resource_50061"]
 script = ExtResource("2_4ty74")
-translation_key = "content.example2.setup"
-positional_placeholders = Array[String]([])
+translation_key = "content.base_example.1.setup"
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [sub_resource type="Resource" id="Resource_4645t"]
 script = ExtResource("2_4ty74")
-translation_key = "content.example2.presentation_combined"
-positional_placeholders = Array[String]([])
+translation_key = "content.base_example.1.presentation_combined"
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [sub_resource type="Resource" id="Resource_ud4g4"]
 script = ExtResource("2_4ty74")
-translation_key = "content.example2.main_scene"
-positional_placeholders = Array[String]([])
+translation_key = "content.base_example.1.main_scene"
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [sub_resource type="Resource" id="Resource_au0wi"]
 script = ExtResource("2_4ty74")
-translation_key = "content.example2.slide_node"
+translation_key = "content.base_example.1.slide_node"
 positional_placeholders = Array[String](["content.example2.slide_node"])
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [sub_resource type="Resource" id="Resource_4ty74"]
 script = ExtResource("2_4ty74")
-translation_key = "content.example2.background"
-positional_placeholders = Array[String]([])
+translation_key = "content.base_example.1.background"
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [sub_resource type="Resource" id="Resource_g472g"]
 script = ExtResource("2_4ty74")
-translation_key = "content.example2.use_inherited_scenes"
-positional_placeholders = Array[String]([])
+translation_key = "content.base_example.1.use_inherited_scenes"
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [node name="SlideSetup" instance=ExtResource("1_nbir4")]
@@ -54,13 +49,13 @@ targets = [NodePath("../ContentVBC/ElementLabel2"), NodePath("../ContentVBC/Elem
 sort_order = 1
 
 [node name="TitleLabel" parent="." index="2"]
-text = "content.example2.setup"
+text = "content.base_example.1.setup"
 
 [node name="ElementLabel" type="Label" parent="ContentVBC" index="0"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "• content.example2.presentation_combined"
+text = "• content.base_example.1.presentation_combined"
 vertical_alignment = 1
 
 [node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel" index="0"]
@@ -71,21 +66,21 @@ animation_dur = 0.5
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "     • content.example2.main_scene"
+text = "     • content.base_example.1.main_scene"
 vertical_alignment = 1
 
 [node name="ElementLabel3" type="Label" parent="ContentVBC" index="2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "     • content.example2.slide_node"
+text = "     • content.base_example.1.slide_node"
 vertical_alignment = 1
 
 [node name="ElementLabel4" type="Label" parent="ContentVBC" index="3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "     • content.example2.background"
+text = "     • content.base_example.1.background"
 vertical_alignment = 1
 
 [node name="ElementLabel5" type="Label" parent="ContentVBC" index="4"]
@@ -93,7 +88,7 @@ custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "• content.example2.use_inherited_scenes"
+text = "• content.base_example.1.use_inherited_scenes"
 vertical_alignment = 1
 autowrap_mode = 2
 

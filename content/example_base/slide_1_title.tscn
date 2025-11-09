@@ -6,20 +6,18 @@
 
 [sub_resource type="Resource" id="Resource_jk5wk"]
 script = ExtResource("2_u3ctn")
-translation_key = "content.example1.hello"
-positional_placeholders = Array[String]([])
+translation_key = "content.base_example.0.hello"
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [sub_resource type="Resource" id="Resource_msju5"]
 script = ExtResource("2_u3ctn")
-translation_key = "content.example1.this_is_x"
+translation_key = "content.base_example.0.this_is_x"
 positional_placeholders = Array[String](["[img]res://icon.svg[/img][color=\\\"112233\\\"]TalkieTalkie[/color]"])
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [sub_resource type="Resource" id="Resource_wa3te"]
 script = ExtResource("2_u3ctn")
-translation_key = "content.example1.an_example_presentation"
-positional_placeholders = Array[String]([])
+translation_key = "content.base_example.0.an_example_presentation"
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [node name="SlideTitle" instance=ExtResource("1_p6c7c")]
@@ -29,21 +27,21 @@ slide_title = "Title"
 translation_targets = Array[ExtResource("2_u3ctn")]([SubResource("Resource_jk5wk"), SubResource("Resource_msju5"), SubResource("Resource_wa3te")])
 
 [node name="IntroLabel" parent="." index="1"]
-text = "content.example1.hello"
+text = "content.base_example.0.hello"
 
 [node name="FadeAnimation" type="Node" parent="IntroLabel" index="0"]
 script = ExtResource("3_u3ctn")
 animation_dur = 0.5
 
 [node name="TitleLabel" parent="TitleControl" index="1"]
-text = "content.example1.this_is_x"
+text = "content.base_example.0.this_is_x"
 
 [node name="FadeAnimation" type="Node" parent="TitleControl" index="3"]
 script = ExtResource("3_u3ctn")
 animation_dur = 0.5
 
 [node name="SubTitleLabel" parent="." index="3"]
-text = "(content.example1.an_example_presentation)"
+text = "(content.base_example.0.an_example_presentation)"
 
 [node name="FadeAnimation" type="Node" parent="SubTitleLabel" index="0"]
 script = ExtResource("3_u3ctn")

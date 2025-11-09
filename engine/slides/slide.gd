@@ -2,11 +2,15 @@ class_name Slide extends CanvasItem
 
 signal index_initialized
 
+@warning_ignore("unused_signal")
+signal activate_slide
+
 @export var slide_title: String
 
 ## Overrides the default transition from the previous slide to this slide
 @export var in_transition_override: Transition = null
 
+var _order_initialized: bool = false
 var _order_index: int
 
 func _ready() -> void:
@@ -18,9 +22,12 @@ func reset() -> void:
 	
 func set_order_index(order_index_new: int) -> void:
 	_order_index = order_index_new
+	_order_initialized = true
 	index_initialized.emit()
 
 func get_order_index() -> int:
+	if !_order_initialized:
+		push_warning("Trying to access a slide's order index before it was initialized. Use index_initialized to ensure the index is already available.")
 	return _order_index
 
 ## skip animations and show the full slide

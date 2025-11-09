@@ -33,11 +33,11 @@ metadata/_custom_type_script = "uid://4sjmsikuxmyp"
 override_slide_index_from_last_session = true
 default_transition = SubResource("Resource_qkey0")
 
-[node name="UI" parent="." index="0"]
-layer = 50
-
 [node name="ExampleBaseBackground1" parent="Background" index="0" instance=ExtResource("3_ndiw7")]
 hue_values = Array[float]([0.0, 0.5, 0.3, 0.8])
+
+[node name="UI" parent="." index="2"]
+layer = 50
 
 [node name="SlideCreator" type="Node" parent="." index="3" node_paths=PackedStringArray("target_parent")]
 script = ExtResource("4_vye0f")

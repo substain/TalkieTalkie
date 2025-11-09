@@ -52,11 +52,16 @@ func set_slide_progress(slide_index_new: int, rel_progress: float) -> void:
 		stop_auto_slideshow()
 		
 	var used_slide_index: int = clampi(slide_index_new, 0, slide_instances.size()-1)
-			
 	set_slide(used_slide_index)
+	_set_progress(rel_progress)
 
+func set_current_slide_progress(rel_progress: float) -> void:
+	if manual_navigation_stops_slideshow:
+		stop_auto_slideshow()
+	_set_progress(rel_progress)
+
+func _set_progress(rel_progress: float) -> void:
 	current_slide.set_progress(rel_progress)
-	
 	SlideHelper.ui.control_bar.set_slide_progress_flags(current_slide.is_at_start(), current_slide.is_finished())
 
 func do_skip_slide(automatic: bool = false) -> void:
@@ -131,6 +136,7 @@ func change_slide(change: int) -> bool:
 	SlideHelper.current_slide = slide_instances[slide_index]
 	current_slide.reset()
 	update_ui_slide_status()
+	current_slide.activate_slide.emit()
 	SlideHelper.slide_changed.emit(current_slide)
 	return true
 
@@ -144,6 +150,7 @@ func set_slide(new_index: int, force_set: bool = false) -> bool:
 	SlideHelper.current_slide = slide_instances[slide_index]
 	current_slide.reset()
 	update_ui_slide_status()
+	current_slide.activate_slide.emit()
 	SlideHelper.slide_changed.emit(current_slide)
 	return true
 	

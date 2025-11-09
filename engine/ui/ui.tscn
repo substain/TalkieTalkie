@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dojqro0enav4e"]
+[gd_scene load_steps=7 format=3 uid="uid://dojqro0enav4e"]
 
 [ext_resource type="Script" uid="uid://betclvvo6c5jo" path="res://engine/ui/ui.gd" id="1_n2tc0"]
+[ext_resource type="PackedScene" uid="uid://bd70i4nugd7aw" path="res://engine/utility/painting_pointer.tscn" id="2_mo8vp"]
 [ext_resource type="PackedScene" uid="uid://esc364srw4ym" path="res://engine/ui/tab_navigation_bar.tscn" id="2_pdji7"]
 [ext_resource type="PackedScene" uid="uid://bexrbitexofj5" path="res://engine/ui/control_bar.tscn" id="3_5d2o0"]
 [ext_resource type="PackedScene" uid="uid://hbvk7dsw6lru" path="res://engine/ui/settings.tscn" id="4_5d2o0"]
@@ -20,6 +21,8 @@ _settings_pivot = NodePath("SettingsPivot")
 _settings_hidden_marker = NodePath("SettingsPivot/SettingsHiddenMarker")
 _toggle_ui_button = NodePath("MarginContainer/ToggleUIButton")
 about_overlay = NodePath("AboutOverlay")
+
+[node name="PaintingPointer" parent="." instance=ExtResource("2_mo8vp")]
 
 [node name="TabNavigationPivot" type="Control" parent="."]
 layout_mode = 3

@@ -1,10 +1,13 @@
 extends Node
 # Autoload
 
-@warning_ignore("unused_signal")
-signal slide_changed(new_slide: Slide)
-
 signal context_initialized
+
+@warning_ignore_start("unused_signal")
+signal slide_changed(new_slide: Slide)
+signal pointing_at_pos(global_pos: Vector2, is_drawing: bool, paint_properties: PaintProperties)
+signal stop_drawing()
+@warning_ignore_restore("unused_signal")
 
 var presentation: Presentation
 var ui: UI
@@ -12,7 +15,6 @@ var slide_controller: SlideController
 var current_slide: Slide
 
 var _context: SlideContext
-
 
 func is_2d_node_presentation() -> bool:
 	return _context is SlideContext2D

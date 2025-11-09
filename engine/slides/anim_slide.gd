@@ -14,6 +14,7 @@ func _ready() -> void:
 	animations = collect_anims_in_children(self, 0)
 	animations.sort_custom(compare_by_sort_order)
 	anim_steps = animations.size()
+	reset()
 	
 func reset() -> void:
 	for tween: Tween in fade_tweens:

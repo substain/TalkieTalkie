@@ -1,21 +1,51 @@
-[gd_scene load_steps=4 format=3 uid="uid://8iusfi7r8xlf"]
+[gd_scene load_steps=10 format=3 uid="uid://8iusfi7r8xlf"]
 
 [ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://content/example_base/template/example_text_layout_nobg.tscn" id="1_qd6b0"]
+[ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://engine/translation/translation_target.gd" id="2_dqcn0"]
 [ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://engine/slides/slide_animation.gd" id="2_uu3o7"]
 [ext_resource type="Script" uid="uid://baueqijlwnlx" path="res://engine/slides/slide_move_animation.gd" id="3_udv5u"]
+
+[sub_resource type="Resource" id="Resource_08ar6"]
+script = ExtResource("2_dqcn0")
+translation_key = "content.base_example.3.title"
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_xi6wh"]
+script = ExtResource("2_dqcn0")
+translation_key = "content.base_example.3.transitions1"
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_hps66"]
+script = ExtResource("2_dqcn0")
+translation_key = "content.base_example.3.transitions2"
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_1yv4c"]
+script = ExtResource("2_dqcn0")
+translation_key = "content.base_example.4.animations1"
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_gh4nb"]
+script = ExtResource("2_dqcn0")
+translation_key = "content.base_example.4.animations2"
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [node name="SlideTransitions" instance=ExtResource("1_qd6b0")]
 slide_title = "Transitions"
 
+[node name="Translations" parent="." index="0" node_paths=PackedStringArray("target_nodes")]
+target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/ElementLabel"), NodePath("../ContentVBC/ElementLabel2"), NodePath("../ContentVBC/ElementLabel3"), NodePath("../ContentVBC/ElementLabel4")]
+translation_targets = Array[ExtResource("2_dqcn0")]([SubResource("Resource_08ar6"), SubResource("Resource_xi6wh"), SubResource("Resource_hps66"), SubResource("Resource_1yv4c"), SubResource("Resource_gh4nb")])
+
 [node name="TitleLabel" parent="." index="1"]
-text = "Transitions"
+text = "content.base_example.3.title"
 
 [node name="ElementLabel" type="Label" parent="ContentVBC" index="0"]
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "• Slide Transitions and Animations within Slides are currently a WIP"
+text = "• content.base_example.3.transitions1"
 vertical_alignment = 1
 
 [node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel" index="0"]
@@ -26,7 +56,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "• The current idea for Animations is:"
+text = "     • content.base_example.3.transitions2"
 vertical_alignment = 1
 
 [node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel2" index="0"]
@@ -38,12 +68,12 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "    • Use AnimSlide, which collects all Animations in its children"
+text = "• content.base_example.4.animations1"
 vertical_alignment = 1
 
 [node name="MoveAnimation" type="Node" parent="ContentVBC/ElementLabel3" index="0"]
 script = ExtResource("3_udv5u")
-initial_element_offset = Vector2(0, -600)
+initial_element_offset = Vector2(0, -900)
 animation_dur = 0.5
 
 [node name="ElementLabel4" type="Label" parent="ContentVBC" index="3"]
@@ -51,7 +81,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "    • As animations, use SlideAnimations and place it under the target Node"
+text = "     • content.base_example.4.animations2"
 vertical_alignment = 1
 
 [node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel4" index="0"]

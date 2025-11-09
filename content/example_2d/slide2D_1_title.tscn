@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvqamlcef7g1l"]
+
+[ext_resource type="PackedScene" uid="uid://ddf7utr1vtc3d" path="res://content/example_base/template/example_title_layout_nobg.tscn" id="1_56ilr"]
+[ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://engine/translation/translation_target.gd" id="2_bhtg0"]
+[ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://engine/slides/slide_animation.gd" id="3_4n5ns"]
+
+[sub_resource type="Resource" id="Resource_jk5wk"]
+script = ExtResource("2_bhtg0")
+translation_key = "content.example_2d.0.header"
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_msju5"]
+script = ExtResource("2_bhtg0")
+translation_key = "content.example_2d.0.a_2d_presentation"
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_wa3te"]
+script = ExtResource("2_bhtg0")
+translation_key = "content.example_2d.0.subtitle"
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[node name="Slide2D_Title" instance=ExtResource("1_56ilr")]
+slide_title = "Title"
+
+[node name="Translations" parent="." index="0"]
+translation_targets = Array[ExtResource("2_bhtg0")]([SubResource("Resource_jk5wk"), SubResource("Resource_msju5"), SubResource("Resource_wa3te")])
+
+[node name="IntroLabel" parent="." index="1"]
+text = "content.example_2d.0.header"
+
+[node name="FadeAnimation" type="Node" parent="IntroLabel" index="0"]
+script = ExtResource("3_4n5ns")
+animation_dur = 0.5
+
+[node name="TitleLabel" parent="TitleControl" index="1"]
+text = "content.example_2d.0.a_2d_presentation"
+
+[node name="FadeAnimation" type="Node" parent="TitleControl" index="3"]
+script = ExtResource("3_4n5ns")
+animation_dur = 0.5
+
+[node name="SubTitleLabel" parent="." index="3"]
+text = "content.example_2d.0.subtitle"
+
+[node name="FadeAnimation" type="Node" parent="SubTitleLabel" index="0"]
+script = ExtResource("3_4n5ns")
+animation_dur = 0.5

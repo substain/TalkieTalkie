@@ -2,19 +2,51 @@ keys;en;de
 ui.settings.language;Language;Sprache (Language)
 ui.settings.overall_volume;Volume;Lautstärke
 ui.settings.mute;Mute;Stumm
-content.example1.hello;Hello!;Hallo!
-content.example1.this_is_x;This is {0};Das ist {0}
-content.example1.an_example_presentation;an example presentation;eine Beispiel-Präsentation
-content.example2.setup;Setup;Aufbau
-content.example2.presentation_combined;A presentation is combined with the following nodes:;Eine Präsentation wird durch folgende Nodes zusammengesetzt:
-content.example2.main_scene;a Main scene (with main.gd) with a UI Node;eine Main-Szene (mit main.gd) mit einem UI-Node
-content.example2.slide_node;at least one Slide node (any class inheriting from slide.gd);mindestens ein Slide Node (irgendeine Klasse, die von slide.gd erbt)
-content.example2.background;a node for the background;ein Node für den Hintergrund
-content.example2.use_inherited_scenes;A good idea might be to use inherited scenes\n(see this example presentation);Es kann eine gute Idee sein, Inherited Scenes zu benutzen\n(wie in dieser Beispiel-Präsentation)
-content.example3.controls;Controls (Default);Steuerung (Standard)
-content.example3.continue;Right/Down/Space/Left Click to continue;Rechts/Nach Unten/Space/Linksklick um fortzufahren
-content.example3.skip;PageDown to skip;Bild Ab zum Überspringen
-content.example3.back;Left/Up/PageUp to go back;Links/Nach Oben/Bild Auf, um zurück zu navigieren
-content.example3.ui;F1/Tab/Right Click to show UI;F1/Tab/Rechtsklick, um die UI anzuzeigen
-content.example3.fullscreen;F12 for fullscreen;F12 für Vollbild
-content.example3.quit;ESC to quit (not in the Browser);ESC zum Verlassen (nicht im Browser)
+content.base_example.0.hello;Hello!;Hallo!
+content.base_example.0.this_is_x;This is {0};Das ist {0}
+content.base_example.0.an_example_presentation;an example presentation;eine Beispiel-Präsentation
+content.base_example.1.setup;Setup;Aufbau
+content.base_example.1.presentation_combined;A presentation is combined with the following nodes:;Eine Präsentation wird durch folgende Nodes zusammengesetzt:
+content.base_example.1.main_scene;a Presentation scene with a SlideController and UI node;eine Presentation-Szene mit einem SlideController und UI-Node
+content.base_example.1.slide_node;at least one Slide node (any class inheriting from slide.gd);mindestens ein Slide Node (irgendeine Klasse, die von slide.gd erbt)
+content.base_example.1.background;a node for the background;ein Node für den Hintergrund
+content.base_example.1.use_inherited_scenes;A good idea might be to use inherited scenes\n(see this example presentation);Es kann eine gute Idee sein, Inherited Scenes zu benutzen\n(wie in dieser Beispiel-Präsentation)
+content.base_example.2.controls;Controls (Default);Steuerung (Standard)
+content.base_example.2.continue;Right/Down/Space/Left Click to continue;Rechts/Nach Unten/Space/Linksklick um fortzufahren
+content.base_example.2.skip;PageDown to skip;Bild Ab zum Überspringen
+content.base_example.2.back;Left/Up/PageUp to go back;Links/Nach Oben/Bild Auf, um zurück zu navigieren
+content.base_example.2.pointer;Ctrl or Alt to point, click to draw with them;Strg oder Alt zum Zeigen, Klicken um damit zu malen
+content.base_example.2.ui;F1/Tab/Right Click to show UI;F1/Tab/Rechtsklick, um die UI anzuzeigen
+content.base_example.2.fullscreen;F12 for fullscreen;F12 für Vollbild
+content.base_example.2.quit;ESC to quit (not in the Browser);ESC zum Verlassen (nicht im Browser)
+content.base_example.3.title;Transitions;Übergänge
+content.base_example.3.transitions1;A default transition between slides can be set up for a presentation;Ein Default-Übergang zwischen Folien kann für eine \nPräsentation aufgesetzt werden
+content.base_example.3.transitions2;You can also overwrite \nthe default for each slide;Du kannst auch den Default für eine Folie \nüberschreiben
+content.base_example.4.animations1;You can use AnimSlides for Animations;Du kannst AnimSlides für Animationen benutzen
+content.base_example.4.animations2;These collect and make use of all SlideAnimations \nplaced in their children;Diese sammeln und benutzen alle SlideAnimations \nin ihren Children
+content.base_example.5.title;Various;Verschiedenes
+content.base_example.5.dynamic1;Currently slides are not loaded dynamically ;Aktuell werden Folien nicht dynamisch geladen
+content.base_example.5.dynamic2;This means having a lot of slides could lead to bad performance;Das bedeutet, zu viele Folien können zu schlechter Performance führen
+content.base_example.5.translation1;Slides can be translated and changed via the settings;Folien können übersetzt und in den Einstellungen geändert werden 
+content.base_example.5.translation2;Translations need some extra steps \nand will probably be revised later;Übersetzungen benötigen ein paar extra Schritte \nund werden später vermutlich überarbeitet
+content.base_example.5.slide_creator;Slides can be generated automatically from markdown-like \ntext via the SlideCreator;Slides können mithilfe des SlideCreators \nautomatisch aus markdown-ähnlichem Text generiert werden
+content.base_example.5.slide_links;You can also use slide links: {0}, {1}, {2};Du kannst auch Folien-Links benutzen: {0}, {1}, {2}
+content.example_2d.0.header;A new TalkieTalkie presentation;Eine neue TalkieTalkie-Präsentation
+content.example_2d.0.a_2d_presentation;2D Showcase;2D Showcase
+content.example_2d.0.subtitle;Let's try a few things!;Lass uns ein paar Dinge ausprobieren!
+content.example_2d.1.title;Possibilities;Möglichkeiten
+content.example_2d.1.more_things;You can do more things with 2D scenes;Mit 2D-Szenen kannst du mehr machen
+content.example_2d.1.background;Parallax backgrounds are just the beginning;Parallaxe Hintergründe sind nur der Anfang
+content.example_2d.1.ideas;The following slides will give you a few ideas...;Die folgenden Folien geben dir ein paar Ideen...
+content.example_2d.2.title;Let's Play!;Lass uns spielen!
+content.example_2d.2.player;We could have a player character running around;Wir könnten eine Spielfigur herumrennen lassen
+content.example_2d.2.try_it;Let's try this out:;Lass uns das ausprobieren:
+content.example_2d.2.input;Use WASD to move;Benutze WASD, um dich zu bewegen
+content.example_2d.2.hold;(hold to escape);(Halten, um zu entkommen)
+content.example_2d.3.title;Show me the way;Zeig mir den Weg
+content.example_2d.3.way1;Update the content by walking around;Aktualisiere den Inhalt durch herumlaufen
+content.example_2d.3.way2;Feels kind of immersive;Fühlt sich etwas immersiv an
+content.example_2d.4.title;Hit me up!;Hit me up!
+content.example_2d.4.box1;Is this still a presentation?;Ist das immer noch eine Präsentation?
+content.example_2d.4.box2;You can still navigate with the other keys, by the way;Du kannst übrigens immer noch mit den anderen Tasten navigieren
+content.example_2d.5.Fin;Fin;Fin

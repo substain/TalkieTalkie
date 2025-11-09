@@ -17,8 +17,7 @@ var end_pos_x: float
 var previous_progress: float = 0.0
 
 func _ready() -> void:
-	start_pos_x = start_point.global_position.x
-	end_pos_x = end_point.global_position.x
+
 	if slide_target == null:
 		var parent: Node = get_parent()
 		if parent == null:
@@ -38,7 +37,6 @@ func _physics_process(_delta: float) -> void:
 		return
 
 	var current_x_pos: float = tracked_object.position.x
-	
 	if current_x_pos < start_pos_x || current_x_pos > end_pos_x:
 		return
 		
@@ -59,3 +57,5 @@ func _on_body_exited(body: Node2D) -> void:
 
 func _on_slide_target_index_initialized() -> void:
 	slide_index = slide_target.get_order_index()
+	start_pos_x = start_point.global_position.x
+	end_pos_x = end_point.global_position.x

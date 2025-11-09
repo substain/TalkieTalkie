@@ -24,3 +24,6 @@ mono_crash.*.json
 
 # IntelliJ IDE directory
 .idea/
+
+# Various
+/local/*

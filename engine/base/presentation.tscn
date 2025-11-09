@@ -9,13 +9,13 @@ script = ExtResource("1_8fa7n")
 ui = NodePath("UI")
 slide_controller = NodePath("SlideController")
 
-[node name="UI" parent="." instance=ExtResource("1_ymvtf")]
-layer = 100
-
 [node name="SlideController" parent="." instance=ExtResource("3_dw1e4")]
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -100
+
+[node name="UI" parent="." instance=ExtResource("1_ymvtf")]
+layer = 100
 
 [connection signal="continue_slide" from="UI" to="." method="_on_ui_continue_slide"]
 [connection signal="jump_to_slide" from="UI" to="." method="_on_ui_jump_to_slide"]

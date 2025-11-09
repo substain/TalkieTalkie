@@ -1,0 +1,199 @@
+[gd_scene load_steps=17 format=3 uid="uid://d4i1wyl05hp07"]
+
+[ext_resource type="Script" uid="uid://bkxqabfpf38df" path="res://content/example_2d/example_2d_player.gd" id="1_c22lv"]
+[ext_resource type="Script" uid="uid://dk3t4yybco1lu" path="res://engine/transitions/move_transition_2d.gd" id="2_vv1b6"]
+[ext_resource type="Texture2D" uid="uid://drmvvxcg62afw" path="res://content/example_2d/player.png" id="3_1yrbf"]
+[ext_resource type="Texture2D" uid="uid://bkfg2xgacltdm" path="res://content/example_2d/movable_arm.png" id="4_deijh"]
+[ext_resource type="Script" uid="uid://dd2tufd7c8wms" path="res://content/example_2d/example_player_anims.gd" id="5_qk01f"]
+
+[sub_resource type="Resource" id="Resource_qhu1t"]
+script = ExtResource("2_vv1b6")
+duration = 1.0
+metadata/_custom_type_script = "uid://dk3t4yybco1lu"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n0igl"]
+radius = 30.0
+height = 122.0
+
+[sub_resource type="Animation" id="Animation_l32h8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_fjxqi"]
+resource_name = "fall"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14]
+}
+
+[sub_resource type="Animation" id="Animation_n0igl"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.20000002, 0.3, 0.40000004, 0.5004551),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_17rhe"]
+resource_name = "jump"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [13]
+}
+
+[sub_resource type="Animation" id="Animation_lx58k"]
+resource_name = "land"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [15, 16]
+}
+
+[sub_resource type="Animation" id="Animation_tjfux"]
+resource_name = "point"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [17]
+}
+
+[sub_resource type="Animation" id="Animation_c22lv"]
+resource_name = "stuck"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [13]
+}
+
+[sub_resource type="Animation" id="Animation_bwl8n"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.20000002, 0.3, 0.40000004, 0.5004551),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l32h8"]
+_data = {
+&"RESET": SubResource("Animation_l32h8"),
+&"fall": SubResource("Animation_fjxqi"),
+&"idle": SubResource("Animation_n0igl"),
+&"jump": SubResource("Animation_17rhe"),
+&"land": SubResource("Animation_lx58k"),
+&"point": SubResource("Animation_tjfux"),
+&"stuck": SubResource("Animation_c22lv"),
+&"walk": SubResource("Animation_bwl8n")
+}
+
+[node name="Example2DPlayer" type="CharacterBody2D" node_paths=PackedStringArray("anim_player")]
+collision_layer = 3
+script = ExtResource("1_c22lv")
+move_transition = SubResource("Resource_qhu1t")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(5, 5)
+texture = ExtResource("3_1yrbf")
+flip_h = true
+hframes = 18
+
+[node name="ArmPivotLeft" type="Node2D" parent="PlayerSprite"]
+position = Vector2(-3, -2)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="ArmSprite" type="Sprite2D" parent="PlayerSprite/ArmPivotLeft"]
+scale = Vector2(1.0000001, 1.0000001)
+texture = ExtResource("4_deijh")
+offset = Vector2(-2.199997, 3.7999992)
+
+[node name="ArmPivotRight" type="Node2D" parent="PlayerSprite"]
+position = Vector2(3.0000002, -2)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_n0igl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("player_sprite", "arm_sprite", "arm_pivot_left", "arm_pivot_right")]
+libraries = {
+&"": SubResource("AnimationLibrary_l32h8")
+}
+script = ExtResource("5_qk01f")
+player_sprite = NodePath("../PlayerSprite")
+arm_sprite = NodePath("../PlayerSprite/ArmPivotLeft/ArmSprite")
+arm_pivot_left = NodePath("../PlayerSprite/ArmPivotLeft")
+arm_pivot_right = NodePath("../PlayerSprite/ArmPivotRight")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]
