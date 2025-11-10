@@ -1,24 +1,324 @@
-[gd_scene load_steps=2 format=3 uid="uid://btkg41j6pn1x5"]
+[gd_scene load_steps=9 format=3 uid="uid://btkg41j6pn1x5"]
 
-[ext_resource type="Texture2D" uid="uid://b7626k74i30bn" path="res://icon.svg" id="1_122aw"]
+[ext_resource type="Texture2D" uid="uid://bxe87dcgiyp8f" path="res://content/example_2d/assets/planet_4.png" id="1_ndppr"]
+[ext_resource type="Texture2D" uid="uid://bmogyvxxt1efd" path="res://content/example_2d/assets/planet_5.png" id="2_1smrw"]
+[ext_resource type="Texture2D" uid="uid://dw3okgd4x2isd" path="res://content/example_2d/assets/planet_6.png" id="3_ajl0h"]
+[ext_resource type="Texture2D" uid="uid://cowfaelnjf6kd" path="res://content/example_2d/assets/planet_1.png" id="4_5o4gi"]
+[ext_resource type="Texture2D" uid="uid://dyk8b2kxe6dvv" path="res://content/example_2d/assets/planet_2.png" id="5_1xgxn"]
+[ext_resource type="Texture2D" uid="uid://dgdnrfkl0l7bq" path="res://content/example_2d/assets/planet_3.png" id="6_3afca"]
+
+[sub_resource type="Gradient" id="Gradient_qhu1t"]
+offsets = PackedFloat32Array(0, 0.64666665, 1)
+colors = PackedColorArray(0.21171758, 0.13297528, 0.18775547, 1, 0.15305784, 0.2465103, 0.28021726, 1, 0.0068707517, 0.11493126, 0.11664828, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lvmgf"]
+gradient = SubResource("Gradient_qhu1t")
+width = 500
+height = 500
+fill_to = Vector2(0.25641, 1)
 
 [node name="Example2DBackground" type="Node2D"]
 
-[node name="Parallax2D2" type="Parallax2D" parent="."]
-scroll_scale = Vector2(-1, -1)
-repeat_size = Vector2(300, 0)
+[node name="ParallaxBG" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.1, 0.1)
+scroll_offset = Vector2(292, 175)
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2"]
-modulate = Color(0.615686, 1, 1, 1)
-position = Vector2(-146, 83)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_122aw")
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG"]
+position = Vector2(3816, 329)
+scale = Vector2(20, 4.866)
+texture = SubResource("GradientTexture2D_lvmgf")
 
-[node name="Parallax2D" type="Parallax2D" parent="."]
+[node name="ParallaxFar" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.2, 0.2)
 scroll_offset = Vector2(-228, -113)
-repeat_size = Vector2(200, 0)
+repeat_size = Vector2(800, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+[node name="Planet4Sprite" type="Sprite2D" parent="ParallaxFar"]
 modulate = Color(0.615686, 1, 1, 1)
-position = Vector2(-73, 33)
-texture = ExtResource("1_122aw")
+texture_filter = 1
+position = Vector2(338.99997, 247)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_ndppr")
+
+[node name="Planet4Sprite2" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(898, 150.00003)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_ndppr")
+
+[node name="Planet4Sprite3" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(832, 545)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_ndppr")
+
+[node name="Planet4Sprite4" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(1338, 438.00003)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_ndppr")
+
+[node name="Planet5Sprite" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(510.99997, 290)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_1smrw")
+
+[node name="Planet5Sprite4" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(1022.99994, 126.000015)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_1smrw")
+
+[node name="Planet5Sprite2" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(714.99994, 436)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_1smrw")
+
+[node name="Planet5Sprite5" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(1091, 516)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_1smrw")
+
+[node name="Planet5Sprite6" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(458.00006, 804)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_1smrw")
+
+[node name="Planet5Sprite7" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(837, 1087)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_1smrw")
+
+[node name="Planet5Sprite8" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(323.00012, 1219.0001)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_1smrw")
+
+[node name="Planet5Sprite9" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(1169, 1001)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_1smrw")
+
+[node name="Planet5Sprite10" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(840.0001, 751.99994)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_1smrw")
+
+[node name="Planet5Sprite3" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(911, 249.00003)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_1smrw")
+
+[node name="Planet6Sprite" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(305.00006, 550)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_ajl0h")
+
+[node name="Planet6Sprite8" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(370.00006, 746)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_ajl0h")
+
+[node name="Planet6Sprite9" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(583, 982.00006)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_ajl0h")
+
+[node name="Planet6Sprite10" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(1032, 575)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_ajl0h")
+
+[node name="Planet6Sprite11" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(918.0001, 876)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_ajl0h")
+
+[node name="Planet6Sprite12" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(689.99994, 645.00006)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_ajl0h")
+
+[node name="Planet6Sprite13" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(1170, 601)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_ajl0h")
+
+[node name="Planet6Sprite14" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(1046, 1034)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_ajl0h")
+
+[node name="Planet6Sprite2" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(282, 133.00002)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_ajl0h")
+
+[node name="Planet6Sprite3" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(573.99994, 391)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_ajl0h")
+
+[node name="Planet6Sprite15" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(1898.9998, 292.00003)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_ajl0h")
+
+[node name="Planet6Sprite4" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(786.99994, 259.00003)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_ajl0h")
+
+[node name="Planet6Sprite5" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(631, 173.00003)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_ajl0h")
+
+[node name="Planet6Sprite6" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(421, 391)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_ajl0h")
+
+[node name="Planet6Sprite7" type="Sprite2D" parent="ParallaxFar"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(404.99997, 272)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_ajl0h")
+
+[node name="ParallaxMiddle" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.3, 0.3)
+scroll_offset = Vector2(-228, -113)
+repeat_size = Vector2(1700, 0)
+
+[node name="Planet1Sprite" type="Sprite2D" parent="ParallaxMiddle"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(208.00003, 422)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_5o4gi")
+
+[node name="Planet1Sprite2" type="Sprite2D" parent="ParallaxMiddle"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(402, 604.00006)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_5o4gi")
+
+[node name="Planet1Sprite4" type="Sprite2D" parent="ParallaxMiddle"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(1275, 313.00003)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_5o4gi")
+
+[node name="Planet1Sprite5" type="Sprite2D" parent="ParallaxMiddle"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(1435, 1018)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_5o4gi")
+
+[node name="Planet1Sprite6" type="Sprite2D" parent="ParallaxMiddle"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(1284, 641)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_5o4gi")
+
+[node name="Planet1Sprite3" type="Sprite2D" parent="ParallaxMiddle"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(888.9999, 811.9999)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_5o4gi")
+
+[node name="ParallaxNear" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.5, 0.5)
+scroll_offset = Vector2(57.605, 0)
+repeat_size = Vector2(2300, 0)
+
+[node name="Planet2Sprite" type="Sprite2D" parent="ParallaxNear"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(2882.395, 310.00003)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("5_1xgxn")
+
+[node name="Planet2Sprite2" type="Sprite2D" parent="ParallaxNear"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(4223.3955, 112.99999)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("5_1xgxn")
+
+[node name="Planet2Sprite3" type="Sprite2D" parent="ParallaxNear"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(2322.3955, 919.99994)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("5_1xgxn")
+
+[node name="Planet3Sprite2" type="Sprite2D" parent="ParallaxNear"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(4417.395, 661)
+scale = Vector2(2.4999998, 2.4999998)
+texture = ExtResource("6_3afca")
+
+[node name="Planet3Sprite" type="Sprite2D" parent="ParallaxNear"]
+modulate = Color(0.615686, 1, 1, 1)
+texture_filter = 1
+position = Vector2(3603.395, 99.00002)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("6_3afca")

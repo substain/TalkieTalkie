@@ -26,6 +26,7 @@ slide_title = "Title"
 translation_targets = Array[ExtResource("2_bhtg0")]([SubResource("Resource_jk5wk"), SubResource("Resource_msju5"), SubResource("Resource_wa3te")])
 
 [node name="IntroLabel" parent="." index="1"]
+theme_override_colors/font_color = Color(0.7529412, 0.7529412, 0.7529412, 1)
 text = "content.example_2d.0.header"
 
 [node name="FadeAnimation" type="Node" parent="IntroLabel" index="0"]
@@ -33,6 +34,7 @@ script = ExtResource("3_4n5ns")
 animation_dur = 0.5
 
 [node name="TitleLabel" parent="TitleControl" index="1"]
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 text = "content.example_2d.0.a_2d_presentation"
 
 [node name="FadeAnimation" type="Node" parent="TitleControl" index="3"]
@@ -40,6 +42,7 @@ script = ExtResource("3_4n5ns")
 animation_dur = 0.5
 
 [node name="SubTitleLabel" parent="." index="3"]
+theme_override_colors/font_color = Color(0.7529412, 0.7529412, 0.7529412, 1)
 text = "content.example_2d.0.subtitle"
 
 [node name="FadeAnimation" type="Node" parent="SubTitleLabel" index="0"]

@@ -22,15 +22,13 @@ script = ExtResource("3_l32h8")
 duration = 0.5
 metadata/_custom_type_script = "uid://dk3t4yybco1lu"
 
-[sub_resource type="Gradient" id="Gradient_qhu1t"]
-offsets = PackedFloat32Array(0, 0.162162, 0.599509, 0.923833)
-colors = PackedColorArray(0.0302499, 0.261618, 0.264822, 1, 0.290536, 0.189406, 0.259708, 1, 0.376229, 0.542861, 0.603606, 1, 0.0302499, 0.261618, 0.264822, 1)
+[sub_resource type="Gradient" id="Gradient_ndppr"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.09259587, 0.1268031, 0.12306412, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_hqbug"]
-gradient = SubResource("Gradient_qhu1t")
-width = 500
-height = 500
-fill_to = Vector2(0.25641, 1)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l32h8"]
+gradient = SubResource("Gradient_ndppr")
+width = 100
 
 [sub_resource type="Resource" id="Resource_lx58k"]
 script = ExtResource("13_fjxqi")
@@ -124,16 +122,18 @@ script = ExtResource("2_n0igl")
 camera = NodePath("Camera2D")
 default_transition = SubResource("Resource_hqbug")
 
+[node name="SlideController" parent="." index="0"]
+color_picker = Color(0.02745098, 0.25882354, 0.2627451, 1)
+
 [node name="Background" parent="." index="1"]
 follow_viewport_enabled = true
 
 [node name="ExampleBackground2" parent="Background" index="0" instance=ExtResource("4_bwl8n")]
-visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Background" index="1"]
-position = Vector2(11938.3, 915.5)
-scale = Vector2(62.763, 15.27)
-texture = SubResource("GradientTexture2D_hqbug")
+[node name="Sprite2D" type="Sprite2D" parent="Background/ExampleBackground2" index="4"]
+position = Vector2(12286.375, 2215.25)
+scale = Vector2(249.8925, 35.742184)
+texture = SubResource("GradientTexture2D_l32h8")
 
 [node name="Slide2DMapper" type="Node2D" parent="." index="3" node_paths=PackedStringArray("target_parent")]
 script = ExtResource("5_17rhe")
@@ -168,7 +168,7 @@ offset_right = 819.5
 offset_bottom = 193.0
 grow_horizontal = 2
 mouse_filter = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.8047426, 0.80474263, 0.8047426, 1)
 theme_override_font_sizes/font_size = 80
 text = "content.example_2d.1.title"
 horizontal_alignment = 1
@@ -208,7 +208,7 @@ theme_override_constants/separation = 20
 [node name="SlideContentElement" type="Label" parent="Slide2DMapper/SlidePossibilities/ContentVBC" index="0"]
 layout_mode = 2
 mouse_filter = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.8047426, 0.80474263, 0.8047426, 1)
 theme_override_font_sizes/font_size = 50
 text = "• content.example_2d.1.more_things"
 vertical_alignment = 1
@@ -219,7 +219,7 @@ script = ExtResource("9_yb4jm")
 [node name="@Label@225783" type="Label" parent="Slide2DMapper/SlidePossibilities/ContentVBC" index="1"]
 layout_mode = 2
 mouse_filter = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.8047426, 0.80474263, 0.8047426, 1)
 theme_override_font_sizes/font_size = 50
 text = "• content.example_2d.1.background"
 vertical_alignment = 1
@@ -230,7 +230,7 @@ script = ExtResource("9_yb4jm")
 [node name="@Label@225784" type="Label" parent="Slide2DMapper/SlidePossibilities/ContentVBC" index="2"]
 layout_mode = 2
 mouse_filter = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.8047426, 0.80474263, 0.8047426, 1)
 theme_override_font_sizes/font_size = 50
 text = "• content.example_2d.1.ideas"
 vertical_alignment = 1
@@ -263,7 +263,7 @@ offset_right = 819.5
 offset_bottom = 193.0
 grow_horizontal = 2
 mouse_filter = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
 theme_override_font_sizes/font_size = 80
 text = "content.example_2d.2.title"
 horizontal_alignment = 1
@@ -303,7 +303,7 @@ theme_override_constants/separation = 20
 [node name="SlideContentElement" type="Label" parent="Slide2DMapper/SlideLets_Play/ContentVBC" index="0"]
 layout_mode = 2
 mouse_filter = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
 theme_override_font_sizes/font_size = 50
 text = "• content.example_2d.2.player"
 vertical_alignment = 1
@@ -314,7 +314,7 @@ script = ExtResource("9_yb4jm")
 [node name="@Label@225785" type="Label" parent="Slide2DMapper/SlideLets_Play/ContentVBC" index="1"]
 layout_mode = 2
 mouse_filter = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
 theme_override_font_sizes/font_size = 50
 text = "• content.example_2d.2.try_it"
 vertical_alignment = 1
@@ -330,7 +330,7 @@ is_stuck = true
 [node name="@Label@225786" type="Label" parent="Slide2DMapper/SlideLets_Play/ContentVBC" index="2"]
 layout_mode = 2
 mouse_filter = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
 theme_override_font_sizes/font_size = 50
 text = "• content.example_2d.2.input"
 vertical_alignment = 1
@@ -341,7 +341,7 @@ script = ExtResource("9_yb4jm")
 [node name="@Label@225787" type="Label" parent="Slide2DMapper/SlideLets_Play/ContentVBC" index="3"]
 layout_mode = 2
 mouse_filter = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
 theme_override_font_sizes/font_size = 50
 text = "• content.example_2d.2.hold"
 vertical_alignment = 1
@@ -374,7 +374,7 @@ offset_right = 819.5
 offset_bottom = 193.0
 grow_horizontal = 2
 mouse_filter = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
 theme_override_font_sizes/font_size = 80
 text = "content.example_2d.3.title"
 horizontal_alignment = 1
@@ -414,7 +414,7 @@ theme_override_constants/separation = 20
 [node name="SlideContentElement" type="Label" parent="Slide2DMapper/SlideShow_Me_The_Way/ContentVBC" index="0"]
 layout_mode = 2
 mouse_filter = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
 theme_override_font_sizes/font_size = 50
 text = "• content.example_2d.3.way1"
 vertical_alignment = 1
@@ -425,7 +425,7 @@ script = ExtResource("9_yb4jm")
 [node name="@Label@225788" type="Label" parent="Slide2DMapper/SlideShow_Me_The_Way/ContentVBC" index="1"]
 layout_mode = 2
 mouse_filter = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
 theme_override_font_sizes/font_size = 50
 text = "• content.example_2d.3.way2"
 vertical_alignment = 1
@@ -461,7 +461,7 @@ offset_right = 819.5
 offset_bottom = 193.0
 grow_horizontal = 2
 mouse_filter = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
 theme_override_font_sizes/font_size = 80
 text = "content.example_2d.4.title"
 horizontal_alignment = 1
@@ -501,7 +501,7 @@ theme_override_constants/separation = 20
 [node name="SlideContentElement" type="Label" parent="Slide2DMapper/SlideHit_Me_Up/ContentVBC" index="0"]
 layout_mode = 2
 mouse_filter = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
 theme_override_font_sizes/font_size = 50
 text = "• content.example_2d.4.box1"
 vertical_alignment = 1
@@ -512,7 +512,7 @@ script = ExtResource("9_yb4jm")
 [node name="@Label@225789" type="Label" parent="Slide2DMapper/SlideHit_Me_Up/ContentVBC" index="1"]
 layout_mode = 2
 mouse_filter = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
 theme_override_font_sizes/font_size = 50
 text = "• content.example_2d.4.box2"
 vertical_alignment = 1

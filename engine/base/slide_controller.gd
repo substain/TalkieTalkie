@@ -2,6 +2,7 @@ class_name SlideController
 extends Node
 
 @export var auto_slideshow_timer: Timer
+@export var color_picker: Color
 
 var manual_navigation_stops_slideshow: bool
 var slide_instances: Array[Slide]

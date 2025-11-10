@@ -8,9 +8,12 @@
 slide_title = "Final"
 
 [node name="IntroLabel" parent="." index="1"]
+theme_override_colors/font_outline_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
 text = ""
 
 [node name="TitleLabel" parent="TitleControl" index="1"]
+theme_override_colors/default_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
+theme_override_colors/font_outline_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
 text = "fin."
 
 [node name="FadeAnimation" type="Node" parent="TitleControl" index="3"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkfg2xgacltdm"
-path="res://.godot/imported/movable_arm.png-e2419eba0dfcc1a288f1f99fe00f454d.ctex"
+uid="uid://bxe87dcgiyp8f"
+path="res://.godot/imported/planet_4.png-61421c90e7af44a8a97743e5ad314519.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://content/example_2d/movable_arm.png"
-dest_files=["res://.godot/imported/movable_arm.png-e2419eba0dfcc1a288f1f99fe00f454d.ctex"]
+source_file="res://content/example_2d/assets/planet_4.png"
+dest_files=["res://.godot/imported/planet_4.png-61421c90e7af44a8a97743e5ad314519.ctex"]
 
 [params]
 

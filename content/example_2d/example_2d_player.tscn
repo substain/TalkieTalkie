@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bkxqabfpf38df" path="res://content/example_2d/example_2d_player.gd" id="1_c22lv"]
 [ext_resource type="Script" uid="uid://dk3t4yybco1lu" path="res://engine/transitions/move_transition_2d.gd" id="2_vv1b6"]
-[ext_resource type="Texture2D" uid="uid://drmvvxcg62afw" path="res://content/example_2d/player.png" id="3_1yrbf"]
-[ext_resource type="Texture2D" uid="uid://bkfg2xgacltdm" path="res://content/example_2d/movable_arm.png" id="4_deijh"]
+[ext_resource type="Texture2D" uid="uid://drmvvxcg62afw" path="res://content/example_2d/assets/player.png" id="3_1yrbf"]
+[ext_resource type="Texture2D" uid="uid://bkfg2xgacltdm" path="res://content/example_2d/assets/movable_arm.png" id="4_deijh"]
 [ext_resource type="Script" uid="uid://dd2tufd7c8wms" path="res://content/example_2d/example_player_anims.gd" id="5_qk01f"]
 
 [sub_resource type="Resource" id="Resource_qhu1t"]

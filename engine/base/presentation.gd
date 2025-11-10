@@ -26,7 +26,7 @@ var current_slide: Slide = null
 var transition_tween: Tween = null
 var last_from_slide: Slide = null
 
-func _ready() -> void:	
+func _ready() -> void:
 	init_context()
 	SlideHelper.presentation = self	
 	
