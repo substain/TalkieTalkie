@@ -21,16 +21,16 @@ All files in `content/example*` are mainly used for reference purposes and can s
 ## Keybindings
 *These are the default keybindings, they can be configured via Godot's input action map*
 
-**Continue Slide** (`continue`) - Right Arrow Key / Down Arrow Key / Space / Enter / Mouse Wheel Down / Left Click
-**Previous Slide** (`back`) - Left Arrow Key / Up Arrow Key / Page Up / Mouse Wheel Up
-**Skip Slide** (`skip_slide`) - Page Down / Mouse Wheel Down
-**Show/Hide UI** (`toggle_ui`) - F1 / Tab / Right Click
-**Fullscreen** (`fullscreen`) - F12
-**Quit** (`quit`) - Escape
-**Draw with PaintingPointer 1** (`draw_pointer_1`) - Ctrl (Hold) + any mouse button (Hold)
-**Draw with PaintingPointer 2** (`draw_pointer_2`) - Alt (Hold) + any mouse button (Hold)
+* **Continue Slide** (`continue`) - Right Arrow Key / Down Arrow Key / Space / Enter / Mouse Wheel Down / Left Click
+* **Previous Slide** (`back`) - Left Arrow Key / Up Arrow Key / Page Up / Mouse Wheel Up
+* **Skip Slide** (`skip_slide`) - Page Down / Mouse Wheel Down
+* **Show/Hide UI** (`toggle_ui`) - F1 / Tab / Right Click
+* **Fullscreen** (`fullscreen`) - F12
+* **Quit** (`quit`) - Escape
+* **Draw with PaintingPointer 1** (`draw_pointer_1`) - Ctrl (Hold) + any mouse button (Hold)
+* **Draw with PaintingPointer 2** (`draw_pointer_2`) - Alt (Hold) + any mouse button (Hold)
 
-**Movement** for the 2D example (`move_*`) - W, A, S, D
+* **Movement** for the 2D example (`move_*`) - W, A, S, D
 
 
 ## Components
