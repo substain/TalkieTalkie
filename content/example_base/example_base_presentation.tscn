@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://c4fiin221skal" path="res://engine/base/presentation.tscn" id="1_janv2"]
 [ext_resource type="Script" uid="uid://b8pqmhx61eehf" path="res://engine/transitions/transition.gd" id="2_mu1ha"]
 [ext_resource type="PackedScene" uid="uid://c4m85ihv1jedf" path="res://content/example_base/example_base_background.tscn" id="3_ndiw7"]
-[ext_resource type="Script" uid="uid://deou7up6h48pg" path="res://engine/utility/slide_creator.gd" id="4_vye0f"]
-[ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://content/example_base/template/example_text_layout_nobg.tscn" id="5_6agrk"]
+[ext_resource type="Script" uid="uid://deou7up6h48pg" path="res://engine/utility/slide_generator.gd" id="4_vye0f"]
+[ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://content/example_base/template/example_text_layout.tscn" id="5_6agrk"]
 [ext_resource type="PackedScene" uid="uid://u5p5x65m3ulh" path="res://engine/slides/slide_element_dummy.tscn" id="6_qcjxg"]
 [ext_resource type="PackedScene" uid="uid://ciwolqdv6staj" path="res://content/example_base/slide_1_title.tscn" id="7_7sfr6"]
 [ext_resource type="PackedScene" uid="uid://c4dp0lcwxox74" path="res://content/example_base/slide_2_setup.tscn" id="8_nlnoq"]
@@ -30,16 +30,17 @@ duration = 0.5
 metadata/_custom_type_script = "uid://4sjmsikuxmyp"
 
 [node name="ExampleBasePresentation" instance=ExtResource("1_janv2")]
-override_slide_index_from_last_session = true
 default_transition = SubResource("Resource_qkey0")
 
-[node name="ExampleBaseBackground1" parent="Background" index="0" instance=ExtResource("3_ndiw7")]
+[node name="ExampleBaseBackground" parent="Background" index="0" instance=ExtResource("3_ndiw7")]
 hue_values = Array[float]([0.0, 0.5, 0.3, 0.8])
+alpha_factor = 0.8
+hue_factor = 0.08
 
 [node name="UI" parent="." index="2"]
 layer = 50
 
-[node name="SlideCreator" type="Node" parent="." index="3" node_paths=PackedStringArray("target_parent")]
+[node name="SlideGenerator" type="Node" parent="." index="3" node_paths=PackedStringArray("target_parent")]
 script = ExtResource("4_vye0f")
 input_text = "# Example
 Some content

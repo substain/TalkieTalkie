@@ -1,7 +1,7 @@
 @tool 
-class_name SlideCreator 
+class_name SlideGenerator 
 extends Node
-## Transforms text to multiple Slide nodes
+## Transforms markdown-like text to multiple Slide nodes
 
 const TITLE_INDICATOR: String = "# "
 const BULLET_POINT_INDICATOR: String = "*"
@@ -134,7 +134,6 @@ static func set_contents(instantiated_slide: Slide, new_contents: Array[String],
 		for content_line: String in new_contents:
 			create_content_node(content_parent_node, content_scene_to_use, content_line)
 
-
 static func create_content_node(content_parent: Node, content_scene_to_use: PackedScene, content_text: String) -> void:
 	var content_node: Control = content_scene_to_use.instantiate() as Control
 	content_parent.add_child(content_node)
@@ -143,9 +142,8 @@ static func create_content_node(content_parent: Node, content_scene_to_use: Pack
 		push_warning("can only set content text on a control with a text property, but '", content_node.name, "' does not have a text property. Setting contents will be skipped.")
 		return
 	
-	@warning_ignore("unsafe_property_access") # We already enssured that property exists.
+	@warning_ignore("unsafe_property_access") # We already enssured that this property exists.
 	content_node.text = content_text
-
 
 static func prepare_text(input: String) -> String:
 	return input.strip_edges()#.replace("\n\n", "\n").replace("  ", " ")

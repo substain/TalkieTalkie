@@ -128,10 +128,10 @@ color_picker = Color(0.02745098, 0.25882354, 0.2627451, 1)
 [node name="Background" parent="." index="1"]
 follow_viewport_enabled = true
 
-[node name="ExampleBackground2" parent="Background" index="0" instance=ExtResource("4_bwl8n")]
+[node name="ExampleBackground" parent="Background" index="0" instance=ExtResource("4_bwl8n")]
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/ExampleBackground2" index="4"]
-position = Vector2(12286.375, 2215.25)
+[node name="Sprite2D" type="Sprite2D" parent="Background/ExampleBackground" index="4"]
+position = Vector2(12095, 2212)
 scale = Vector2(249.8925, 35.742184)
 texture = SubResource("GradientTexture2D_l32h8")
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://424xywruff3v"]
 
-[ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://content/example_base/template/example_text_layout_nobg.tscn" id="1_vot30"]
+[ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://content/example_base/template/example_text_layout.tscn" id="1_vot30"]
 [ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://engine/slides/slide_animation.gd" id="2_egq7i"]
 [ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://engine/translation/translation_target.gd" id="2_qxx3v"]
 [ext_resource type="Script" uid="uid://7d8yi8qqlkvr" path="res://engine/utility/slide_link.gd" id="3_egq7i"]
@@ -32,7 +32,7 @@ metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [sub_resource type="Resource" id="Resource_jmis7"]
 script = ExtResource("2_qxx3v")
-translation_key = "content.base_example.5.slide_creator"
+translation_key = "content.base_example.5.slide_generator"
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [sub_resource type="Resource" id="Resource_buyoe"]
@@ -107,7 +107,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "• content.base_example.5.slide_creator"
+text = "• content.base_example.5.slide_generator"
 vertical_alignment = 1
 
 [node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel4" index="0"]

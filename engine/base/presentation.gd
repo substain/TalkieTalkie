@@ -8,7 +8,7 @@ extends Node
 ## the current index of the slide 
 @export var slide_index: int = 0
 ## if true, the slide_index will be loaded from the last session if the presentation name matches
-@export var override_slide_index_from_last_session: bool = false
+@export var remember_slide_index_from_last_session: bool = false
 ## Use the number of the slide nodes instead of the order in the tree (top to bottom)
 @export var use_slide_numbering_order: bool = false
 ## If set to "true", using manual navigation (e.g. clicking the forward button) will stop the automatic slideshow.
@@ -37,7 +37,7 @@ func _ready() -> void:
 	if default_transition == null:
 		default_transition = Transition.new()
 	
-	if override_slide_index_from_last_session && Preferences.last_presentation_scene == get_tree().current_scene.scene_file_path:
+	if remember_slide_index_from_last_session && Preferences.last_presentation_scene == get_tree().current_scene.scene_file_path:
 		slide_index = Preferences.last_slide
 	
 	if slide_instances.size() == 0:
@@ -78,7 +78,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_ui"):
 		ui.toggle_ui_visible()
 	
-	if event.is_action_pressed("show_ui"):
+	if event.is_action_pressed("toggle_ui"):
 		ui.set_ui_visible(true)
 		
 	if event.is_action_pressed("fullscreen"):

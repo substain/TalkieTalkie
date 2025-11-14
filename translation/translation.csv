@@ -29,7 +29,7 @@ content.base_example.5.dynamic1;Currently slides are not loaded dynamically ;Akt
 content.base_example.5.dynamic2;This means having a lot of slides could lead to bad performance;Das bedeutet, zu viele Folien können zu schlechter Performance führen
 content.base_example.5.translation1;Slides can be translated and changed via the settings;Folien können übersetzt und in den Einstellungen geändert werden 
 content.base_example.5.translation2;Translations need some extra steps \nand will probably be revised later;Übersetzungen benötigen ein paar extra Schritte \nund werden später vermutlich überarbeitet
-content.base_example.5.slide_creator;Slides can be generated automatically from markdown-like \ntext via the SlideCreator;Slides können mithilfe des SlideCreators \nautomatisch aus markdown-ähnlichem Text generiert werden
+content.base_example.5.slide_generator;Slides can be generated automatically from markdown-like \ntext via the SlideGenerator;Slides können mithilfe des SlideGenerators \nautomatisch aus markdown-ähnlichem Text generiert werden
 content.base_example.5.slide_links;You can also use slide links: {0}, {1}, {2};Du kannst auch Folien-Links benutzen: {0}, {1}, {2}
 content.example_2d.0.header;A new TalkieTalkie presentation;Eine neue TalkieTalkie-Präsentation
 content.example_2d.0.a_2d_presentation;2D Showcase;2D Showcase
