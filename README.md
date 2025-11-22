@@ -4,8 +4,11 @@ A presentation tool/framework to create presentations within Godot.
 
 You can test the example presentation here: [https://substain.itch.io/talkietalkie](https://substain.itch.io/talkietalkie).
 
-## Quickstart: How to create a new presentation
+## Requirements
+* Godot 4.x (*This template was only tested with Godot 4.4+. Using an earlier version should be possible with minor modifications.*
+* A basic understanding of how to use Godot
 
+## Quickstart: How to create a new presentation
 The following steps are intended to provide a quick introduction to creating a new presentation with this framework.
 
 1) Create an inherited scene from `engine/base/presentation.tscn`. Using a separate folder for your presentation and its assets may be helpful, e.g. in `content/my_presentation`
@@ -32,8 +35,9 @@ All files in `content/example*` are mainly used for reference purposes and can s
 
 * **Movement** for the 2D example (`move_*`) - W, A, S, D
 
-
 ## Components
+This section aims to provide a basic documentation of the components.
+
 *Note that this project is currently rather in a prototype status and some functionality may be reworked in the future.*
 
 ### Presentation
@@ -65,13 +69,13 @@ This Node is currently located within the UI and adds the possibility to highlig
 There are some configuration options exposed via `all_paint_properties` on that node.
 
 ### SlideGenerator
-With the **SlideGenerator**, you can generate slides from markdown-like text. This tool script can be attached to any node, and will generate Slides based on the text provided via the `input_text` property. For each header, marked by "# ", a slide is generated based on the `slide_scene`.
-The `content_scene` will be used for the nodes created for the content (which is everything below the header).
-With `slide_title_path`, you can specify the path in the template scene that represents the title of the slide whereas `slide_content_parent_path` specifies under which node the content scene(s) are placed as children.
-Besides not creating duplicated slides with the same title via `ignore_if_slide_name_exists` you can also choose to `replace_existing_instatiated_slides` (dangerous!)
+With the **SlideGenerator**, you can generate slides from markdown-like text. This tool script can be attached to any node, and will generate Slides based on the text provided via the `input_text` property. 
+* For each header, marked by "# ", a slide is generated based on the `slide_scene`.
+* The `content_scene` will be used for the nodes created for the content (which is everything below the header).
+* With `slide_title_path`, you can specify the path in the template scene that represents the title of the slide whereas `slide_content_parent_path` specifies under which node the content scene(s) are placed as children.
+* Besides not creating duplicated slides with the same title via `ignore_if_slide_name_exists` you can also choose to `replace_existing_instatiated_slides` (dangerous!)
 
 Hit `Generate Slides` to generate the slides.
-
 
 ## Planned Features
 Here is an incomplete list of features you can hope to see in the future:
