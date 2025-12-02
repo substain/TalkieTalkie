@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://yo0fd5fhf5gu"]
+
+[ext_resource type="Script" uid="uid://8amobij1rdtg" path="res://engine/base/side_window.gd" id="1_sbwmy"]
+[ext_resource type="PackedScene" uid="uid://bp5mgabsdn7i4" path="res://engine/ui/side_window_ui.tscn" id="2_oy3xy"]
+
+[node name="SideWindow" type="Window"]
+oversampling_override = 1.0
+title = "TalkieTalkie [SideWindow]"
+initial_position = 3
+size = Vector2i(800, 600)
+current_screen = 0
+transient = true
+accessibility_name = "TalkieTalkie SideWindow"
+script = ExtResource("1_sbwmy")
+
+[node name="SideWindowUI" parent="." instance=ExtResource("2_oy3xy")]

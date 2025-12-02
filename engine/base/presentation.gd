@@ -63,6 +63,46 @@ func init_context() -> void:
 	SlideHelper.set_context(SlideContext.new(slide_size))
 	
 func _input(event: InputEvent) -> void:
+	handle_input(event)
+	
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton && (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT && (event as InputEventMouseButton).pressed:
+		slide_controller.do_continue()
+		
+func _on_ui_continue_slide() -> void:
+	slide_controller.do_continue()
+
+func _on_ui_previous_slide() -> void:
+	slide_controller.go_back_slide()
+
+func _on_ui_skip_slide() -> void:
+	slide_controller.do_skip_slide()
+
+func _on_slideshow_timer_timeout() -> void:
+	slide_controller.do_continue(true)
+	if slide_index == slide_instances.size()-1 && slide_instances[slide_index].is_finished():
+		slide_controller.stop_auto_slideshow(true)  
+
+func _on_ui_set_slideshow_duration(new_duration: float) -> void:
+	slide_controller.auto_slideshow_timer.wait_time = new_duration
+
+func _on_ui_toggle_slideshow(slideshow_active: bool) -> void:
+	if slideshow_active:
+		slide_controller.start_auto_slideshow(false)
+	else:
+		slide_controller.stop_auto_slideshow(false)
+
+func _on_ui_jump_to_slide(new_slide_index: int) -> void:
+	slide_controller.set_slide(new_slide_index)	
+	slide_controller.skip_to_current_slide_full()
+	if manual_navigation_stops_auto_slideshow:
+		slide_controller.stop_auto_slideshow()
+
+
+func _on_side_window_input_received(event: InputEvent) -> void:
+	handle_input(event)
+	
+func handle_input(event: InputEvent) -> void:
 	if ui.has_overlay:
 		return
 	
@@ -86,36 +126,3 @@ func _input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("quit"):
 		ui.quit()		
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton && (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT && (event as InputEventMouseButton).pressed:
-		slide_controller.do_continue()
-		
-func _on_ui_continue_slide() -> void:
-	slide_controller.do_continue()
-
-func _on_ui_previous_slide() -> void:
-	slide_controller.go_back_slide()
-
-func _on_ui_skip_slide() -> void:
-	slide_controller.do_skip_slide()
-
-func _on_slideshow_timer_timeout() -> void:
-	slide_controller.do_continue(true)
-	if slide_index == slide_instances.size()-1 && slide_instances[slide_index].is_finished():
-		slide_controller.stop_auto_slideshow(true)
-
-func _on_ui_set_slideshow_duration(new_duration: float) -> void:
-	slide_controller.auto_slideshow_timer.wait_time = new_duration
-
-func _on_ui_toggle_slideshow(slideshow_active: bool) -> void:
-	if slideshow_active:
-		slide_controller.start_auto_slideshow(false)
-	else:
-		slide_controller.stop_auto_slideshow(false)
-
-func _on_ui_jump_to_slide(new_slide_index: int) -> void:
-	slide_controller.set_slide(new_slide_index)	
-	slide_controller.skip_to_current_slide_full()
-	if manual_navigation_stops_auto_slideshow:
-		slide_controller.stop_auto_slideshow()

@@ -2,6 +2,9 @@ keys;en;de
 ui.settings.language;Language;Sprache (Language)
 ui.settings.overall_volume;Volume;Lautstärke
 ui.settings.mute;Mute;Stumm
+ui.timeview.target_duration;Target Duration:;Zieldauer:
+ui.timeview.passed_time;Passed Time:;Vergangene Zeit:
+ui.timeview.time_left;Time left:;Übrige Zeit:
 content.base_example.0.hello;Hello!;Hallo!
 content.base_example.0.this_is_x;This is {0};Das ist {0}
 content.base_example.0.an_example_presentation;an example presentation;eine Beispiel-Präsentation

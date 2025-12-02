@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://cprx301afsox0"]
+
+[ext_resource type="Script" uid="uid://dgp2574dlw3d8" path="res://engine/ui/time_view.gd" id="1_svi7a"]
+
+[node name="TimeView" type="MarginContainer" node_paths=PackedStringArray("clock_time_value_label", "target_duration_value_label", "passed_time_value_label", "time_left_value_label", "clock_time_parent", "target_duration_parent", "passed_time_parent", "time_left_parent")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 50.0
+grow_horizontal = 2
+script = ExtResource("1_svi7a")
+autostart_passed_time_timer = true
+clock_time_value_label = NodePath("VBoxContainer/ClockTimeHBC/ClockTimeValueLabel")
+target_duration_value_label = NodePath("VBoxContainer/TargetDurationHBC/TargetDurationValueLabel")
+passed_time_value_label = NodePath("VBoxContainer/PassedTimeHBC/PassedTimeValueLabel")
+time_left_value_label = NodePath("VBoxContainer/TimeLeftHBC/TimeLeftValueLabel")
+clock_time_parent = NodePath("VBoxContainer/ClockTimeHBC")
+target_duration_parent = NodePath("VBoxContainer/TargetDurationHBC")
+passed_time_parent = NodePath("VBoxContainer/PassedTimeHBC")
+time_left_parent = NodePath("VBoxContainer/TimeLeftHBC")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ClockTimeHBC" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ClockTimeValueLabel" type="Label" parent="VBoxContainer/ClockTimeHBC"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TargetDurationHBC" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TargetDurationNameLabel" type="Label" parent="VBoxContainer/TargetDurationHBC"]
+layout_mode = 2
+text = "ui.timeview.target_duration"
+
+[node name="TargetDurationValueLabel" type="Label" parent="VBoxContainer/TargetDurationHBC"]
+layout_mode = 2
+
+[node name="PassedTimeHBC" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PassedTimeNameLabel" type="Label" parent="VBoxContainer/PassedTimeHBC"]
+layout_mode = 2
+text = "ui.timeview.passed_time"
+
+[node name="PassedTimeValueLabel" type="Label" parent="VBoxContainer/PassedTimeHBC"]
+layout_mode = 2
+
+[node name="TimeLeftHBC" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TimeLeftNameLabel" type="Label" parent="VBoxContainer/TimeLeftHBC"]
+layout_mode = 2
+text = "ui.timeview.time_left"
+
+[node name="TimeLeftValueLabel" type="Label" parent="VBoxContainer/TimeLeftHBC"]
+layout_mode = 2

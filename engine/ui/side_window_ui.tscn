@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp5mgabsdn7i4"]
+
+[ext_resource type="Script" uid="uid://bre0fh3ao4yq1" path="res://engine/ui/side_window_ui.gd" id="1_7iuc4"]
+[ext_resource type="PackedScene" uid="uid://cprx301afsox0" path="res://engine/ui/time_view.tscn" id="2_jyfea"]
+[ext_resource type="PackedScene" uid="uid://bexrbitexofj5" path="res://engine/ui/control_bar.tscn" id="3_4xown"]
+
+[node name="SideWindowUI" type="CanvasLayer"]
+script = ExtResource("1_7iuc4")
+
+[node name="TimeView" parent="." instance=ExtResource("2_jyfea")]
+
+[node name="ControlBar" parent="." instance=ExtResource("3_4xown")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -199.0
+offset_top = -117.0
+offset_right = 199.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[connection signal="back_pressed" from="ControlBar" to="." method="_on_control_bar_back_pressed"]
+[connection signal="continue_pressed" from="ControlBar" to="." method="_on_control_bar_continue_pressed"]
+[connection signal="quit_pressed" from="ControlBar" to="." method="_on_control_bar_quit_pressed"]
+[connection signal="skip_pressed" from="ControlBar" to="." method="_on_control_bar_skip_pressed"]
+[connection signal="slideshow_duration_changed" from="ControlBar" to="." method="_on_control_bar_slideshow_duration_changed"]
+[connection signal="slideshow_toggled" from="ControlBar" to="." method="_on_control_bar_slideshow_toggled"]

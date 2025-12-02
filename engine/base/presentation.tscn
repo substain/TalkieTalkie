@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4fiin221skal"]
+[gd_scene load_steps=5 format=3 uid="uid://c4fiin221skal"]
 
 [ext_resource type="Script" uid="uid://b4ks1icxwrjw5" path="res://engine/base/presentation.gd" id="1_8fa7n"]
 [ext_resource type="PackedScene" uid="uid://dojqro0enav4e" path="res://engine/ui/ui.tscn" id="1_ymvtf"]
 [ext_resource type="PackedScene" uid="uid://biybkd8ytuhhn" path="res://engine/base/slide_controller.tscn" id="3_dw1e4"]
+[ext_resource type="PackedScene" uid="uid://yo0fd5fhf5gu" path="res://engine/base/side_window.tscn" id="4_1l1sb"]
 
 [node name="Presentation" type="Node" node_paths=PackedStringArray("ui", "slide_controller")]
 script = ExtResource("1_8fa7n")
@@ -17,9 +18,21 @@ layer = -100
 [node name="UI" parent="." instance=ExtResource("1_ymvtf")]
 layer = 100
 
+[node name="SideWindow" parent="." instance=ExtResource("4_1l1sb")]
+enabled = 1
+
 [connection signal="continue_slide" from="UI" to="." method="_on_ui_continue_slide"]
 [connection signal="jump_to_slide" from="UI" to="." method="_on_ui_jump_to_slide"]
 [connection signal="previous_slide" from="UI" to="." method="_on_ui_previous_slide"]
 [connection signal="set_slideshow_duration" from="UI" to="." method="_on_ui_set_slideshow_duration"]
 [connection signal="skip_slide" from="UI" to="." method="_on_ui_skip_slide"]
 [connection signal="toggle_slideshow" from="UI" to="." method="_on_ui_toggle_slideshow"]
+[connection signal="input_received" from="SideWindow" to="." method="_on_side_window_input_received"]
+[connection signal="continue_slide" from="SideWindow/SideWindowUI" to="." method="_on_ui_continue_slide"]
+[connection signal="jump_to_slide" from="SideWindow/SideWindowUI" to="." method="_on_ui_jump_to_slide"]
+[connection signal="previous_slide" from="SideWindow/SideWindowUI" to="." method="_on_ui_previous_slide"]
+[connection signal="set_slideshow_duration" from="SideWindow/SideWindowUI" to="." method="_on_ui_set_slideshow_duration"]
+[connection signal="skip_slide" from="SideWindow/SideWindowUI" to="." method="_on_ui_skip_slide"]
+[connection signal="toggle_slideshow" from="SideWindow/SideWindowUI" to="." method="_on_ui_toggle_slideshow"]
+
+[editable path="SideWindow"]
