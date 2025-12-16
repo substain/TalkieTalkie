@@ -29,7 +29,6 @@ enabled = 1
 [connection signal="toggle_slideshow" from="UI" to="." method="_on_ui_toggle_slideshow"]
 [connection signal="input_received" from="SideWindow" to="." method="_on_side_window_input_received"]
 [connection signal="continue_slide" from="SideWindow/SideWindowUI" to="." method="_on_ui_continue_slide"]
-[connection signal="jump_to_slide" from="SideWindow/SideWindowUI" to="." method="_on_ui_jump_to_slide"]
 [connection signal="previous_slide" from="SideWindow/SideWindowUI" to="." method="_on_ui_previous_slide"]
 [connection signal="set_slideshow_duration" from="SideWindow/SideWindowUI" to="." method="_on_ui_set_slideshow_duration"]
 [connection signal="skip_slide" from="SideWindow/SideWindowUI" to="." method="_on_ui_skip_slide"]

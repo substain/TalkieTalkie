@@ -4,7 +4,6 @@ extends CanvasLayer
 signal continue_slide
 signal previous_slide
 signal skip_slide
-signal jump_to_slide(slide_index: int)
 signal toggle_slideshow(slideshow_active: bool)
 signal set_slideshow_duration(new_duration: float)
 
@@ -25,7 +24,6 @@ func _on_control_bar_slideshow_duration_changed(new_duration: float) -> void:
 
 func _on_control_bar_slideshow_toggled(toggled_on: bool) -> void:
 	toggle_slideshow.emit(toggled_on)
-
 	
 func quit() -> void:
 	if Util.is_web():

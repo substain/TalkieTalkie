@@ -10,6 +10,7 @@ script = ExtResource("1_7iuc4")
 [node name="TimeView" parent="." instance=ExtResource("2_jyfea")]
 
 [node name="ControlBar" parent="." instance=ExtResource("3_4xown")]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

@@ -27,6 +27,7 @@ const _VISIBILTY_TWEEN_DURATION: float = 0.2
 ## disables settings in the ui view
 @export var settings_enabled: bool = true
 
+
 @export_category("internal nodes")
 @export var control_bar: ControlBar
 @export var _control_bar_pivot: Control
@@ -42,6 +43,9 @@ const _VISIBILTY_TWEEN_DURATION: float = 0.2
 @export var _toggle_ui_button: Button
 
 @export var about_overlay: AboutOverlay
+
+## nodes that should be part of the sidewindow, when it is in use
+@export var side_window_nodes: Array[Node]
 
 var _visibility_tween: Tween = null
 
@@ -109,18 +113,13 @@ func set_ui_visible(visible_new: bool, force_set: bool = false) -> void:
 		_visibility_tween.kill()
 	_visibility_tween = create_tween().set_parallel(true)
 	
-	tween_ui_element(_visibility_tween, control_bar, _control_bar_pivot, control_bar_start_pos, control_bar_target_pos, modulate_start, modulate_target)
-	tween_ui_element(_visibility_tween, tab_navigation_bar, _tab_navigation_pivot, tab_navigation_bar_start_pos, tab_navigation_bar_target_pos, modulate_start, modulate_target)
-	tween_ui_element(_visibility_tween, settings, _settings_pivot, settings_start_pos, settings_target_pos, modulate_start, modulate_target)
+	#tween_ui_element(_visibility_tween, control_bar, _control_bar_pivot, control_bar_start_pos, control_bar_target_pos, modulate_start, modulate_target)
+	#tween_ui_element(_visibility_tween, tab_navigation_bar, _tab_navigation_pivot, tab_navigation_bar_start_pos, tab_navigation_bar_target_pos, modulate_start, modulate_target)
+	#tween_ui_element(_visibility_tween, settings, _settings_pivot, settings_start_pos, settings_target_pos, modulate_start, modulate_target)
+	
 	
 	is_ui_visible = visible_new
 
-func tween_ui_element(ui_tween: Tween, target_control: Control, pivot_node: Control, start_pos: Vector2, target_pos: Vector2, modulate_start: float, modulate_target: float) -> void:
-	pivot_node.global_position = start_pos
-	target_control.modulate.a = modulate_start
-	ui_tween.tween_property(target_control, "modulate:a", modulate_target, _VISIBILTY_TWEEN_DURATION)
-	ui_tween.tween_property(pivot_node, "global_position", target_pos, _VISIBILTY_TWEEN_DURATION)
-	
 func quit() -> void:
 	if Util.is_web():
 		push_warning("Just close the browser / tab to quit the presentation.")
@@ -169,3 +168,27 @@ func _on_about_overlay_close_overlay() -> void:
 func set_about_overlay_visible(is_visible_new: bool) -> void:
 	about_overlay.visible = is_visible_new
 	has_overlay = is_visible_new
+
+static func tween_ui_element(ui_tween: Tween, target_control: Control, start_pos: Vector2, target_pos: Vector2, modulate_start: float, modulate_target: float) -> void:
+	#pivot_node.global_position = start_pos
+	target_control.position = start_pos
+	target_control.modulate.a = modulate_start
+	ui_tween.tween_property(target_control, "modulate:a", modulate_target, _VISIBILTY_TWEEN_DURATION)
+	ui_tween.tween_property(target_control, "position", target_pos, _VISIBILTY_TWEEN_DURATION)
+
+static func get_direction_from_anchors(an_top: float, an_bot: float, an_left: float, an_right: float) -> Vector2:
+	var lr_pos: float = (an_left + an_right)/2 - 0.5
+	var bt_pos: float = (an_bot + an_top)/2 - 0.5
+	
+	if is_zero_approx(lr_pos) && is_zero_approx(bt_pos):
+		return Vector2.ZERO
+	
+	if abs(lr_pos) > abs(bt_pos):
+		#use side directions only if anchors for left/right are greater than up/down
+		if lr_pos < 0:
+			return Vector2.LEFT
+		return Vector2.RIGHT
+	
+	if bt_pos < 0:
+		return Vector2.DOWN
+	return Vector2.UP

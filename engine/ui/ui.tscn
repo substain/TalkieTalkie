@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://hbvk7dsw6lru" path="res://engine/ui/settings.tscn" id="4_5d2o0"]
 [ext_resource type="PackedScene" uid="uid://bpy50hmoy7l80" path="res://engine/ui/about_overlay.tscn" id="5_liuq1"]
 
-[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("control_bar", "_control_bar_pivot", "_control_bar_hidden_pos_marker", "tab_navigation_bar", "_tab_navigation_pivot", "_tab_navigation_bar_hidden_marker", "settings", "_settings_pivot", "_settings_hidden_marker", "_toggle_ui_button", "about_overlay")]
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("control_bar", "_control_bar_pivot", "_control_bar_hidden_pos_marker", "tab_navigation_bar", "_tab_navigation_pivot", "_tab_navigation_bar_hidden_marker", "settings", "_settings_pivot", "_settings_hidden_marker", "_toggle_ui_button", "about_overlay", "side_window_nodes")]
 layer = 5
 script = ExtResource("1_n2tc0")
 control_bar = NodePath("ControlBarPivot/ControlBar")
@@ -21,6 +21,7 @@ _settings_pivot = NodePath("SettingsPivot")
 _settings_hidden_marker = NodePath("SettingsPivot/SettingsHiddenMarker")
 _toggle_ui_button = NodePath("MarginContainer/ToggleUIButton")
 about_overlay = NodePath("AboutOverlay")
+side_window_nodes = [NodePath("TabNavigationPivot"), NodePath("ControlBarPivot"), NodePath("SettingsPivot"), NodePath("MarginContainer"), NodePath("AboutOverlay")]
 
 [node name="PaintingPointer" parent="." instance=ExtResource("2_mo8vp")]
 
@@ -104,7 +105,6 @@ text = "UI
 layer = 60
 visible = false
 
-[connection signal="jump_to_slide" from="TabNavigationPivot/TabNavigationBar" to="." method="_on_tab_navigation_bar_jump_to_slide"]
 [connection signal="back_pressed" from="ControlBarPivot/ControlBar" to="." method="_on_control_bar_back_pressed"]
 [connection signal="continue_pressed" from="ControlBarPivot/ControlBar" to="." method="_on_control_bar_continue_pressed"]
 [connection signal="quit_pressed" from="ControlBarPivot/ControlBar" to="." method="_on_control_bar_quit_pressed"]
