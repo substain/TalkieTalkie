@@ -64,6 +64,11 @@ func set_visible_tween(is_visible_ui_new: bool, force_set: bool = false) -> void
 	var start_pos: Vector2 = position
 	var target_pos: Vector2 = Vector2.ZERO if is_visible_ui_new else local_hidden_dir
 	
+	if _visibility_tween:
+		_visibility_tween.kill()
+	
+	_visibility_tween = create_tween()
+			
 	UI.tween_ui_element(_visibility_tween, self, start_pos, target_pos, modulate_start, modulate_target)
 
 func update_local_hidden_dir() -> void:

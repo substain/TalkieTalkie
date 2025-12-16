@@ -97,25 +97,27 @@ func set_ui_visible(visible_new: bool, force_set: bool = false) -> void:
 		return
 	_toggle_ui_button.set_pressed_no_signal(visible_new)
 
+	tab_navigation_bar.set_visible_tween(visible_new, false)
+
 	var modulate_start: float = 0.0 if visible_new else 1.0
 	var modulate_target: float = 1.0 if visible_new else 0.0
-
+#
 	var control_bar_start_pos: Vector2 = _control_bar_hidden_pos if visible_new else _control_bar_visible_pos 
 	var control_bar_target_pos: Vector2 = _control_bar_visible_pos if visible_new else _control_bar_hidden_pos
-	
-	var tab_navigation_bar_start_pos: Vector2 = _tab_navigation_bar_hidden_pos if visible_new else _tab_navigation_bar_visible_pos 
-	var tab_navigation_bar_target_pos: Vector2 = _tab_navigation_bar_visible_pos if visible_new else _tab_navigation_bar_hidden_pos
-	
+
+	#var tab_navigation_bar_start_pos: Vector2 = _tab_navigation_bar_hidden_pos if visible_new else _tab_navigation_bar_visible_pos 
+	#var tab_navigation_bar_target_pos: Vector2 = _tab_navigation_bar_visible_pos if visible_new else _tab_navigation_bar_hidden_pos
+	#
 	var settings_start_pos: Vector2 = _settings_hidden_pos if visible_new else _settings_visible_pos 
 	var settings_target_pos: Vector2 = _settings_visible_pos if visible_new else _settings_hidden_pos
-	
+	#
 	if is_instance_valid(_visibility_tween):
 		_visibility_tween.kill()
 	_visibility_tween = create_tween().set_parallel(true)
 	
-	#tween_ui_element(_visibility_tween, control_bar, _control_bar_pivot, control_bar_start_pos, control_bar_target_pos, modulate_start, modulate_target)
+	tween_ui_element(_visibility_tween, control_bar, control_bar_start_pos, control_bar_target_pos, modulate_start, modulate_target)
 	#tween_ui_element(_visibility_tween, tab_navigation_bar, _tab_navigation_pivot, tab_navigation_bar_start_pos, tab_navigation_bar_target_pos, modulate_start, modulate_target)
-	#tween_ui_element(_visibility_tween, settings, _settings_pivot, settings_start_pos, settings_target_pos, modulate_start, modulate_target)
+	tween_ui_element(_visibility_tween, settings, settings_start_pos, settings_target_pos, modulate_start, modulate_target)
 	
 	
 	is_ui_visible = visible_new

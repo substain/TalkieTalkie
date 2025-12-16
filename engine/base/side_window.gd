@@ -20,10 +20,15 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	title = ProjectSettings.get_setting("application/config/name", "TalkieTalkie") + " [SideWindow]"
 	for child: Node in ui.side_window_nodes:
+		if !child is Control:
+			continue
 		var ctrl_child: Control = child as Control
 		
 		#reparent_control_with_anchors(ctrl_child)
 		ctrl_child.call_deferred("reparent", side_window_ui, false) #TODO
+		
+		if ctrl_child.has_method("update_local_hidden_dir"):
+			ctrl_child.update_local_hidden_dir()
 
 func reparent_control_with_anchors(ctrl: Control) -> void:
 	var anchor_top: float = ctrl.anchor_top
