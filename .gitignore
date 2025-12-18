@@ -27,3 +27,6 @@ mono_crash.*.json
 
 # Various
 /local/*
+/addons/*
+
+.godotrc
