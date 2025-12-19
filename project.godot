@@ -117,7 +117,7 @@ move_down={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://translation/translation.de.translation", "res://translation/translation.en.translation")
+locale/translations=PackedStringArray("res://localization/translation.en.translation", "res://localization/translation.de.translation")
 
 [layer_names]
 

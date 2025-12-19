@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dtrjf825a26gw"]
 
-[ext_resource type="ButtonGroup" uid="uid://cs67nykarvlg4" path="res://engine/ui/slide_navigation_tab_button_group.tres" id="1_m46h8"]
+[ext_resource type="ButtonGroup" uid="uid://cs67nykarvlg4" path="res://engine/resources/slide_navigation_tab_button_group.tres" id="1_m46h8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nudmj"]
 bg_color = Color(0.741385, 0.741385, 0.741384, 0.87451)

@@ -49,7 +49,7 @@ size_flags_horizontal = 5
 size_flags_vertical = 4
 alignment = 1
 
-[node name="VSeparator2" type="VSeparator" parent="TabNavigationMc/SlideNavigationHbox"]
+[node name="VSeparator" type="VSeparator" parent="TabNavigationMc/SlideNavigationHbox"]
 modulate = Color(1, 1, 1, 0.52549)
 custom_minimum_size = Vector2(10, 20)
 layout_mode = 2

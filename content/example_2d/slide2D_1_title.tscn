@@ -19,7 +19,7 @@ script = ExtResource("2_bhtg0")
 translation_key = "content.example_2d.0.subtitle"
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
-[node name="Slide2D_Title" instance=ExtResource("1_56ilr")]
+[node name="Slide2DTitle" instance=ExtResource("1_56ilr")]
 slide_title = "Title"
 
 [node name="Translations" parent="." index="0"]
