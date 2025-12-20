@@ -141,7 +141,7 @@ target_parent = NodePath(".")
 slide_separation = Vector2(50, 0)
 slide_parent_scene = ExtResource("6_fjxqi")
 
-[node name="Slide2D_Title" parent="Slide2DMapper" index="0" instance=ExtResource("10_bwl8n")]
+[node name="Slide2DTitle" parent="Slide2DMapper" index="0" instance=ExtResource("10_bwl8n")]
 
 [node name="SlidePossibilities" type="Control" parent="Slide2DMapper" index="1"]
 layout_mode = 3
@@ -154,7 +154,7 @@ slide_title = "Possibilities"
 
 [node name="Translations" type="Node" parent="Slide2DMapper/SlidePossibilities" index="0" node_paths=PackedStringArray("target_nodes")]
 script = ExtResource("8_tjfux")
-target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/SlideContentElement"), NodePath("../ContentVBC/@Label@225783"), NodePath("../ContentVBC/@Label@225784")]
+target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/SlideContentElement"), NodePath("../ContentVBC/Label"), NodePath("../ContentVBC/Label2")]
 translation_targets = Array[ExtResource("13_fjxqi")]([SubResource("Resource_lx58k"), SubResource("Resource_tjfux"), SubResource("Resource_yb4jm"), SubResource("Resource_x1gbi")])
 
 [node name="TitleLabel" type="Label" parent="Slide2DMapper/SlidePossibilities" index="1"]
@@ -216,7 +216,7 @@ vertical_alignment = 1
 [node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlidePossibilities/ContentVBC/SlideContentElement" index="0"]
 script = ExtResource("9_yb4jm")
 
-[node name="@Label@225783" type="Label" parent="Slide2DMapper/SlidePossibilities/ContentVBC" index="1"]
+[node name="Label" type="Label" parent="Slide2DMapper/SlidePossibilities/ContentVBC" index="1"]
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0.8047426, 0.80474263, 0.8047426, 1)
@@ -224,10 +224,10 @@ theme_override_font_sizes/font_size = 50
 text = "• content.example_2d.1.background"
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlidePossibilities/ContentVBC/@Label@225783" index="0"]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlidePossibilities/ContentVBC/Label" index="0"]
 script = ExtResource("9_yb4jm")
 
-[node name="@Label@225784" type="Label" parent="Slide2DMapper/SlidePossibilities/ContentVBC" index="2"]
+[node name="Label2" type="Label" parent="Slide2DMapper/SlidePossibilities/ContentVBC" index="2"]
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0.8047426, 0.80474263, 0.8047426, 1)
@@ -235,10 +235,10 @@ theme_override_font_sizes/font_size = 50
 text = "• content.example_2d.1.ideas"
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlidePossibilities/ContentVBC/@Label@225784" index="0"]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlidePossibilities/ContentVBC/Label2" index="0"]
 script = ExtResource("9_yb4jm")
 
-[node name="SlideLets_Play" type="Control" parent="Slide2DMapper" index="2"]
+[node name="SlideLetsPlay" type="Control" parent="Slide2DMapper" index="2"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
@@ -247,12 +247,12 @@ mouse_filter = 1
 script = ExtResource("7_lx58k")
 slide_title = "Lets Play"
 
-[node name="Translations" type="Node" parent="Slide2DMapper/SlideLets_Play" index="0" node_paths=PackedStringArray("target_nodes")]
+[node name="Translations" type="Node" parent="Slide2DMapper/SlideLetsPlay" index="0" node_paths=PackedStringArray("target_nodes")]
 script = ExtResource("8_tjfux")
-target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/SlideContentElement"), NodePath("../ContentVBC/@Label@225785"), NodePath("../ContentVBC/@Label@225786"), NodePath("../ContentVBC/@Label@225787")]
+target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/SlideContentElement"), NodePath("../ContentVBC/Label"), NodePath("../ContentVBC/Label2"), NodePath("../ContentVBC/Label3")]
 translation_targets = Array[ExtResource("13_fjxqi")]([SubResource("Resource_fjxqi"), SubResource("Resource_orx0d"), SubResource("Resource_51p16"), SubResource("Resource_k14gl"), SubResource("Resource_erp8h")])
 
-[node name="TitleLabel" type="Label" parent="Slide2DMapper/SlideLets_Play" index="1"]
+[node name="TitleLabel" type="Label" parent="Slide2DMapper/SlideLetsPlay" index="1"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -269,7 +269,7 @@ text = "content.example_2d.2.title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Separator1" type="Panel" parent="Slide2DMapper/SlideLets_Play" index="2"]
+[node name="Separator1" type="Panel" parent="Slide2DMapper/SlideLetsPlay" index="2"]
 modulate = Color(1, 1, 1, 0.52549)
 custom_minimum_size = Vector2(0, 3)
 layout_mode = 1
@@ -284,7 +284,7 @@ grow_horizontal = 2
 size_flags_horizontal = 4
 mouse_filter = 1
 
-[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/SlideLets_Play" index="3"]
+[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/SlideLetsPlay" index="3"]
 custom_minimum_size = Vector2(1000, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -300,7 +300,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="SlideContentElement" type="Label" parent="Slide2DMapper/SlideLets_Play/ContentVBC" index="0"]
+[node name="SlideContentElement" type="Label" parent="Slide2DMapper/SlideLetsPlay/ContentVBC" index="0"]
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
@@ -308,10 +308,10 @@ theme_override_font_sizes/font_size = 50
 text = "• content.example_2d.2.player"
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideLets_Play/ContentVBC/SlideContentElement" index="0"]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideLetsPlay/ContentVBC/SlideContentElement" index="0"]
 script = ExtResource("9_yb4jm")
 
-[node name="@Label@225785" type="Label" parent="Slide2DMapper/SlideLets_Play/ContentVBC" index="1"]
+[node name="Label" type="Label" parent="Slide2DMapper/SlideLetsPlay/ContentVBC" index="1"]
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
@@ -319,15 +319,15 @@ theme_override_font_sizes/font_size = 50
 text = "• content.example_2d.2.try_it"
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideLets_Play/ContentVBC/@Label@225785" index="0"]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideLetsPlay/ContentVBC/Label" index="0"]
 script = ExtResource("9_yb4jm")
 
-[node name="Example2DPlayer" parent="Slide2DMapper/SlideLets_Play/ContentVBC/@Label@225785" index="1" instance=ExtResource("14_4630g")]
+[node name="Example2DPlayer" parent="Slide2DMapper/SlideLetsPlay/ContentVBC/Label" index="1" instance=ExtResource("14_4630g")]
 position = Vector2(1097, 99)
 is_player_active = false
 is_stuck = true
 
-[node name="@Label@225786" type="Label" parent="Slide2DMapper/SlideLets_Play/ContentVBC" index="2"]
+[node name="Label2" type="Label" parent="Slide2DMapper/SlideLetsPlay/ContentVBC" index="2"]
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
@@ -335,10 +335,10 @@ theme_override_font_sizes/font_size = 50
 text = "• content.example_2d.2.input"
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideLets_Play/ContentVBC/@Label@225786" index="0"]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideLetsPlay/ContentVBC/Label2" index="0"]
 script = ExtResource("9_yb4jm")
 
-[node name="@Label@225787" type="Label" parent="Slide2DMapper/SlideLets_Play/ContentVBC" index="3"]
+[node name="Label3" type="Label" parent="Slide2DMapper/SlideLetsPlay/ContentVBC" index="3"]
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
@@ -346,10 +346,10 @@ theme_override_font_sizes/font_size = 50
 text = "• content.example_2d.2.hold"
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideLets_Play/ContentVBC/@Label@225787" index="0"]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideLetsPlay/ContentVBC/Label3" index="0"]
 script = ExtResource("9_yb4jm")
 
-[node name="SlideShow_Me_The_Way" type="Control" parent="Slide2DMapper" index="3"]
+[node name="SlideShowMeTheWay" type="Control" parent="Slide2DMapper" index="3"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
@@ -358,12 +358,12 @@ mouse_filter = 1
 script = ExtResource("7_lx58k")
 slide_title = "Show Me The Way"
 
-[node name="Translations" type="Node" parent="Slide2DMapper/SlideShow_Me_The_Way" index="0" node_paths=PackedStringArray("target_nodes")]
+[node name="Translations" type="Node" parent="Slide2DMapper/SlideShowMeTheWay" index="0" node_paths=PackedStringArray("target_nodes")]
 script = ExtResource("8_tjfux")
-target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/SlideContentElement"), NodePath("../ContentVBC/@Label@225788")]
+target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/SlideContentElement"), NodePath("../ContentVBC/Label")]
 translation_targets = Array[ExtResource("13_fjxqi")]([SubResource("Resource_p406b"), SubResource("Resource_lec6v"), SubResource("Resource_vq5c0")])
 
-[node name="TitleLabel" type="Label" parent="Slide2DMapper/SlideShow_Me_The_Way" index="1"]
+[node name="TitleLabel" type="Label" parent="Slide2DMapper/SlideShowMeTheWay" index="1"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -380,7 +380,7 @@ text = "content.example_2d.3.title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Separator1" type="Panel" parent="Slide2DMapper/SlideShow_Me_The_Way" index="2"]
+[node name="Separator1" type="Panel" parent="Slide2DMapper/SlideShowMeTheWay" index="2"]
 modulate = Color(1, 1, 1, 0.52549)
 custom_minimum_size = Vector2(0, 3)
 layout_mode = 1
@@ -395,7 +395,7 @@ grow_horizontal = 2
 size_flags_horizontal = 4
 mouse_filter = 1
 
-[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/SlideShow_Me_The_Way" index="3"]
+[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/SlideShowMeTheWay" index="3"]
 custom_minimum_size = Vector2(1000, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -411,7 +411,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="SlideContentElement" type="Label" parent="Slide2DMapper/SlideShow_Me_The_Way/ContentVBC" index="0"]
+[node name="SlideContentElement" type="Label" parent="Slide2DMapper/SlideShowMeTheWay/ContentVBC" index="0"]
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
@@ -419,10 +419,10 @@ theme_override_font_sizes/font_size = 50
 text = "• content.example_2d.3.way1"
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideShow_Me_The_Way/ContentVBC/SlideContentElement" index="0"]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideShowMeTheWay/ContentVBC/SlideContentElement" index="0"]
 script = ExtResource("9_yb4jm")
 
-[node name="@Label@225788" type="Label" parent="Slide2DMapper/SlideShow_Me_The_Way/ContentVBC" index="1"]
+[node name="Label" type="Label" parent="Slide2DMapper/SlideShowMeTheWay/ContentVBC" index="1"]
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
@@ -430,13 +430,13 @@ theme_override_font_sizes/font_size = 50
 text = "• content.example_2d.3.way2"
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideShow_Me_The_Way/ContentVBC/@Label@225788" index="0"]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideShowMeTheWay/ContentVBC/Label" index="0"]
 script = ExtResource("9_yb4jm")
 
-[node name="LinearProgressTracker2D" parent="Slide2DMapper/SlideShow_Me_The_Way" index="4" instance=ExtResource("10_n0igl")]
+[node name="LinearProgressTracker2D" parent="Slide2DMapper/SlideShowMeTheWay" index="4" instance=ExtResource("10_n0igl")]
 position = Vector2(984, 535)
 
-[node name="SlideHit_Me_Up" type="Control" parent="Slide2DMapper" index="4"]
+[node name="SlideHitMeUp" type="Control" parent="Slide2DMapper" index="4"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
@@ -445,12 +445,12 @@ mouse_filter = 1
 script = ExtResource("7_lx58k")
 slide_title = "Hit Me Up"
 
-[node name="Translations" type="Node" parent="Slide2DMapper/SlideHit_Me_Up" index="0" node_paths=PackedStringArray("target_nodes")]
+[node name="Translations" type="Node" parent="Slide2DMapper/SlideHitMeUp" index="0" node_paths=PackedStringArray("target_nodes")]
 script = ExtResource("8_tjfux")
-target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/SlideContentElement"), NodePath("../ContentVBC/@Label@225789")]
+target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/SlideContentElement"), NodePath("../ContentVBC/Label")]
 translation_targets = Array[ExtResource("13_fjxqi")]([SubResource("Resource_kurep"), SubResource("Resource_yf12r"), SubResource("Resource_emggn")])
 
-[node name="TitleLabel" type="Label" parent="Slide2DMapper/SlideHit_Me_Up" index="1"]
+[node name="TitleLabel" type="Label" parent="Slide2DMapper/SlideHitMeUp" index="1"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -467,7 +467,7 @@ text = "content.example_2d.4.title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Separator1" type="Panel" parent="Slide2DMapper/SlideHit_Me_Up" index="2"]
+[node name="Separator1" type="Panel" parent="Slide2DMapper/SlideHitMeUp" index="2"]
 modulate = Color(1, 1, 1, 0.52549)
 custom_minimum_size = Vector2(0, 3)
 layout_mode = 1
@@ -482,7 +482,7 @@ grow_horizontal = 2
 size_flags_horizontal = 4
 mouse_filter = 1
 
-[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/SlideHit_Me_Up" index="3"]
+[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/SlideHitMeUp" index="3"]
 custom_minimum_size = Vector2(1000, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -498,7 +498,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="SlideContentElement" type="Label" parent="Slide2DMapper/SlideHit_Me_Up/ContentVBC" index="0"]
+[node name="SlideContentElement" type="Label" parent="Slide2DMapper/SlideHitMeUp/ContentVBC" index="0"]
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
@@ -506,10 +506,10 @@ theme_override_font_sizes/font_size = 50
 text = "• content.example_2d.4.box1"
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideHit_Me_Up/ContentVBC/SlideContentElement" index="0"]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideHitMeUp/ContentVBC/SlideContentElement" index="0"]
 script = ExtResource("9_yb4jm")
 
-[node name="@Label@225789" type="Label" parent="Slide2DMapper/SlideHit_Me_Up/ContentVBC" index="1"]
+[node name="Label" type="Label" parent="Slide2DMapper/SlideHitMeUp/ContentVBC" index="1"]
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
@@ -517,15 +517,15 @@ theme_override_font_sizes/font_size = 50
 text = "• content.example_2d.4.box2"
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideHit_Me_Up/ContentVBC/@Label@225789" index="0"]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideHitMeUp/ContentVBC/Label" index="0"]
 script = ExtResource("9_yb4jm")
 
-[node name="ExampleJumpbox" parent="Slide2DMapper/SlideHit_Me_Up" index="4" instance=ExtResource("12_l32h8")]
+[node name="ExampleJumpbox" parent="Slide2DMapper/SlideHitMeUp" index="4" instance=ExtResource("12_l32h8")]
 position = Vector2(573, 862)
 target_progress = 0.5
 label_text = "1"
 
-[node name="ExampleJumpbox2" parent="Slide2DMapper/SlideHit_Me_Up" index="5" instance=ExtResource("12_l32h8")]
+[node name="ExampleJumpbox2" parent="Slide2DMapper/SlideHitMeUp" index="5" instance=ExtResource("12_l32h8")]
 position = Vector2(1308, 864)
 target_progress = 1.0
 label_text = "2"
@@ -554,6 +554,6 @@ shape = SubResource("RectangleShape2D_l687c")
 
 [node name="ActivatePlayer" type="Node" parent="." index="6" node_paths=PackedStringArray("player", "slide_for_activation", "target_parent")]
 script = ExtResource("11_n0igl")
-player = NodePath("../Slide2DMapper/SlideLets_Play/ContentVBC/@Label@225785/Example2DPlayer")
-slide_for_activation = NodePath("../Slide2DMapper/SlideLets_Play")
+player = NodePath("../Slide2DMapper/SlideLetsPlay/ContentVBC/Label/Example2DPlayer")
+slide_for_activation = NodePath("../Slide2DMapper/SlideLetsPlay")
 target_parent = NodePath("..")

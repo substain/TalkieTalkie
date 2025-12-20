@@ -5,7 +5,7 @@ A presentation tool/framework to create presentations within Godot.
 You can test the example presentation here: [https://substain.itch.io/talkietalkie](https://substain.itch.io/talkietalkie).
 
 ## Requirements
-* Godot 4.x (*This template was only tested with Godot 4.4+. Using an earlier version should be possible with minor modifications.*
+* Godot 4.x (*This template was only tested with Godot 4.4+. Using an earlier version should be possible with minor modifications.*)
 * A basic understanding of how to use Godot
 
 ## Quickstart: How to create a new presentation
@@ -80,7 +80,7 @@ Hit `Generate Slides` to generate the slides.
 ## Planned Features
 Here is an incomplete list of features you can hope to see in the future:
 
-* A preview window displaying the next slides, current time, notes, and other helpful functionality
+* A preview window displaying the next slides, current time, notes, and other helpful functionality (WIP)
 * A searchable table of contents (UI) that that provides improved slide navigation
 * Workflow improvements for creating slides, especially regarding translations
 * Better UI Scaling and mobile UX improvements

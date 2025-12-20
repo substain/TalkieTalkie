@@ -2,13 +2,8 @@
 .godot/
 /android/
 
-export/
-
-export_presets.cfg
-
 # Imported translations (automatically generated from CSV files)
 *.translation
-
 
 # Mono-specific ignores
 .mono/
@@ -24,6 +19,3 @@ mono_crash.*.json
 
 # IntelliJ IDE directory
 .idea/
-
-# Various
-/local/*
