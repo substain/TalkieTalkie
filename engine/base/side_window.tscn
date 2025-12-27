@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://8amobij1rdtg" path="res://engine/base/side_window.gd" id="1_sbwmy"]
 [ext_resource type="PackedScene" uid="uid://bp5mgabsdn7i4" path="res://engine/ui/side_window_ui.tscn" id="2_oy3xy"]
 
-[node name="SideWindow" type="Window"]
+[node name="SideWindow" type="Window" node_paths=PackedStringArray("side_window_ui")]
 oversampling_override = 1.0
 title = "TalkieTalkie [SideWindow]"
 initial_position = 3
@@ -12,6 +12,7 @@ current_screen = 0
 transient = true
 accessibility_name = "TalkieTalkie SideWindow"
 script = ExtResource("1_sbwmy")
+side_window_ui = NodePath("SideWindowUI")
 
 [node name="SideWindowUI" parent="." instance=ExtResource("2_oy3xy")]
 

@@ -557,3 +557,8 @@ script = ExtResource("11_n0igl")
 player = NodePath("../Slide2DMapper/SlideLetsPlay/ContentVBC/Label/Example2DPlayer")
 slide_for_activation = NodePath("../Slide2DMapper/SlideLetsPlay")
 target_parent = NodePath("..")
+
+[node name="SideWindow" parent="." index="7"]
+quit_on_close = true
+
+[editable path="SideWindow"]

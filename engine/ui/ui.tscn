@@ -7,21 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://hbvk7dsw6lru" path="res://engine/ui/settings.tscn" id="4_5d2o0"]
 [ext_resource type="PackedScene" uid="uid://bpy50hmoy7l80" path="res://engine/ui/about_overlay.tscn" id="5_liuq1"]
 
-[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("control_bar", "_control_bar_pivot", "_control_bar_hidden_pos_marker", "tab_navigation_bar", "_tab_navigation_pivot", "_tab_navigation_bar_hidden_marker", "settings", "_settings_pivot", "_settings_hidden_marker", "_toggle_ui_button", "about_overlay", "side_window_nodes")]
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("control_bar", "tab_navigation_bar", "settings", "_toggle_ui_button", "about_overlay", "side_window_nodes")]
 layer = 5
 script = ExtResource("1_n2tc0")
 control_bar = NodePath("ControlBarPivot/ControlBar")
-_control_bar_pivot = NodePath("ControlBarPivot")
-_control_bar_hidden_pos_marker = NodePath("ControlBarPivot/ControlBarHiddenMarker")
 tab_navigation_bar = NodePath("TabNavigationPivot/TabNavigationBar")
-_tab_navigation_pivot = NodePath("TabNavigationPivot")
-_tab_navigation_bar_hidden_marker = NodePath("TabNavigationPivot/TabNavigationBarHiddenMarker")
 settings = NodePath("SettingsPivot/Settings")
-_settings_pivot = NodePath("SettingsPivot")
-_settings_hidden_marker = NodePath("SettingsPivot/SettingsHiddenMarker")
-_toggle_ui_button = NodePath("MarginContainer/ToggleUIButton")
+_toggle_ui_button = NodePath("ToggleUIButtonMC/ToggleUIButton")
 about_overlay = NodePath("AboutOverlay")
-side_window_nodes = [NodePath("TabNavigationPivot"), NodePath("ControlBarPivot"), NodePath("SettingsPivot"), NodePath("MarginContainer"), NodePath("AboutOverlay")]
+side_window_nodes = [NodePath("TabNavigationPivot"), NodePath("ControlBarPivot"), NodePath("SettingsPivot"), NodePath("ToggleUIButtonMC"), NodePath("AboutOverlay")]
 
 [node name="PaintingPointer" parent="." instance=ExtResource("2_mo8vp")]
 
@@ -34,9 +28,6 @@ grow_horizontal = 2
 
 [node name="TabNavigationBar" parent="TabNavigationPivot" instance=ExtResource("2_pdji7")]
 layout_mode = 1
-
-[node name="TabNavigationBarHiddenMarker" type="Marker2D" parent="TabNavigationPivot"]
-position = Vector2(0, -100)
 
 [node name="ControlBarPivot" type="Control" parent="."]
 layout_mode = 3
@@ -62,9 +53,6 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="ControlBarHiddenMarker" type="Marker2D" parent="ControlBarPivot"]
-position = Vector2(0, 100)
-
 [node name="SettingsPivot" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 1
@@ -76,10 +64,7 @@ size_flags_horizontal = 4
 [node name="Settings" parent="SettingsPivot" instance=ExtResource("4_5d2o0")]
 layout_mode = 1
 
-[node name="SettingsHiddenMarker" type="Marker2D" parent="SettingsPivot"]
-position = Vector2(0, -100)
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ToggleUIButtonMC" type="MarginContainer" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -92,7 +77,7 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="ToggleUIButton" type="Button" parent="MarginContainer"]
+[node name="ToggleUIButton" type="Button" parent="ToggleUIButtonMC"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -105,6 +90,7 @@ text = "UI
 layer = 60
 visible = false
 
+[connection signal="jump_to_slide" from="TabNavigationPivot/TabNavigationBar" to="." method="_on_tab_navigation_bar_jump_to_slide"]
 [connection signal="back_pressed" from="ControlBarPivot/ControlBar" to="." method="_on_control_bar_back_pressed"]
 [connection signal="continue_pressed" from="ControlBarPivot/ControlBar" to="." method="_on_control_bar_continue_pressed"]
 [connection signal="quit_pressed" from="ControlBarPivot/ControlBar" to="." method="_on_control_bar_quit_pressed"]
@@ -112,6 +98,6 @@ visible = false
 [connection signal="slideshow_duration_changed" from="ControlBarPivot/ControlBar" to="." method="_on_control_bar_slideshow_duration_changed"]
 [connection signal="slideshow_toggled" from="ControlBarPivot/ControlBar" to="." method="_on_control_bar_slideshow_toggled"]
 [connection signal="show_about_window" from="SettingsPivot/Settings" to="." method="_on_settings_show_about_window"]
-[connection signal="pressed" from="MarginContainer/ToggleUIButton" to="." method="_on_show_ui_button_pressed"]
-[connection signal="toggled" from="MarginContainer/ToggleUIButton" to="." method="_on_show_ui_button_toggled"]
+[connection signal="pressed" from="ToggleUIButtonMC/ToggleUIButton" to="." method="_on_show_ui_button_pressed"]
+[connection signal="toggled" from="ToggleUIButtonMC/ToggleUIButton" to="." method="_on_show_ui_button_toggled"]
 [connection signal="close_overlay" from="AboutOverlay" to="." method="_on_about_overlay_close_overlay"]

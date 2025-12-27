@@ -77,4 +77,7 @@ in_transition_override = SubResource("Resource_qcjjf")
 [node name="SlideFinal" parent="Slides" index="5" instance=ExtResource("13_2ftvy")]
 visible = false
 
+[node name="SideWindow" parent="." index="5"]
+quit_on_close = true
+
 [editable path="SideWindow"]

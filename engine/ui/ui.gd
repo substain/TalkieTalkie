@@ -25,19 +25,10 @@ signal set_slideshow_duration(new_duration: float)
 ## disables settings in the ui view
 @export var settings_enabled: bool = true
 
-
 @export_category("internal nodes")
 @export var control_bar: ControlBar
-@export var _control_bar_pivot: Control
-@export var _control_bar_hidden_pos_marker: Marker2D
-
 @export var tab_navigation_bar: TabNavigationBar
-@export var _tab_navigation_pivot: Control
-@export var _tab_navigation_bar_hidden_marker: Marker2D
-
 @export var settings: Settings
-@export var _settings_pivot: Control
-@export var _settings_hidden_marker: Marker2D
 @export var _toggle_ui_button: Button
 
 @export var about_overlay: AboutOverlay
@@ -45,28 +36,12 @@ signal set_slideshow_duration(new_duration: float)
 ## nodes that should be part of the sidewindow, when it is in use
 @export var side_window_nodes: Array[Node]
 
-var _control_bar_visible_pos: Vector2
-var _control_bar_hidden_pos: Vector2
-
-var _tab_navigation_bar_visible_pos: Vector2
-var _tab_navigation_bar_hidden_pos: Vector2
-
-var _settings_visible_pos: Vector2
-var _settings_hidden_pos: Vector2
-
 var has_overlay: bool = false
 
 func _ready() -> void:
 	setup_mobile()
 	
 	SlideHelper.ui = self
-	
-	_control_bar_visible_pos = _control_bar_pivot.global_position
-	_control_bar_hidden_pos = _control_bar_hidden_pos_marker.global_position
-	_tab_navigation_bar_visible_pos = _tab_navigation_pivot.global_position
-	_tab_navigation_bar_hidden_pos = _tab_navigation_bar_hidden_marker.global_position
-	_settings_visible_pos = _settings_pivot.global_position
-	_settings_hidden_pos = _settings_hidden_marker.global_position
 	
 	control_bar.visible = control_bar_enabled
 	tab_navigation_bar.visible = tab_navigation_bar_enabled

@@ -18,8 +18,11 @@ layer = -100
 [node name="UI" parent="." instance=ExtResource("1_ymvtf")]
 layer = 100
 
-[node name="SideWindow" parent="." instance=ExtResource("4_1l1sb")]
+[node name="SideWindow" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("4_1l1sb")]
+title = "see side_window.gd"
 enabled = 1
+quit_on_close = false
+ui = NodePath("../UI")
 
 [connection signal="continue_slide" from="UI" to="." method="_on_ui_continue_slide"]
 [connection signal="jump_to_slide" from="UI" to="." method="_on_ui_jump_to_slide"]

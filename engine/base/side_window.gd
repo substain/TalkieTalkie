@@ -11,8 +11,11 @@ enum EnableOptions {
 
 @export var enabled: EnableOptions = EnableOptions.ALWAYS
 @export var quit_on_close: bool = true
-@onready var ui: UI = $"../UI" #TODO test reparent
-@onready var side_window_ui: SideWindowUI = $SideWindowUI
+@export var ui: UI
+@export_category("internal nodes")
+@export var side_window_ui: SideWindowUI
+
+var has_ui: bool = false
 
 func _enter_tree() -> void:
 	if enabled == EnableOptions.NEVER || (enabled == EnableOptions.IF_SECOND_SCREEN_EXISTS && DisplayServer.get_screen_count() < 2):
@@ -23,33 +26,27 @@ func _ready() -> void:
 		return
 	
 	title = ProjectSettings.get_setting("application/config/name", "TalkieTalkie") + " [SideWindow]"
-	for child: Node in ui.side_window_nodes:
-		if !child is Control:
-			continue
-		var ctrl_child: Control = child as Control
-		
-		#reparent_control_with_anchors(ctrl_child)
-		ctrl_child.call_deferred("reparent", side_window_ui, false) #TODO
-		
-		if ctrl_child.has_method("update_positions"):
-			@warning_ignore("unsafe_method_access")
-			ctrl_child.update_positions()
-
-func reparent_control_with_anchors(ctrl: Control) -> void:
-	var anchor_top: float = ctrl.anchor_top
-	var anchor_bot: float = ctrl.anchor_bottom
-	var anchor_left: float = ctrl.anchor_left
-	var anchor_right: float = ctrl.anchor_right
-	ctrl.call_deferred("reparent", side_window_ui, false) #TODO
-	ctrl.anchor_bottom = anchor_bot
-	ctrl.anchor_bottom = anchor_top
-	ctrl.anchor_left = anchor_left
-	ctrl.anchor_right = anchor_right
-
+	set_as_ui_parent(true)
+	
 func _input(event: InputEvent) -> void:
 	input_received.emit(event)
 
 func _on_close_requested() -> void:
 	if quit_on_close:
 		get_tree().quit()
-	# else: reparent ui nodes back?
+	else:
+		set_as_ui_parent(false)
+		#hide()
+		queue_free()
+		
+func set_as_ui_parent(is_ui_parent_new: bool) -> void:
+	var target_parent: Node = side_window_ui if is_ui_parent_new else ui
+	reparent_ui_children(target_parent)
+	has_ui = is_ui_parent_new
+		
+func reparent_ui_children(target: Node) -> void:
+	for child: Node in ui.side_window_nodes:
+		if !child is Control:
+			continue
+		var ctrl_child: Control = child as Control
+		ctrl_child.call_deferred("reparent", target, false)
