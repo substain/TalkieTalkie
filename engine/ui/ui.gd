@@ -33,7 +33,9 @@ signal set_slideshow_duration(new_duration: float)
 
 @export var about_overlay: AboutOverlay
 
-## nodes that should be part of the sidewindow, when it is in use
+@export var hidable_nodes: Array[HidableUI]
+
+## nodes that may be part of the sidewindow, when it is in use
 @export var side_window_nodes: Array[Node]
 
 var has_overlay: bool = false
@@ -66,11 +68,12 @@ func toggle_ui_visible() -> void:
 func set_ui_visible(visible_new: bool, force_set: bool = false) -> void:
 	if visible_new == is_ui_visible && !force_set:
 		return
+		
 	_toggle_ui_button.set_pressed_no_signal(visible_new)
 	
-	control_bar.set_visible_tween(visible_new, force_set)
-	tab_navigation_bar.set_visible_tween(visible_new, force_set)
-	settings.set_visible_tween(visible_new, force_set)
+	for hnode: HidableUI in hidable_nodes:
+		hnode.set_visible_tween(visible_new, force_set)
+		
 	is_ui_visible = visible_new
 	
 

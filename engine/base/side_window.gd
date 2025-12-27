@@ -40,7 +40,11 @@ func _on_close_requested() -> void:
 		queue_free()
 		
 func set_as_ui_parent(is_ui_parent_new: bool) -> void:
+	
+	# ignore this warning since both values are nodes
+	@warning_ignore("incompatible_ternary")
 	var target_parent: Node = side_window_ui if is_ui_parent_new else ui
+	
 	reparent_ui_children(target_parent)
 	has_ui = is_ui_parent_new
 		

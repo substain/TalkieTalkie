@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://hbvk7dsw6lru" path="res://engine/ui/settings.tscn" id="4_5d2o0"]
 [ext_resource type="PackedScene" uid="uid://bpy50hmoy7l80" path="res://engine/ui/about_overlay.tscn" id="5_liuq1"]
 
-[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("control_bar", "tab_navigation_bar", "settings", "_toggle_ui_button", "about_overlay", "side_window_nodes")]
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("control_bar", "tab_navigation_bar", "settings", "_toggle_ui_button", "about_overlay", "hidable_nodes", "side_window_nodes")]
 layer = 5
 script = ExtResource("1_n2tc0")
 control_bar = NodePath("ControlBarPivot/ControlBar")
@@ -15,6 +15,7 @@ tab_navigation_bar = NodePath("TabNavigationPivot/TabNavigationBar")
 settings = NodePath("SettingsPivot/Settings")
 _toggle_ui_button = NodePath("ToggleUIButtonMC/ToggleUIButton")
 about_overlay = NodePath("AboutOverlay")
+hidable_nodes = [NodePath("TabNavigationPivot/TabNavigationBar"), NodePath("ControlBarPivot/ControlBar"), NodePath("SettingsPivot/Settings")]
 side_window_nodes = [NodePath("TabNavigationPivot"), NodePath("ControlBarPivot"), NodePath("SettingsPivot"), NodePath("ToggleUIButtonMC"), NodePath("AboutOverlay")]
 
 [node name="PaintingPointer" parent="." instance=ExtResource("2_mo8vp")]
