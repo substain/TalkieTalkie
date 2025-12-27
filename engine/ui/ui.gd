@@ -7,8 +7,6 @@ signal jump_to_slide(slide_index: int)
 signal toggle_slideshow(slideshow_active: bool)
 signal set_slideshow_duration(new_duration: float)
 
-const _VISIBILTY_TWEEN_DURATION: float = 0.2
-
 ## if true, the ui will be visible on start
 @export var is_ui_visible: bool = false
 
@@ -46,8 +44,6 @@ const _VISIBILTY_TWEEN_DURATION: float = 0.2
 
 ## nodes that should be part of the sidewindow, when it is in use
 @export var side_window_nodes: Array[Node]
-
-var _visibility_tween: Tween = null
 
 var _control_bar_visible_pos: Vector2
 var _control_bar_hidden_pos: Vector2
@@ -96,31 +92,12 @@ func set_ui_visible(visible_new: bool, force_set: bool = false) -> void:
 	if visible_new == is_ui_visible && !force_set:
 		return
 	_toggle_ui_button.set_pressed_no_signal(visible_new)
-
-	tab_navigation_bar.set_visible_tween(visible_new, false)
-
-	var modulate_start: float = 0.0 if visible_new else 1.0
-	var modulate_target: float = 1.0 if visible_new else 0.0
-#
-	var control_bar_start_pos: Vector2 = _control_bar_hidden_pos if visible_new else _control_bar_visible_pos 
-	var control_bar_target_pos: Vector2 = _control_bar_visible_pos if visible_new else _control_bar_hidden_pos
-
-	#var tab_navigation_bar_start_pos: Vector2 = _tab_navigation_bar_hidden_pos if visible_new else _tab_navigation_bar_visible_pos 
-	#var tab_navigation_bar_target_pos: Vector2 = _tab_navigation_bar_visible_pos if visible_new else _tab_navigation_bar_hidden_pos
-	#
-	var settings_start_pos: Vector2 = _settings_hidden_pos if visible_new else _settings_visible_pos 
-	var settings_target_pos: Vector2 = _settings_visible_pos if visible_new else _settings_hidden_pos
-	#
-	if is_instance_valid(_visibility_tween):
-		_visibility_tween.kill()
-	_visibility_tween = create_tween().set_parallel(true)
 	
-	tween_ui_element(_visibility_tween, control_bar, control_bar_start_pos, control_bar_target_pos, modulate_start, modulate_target)
-	#tween_ui_element(_visibility_tween, tab_navigation_bar, _tab_navigation_pivot, tab_navigation_bar_start_pos, tab_navigation_bar_target_pos, modulate_start, modulate_target)
-	tween_ui_element(_visibility_tween, settings, settings_start_pos, settings_target_pos, modulate_start, modulate_target)
-	
-	
+	control_bar.set_visible_tween(visible_new, force_set)
+	tab_navigation_bar.set_visible_tween(visible_new, force_set)
+	settings.set_visible_tween(visible_new, force_set)
 	is_ui_visible = visible_new
+	
 
 func quit() -> void:
 	if Util.is_web():
@@ -170,27 +147,3 @@ func _on_about_overlay_close_overlay() -> void:
 func set_about_overlay_visible(is_visible_new: bool) -> void:
 	about_overlay.visible = is_visible_new
 	has_overlay = is_visible_new
-
-static func tween_ui_element(ui_tween: Tween, target_control: Control, start_pos: Vector2, target_pos: Vector2, modulate_start: float, modulate_target: float) -> void:
-	#pivot_node.global_position = start_pos
-	target_control.position = start_pos
-	target_control.modulate.a = modulate_start
-	ui_tween.tween_property(target_control, "modulate:a", modulate_target, _VISIBILTY_TWEEN_DURATION)
-	ui_tween.tween_property(target_control, "position", target_pos, _VISIBILTY_TWEEN_DURATION)
-
-static func get_direction_from_anchors(an_top: float, an_bot: float, an_left: float, an_right: float) -> Vector2:
-	var lr_pos: float = (an_left + an_right)/2 - 0.5
-	var bt_pos: float = (an_bot + an_top)/2 - 0.5
-	
-	if is_zero_approx(lr_pos) && is_zero_approx(bt_pos):
-		return Vector2.ZERO
-	
-	if abs(lr_pos) > abs(bt_pos):
-		#use side directions only if anchors for left/right are greater than up/down
-		if lr_pos < 0:
-			return Vector2.LEFT
-		return Vector2.RIGHT
-	
-	if bt_pos < 0:
-		return Vector2.DOWN
-	return Vector2.UP

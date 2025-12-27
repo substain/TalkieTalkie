@@ -14,3 +14,5 @@ accessibility_name = "TalkieTalkie SideWindow"
 script = ExtResource("1_sbwmy")
 
 [node name="SideWindowUI" parent="." instance=ExtResource("2_oy3xy")]
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]

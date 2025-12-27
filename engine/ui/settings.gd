@@ -1,4 +1,4 @@
-class_name Settings extends Control
+class_name Settings extends HidableUI
 
 signal show_about_window
 
@@ -14,6 +14,7 @@ signal show_about_window
 @export var about_button: Button
 
 func _ready() -> void:
+	super()
 	overall_volume_slider.set_value_no_signal(Preferences.overall_volume)
 	lang_option_button.selected = get_locale_button_id(Preferences.language)
 	about_button.text = Util.get_talkie_talkie_version()

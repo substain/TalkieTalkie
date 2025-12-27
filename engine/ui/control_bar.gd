@@ -1,4 +1,4 @@
-class_name ControlBar extends Control
+class_name ControlBar extends HidableUI
 
 signal continue_pressed
 signal back_pressed
@@ -26,6 +26,7 @@ var is_slideshow_active: bool = false
 var slideshow_duration: float
 
 func _ready() -> void:
+	super()
 	_quit_button.visible = !Util.is_web()
 	set_fullscreen_active(Preferences.fullscreen_active)
 

@@ -117,9 +117,6 @@ func handle_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("toggle_ui"):
 		ui.toggle_ui_visible()
-	
-	if event.is_action_pressed("toggle_ui"):
-		ui.set_ui_visible(true)
 		
 	if event.is_action_pressed("fullscreen"):
 		ui.control_bar.toggle_fullscreen()

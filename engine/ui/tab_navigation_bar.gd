@@ -1,4 +1,4 @@
-class_name TabNavigationBar extends Control
+class_name TabNavigationBar extends HidableUI
 
 signal jump_to_slide(slide_index: int)
 
@@ -11,10 +11,8 @@ var num_slides: int = 0
 var current_slide_index: int = 0
 var _slide_nav_dictionary: Dictionary[int, Button] = {} # slide-index -> SlideNavigationTab
 
-var local_hidden_dir: Vector2 = Vector2.ZERO
-	
 func _ready() -> void:
-	update_local_hidden_dir()
+	super()
 
 func set_ui_disabled(disabled_new: bool) -> void:
 	if disabled_new:
@@ -39,7 +37,6 @@ func set_available_slides(slides: Array[Slide]) -> void:
 func _slide_nav_button_pressed(slide_index: int) -> void:
 	jump_to_slide.emit(slide_index)
 	
-	
 func set_current_slide(slide_index: int) -> void:
 	current_slide_index = slide_index
 	if !_slide_nav_dictionary[slide_index].button_pressed:
@@ -50,26 +47,3 @@ func set_current_slide(slide_index: int) -> void:
 	
 func update_slide_index_label() -> void:
 	_slide_index_label.text = str(current_slide_index+1) + " / " + str(num_slides)
-
-var _visibility_tween: Tween = null
-var is_visible_ui: bool = false
-
-
-func set_visible_tween(is_visible_ui_new: bool, force_set: bool = false) -> void:
-	if is_visible_ui_new == is_visible_ui && !force_set:
-		return	
-
-	var modulate_start: float = 0.0 if is_visible_ui_new else 1.0
-	var modulate_target: float = 1.0 - modulate_start
-	var start_pos: Vector2 = position
-	var target_pos: Vector2 = Vector2.ZERO if is_visible_ui_new else local_hidden_dir
-	
-	if _visibility_tween:
-		_visibility_tween.kill()
-	
-	_visibility_tween = create_tween()
-			
-	UI.tween_ui_element(_visibility_tween, self, start_pos, target_pos, modulate_start, modulate_target)
-
-func update_local_hidden_dir() -> void:
-	local_hidden_dir = UI.get_direction_from_anchors(anchor_top, anchor_bottom, anchor_left, anchor_right)
