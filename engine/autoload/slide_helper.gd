@@ -13,7 +13,7 @@ var presentation: Presentation
 var ui: UI
 var slide_controller: SlideController
 var current_slide: Slide
-
+var has_context: bool
 var _context: SlideContext
 
 func is_2d_node_presentation() -> bool:
@@ -29,6 +29,9 @@ func set_context(slide_context_new: SlideContext) -> void:
 	_context = slide_context_new
 	if _context != null:
 		context_initialized.emit()
+		has_context = true
+	else:
+		has_context = false
 	
 func get_context() -> SlideContext:
 	return _context

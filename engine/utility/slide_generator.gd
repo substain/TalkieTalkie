@@ -101,7 +101,7 @@ func instantiate_slide(slide_info: SlideInfo) -> Slide:
 	return slide
 
 static func set_title(instantiated_slide: Slide, new_title: String, title_node_path: String) -> void:
-	instantiated_slide.slide_title = new_title
+	instantiated_slide.set_title(new_title)
 
 	if title_node_path == null || !instantiated_slide.has_node(title_node_path):
 		push_warning("Could not find title node path '" + title_node_path + "' in the instantiated scene. Will not set a title in the created slide.")
@@ -116,6 +116,7 @@ static func set_title(instantiated_slide: Slide, new_title: String, title_node_p
 	title_node.text = new_title
 
 static func set_contents(instantiated_slide: Slide, new_contents: Array[String], content_parent_node_path: String, content_scene_to_use: PackedScene, do_combine_content_lines: bool) -> void:
+	instantiated_slide.set_content("\n".join(new_contents))
 	if content_parent_node_path == null || !instantiated_slide.has_node(content_parent_node_path):
 		push_warning("Could not find content parent node path '" + content_parent_node_path + "' in the instantiated scene. Will not set contents in the created slide.")
 		return

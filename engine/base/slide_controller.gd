@@ -45,7 +45,7 @@ func do_continue(automatic: bool = false) -> void:
 	if !has_next_slide:
 		return
 
-	var used_transition: Transition = current_slide.in_transition_override if current_slide.in_transition_override != null else default_transition
+	var used_transition: Transition = current_slide.get_in_transition_override() if current_slide.get_in_transition_override() != null else default_transition
 	transition_to_slide(previous_slide, current_slide, used_transition)
 
 func set_slide_progress(slide_index_new: int, rel_progress: float) -> void:

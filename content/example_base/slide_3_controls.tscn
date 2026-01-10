@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://g7nqgjyqndo7"]
 
-[ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://content/example_base/template/example_text_layout.tscn" id="1_ftjhj"]
+[ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://engine/default_template/default_text_layout.tscn" id="1_ftjhj"]
 [ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://engine/translation/translation_target.gd" id="2_ftjhj"]
 
 [sub_resource type="Resource" id="Resource_ftjhj"]

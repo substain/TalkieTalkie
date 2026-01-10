@@ -98,7 +98,6 @@ func _on_ui_jump_to_slide(new_slide_index: int) -> void:
 	if manual_navigation_stops_auto_slideshow:
 		slide_controller.stop_auto_slideshow()
 
-
 func _on_side_window_input_received(event: InputEvent) -> void:
 	handle_input(event)
 	

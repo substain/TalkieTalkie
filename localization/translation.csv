@@ -5,6 +5,12 @@ ui.settings.mute;Mute;Stumm
 ui.timeview.target_duration;Target Duration:;Zieldauer:
 ui.timeview.passed_time;Passed Time:;Vergangene Zeit:
 ui.timeview.time_left;Time left:;Übrige Zeit:
+ui.comments;Comments;Kommentare
+ui.preview.show_preview;Show Preview;Vorschau zeigen
+ui.preview.hide_preview;Hide Preview;Vorschau verstecken
+ui.relative_slide.previous;Previous Slide;Letzte Folie
+ui.relative_slide.current;Current Slide;Aktuelle Folie
+ui.relative_slide.next;Next Slide;Nächste Folie
 content.base_example.0.hello;Hello!;Hallo!
 content.base_example.0.this_is_x;This is {0};Das ist {0}
 content.base_example.0.an_example_presentation;an example presentation;eine Beispiel-Präsentation

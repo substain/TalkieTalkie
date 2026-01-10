@@ -14,4 +14,4 @@ func _ready() -> void:
 
 func _on_button_pressed() -> void:
 	SlideHelper._context = null
-	get_tree().change_scene_to_file(presentation_scene)
+	get_tree().change_scene_to_file.call_deferred(presentation_scene)

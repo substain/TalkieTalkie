@@ -4,16 +4,32 @@
 [ext_resource type="PackedScene" uid="uid://bp5mgabsdn7i4" path="res://engine/ui/side_window_ui.tscn" id="2_oy3xy"]
 
 [node name="SideWindow" type="Window" node_paths=PackedStringArray("side_window_ui")]
+transparent_bg = true
+gui_embed_subwindows = true
 oversampling_override = 1.0
 title = "TalkieTalkie [SideWindow]"
 initial_position = 3
 size = Vector2i(800, 600)
 current_screen = 0
 transient = true
+transparent = true
+min_size = Vector2i(150, 150)
+content_scale_mode = 1
+content_scale_aspect = 1
 accessibility_name = "TalkieTalkie SideWindow"
 script = ExtResource("1_sbwmy")
 side_window_ui = NodePath("SideWindowUI")
 
+[node name="BGColorRect" type="ColorRect" parent="."]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.632292, 0.6898533, 0.83453625, 1)
+
 [node name="SideWindowUI" parent="." instance=ExtResource("2_oy3xy")]
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="size_changed" from="." to="." method="_on_size_changed"]

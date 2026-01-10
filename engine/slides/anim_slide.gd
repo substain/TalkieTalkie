@@ -1,4 +1,4 @@
-class_name AnimSlide extends Slide
+class_name AnimSlide extends SceneSlide
 
 ## uses animations defined by SlideAnimation Nodes in children to animate the slide
 

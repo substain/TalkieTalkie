@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://rgndpyhb5p7q"]
+
+[ext_resource type="Script" uid="uid://bl3ab6j4oqu7u" path="res://engine/ui/preview_condensed.gd" id="1_7movi"]
+
+[node name="PreviewCondensed" type="VBoxContainer" node_paths=PackedStringArray("title_label", "slide_title_label", "popup_button")]
+custom_minimum_size = Vector2(120, 0)
+script = ExtResource("1_7movi")
+title_label = NodePath("TitleLabel")
+slide_title_label = NodePath("SlideTitleLabel")
+popup_button = NodePath("PopupButton")
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 2
+theme_type_variation = &"LabelHeader"
+text = "[preview_name]"
+horizontal_alignment = 1
+
+[node name="SlideTitleLabel" type="Label" parent="."]
+layout_mode = 2
+text = "[slide title]                "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PopupButton" type="Button" parent="."]
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+button_pressed = true
+text = "Show Preview"
+
+[connection signal="toggled" from="PopupButton" to="." method="_on_popup_button_toggled"]

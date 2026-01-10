@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://qkwtsoeipsdo"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://qkwtsoeipsdo"]
 
 [ext_resource type="StyleBox" uid="uid://dm465lemag1a3" path="res://style/panel_stylebox.tres" id="1_ikeqk"]
 
@@ -46,6 +46,38 @@ content_margin_bottom = 4.0
 color = Color(0.5, 0.5, 0.5, 1)
 vertical = true
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwx4v"]
+content_margin_left = 10.0
+content_margin_top = 28.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+bg_color = Color(0.1326, 0.16869664, 0.26, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 8.0
+expand_margin_top = 24.0
+expand_margin_right = 8.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8o0i"]
+content_margin_left = 10.0
+content_margin_top = 28.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+bg_color = Color(0.22057068, 0.24793196, 0.31297246, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 8.0
+expand_margin_top = 24.0
+expand_margin_right = 8.0
+expand_margin_bottom = 6.0
+
 [resource]
 Button/styles/pressed = SubResource("StyleBoxFlat_dyovq")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_dr6ht")
@@ -59,3 +91,10 @@ LabelHeaderMain/font_sizes/font_size = 24
 Panel/styles/panel = ExtResource("1_ikeqk")
 PanelContainer/styles/panel = ExtResource("1_ikeqk")
 VSeparator/styles/separator = SubResource("StyleBoxLine_dyovq")
+Window/constants/close_h_offset = 15
+Window/constants/close_v_offset = 20
+Window/constants/resize_margin = 6
+Window/constants/title_height = 25
+Window/font_sizes/title_font_size = 14
+Window/styles/embedded_border = SubResource("StyleBoxFlat_pwx4v")
+Window/styles/embedded_unfocused_border = SubResource("StyleBoxFlat_v8o0i")

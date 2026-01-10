@@ -1,14 +1,9 @@
-class_name Slide extends CanvasItem
+class_name Slide extends Control
 
 signal index_initialized
 
 @warning_ignore("unused_signal")
 signal activate_slide
-
-@export var slide_title: String
-
-## Overrides the default transition from the previous slide to this slide
-@export var in_transition_override: Transition = null
 
 var _order_initialized: bool = false
 var _order_index: int
@@ -49,3 +44,42 @@ func is_at_start() -> bool:
 ## Returns true if the current slide is finished.
 func is_finished() -> bool:
 	return true
+
+## Returns the title of this slide
+func get_title() -> String:
+	return ""
+
+## Sets a new title for the slide
+func set_title(_new_title: String) -> void:
+	pass
+
+## Returns the content of this slide
+func get_content() -> String:
+	return ""
+	
+## Sets new content for the slide
+func set_content(_new_content: String) -> void:
+	pass
+
+## Returns the comments for this slide
+func get_comments() -> String:
+	return ""
+		
+## Sets new comments for the slide
+func set_comments(_new_comments: String) -> void:
+	pass
+
+## Returns the estimated time for this slide (in seconds)
+func get_estimated_time_seconds() -> int:
+	return 0
+	
+## Sets a new estimated time for the slide
+func set_estimated_time_seconds(_new_estimated_time: int) -> void:
+	pass
+
+func get_in_transition_override() -> Transition:
+	return null
+
+## Sets a new in transition for the slide
+func set_in_transition_override(_new_in_transition_override: Transition) -> void:
+	pass

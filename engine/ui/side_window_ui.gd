@@ -1,29 +1,14 @@
 class_name SideWindowUI
 extends CanvasLayer
 	
-signal continue_slide
-signal previous_slide
-signal skip_slide
-signal toggle_slideshow(slideshow_active: bool)
-signal set_slideshow_duration(new_duration: float)
+@export var prev_slide_panel: SlidePreview
+@export var current_slide_panel: SlidePreview
+@export var next_slide_panel: SlidePreview
 
-func _on_control_bar_back_pressed() -> void:
-	previous_slide.emit()
+var slide_previews: Array[SlidePreview]
 
-func _on_control_bar_continue_pressed() -> void:
-	continue_slide.emit()
-
-func _on_control_bar_quit_pressed() -> void:
-	quit()
-
-func _on_control_bar_skip_pressed() -> void:
-	skip_slide.emit()
-
-func _on_control_bar_slideshow_duration_changed(new_duration: float) -> void:
-	set_slideshow_duration.emit(new_duration)
-
-func _on_control_bar_slideshow_toggled(toggled_on: bool) -> void:
-	toggle_slideshow.emit(toggled_on)
+func _ready() -> void:
+	slide_previews = [prev_slide_panel, current_slide_panel, next_slide_panel]
 	
 func quit() -> void:
 	if Util.is_web():
@@ -31,3 +16,15 @@ func quit() -> void:
 		return
 	get_tree().quit()
 	
+func on_resize(new_window_size: Vector2) -> void:
+	for slide_preview: SlidePreview in slide_previews:
+		slide_preview.on_resize_parent_window(new_window_size)
+
+func set_preview_window_resize_keep_rel_pos(keep_rel_pos_new: bool) -> void:
+	for slide_preview: SlidePreview in slide_previews:
+		slide_preview.set_preview_window_resize_keep_rel_pos(keep_rel_pos_new)
+		
+func set_preview_window_resize_scale(do_scale_new: bool) -> void:
+	for slide_preview: SlidePreview in slide_previews:
+		slide_preview.set_preview_window_resize_scale(do_scale_new)
+		
