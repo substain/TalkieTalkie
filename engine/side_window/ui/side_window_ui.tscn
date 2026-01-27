@@ -1,16 +1,24 @@
 [gd_scene load_steps=6 format=3 uid="uid://bp5mgabsdn7i4"]
 
-[ext_resource type="Script" uid="uid://bre0fh3ao4yq1" path="res://engine/ui/side_window_ui.gd" id="1_7iuc4"]
+[ext_resource type="Script" uid="uid://bre0fh3ao4yq1" path="res://engine/side_window/ui/side_window_ui.gd" id="1_7iuc4"]
 [ext_resource type="PackedScene" uid="uid://cprx301afsox0" path="res://engine/ui/time_view.tscn" id="2_jyfea"]
-[ext_resource type="PackedScene" uid="uid://rgndpyhb5p7q" path="res://engine/ui/preview_condensed.tscn" id="4_mmjlk"]
-[ext_resource type="PackedScene" uid="uid://d3o1poh7bdxgc" path="res://engine/ui/slide_preview.tscn" id="4_npmih"]
+[ext_resource type="PackedScene" uid="uid://rgndpyhb5p7q" path="res://engine/side_window/ui/preview_condensed.tscn" id="4_mmjlk"]
+[ext_resource type="PackedScene" uid="uid://d3o1poh7bdxgc" path="res://engine/side_window/ui/slide_preview.tscn" id="4_npmih"]
 [ext_resource type="PackedScene" uid="uid://8r006t5y8nxp" path="res://engine/ui/comments_view.tscn" id="5_npmih"]
 
-[node name="SideWindowUI" type="CanvasLayer" node_paths=PackedStringArray("prev_slide_panel", "current_slide_panel", "next_slide_panel")]
+[node name="SideWindowUI" type="CanvasLayer" node_paths=PackedStringArray("slide_previews_by_rel_index", "preview_condensed_by_rel_index", "time_view")]
 script = ExtResource("1_7iuc4")
-prev_slide_panel = NodePath("SlidePanelBase/PreviousSlidePreview")
-current_slide_panel = NodePath("SlidePanelBase/CurrentSlidePreview")
-next_slide_panel = NodePath("SlidePanelBase/NextSlidePreview")
+slide_previews_by_rel_index = {
+-1: NodePath("SlidePanelBase/PreviousSlidePreview"),
+0: NodePath("SlidePanelBase/CurrentSlidePreview"),
+1: NodePath("SlidePanelBase/NextSlidePreview")
+}
+preview_condensed_by_rel_index = {
+-1: NodePath("PreviewCondensedMC/PanelContainer/HBoxContainer/PreviousPreviewCondensed"),
+0: NodePath("PreviewCondensedMC/PanelContainer/HBoxContainer/CurrentPreviewCondensed"),
+1: NodePath("PreviewCondensedMC/PanelContainer/HBoxContainer/NextPreviewCondensed")
+}
+time_view = NodePath("TimeView")
 
 [node name="TimeView" parent="." instance=ExtResource("2_jyfea")]
 anchors_preset = 1
@@ -73,7 +81,6 @@ title = "ui.relative_slide.previous"
 position = Vector2i(0, 227)
 size = Vector2i(240, 135)
 offset_from_current_slide = -1
-bg_color = Color(0.533, 0.533, 0.65, 1)
 
 [node name="CurrentSlidePreview" parent="SlidePanelBase" instance=ExtResource("4_npmih")]
 disable_3d = true
@@ -81,7 +88,6 @@ title = "ui.relative_slide.current"
 position = Vector2i(240, 210)
 size = Vector2i(320, 180)
 always_on_top = true
-bg_color = Color(0.82532096, 0.8267233, 0.9098726, 1)
 
 [node name="NextSlidePreview" parent="SlidePanelBase" instance=ExtResource("4_npmih")]
 disable_3d = true
@@ -89,7 +95,6 @@ title = "ui.relative_slide.next"
 position = Vector2i(560, 227)
 size = Vector2i(240, 135)
 offset_from_current_slide = 1
-bg_color = Color(0.6396, 0.6396, 0.78, 1)
 
 [node name="SlideCommentMC" type="PanelContainer" parent="."]
 anchors_preset = 7

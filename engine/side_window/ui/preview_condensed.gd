@@ -14,7 +14,6 @@ extends Control
 func _ready() -> void:
 	title_label.text = tr(preview_title)
 	popup_button.set_pressed_no_signal(!target_slide_preview.visible)
-	target_slide_preview.close_requested.connect(set_preview_visible.bind(false, true))
 	target_slide_preview.slide_updated.connect(update_slide_title_text)
 	update_popup_text()
 	update_slide_title_text()

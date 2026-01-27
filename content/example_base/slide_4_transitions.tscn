@@ -34,7 +34,7 @@ metadata/_custom_type_script = "uid://dnjg462pg7agr"
 slide_title = "Transitions"
 
 [node name="Translations" parent="." index="0" node_paths=PackedStringArray("target_nodes")]
-target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/ElementLabel"), NodePath("../ContentVBC/ElementLabel2"), NodePath("../ContentVBC/ElementLabel3"), NodePath("../ContentVBC/ElementLabel4")]
+target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/ElementLabel"), NodePath("../ContentVBC/ElementLabel2"), NodePath("../ContentVBC/ElementLabelParent/ElementLabel3"), NodePath("../ContentVBC/ElementLabel4")]
 translation_targets = Array[ExtResource("2_dqcn0")]([SubResource("Resource_08ar6"), SubResource("Resource_xi6wh"), SubResource("Resource_hps66"), SubResource("Resource_1yv4c"), SubResource("Resource_gh4nb")])
 
 [node name="TitleLabel" parent="." index="1"]
@@ -63,15 +63,24 @@ vertical_alignment = 1
 script = ExtResource("2_uu3o7")
 animation_dur = 0.35
 
-[node name="ElementLabel3" type="Label" parent="ContentVBC" index="2"]
+[node name="ElementLabelParent" type="Control" parent="ContentVBC" index="2"]
+custom_minimum_size = Vector2(1526, 69)
 layout_mode = 2
+
+[node name="ElementLabel3" type="Label" parent="ContentVBC/ElementLabelParent" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "• content.base_example.4.animations1"
 vertical_alignment = 1
 
-[node name="MoveAnimation" type="Node" parent="ContentVBC/ElementLabel3" index="0"]
+[node name="MoveAnimation" type="Node" parent="ContentVBC/ElementLabelParent/ElementLabel3" index="0"]
 script = ExtResource("3_udv5u")
 initial_element_offset = Vector2(0, -900)
 animation_dur = 0.5

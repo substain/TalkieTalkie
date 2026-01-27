@@ -8,6 +8,7 @@ ui.timeview.time_left;Time left:;Übrige Zeit:
 ui.comments;Comments;Kommentare
 ui.preview.show_preview;Show Preview;Vorschau zeigen
 ui.preview.hide_preview;Hide Preview;Vorschau verstecken
+ui.preview.preview_disabled;preview disabled;Vorschau deaktiviert
 ui.relative_slide.previous;Previous Slide;Letzte Folie
 ui.relative_slide.current;Current Slide;Aktuelle Folie
 ui.relative_slide.next;Next Slide;Nächste Folie

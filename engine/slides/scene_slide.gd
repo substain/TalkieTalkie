@@ -11,6 +11,9 @@ class_name SceneSlide extends Slide
 ## Overrides the default transition from the previous slide to this slide
 @export var in_transition_override: Transition = null
 
+## Elements that should only show up in preview windows. Font color can be set via SideWindowBase/PreviewThemeSettings/info_color
+@export var preview_info_elements: Array[Node]
+
 # override
 func get_title() -> String:
 	return slide_title

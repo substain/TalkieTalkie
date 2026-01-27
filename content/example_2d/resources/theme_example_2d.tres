@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://dk0w0wmf3pmsy"]
+
+[resource]
+Label/colors/font_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
+Label/font_sizes/font_size = 50
+UnseenProgress/base_type = &"Label"
+UnseenProgress/colors/font_color = Color(0.77, 0.37550333, 0.3234, 0.6862745)

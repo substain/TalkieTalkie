@@ -6,35 +6,42 @@ class_name SlideMoveAnimation extends SlideAnimation
 var _target_base_positions: Array[Vector2] = []
 var _target_start_positions: Array[Vector2] = []
 
-@warning_ignore_start("unsafe_property_access")
-
 var initialized: bool = false
 var is_finished: bool = false
 
 var was_drawn: bool = false
 
+var ci_targets: Array[CanvasItem] = []
+
 func _ready() -> void:
 	super()
 	
-	if targets.is_empty():
+	for target: Node in targets:
+		if target is CanvasItem:
+			ci_targets.append(target)
+			_target_base_positions.append(ci_get_position(target as CanvasItem))
+		else:
+			push_warning("SlideMoveAnimation expects CanvasItem targets. Ignoring '", target.name, "'.")
+			
+	if ci_targets.is_empty():
 		return
-	
-	await targets[0].draw
+
+	#await ci_targets[0].draw
+	await get_tree().process_frame
 	was_drawn = true
 	init_positions()
 
-	#TODO maybe lazy init is more robust - see approach in animate() 
 	if !is_finished:
 		reset()
 	else:
 		skip_to_finish()
 
 func init_positions() -> void:
-	for target: CanvasItem in targets:
+	
+	for target: CanvasItem in ci_targets:
 		if target.get_parent() is Container && target is Control:
 			_insert_control_node_as_target_parent(target as Control)
-		_target_base_positions.append(target.position)
-		_target_start_positions.append(target.position + initial_element_offset)
+		_target_start_positions.append(ci_get_position(target) + initial_element_offset)
 
 	initialized = true
 		
@@ -44,18 +51,14 @@ func reset() -> void:
 		return
 
 	_clear_tweens()
-
-	for i: int in targets.size():
-		if !is_instance_valid(targets[i]):
+	
+	for i: int in ci_targets.size():
+		if !is_instance_valid(ci_targets[i]):
 			push_warning("found invalid slide animation reference in ", self.name)
 			return
-		targets[i].position = _target_start_positions[i]
+		ci_set_position(ci_targets[i], _target_start_positions[i])
 		
 func animate() -> void:
-	# Lazy init variant
-	#if was_drawn && !initialized:
-		#init_positions()
-	
 	if is_zero_approx(animation_dur):
 		skip_to_finish()
 		return
@@ -63,23 +66,20 @@ func animate() -> void:
 	_kill_current_tween()
 	_current_tween = create_tween().set_parallel(true)
 	
-	for i: int in targets.size():
-		_current_tween.tween_property(targets[i], "position", _target_base_positions[i], animation_dur)
+	for i: int in ci_targets.size():
+		_current_tween.tween_property(ci_targets[i], "position", _target_base_positions[i], animation_dur)
 	
 	_anim_tweens.append(_current_tween)
 
 func skip_to_finish() -> void:
 	is_finished = true
-	if !initialized:
-		return
-	
 	_kill_current_tween()
 		
-	for i: int in targets.size():
-		targets[i].position = _target_base_positions[i]
+	for i: int in ci_targets.size():
+		ci_set_position(ci_targets[i], _target_base_positions[i])
 
 func is_valid() -> bool:
-	return targets.size() > 0
+	return ci_targets.size() > 0
 
 func _insert_control_node_as_target_parent(target: Control) -> void:
 	var node_to_insert: Control = Control.new()
@@ -97,4 +97,11 @@ func _insert_control_node_as_target_parent(target: Control) -> void:
 	target.reparent(node_to_insert)
 	target.position = Vector2.ZERO
 
+# ignore warnings for these property accesses since we know they are valid
+@warning_ignore_start("unsafe_property_access")
+func ci_set_position(target: CanvasItem, new_pos: Vector2) -> void:
+	target.position = new_pos
+
+func ci_get_position(target: CanvasItem) -> Vector2:
+	return target.position
 @warning_ignore_restore("unsafe_property_access")

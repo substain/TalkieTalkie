@@ -1,6 +1,6 @@
 # TalkieTalkie
 <img align="right" width="100" height="100" src="https://github.com/substain/TalkieTalkie/blob/main/icon.svg">
-A presentation tool/framework to create presentations within Godot.
+A presentation template/framework to create interactive presentations within Godot.
 
 You can test the example presentation here: [https://substain.itch.io/talkietalkie](https://substain.itch.io/talkietalkie).
 
@@ -28,6 +28,7 @@ All files in `content/example*` are mainly used for reference purposes and can s
 * **Previous Slide** (`back`) - Left Arrow Key / Up Arrow Key / Page Up / Mouse Wheel Up
 * **Skip Slide** (`skip_slide`) - Page Down / Mouse Wheel Down
 * **Show/Hide UI** (`toggle_ui`) - F1 / Tab / Right Click
+* **Restore/Center Side Window** (`restore_side_window`) - F11
 * **Fullscreen** (`fullscreen`) - F12
 * **Quit** (`quit`) - Escape
 * **Draw with PaintingPointer 1** (`draw_pointer_1`) - Ctrl (Hold) + any mouse button (Hold)
@@ -64,6 +65,17 @@ The UI contains the following components:
 
 * An **Settings** menu that contain language and audio options
 
+Note that if the side window is active, the UI will show up there.
+
+### Side-Window
+An optional window showing presentation infos. You can configure the basic behavior of this via the SideWindowBase node, which is part of the presentation. In this window, previews for the last, current, and next slides can be displayed. Also, the side window shows time informations and slide comments as well as the UI, if active.
+
+Note that currently, slide previews are shown by packing them into packed scenes. This may lead to an error with signals on packed scenes inside these slides:
+
+"load_slide_by_packed_scene(): Signal x is already connected to given callable y in that object."
+
+You can make the packed scene local inside the slide to avoid this error. It also seems like you can safely ignore this error.
+
 ### PaintingPointer
 This Node is currently located within the UI and adds the possibility to highlight specific sections of a slide. Holding a button (Default: Ctrl and Alt) will show an icon, and lets you draw onto the slides. Drawings are removed after some seconds have passed or the slide is changed.
 There are some configuration options exposed via `all_paint_properties` on that node.
@@ -80,7 +92,6 @@ Hit `Generate Slides` to generate the slides.
 ## Planned Features
 Here is an incomplete list of features you can hope to see in the future:
 
-* A preview window displaying the next slides, current time, notes, and other helpful functionality (WIP)
 * A searchable table of contents (UI) that that provides improved slide navigation
 * Workflow improvements for creating slides, especially regarding translations
 * Better UI Scaling and mobile UX improvements

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://rgndpyhb5p7q"]
 
-[ext_resource type="Script" uid="uid://bl3ab6j4oqu7u" path="res://engine/ui/preview_condensed.gd" id="1_7movi"]
+[ext_resource type="Script" uid="uid://bl3ab6j4oqu7u" path="res://engine/side_window/ui/preview_condensed.gd" id="1_7movi"]
 
 [node name="PreviewCondensed" type="VBoxContainer" node_paths=PackedStringArray("title_label", "slide_title_label", "popup_button")]
 custom_minimum_size = Vector2(120, 0)

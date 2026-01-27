@@ -5,6 +5,8 @@ extends Node
 ## A simple slideshow feature (automatic continueing slides) can be activated by enabling "Autostart"
 ## in the SlideshowTimer node, and setting "Wait Time" to the desired delay.
 
+const NO_PREVIEW_SLIDE_SCENE: PackedScene = preload("res://engine/side_window/no_preview_slide.tscn")
+
 ## the current index of the slide 
 @export var slide_index: int = 0
 ## if true, the slide_index will be loaded from the last session if the presentation name matches
@@ -21,6 +23,7 @@ extends Node
 @export var slide_controller: SlideController
 
 var slide_instances: Array[Slide]
+
 var current_slide: Slide = null
 
 var transition_tween: Tween = null
@@ -48,9 +51,14 @@ func _ready() -> void:
 
 	if use_slide_numbering_order:
 		slide_instances.sort_custom(Util.compare_by_last_number)
-	
+		
+	var slide_templates: Array[PackedScene] = []
 	for i: int in slide_instances.size():
 		slide_instances[i].set_order_index(i)
+		slide_templates.push_back(create_slide_template(slide_instances[i]))
+
+	SlideHelper.get_context().slide_templates = slide_templates
+	
 	ui.set_available_slides(slide_instances)
 	
 	ui.control_bar.set_auto_slideshow_active(slide_controller.auto_slideshow_timer.autostart == true)
@@ -59,6 +67,21 @@ func _ready() -> void:
 	slide_controller.init(slide_instances, default_transition, manual_navigation_stops_auto_slideshow, has_faulty_configuration)
 	slide_controller.setup_initial_state(slide_index)
 
+func create_slide_template(target_slide: Slide) -> PackedScene:
+	var packed_scene: PackedScene = PackedScene.new()
+	if target_slide.is_previewable:
+		for child: Node in target_slide.find_children("*"):
+			child.owner = target_slide
+		packed_scene.pack(target_slide)
+	else:
+		var no_preview_slide: SceneSlide = NO_PREVIEW_SLIDE_SCENE.instantiate() as Slide
+		no_preview_slide.set_title(target_slide.get_title())
+		no_preview_slide.set_content(target_slide.get_content())
+		no_preview_slide.set_comments(target_slide.get_comments())
+		packed_scene.pack(no_preview_slide)
+
+	return packed_scene
+	
 func init_context() -> void:
 	SlideHelper.set_context(SlideContext.new(slide_size))
 	
@@ -116,6 +139,9 @@ func handle_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("toggle_ui"):
 		ui.toggle_ui_visible()
+		
+	if event.is_action_pressed("restore_side_window"):
+		SlideHelper.restore_side_window.emit()
 		
 	if event.is_action_pressed("fullscreen"):
 		ui.control_bar.toggle_fullscreen()

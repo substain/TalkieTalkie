@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cprx301afsox0"]
+[gd_scene load_steps=4 format=3 uid="uid://cprx301afsox0"]
 
 [ext_resource type="Script" uid="uid://dgp2574dlw3d8" path="res://engine/ui/time_view.gd" id="1_svi7a"]
+[ext_resource type="Script" uid="uid://bfx747pvla2o" path="res://engine/settings/time_view_settings.gd" id="2_irsr0"]
+
+[sub_resource type="Resource" id="Resource_kquc3"]
+script = ExtResource("2_irsr0")
+metadata/_custom_type_script = "uid://bfx747pvla2o"
 
 [node name="TimeView" type="MarginContainer" node_paths=PackedStringArray("clock_time_value_label", "target_duration_value_label", "passed_time_value_label", "time_left_value_label", "clock_time_parent", "target_duration_parent", "passed_time_parent", "time_left_parent")]
 anchors_preset = 5
@@ -15,7 +20,7 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 script = ExtResource("1_svi7a")
-autostart_passed_time_timer = true
+settings = SubResource("Resource_kquc3")
 clock_time_value_label = NodePath("VBoxContainer/ClockTimeHBC/ClockTimeValueLabel")
 target_duration_value_label = NodePath("VBoxContainer/TargetDurationHBC/TargetDurationValueLabel")
 passed_time_value_label = NodePath("VBoxContainer/PassedTimeHBC/PassedTimeValueLabel")

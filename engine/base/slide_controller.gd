@@ -39,9 +39,7 @@ func do_continue(automatic: bool = false) -> void:
 		return
 		
 	var previous_slide: Slide = current_slide
-	
 	var has_next_slide: bool = change_slide(1)
-	
 	if !has_next_slide:
 		return
 
@@ -133,12 +131,7 @@ func change_slide(change: int) -> bool:
 	change_slide_index(change)
 	if previous_slide_index == slide_index:
 		return false
-	current_slide = slide_instances[slide_index]
-	SlideHelper.current_slide = slide_instances[slide_index]
-	current_slide.reset()
-	update_ui_slide_status()
-	current_slide.activate_slide.emit()
-	SlideHelper.slide_changed.emit(current_slide)
+	set_current_slide(slide_instances[slide_index])
 	return true
 
 ## returns true if the slide was changed
@@ -147,14 +140,20 @@ func set_slide(new_index: int, force_set: bool = false) -> bool:
 	set_slide_index(new_index)
 	if previous_slide_index == slide_index && !force_set:
 		return false
-	current_slide = slide_instances[slide_index]
-	SlideHelper.current_slide = slide_instances[slide_index]
+	set_current_slide(slide_instances[slide_index])
+	return true
+	
+func set_current_slide(slide_new: Slide) -> void:
+	if is_instance_valid(current_slide):
+		current_slide.is_currently_active_slide = false
+	current_slide = slide_new
+	current_slide.is_currently_active_slide = true
+	SlideHelper.current_slide = slide_new
 	current_slide.reset()
 	update_ui_slide_status()
 	current_slide.activate_slide.emit()
 	SlideHelper.slide_changed.emit(current_slide)
-	return true
-	
+
 func change_slide_index(change: int) -> void:
 	set_slide_index(slide_index + change)
 	

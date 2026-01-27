@@ -13,6 +13,7 @@ enum SlideContextType {
 var slide_size: Vector2
 var slide_center_offset: Vector2
 var slide_context_type: SlideContextType = SlideContextType.CONTROL
+var slide_templates: Array[PackedScene] = []
 
 func _init(slide_size_new: Vector2) -> void:
 	slide_size = slide_size_new

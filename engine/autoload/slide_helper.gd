@@ -5,8 +5,10 @@ signal context_initialized
 
 @warning_ignore_start("unused_signal")
 signal slide_changed(new_slide: Slide)
+signal progress_changed(new_progress: float)
 signal pointing_at_pos(global_pos: Vector2, is_drawing: bool, paint_properties: PaintProperties)
 signal stop_drawing()
+signal restore_side_window()
 @warning_ignore_restore("unused_signal")
 
 var presentation: Presentation

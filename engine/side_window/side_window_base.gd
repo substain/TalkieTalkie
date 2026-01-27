@@ -7,14 +7,14 @@ enum EnableOptions {
 	NEVER
 }
 
-const SIDE_WINDOW_SCENE: PackedScene = preload("res://engine/base/side_window.tscn")
+const SIDE_WINDOW_SCENE: PackedScene = preload("res://engine/side_window/side_window.tscn")
 @export_category("SideWindow Settings")
 @export var enabled: EnableOptions = EnableOptions.IF_SECOND_SCREEN_EXISTS
 @export var quit_on_close: bool = true
-## if true, resizing the side window should keep the relative position of the embedded preview windows
-@export var preview_window_resize_keep_rel_pos: bool = true
-## if true, resizing the side window should also scale the embedded preview windows
-@export var preview_window_resize_scale: bool = true
+@export var preview_theme_settings: PreviewThemeSettings
+
+## Overwrites the default settings for the side window's time ui, if set.
+@export var time_view_settings: TimeViewSettings
 
 @export_category("Node References")
 @export var presentation: Presentation
@@ -27,6 +27,8 @@ func _enter_tree() -> void:
 	if enabled == EnableOptions.ALWAYS || (enabled == EnableOptions.IF_SECOND_SCREEN_EXISTS && DisplayServer.get_screen_count() >= 2):
 		set_side_window_active(true)
 
+	SlideHelper.restore_side_window.connect(_on_restore_side_window)
+
 func set_side_window_active(is_active_new: bool) -> void:
 	is_side_window_active = is_active_new
 	
@@ -35,19 +37,30 @@ func set_side_window_active(is_active_new: bool) -> void:
 		add_child(_side_window)
 		_side_window.close_requested.connect(_on_close_requested)
 		_side_window.input_received.connect(presentation._on_side_window_input_received)
-		_side_window.set_preview_window_resize_keep_rel_pos(preview_window_resize_keep_rel_pos)
-		_side_window.set_preview_window_resize_scale(preview_window_resize_scale)
+		configure_side_window(_side_window)
 		_side_window.set_as_ui_parent(true, ui)
 	else:
 		_close_side_window()
-		
+
+func configure_side_window(side_window: SideWindow) -> void:
+	if preview_theme_settings == null:
+		preview_theme_settings = PreviewThemeSettings.new()
+	_side_window.side_window_ui.set_preview_theme_settings(preview_theme_settings)
+	side_window.side_window_ui.time_view.override_settings(time_view_settings)
+
 func _on_close_requested() -> void:
 	if quit_on_close:
 		get_tree().quit()
 	else:
-		_close_side_window()
+		set_side_window_active(false)
 	
 func _close_side_window() -> void:
 	_side_window.set_as_ui_parent(false, ui)
 	_side_window.queue_free()
 	_side_window = null
+
+func _on_restore_side_window() -> void:
+	if !is_side_window_active:
+		set_side_window_active(true)
+	else:
+		_side_window.center_to_current_screen()

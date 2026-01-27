@@ -4,9 +4,10 @@ extends Node2D
 ## Maps the slides to 2D world positions on a straight line.
 ## Also sets the slide center positions for the 2D context for the SlideHelper autoload, which is used for 2D transition.
 
-@export var target_parent: Node2D
+@export var target_parent: Node
 @export var slide_separation: Vector2 = Vector2(200, 0)
 @export var slide_parent_scene: PackedScene = null
+@export var theme_source: Control = null
 
 func _ready() -> void:
 	if target_parent == null:
@@ -20,6 +21,8 @@ func _ready() -> void:
 func map_slides_to_2d() -> void:
 	var slide_context: SlideContext2D = SlideHelper.get_context_2d()
 	var slide_size: Vector2 = slide_context.slide_size
+	
+	var theme: Theme = get_theme(target_parent, theme_source)
 	
 	var children: Array[Slide] = Util.collect_slides_in_children(target_parent)
 	var direction: Vector2 = slide_separation.normalized()
@@ -41,6 +44,19 @@ func map_slides_to_2d() -> void:
 		slide_center_locations[new_pos + slide_context.slide_center_offset] = child 
 		child.reparent(slide_parent)
 		
+		# NOTE: needed until we have theme propagation via Node2D (see https://github.com/godotengine/godot-proposals/issues/9132)
+		if theme != null:
+			child.theme = theme
+		
 		@warning_ignore("unsafe_property_access")
 		child.position = Vector2.ZERO
 	slide_context.slide_center_locations = slide_center_locations
+
+static func get_theme(theme_target_parent: Node, theme_parent_opt: Control) -> Theme:
+	if theme_parent_opt != null:
+		return theme_parent_opt.theme
+		
+	if theme_target_parent is Control && (theme_target_parent as Control).theme != null:
+		return (theme_target_parent as Control).theme
+		
+	return null

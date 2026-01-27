@@ -5,8 +5,13 @@ signal index_initialized
 @warning_ignore("unused_signal")
 signal activate_slide
 
+@export var is_previewable: bool = true
+
 var _order_initialized: bool = false
 var _order_index: int
+var _current_progress: float = 0.0
+
+var is_currently_active_slide: bool = false
 
 func _ready() -> void:
 	reset()
@@ -37,6 +42,27 @@ func continue_slide() -> bool:
 func set_progress(_relative_progress: float) -> bool:
 	return true
 	
+## Returns the current slide progress
+func get_progress() -> float:
+	return _current_progress
+
+## Updates the slide progress internally
+func _update_progress(new_progress: float) -> void:
+	_current_progress = new_progress
+	if is_currently_active_slide:
+		SlideHelper.progress_changed.emit(_current_progress)
+
+## Returns a list of elements that depend on the progress along to true if they have progressed / false otherwise
+## This is used for SidePreviewPanel._on_slide_progress_changed() to set the visibilty of the elements of the duplicated slides
+## The variant can be one of the following:
+## an Array[Node]. These will be compared via their NodePaths
+## a SlideAnimation. These will be compared via their order (see AnimSlide.compare_by_sort_order(..))
+func get_progress_elements() -> Dictionary[Variant, bool]:
+	return {}
+	
+func set_slide_initialized() -> void:
+	pass
+
 ## Returns true if the current slide is at the start position
 func is_at_start() -> bool:
 	return true

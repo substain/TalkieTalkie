@@ -9,12 +9,21 @@ var fade_tween: Tween = null
 var fade_tweens: Array[Tween] = []
 var animations: Array[SlideAnimation]
 
+var progress_elements: Dictionary[Variant, bool] = {} # Dictionary[Any, bool]
+
+var current_progress: float = 0.0
+
 func _ready() -> void:
 	super()
 	animations = collect_anims_in_children(self, 0)
 	animations.sort_custom(compare_by_sort_order)
 	anim_steps = animations.size()
+	_prepare_progress_elements()
 	reset()
+	
+func _prepare_progress_elements() -> void:
+	for animation: SlideAnimation in animations:
+		progress_elements[animation as Variant] = false
 	
 func reset() -> void:
 	for tween: Tween in fade_tweens:
@@ -22,29 +31,35 @@ func reset() -> void:
 		
 	fade_tweens.clear()
 		
-	for element: SlideAnimation in animations:
-		if !is_instance_valid(element):
+	for animation: SlideAnimation in animations:
+		if !is_instance_valid(animation):
 			push_warning("found invalid slide animation reference in ", self.name)
-		element.reset()
+		animation.reset()
+		progress_elements[animation as Variant] = false
 		
-	current_anim_step = -1
+	update_anim_step(-1)
 	
 func show_full() -> void:
 	for animation: SlideAnimation in animations:
 		animation.skip_to_finish()
-
-	current_anim_step = anim_steps
+		progress_elements[animation as Variant] = true
+	update_anim_step(anim_steps)
 
 func continue_slide() -> bool:
-	current_anim_step += 1
+	var target_anim_step: int = current_anim_step + 1
 	
-	if is_finished(): 
+	if is_finished_by_step(target_anim_step): 
 		return true
-		
-	if current_anim_step > 0:
-		animations[current_anim_step-1].skip_to_finish()
+
+	if target_anim_step > 0:
+		var animation: SlideAnimation = animations[target_anim_step-1]
+		animation.skip_to_finish()
+		progress_elements[animation as Variant] = true
 	
-	animations[current_anim_step].animate()
+	var current_animation: SlideAnimation = animations[target_anim_step]
+	current_animation.animate()
+	progress_elements[current_animation as Variant] = true
+	update_anim_step(target_anim_step)
 
 	return false
 	
@@ -52,7 +67,7 @@ func set_progress(relative_progress: float) -> bool:
 	var requested_step: int = get_anim_index_by_progress(anim_steps, relative_progress)
 	
 	if requested_step == current_anim_step:
-		return is_finished()
+		return is_finished_by_step(requested_step)
 		
 	if requested_step == current_anim_step + 1:
 		return continue_slide()
@@ -65,31 +80,46 @@ func set_progress(relative_progress: float) -> bool:
 		return true
 		
 	for animation_index: int in anim_steps:
+		var anim: SlideAnimation = animations[animation_index]
 		if animation_index < requested_step:
-			animations[animation_index].skip_to_finish()
+			anim.skip_to_finish()
+			progress_elements[anim as Variant] = true
 			continue
 		
 		if animation_index > requested_step:
-			animations[animation_index].reset()
+			anim.reset()
+			progress_elements[anim as Variant] = false
 			continue
-
+			
+	var target_anim: SlideAnimation = animations[requested_step]
 	if current_anim_step < requested_step:
-		animations[requested_step].animate()
+		target_anim.animate()
 	else:
-		animations[requested_step].skip_to_finish()
+		target_anim.skip_to_finish()
 	
-	if is_finished(): 
+	progress_elements[target_anim as Variant] = true
+	if is_finished_by_step(requested_step): 
 		return true
 	
-	current_anim_step = requested_step
+	update_anim_step(requested_step)
 	return false
 
+func update_anim_step(new_anim_step: int) -> void:
+	current_anim_step = new_anim_step
+	_update_progress(get_progress_by_anim_index(anim_steps, current_anim_step))
+
+func get_progress_elements() -> Dictionary[Variant, bool]:
+	return progress_elements
+
+func is_finished_by_step(target_anim_step: int) -> bool:
+	return target_anim_step >= anim_steps
+
 func is_finished() -> bool:
-	return current_anim_step >= anim_steps
+	return is_finished_by_step(current_anim_step)
 			
 func is_at_start() -> bool:
-	return current_anim_step == 0
-	
+	return current_anim_step == -1
+		
 static func compare_by_sort_order(a: SlideAnimation, b: SlideAnimation) -> int:
 	if a.sort_order != b.sort_order:
 		return a.sort_order < b.sort_order
@@ -110,5 +140,10 @@ static func collect_anims_in_children(node: Node, current_index: int) -> Array[S
 			current_index = res[res.size()-1].tree_index + 1
 	return res
 
+static func get_progress_by_anim_index(given_anim_steps: int, current_index: int) -> float:
+	if given_anim_steps == 0:
+		return 1.0
+	return float(current_index + 1) / given_anim_steps
+	
 static func get_anim_index_by_progress(given_anim_steps: int, progress: float) -> int:
 	return roundi(float(given_anim_steps) * progress)-1
