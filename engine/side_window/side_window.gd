@@ -28,8 +28,12 @@ func _ready() -> void:
 	side_window_ui.preview_layout_settings_updated.connect(_on_preview_layout_settings_updated)
 
 func on_resize() -> void:
-	pass
+	if !is_node_ready():
+		return
 	
+	side_window_ui.on_resize(size)
+	update_side_window_settings()
+			
 func _input(event: InputEvent) -> void:
 	input_received.emit(event)
 
@@ -107,8 +111,8 @@ func _notification(what: int) -> void:
 		update_side_window_settings()
 		
 	if what == NOTIFICATION_WM_SIZE_CHANGED:
-		side_window_ui.on_resize(size)
-		update_side_window_settings()
+		on_resize()
+
 
 func center_to_current_screen() -> void:
 	var size_with_deco: Vector2i = get_size_with_deco()

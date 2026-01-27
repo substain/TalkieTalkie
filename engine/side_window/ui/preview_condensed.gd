@@ -1,6 +1,8 @@
 class_name PreviewCondensed
 extends Control
 
+signal toggle_preview_visible(is_visible_new: bool)
+
 @export var target_slide_preview: SlidePreview
 @export var preview_title: String
 
@@ -19,14 +21,13 @@ func _ready() -> void:
 	update_slide_title_text()
 
 func _on_popup_button_toggled(toggled_on: bool) -> void:
-	set_preview_visible(!toggled_on)
+	toggle_preview_visible.emit(!toggled_on)
 
 func set_preview_visible(is_visible_new: bool, update_button: bool = false) -> void:
 	if update_button:
 		popup_button.set_pressed_no_signal(!is_visible_new)
 
 	update_popup_text()
-	target_slide_preview.visible = is_visible_new
 
 func update_popup_text() -> void:
 	popup_button.text = tr("ui.preview.show_preview") if popup_button.button_pressed else tr("ui.preview.hide_preview")

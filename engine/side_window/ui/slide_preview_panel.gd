@@ -34,7 +34,7 @@ var window_title_prefix: String
 # used to ensure resize signals by code are not triggered
 var ignore_next_resize_signal: bool = false
 
-var preview_layout_settings: PreviewLayoutSettings #these settings may be updated / saved
+var preview_layout_settings: PreviewLayoutSettings = PreviewLayoutSettings.new() #these settings may be updated / saved
 var preview_theme_settings: PreviewThemeSettings = PreviewThemeSettings.new() #readonly
 
 
@@ -137,6 +137,7 @@ func do_resize(update_this_window_size: bool) -> void:
 		return
 	
 	var target_size: Vector2 = Vector2(max_size.x * relative_size_to_window.x, max_size.y * relative_size_to_window.y)
+
 	if preview_theme_settings.keep_rel_pos_on_resize:
 		if update_this_window_size:
 			# ensure the next signal that will be emitted by setting the size will not re-evaluate
@@ -256,6 +257,7 @@ func update_settings() -> void:
 
 func load_settings(preview_layout_settings_new: PreviewLayoutSettings) -> void:
 	preview_layout_settings = preview_layout_settings_new
+	ignore_next_resize_signal = true
 	size = preview_layout_settings.size
 	var target_pos: Vector2 = preview_layout_settings.position
 	
@@ -280,11 +282,10 @@ func get_center_pos() -> Vector2:
 func set_preview_theme_settings(preview_theme_settings_new: PreviewThemeSettings) -> void:
 	preview_theme_settings = preview_theme_settings_new
 
-func set_shown(is_shown_new: bool, do_emit_signal: bool = true) -> void:
+func update_is_shown(is_shown_new: bool) -> void:
 	preview_layout_settings.is_shown = is_shown_new
-	if do_emit_signal:
-		pass
-
+	update_settings()
+	
 # recursively gets all children with filter option, with signature:
 # func filter(node: Node) -> bool
 # e.g. node is BaseButton

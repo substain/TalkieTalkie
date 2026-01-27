@@ -10,7 +10,6 @@ position = Vector2i(0, 36)
 transparent = true
 min_size = Vector2i(50, 50)
 script = ExtResource("1_eji1u")
-bg_color = Color(0.5503672, 0.6039942, 0.6266818, 0.49019608)
 color_rect = NodePath("BGColorRect")
 
 [node name="BGColorRect" type="ColorRect" parent="."]

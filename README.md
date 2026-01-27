@@ -72,9 +72,11 @@ An optional window showing presentation infos. You can configure the basic behav
 
 Note that currently, slide previews are shown by packing them into packed scenes. This may lead to an error with signals on packed scenes inside these slides:
 
-"load_slide_by_packed_scene(): Signal x is already connected to given callable y in that object."
+`load_slide_by_packed_scene(): Signal x is already connected to given callable y in that object.`
 
 You can make the packed scene local inside the slide to avoid this error. It also seems like you can safely ignore this error.
+
+The layout of this window (size, position, and preview layouts) is stored in the preferences and loaded on startup.
 
 ### PaintingPointer
 This Node is currently located within the UI and adds the possibility to highlight specific sections of a slide. Holding a button (Default: Ctrl and Alt) will show an icon, and lets you draw onto the slides. Drawings are removed after some seconds have passed or the slide is changed.
