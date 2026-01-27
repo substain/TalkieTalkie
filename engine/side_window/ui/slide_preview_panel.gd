@@ -93,6 +93,7 @@ func load_slide_by_packed_scene(packed_scene: PackedScene) -> void:
 	current_slide.show_full()
 	current_slide.set_anchors_preset(Control.PRESET_FULL_RECT)
 	update_slide_scale()
+	recenter_slide_in_window()
 	if current_slide is SceneSlide && (current_slide as SceneSlide).preview_info_elements != null && !(current_slide as SceneSlide).preview_info_elements.is_empty():
 		for info_element: Node in (current_slide as SceneSlide).preview_info_elements:
 			if info_element is Control:
