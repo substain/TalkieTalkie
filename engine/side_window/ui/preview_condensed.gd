@@ -29,6 +29,9 @@ func set_preview_visible(is_visible_new: bool, update_button: bool = false) -> v
 
 	update_popup_text()
 
+func set_popup_button_visible(is_button_visible_new: bool) -> void:
+	popup_button.visible = is_button_visible_new
+
 func update_popup_text() -> void:
 	popup_button.text = tr("ui.preview.show_preview") if popup_button.button_pressed else tr("ui.preview.hide_preview")
 

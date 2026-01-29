@@ -46,9 +46,6 @@ func reparent_ui_children(target: Node, ui: UI) -> void:
 	for child: Node in ui.side_window_nodes:
 		child.call_deferred("reparent", target, false)
 
-func _on_size_changed() -> void:
-	on_resize() 
-
 func update_side_window_settings() -> void:
 	# ensure we don't save with continuous changes
 	if !is_instance_valid(update_settings_timer):
@@ -117,9 +114,11 @@ func _notification(what: int) -> void:
 func center_to_current_screen() -> void:
 	var size_with_deco: Vector2i = get_size_with_deco()
 	var target_screen: int = DisplayServer.get_screen_from_rect(Rect2(position, size_with_deco))
+	@warning_ignore_start("integer_division")
 	var target_screen_center: Vector2i = DisplayServer.screen_get_position(target_screen) + (DisplayServer.screen_get_size(target_screen) / 2)
 	position = target_screen_center - size_with_deco/2
-	
+	@warning_ignore_restore("integer_division")
+
 func get_size_with_deco() -> Vector2:
 	return DisplayServer.window_get_size_with_decorations(get_window_id())
 

@@ -1,12 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://bp5mgabsdn7i4"]
+[gd_scene format=3 uid="uid://bp5mgabsdn7i4"]
 
 [ext_resource type="Script" uid="uid://bre0fh3ao4yq1" path="res://engine/side_window/ui/side_window_ui.gd" id="1_7iuc4"]
 [ext_resource type="PackedScene" uid="uid://cprx301afsox0" path="res://engine/ui/time_view.tscn" id="2_jyfea"]
+[ext_resource type="Texture2D" uid="uid://bxhrauwj4w41u" path="res://style/ui/draw.svg" id="4_0ovp2"]
 [ext_resource type="PackedScene" uid="uid://rgndpyhb5p7q" path="res://engine/side_window/ui/preview_condensed.tscn" id="4_mmjlk"]
 [ext_resource type="PackedScene" uid="uid://d3o1poh7bdxgc" path="res://engine/side_window/ui/slide_preview.tscn" id="4_npmih"]
+[ext_resource type="Texture2D" uid="uid://c6nx6pbm6brxd" path="res://style/ui/draw_pressed.svg" id="5_kd52j"]
 [ext_resource type="PackedScene" uid="uid://8r006t5y8nxp" path="res://engine/ui/comments_view.tscn" id="5_npmih"]
+[ext_resource type="Texture2D" uid="uid://je4b13sw4s8v" path="res://style/ui/draw_hover.svg" id="6_0s51d"]
 
-[node name="SideWindowUI" type="CanvasLayer" node_paths=PackedStringArray("slide_previews_by_rel_index", "preview_condensed_by_rel_index", "time_view")]
+[node name="SideWindowUI" type="CanvasLayer" unique_id=496651986 node_paths=PackedStringArray("slide_previews_by_rel_index", "preview_condensed_by_rel_index", "time_view", "edit_button")]
 script = ExtResource("1_7iuc4")
 slide_previews_by_rel_index = {
 -1: NodePath("SlidePanelBase/PreviousSlidePreview"),
@@ -19,8 +22,9 @@ preview_condensed_by_rel_index = {
 1: NodePath("PreviewCondensedMC/PanelContainer/HBoxContainer/NextPreviewCondensed")
 }
 time_view = NodePath("TimeView")
+edit_button = NodePath("PreviewCondensedMC/PanelContainer/HBoxContainer/EditButton")
 
-[node name="TimeView" parent="." instance=ExtResource("2_jyfea")]
+[node name="TimeView" parent="." unique_id=1955618064 instance=ExtResource("2_jyfea")]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -29,7 +33,7 @@ offset_right = 0.0
 offset_bottom = 112.0
 grow_horizontal = 0
 
-[node name="PreviewCondensedMC" type="MarginContainer" parent="."]
+[node name="PreviewCondensedMC" type="MarginContainer" parent="." unique_id=1835208019]
 offset_right = 380.0
 offset_bottom = 82.0
 theme_override_constants/margin_left = 12
@@ -37,34 +41,42 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="PanelContainer" type="PanelContainer" parent="PreviewCondensedMC"]
+[node name="PanelContainer" type="PanelContainer" parent="PreviewCondensedMC" unique_id=1705075904]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PreviewCondensedMC/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PreviewCondensedMC/PanelContainer" unique_id=896964912]
 layout_mode = 2
 
-[node name="PreviousPreviewCondensed" parent="PreviewCondensedMC/PanelContainer/HBoxContainer" node_paths=PackedStringArray("target_slide_preview") instance=ExtResource("4_mmjlk")]
+[node name="PreviousPreviewCondensed" parent="PreviewCondensedMC/PanelContainer/HBoxContainer" unique_id=1646287137 node_paths=PackedStringArray("target_slide_preview") instance=ExtResource("4_mmjlk")]
 layout_mode = 2
 target_slide_preview = NodePath("../../../../SlidePanelBase/PreviousSlidePreview")
 preview_title = "ui.relative_slide.previous"
 
-[node name="VSeparator" type="VSeparator" parent="PreviewCondensedMC/PanelContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="PreviewCondensedMC/PanelContainer/HBoxContainer" unique_id=647357284]
 layout_mode = 2
 
-[node name="CurrentPreviewCondensed" parent="PreviewCondensedMC/PanelContainer/HBoxContainer" node_paths=PackedStringArray("target_slide_preview") instance=ExtResource("4_mmjlk")]
+[node name="CurrentPreviewCondensed" parent="PreviewCondensedMC/PanelContainer/HBoxContainer" unique_id=988335701 node_paths=PackedStringArray("target_slide_preview") instance=ExtResource("4_mmjlk")]
 layout_mode = 2
 target_slide_preview = NodePath("../../../../SlidePanelBase/CurrentSlidePreview")
 preview_title = "ui.relative_slide.current"
 
-[node name="VSeparator2" type="VSeparator" parent="PreviewCondensedMC/PanelContainer/HBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="PreviewCondensedMC/PanelContainer/HBoxContainer" unique_id=430745610]
 layout_mode = 2
 
-[node name="NextPreviewCondensed" parent="PreviewCondensedMC/PanelContainer/HBoxContainer" node_paths=PackedStringArray("target_slide_preview") instance=ExtResource("4_mmjlk")]
+[node name="NextPreviewCondensed" parent="PreviewCondensedMC/PanelContainer/HBoxContainer" unique_id=2143973167 node_paths=PackedStringArray("target_slide_preview") instance=ExtResource("4_mmjlk")]
 layout_mode = 2
 target_slide_preview = NodePath("../../../../SlidePanelBase/NextSlidePreview")
 preview_title = "ui.relative_slide.next"
 
-[node name="SlidePanelBase" type="Control" parent="."]
+[node name="EditButton" type="TextureButton" parent="PreviewCondensedMC/PanelContainer/HBoxContainer" unique_id=897769147]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("4_0ovp2")
+texture_pressed = ExtResource("5_kd52j")
+texture_hover = ExtResource("6_0s51d")
+stretch_mode = 3
+
+[node name="SlidePanelBase" type="Control" parent="." unique_id=1973781285]
 modulate = Color(1, 1, 1, 0.43529412)
 layout_mode = 3
 anchors_preset = 15
@@ -74,7 +86,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PreviousSlidePreview" parent="SlidePanelBase" instance=ExtResource("4_npmih")]
+[node name="PreviousSlidePreview" parent="SlidePanelBase" unique_id=1762507129 instance=ExtResource("4_npmih")]
 disable_3d = true
 transparent_bg = false
 title = "ui.relative_slide.previous"
@@ -82,21 +94,21 @@ position = Vector2i(0, 227)
 size = Vector2i(240, 135)
 offset_from_current_slide = -1
 
-[node name="CurrentSlidePreview" parent="SlidePanelBase" instance=ExtResource("4_npmih")]
+[node name="CurrentSlidePreview" parent="SlidePanelBase" unique_id=1401450500 instance=ExtResource("4_npmih")]
 disable_3d = true
 title = "ui.relative_slide.current"
 position = Vector2i(240, 210)
 size = Vector2i(320, 180)
 always_on_top = true
 
-[node name="NextSlidePreview" parent="SlidePanelBase" instance=ExtResource("4_npmih")]
+[node name="NextSlidePreview" parent="SlidePanelBase" unique_id=180883408 instance=ExtResource("4_npmih")]
 disable_3d = true
 title = "ui.relative_slide.next"
 position = Vector2i(560, 227)
 size = Vector2i(240, 135)
 offset_from_current_slide = 1
 
-[node name="SlideCommentMC" type="PanelContainer" parent="."]
+[node name="SlideCommentMC" type="PanelContainer" parent="." unique_id=1271235835]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -108,5 +120,7 @@ offset_right = 150.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="CommentsView" parent="SlideCommentMC" instance=ExtResource("5_npmih")]
+[node name="CommentsView" parent="SlideCommentMC" unique_id=557140225 instance=ExtResource("5_npmih")]
 layout_mode = 2
+
+[connection signal="toggled" from="PreviewCondensedMC/PanelContainer/HBoxContainer/EditButton" to="." method="_on_edit_button_toggled"]

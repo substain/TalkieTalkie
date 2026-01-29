@@ -4,6 +4,8 @@ const REL_INDEX_PREVIOUS: int = -1
 const REL_INDEX_CURRENT: int = 0
 const REL_INDEX_NEXT: int = 1
 
+const MAX_REL_SIZE: float = 0.8
+
 signal slide_updated
 signal preview_layout_settings_updated
 
@@ -37,6 +39,7 @@ var ignore_next_resize_signal: bool = false
 var preview_layout_settings: PreviewLayoutSettings = PreviewLayoutSettings.new() #these settings may be updated / saved
 var preview_theme_settings: PreviewThemeSettings = PreviewThemeSettings.new() #readonly
 
+var initialized: bool = false
 
 func _enter_tree() -> void:
 	preview_layout_settings = PreviewLayoutSettings.load_default(offset_from_current_slide)
@@ -129,23 +132,22 @@ func _on_size_changed() -> void:
 	
 func on_resize_parent_window(new_window_size: Vector2) -> void:
 	current_window_size = new_window_size
+	max_size = current_window_size * MAX_REL_SIZE
 
 	do_resize(true)
 	
 func do_resize(update_this_window_size: bool) -> void:
-	max_size = current_window_size * 0.8
 	if !SlideHelper.has_context: # this ensures slide_size is valid
 		return
 	
-	var target_size: Vector2 = Vector2(max_size.x * relative_size_to_window.x, max_size.y * relative_size_to_window.y)
-
+	var target_size: Vector2 = Vector2(current_window_size.x * relative_size_to_window.x, current_window_size.y * relative_size_to_window.y)
 	if preview_theme_settings.keep_rel_pos_on_resize:
 		if update_this_window_size:
 			# ensure the next signal that will be emitted by setting the size will not re-evaluate
 			# (the signal does not differentiate between updates via gui and updates via code)
 			ignore_next_resize_signal = true
 			size = target_size
-			update_settings()
+			
 			
 		update_slide_scale()
 			
@@ -153,6 +155,7 @@ func do_resize(update_this_window_size: bool) -> void:
 		move_to_rel_center(rel_center_target)
 
 	recenter_slide_in_window()
+	update_settings()
 
 func update_slide_scale() -> void:
 	if current_slide == null:
@@ -168,6 +171,7 @@ func recenter_slide_in_window() -> void:
 	if current_slide == null:
 		return
 	#current_slide.position = Vector2.ONE
+	@warning_ignore("integer_division")
 	var window_center: Vector2 = size/2
 	var slide_center: Vector2 = (current_slide.size * current_slide.scale)/2
 	var offset: Vector2 = window_center - slide_center
@@ -177,24 +181,29 @@ func _notification(what: int) -> void:
 	# NOTE: the following notification will only be called if the position was actively changed. 
 	# the position may still change from other sources, e.g. if the parent window is resized
 	if what == NOTIFICATION_WM_POSITION_CHANGED:
-		if position.y < min_y_pos:
-			position.y = min_y_pos
-
-		var do_request_close: bool = false
-		if position.x + size.x < 0 || position.x > parent_window.size.x:
-			position = start_pos
-			do_request_close = true
-			
-		if position.y + size.y < 0 || position.y > parent_window.size.y:
-			position = start_pos
-			do_request_close = true
-
-		preview_layout_settings.position = position
-		rel_center_target = get_rel_center_pos()
+		_on_position_updated()
 		
-		if do_request_close:
-			close_requested.emit()
-			
+func _on_position_updated() -> void:
+	if position.y < min_y_pos:
+		position.y = min_y_pos
+
+	var do_request_close: bool = false
+	if position.x + size.x < 0 || position.x > parent_window.size.x:
+		position = start_pos
+		do_request_close = true
+		
+	if position.y + size.y < 0 || position.y > parent_window.size.y:
+		position = start_pos
+		do_request_close = true
+
+	preview_layout_settings.position = position
+	rel_center_target = get_rel_center_pos()
+
+	if do_request_close:
+		close_requested.emit()
+		
+	update_settings()
+		
 func _on_slide_progress_changed(_new_progress: float) -> void:
 	if original_slide == null || current_slide == null:
 		return
@@ -245,39 +254,43 @@ func handle_progress_elem_animation(anim: SlideAnimation, is_elem_visible: bool)
 	
 func update_relative_size() -> void:
 	relative_size_to_window = Vector2(float(size.x)/parent_window.size.x, float(size.y)/parent_window.size.y)
-	preview_layout_settings_updated.emit()
 
 func move_to_rel_center(rel_center_pos_new: Vector2) -> void:
+	@warning_ignore("integer_division")
 	position = (as_vec2f(parent_window.size) * rel_center_pos_new)-as_vec2f(size/2)
 	update_settings()
 
 func update_settings() -> void:
+	if !initialized:
+		return
 	preview_layout_settings.size = size
 	preview_layout_settings.position = position
 	preview_layout_settings_updated.emit()
+	#print("updated settings...")
 
 func load_settings(preview_layout_settings_new: PreviewLayoutSettings) -> void:
+	var target_pos: Vector2 = preview_layout_settings.position
+	target_pos = SideWindow.constrain_to_bounds(target_pos, preview_layout_settings.size, Rect2(Vector2(0, min_y_pos), parent_window.size), 0)
+
+	await get_tree().process_frame
+	
 	preview_layout_settings = preview_layout_settings_new
+
 	ignore_next_resize_signal = true
 	size = preview_layout_settings.size
-	var target_pos: Vector2 = preview_layout_settings.position
-	
-	if target_pos.x + size.x < 0:
-		target_pos.x = 0
-		
-	if target_pos.x > parent_window.size.x:
-		target_pos.x = parent_window.size.x - size.x
-	if target_pos.y < min_y_pos:
-		target_pos.y = min_y_pos
-	if target_pos.y > parent_window.size.y:
-		target_pos.y = parent_window.size.y  - size.y
-
+	update_relative_size()
+	start_pos = target_pos
 	position = target_pos
+	rel_center_target = get_rel_center_pos()
+	recenter_slide_in_window()
+	initialized = true
+
 	
 func get_rel_center_pos() -> Vector2:
 	return get_center_pos() / as_vec2f(parent_window.size)
 	
 func get_center_pos() -> Vector2:
+	@warning_ignore("integer_division")
 	return position + (size / 2)
 	
 func set_preview_theme_settings(preview_theme_settings_new: PreviewThemeSettings) -> void:
@@ -286,7 +299,7 @@ func set_preview_theme_settings(preview_theme_settings_new: PreviewThemeSettings
 func update_is_shown(is_shown_new: bool) -> void:
 	preview_layout_settings.is_shown = is_shown_new
 	update_settings()
-	
+
 # recursively gets all children with filter option, with signature:
 # func filter(node: Node) -> bool
 # e.g. node is BaseButton

@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://yo0fd5fhf5gu"]
+[gd_scene format=3 uid="uid://yo0fd5fhf5gu"]
 
 [ext_resource type="Script" uid="uid://8amobij1rdtg" path="res://engine/side_window/side_window.gd" id="1_sbwmy"]
 [ext_resource type="PackedScene" uid="uid://bp5mgabsdn7i4" path="res://engine/side_window/ui/side_window_ui.tscn" id="2_oy3xy"]
 
-[node name="SideWindow" type="Window" node_paths=PackedStringArray("side_window_ui", "update_settings_timer")]
+[node name="SideWindow" type="Window" unique_id=576857793 node_paths=PackedStringArray("side_window_ui", "update_settings_timer")]
 transparent_bg = true
 gui_embed_subwindows = true
 oversampling_override = 1.0
@@ -21,7 +21,7 @@ script = ExtResource("1_sbwmy")
 side_window_ui = NodePath("SideWindowUI")
 update_settings_timer = NodePath("UpdateSettingsTimer")
 
-[node name="BGColorRect" type="ColorRect" parent="."]
+[node name="BGColorRect" type="ColorRect" parent="." unique_id=1117505220]
 z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,7 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.632292, 0.6898533, 0.83453625, 1)
 
-[node name="SideWindowUI" parent="." node_paths=PackedStringArray("slide_previews_by_rel_index", "preview_condensed_by_rel_index") instance=ExtResource("2_oy3xy")]
+[node name="SideWindowUI" parent="." unique_id=1922437005 node_paths=PackedStringArray("slide_previews_by_rel_index", "preview_condensed_by_rel_index") instance=ExtResource("2_oy3xy")]
 slide_previews_by_rel_index = {
 -1: NodePath("SlidePanelBase/PreviousSlidePreview"),
 0: NodePath("SlidePanelBase/CurrentSlidePreview"),
@@ -42,10 +42,9 @@ preview_condensed_by_rel_index = {
 1: NodePath("PreviewCondensedMC/PanelContainer/HBoxContainer/NextPreviewCondensed")
 }
 
-[node name="UpdateSettingsTimer" type="Timer" parent="."]
+[node name="UpdateSettingsTimer" type="Timer" parent="." unique_id=430020865]
 wait_time = 0.5
 one_shot = true
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
-[connection signal="size_changed" from="." to="." method="_on_size_changed"]
 [connection signal="timeout" from="UpdateSettingsTimer" to="." method="_on_update_settings_timer_timeout"]
