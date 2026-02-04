@@ -285,7 +285,6 @@ func load_settings(preview_layout_settings_new: PreviewLayoutSettings) -> void:
 	recenter_slide_in_window()
 	initialized = true
 
-	
 func get_rel_center_pos() -> Vector2:
 	return get_center_pos() / as_vec2f(parent_window.size)
 	
@@ -299,6 +298,11 @@ func set_preview_theme_settings(preview_theme_settings_new: PreviewThemeSettings
 func update_is_shown(is_shown_new: bool) -> void:
 	preview_layout_settings.is_shown = is_shown_new
 	update_settings()
+
+func update_is_on_top(is_on_top_new: bool) -> void:
+	preview_layout_settings.is_on_top = is_on_top_new
+	update_settings()
+	
 
 # recursively gets all children with filter option, with signature:
 # func filter(node: Node) -> bool

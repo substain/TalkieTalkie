@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="25mm"
+   height="25mm"
+   viewBox="0 0 25 25"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="in_front_disabled.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#aaaaaa"
+     bordercolor="#111111"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="true"
+     inkscape:deskcolor="#959595"
+     inkscape:document-units="mm"
+     inkscape:zoom="5.6568543"
+     inkscape:cx="18.73833"
+     inkscape:cy="34.913397"
+     inkscape:window-width="2560"
+     inkscape:window-height="1361"
+     inkscape:window-x="2391"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0.40098424,-1.1826396)">
+    <path
+       id="rect1"
+       style="fill:#979797;fill-opacity:1;stroke:none;stroke-width:0.758;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       d="M 0.32637752,3.7456432 V 11.383504 H 3.364702 V 8.1036312 c 9.94e-5,-0.2560194 0.2074752,-0.4640276 0.4634946,-0.464127 h 5.3595917 v -3.893861 z" />
+    <path
+       id="rect1-7"
+       style="fill:#979797;fill-opacity:1;stroke:none;stroke-width:0.758;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       inkscape:label="rect3"
+       d="m 20.832696,15.981776 v 3.279872 c -9.9e-5,0.25602 -0.208107,0.463396 -0.464127,0.463496 h -5.358327 v 3.894492 h 8.861412 v -7.63786 z" />
+    <path
+       style="color:#000000;display:inline;fill:#979797;fill-opacity:1;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
+       d="M 4.2917537,8.5665487 H 19.906247 V 18.798133 H 4.2917537 Z"
+       id="path1" />
+  </g>
+</svg>

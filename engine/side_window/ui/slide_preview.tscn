@@ -1,18 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3o1poh7bdxgc"]
+[gd_scene format=3 uid="uid://d3o1poh7bdxgc"]
 
 [ext_resource type="Script" uid="uid://cuhdai02lk6rt" path="res://engine/side_window/ui/slide_preview_panel.gd" id="1_eji1u"]
 
-[node name="SlidePreview" type="Window" node_paths=PackedStringArray("color_rect")]
+[node name="SlidePreview" type="Window" unique_id=1523293245 node_paths=PackedStringArray("color_rect")]
 transparent_bg = true
 handle_input_locally = false
 oversampling_override = 1.0
-position = Vector2i(0, 36)
+position = Vector2i(0, 25)
 transparent = true
 min_size = Vector2i(50, 50)
 script = ExtResource("1_eji1u")
 color_rect = NodePath("BGColorRect")
 
-[node name="BGColorRect" type="ColorRect" parent="."]
+[node name="BGColorRect" type="ColorRect" parent="." unique_id=682587920]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

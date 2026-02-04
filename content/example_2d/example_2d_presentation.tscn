@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://ch8hou0kjxu83"]
+[gd_scene format=3 uid="uid://ch8hou0kjxu83"]
 
 [ext_resource type="PackedScene" uid="uid://c4fiin221skal" path="res://engine/base/presentation.tscn" id="1_4630g"]
 [ext_resource type="Script" uid="uid://vhq5381tygcu" path="res://engine/base/presentation_2d.gd" id="2_n0igl"]
@@ -129,7 +129,7 @@ element_seen_modulate = Color(0.92535293, 0.9253528, 0.9253529, 1)
 element_unseen_modulate = Color(0.688125, 0.7617584, 0.5147329, 0.8666667)
 metadata/_custom_type_script = "uid://u2b8vyj6hvp4"
 
-[node name="Example2DPresentation" node_paths=PackedStringArray("camera") instance=ExtResource("1_4630g")]
+[node name="Example2DPresentation" unique_id=1629004143 node_paths=PackedStringArray("camera") instance=ExtResource("1_4630g")]
 script = ExtResource("2_n0igl")
 camera = NodePath("Camera2D")
 default_transition = SubResource("Resource_hqbug")
@@ -140,20 +140,20 @@ color_picker = Color(0.02745098, 0.25882354, 0.2627451, 1)
 [node name="Background" parent="." index="1"]
 follow_viewport_enabled = true
 
-[node name="ExampleBackground" parent="Background" index="0" instance=ExtResource("4_bwl8n")]
+[node name="ExampleBackground" parent="Background" index="0" unique_id=1022813677 instance=ExtResource("4_bwl8n")]
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/ExampleBackground" index="4"]
+[node name="Sprite2D" type="Sprite2D" parent="Background/ExampleBackground" index="4" unique_id=2051697483]
 position = Vector2(12095, 2212)
 scale = Vector2(249.8925, 35.742184)
 texture = SubResource("GradientTexture2D_l32h8")
 
-[node name="Slide2DMapper" type="Node2D" parent="." index="3" node_paths=PackedStringArray("target_parent")]
+[node name="Slide2DMapper" type="Node2D" parent="." index="3" unique_id=1279440841 node_paths=PackedStringArray("target_parent")]
 script = ExtResource("5_17rhe")
 target_parent = NodePath("SlideTheme")
 slide_separation = Vector2(50, 0)
 slide_parent_scene = ExtResource("6_fjxqi")
 
-[node name="SlideTheme" type="Control" parent="Slide2DMapper" index="0"]
+[node name="SlideTheme" type="Control" parent="Slide2DMapper" index="0" unique_id=91644123]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -161,11 +161,11 @@ offset_bottom = 40.0
 mouse_filter = 1
 theme = ExtResource("7_bwl8n")
 
-[node name="Slide2DTitle" parent="Slide2DMapper/SlideTheme" index="0" instance=ExtResource("10_bwl8n")]
+[node name="Slide2DTitle" parent="Slide2DMapper/SlideTheme" index="0" unique_id=1672648990 instance=ExtResource("10_bwl8n")]
 layout_mode = 0
 mouse_filter = 2
 
-[node name="SlidePossibilities" type="Control" parent="Slide2DMapper/SlideTheme" index="1"]
+[node name="SlidePossibilities" type="Control" parent="Slide2DMapper/SlideTheme" index="1" unique_id=1967156000]
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -173,12 +173,12 @@ mouse_filter = 1
 script = ExtResource("7_lx58k")
 slide_title = "Possibilities"
 
-[node name="Translations" type="Node" parent="Slide2DMapper/SlideTheme/SlidePossibilities" index="0" node_paths=PackedStringArray("target_nodes")]
+[node name="Translations" type="Node" parent="Slide2DMapper/SlideTheme/SlidePossibilities" index="0" unique_id=1271646789 node_paths=PackedStringArray("target_nodes")]
 script = ExtResource("8_tjfux")
 target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/SlideContentElement"), NodePath("../ContentVBC/Label"), NodePath("../ContentVBC/Label2")]
 translation_targets = Array[ExtResource("13_fjxqi")]([SubResource("Resource_lx58k"), SubResource("Resource_tjfux"), SubResource("Resource_yb4jm"), SubResource("Resource_x1gbi")])
 
-[node name="TitleLabel" type="Label" parent="Slide2DMapper/SlideTheme/SlidePossibilities" index="1"]
+[node name="TitleLabel" type="Label" parent="Slide2DMapper/SlideTheme/SlidePossibilities" index="1" unique_id=512922488]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -194,7 +194,7 @@ text = "content.example_2d.1.title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Separator1" type="Panel" parent="Slide2DMapper/SlideTheme/SlidePossibilities" index="2"]
+[node name="Separator1" type="Panel" parent="Slide2DMapper/SlideTheme/SlidePossibilities" index="2" unique_id=2132947949]
 modulate = Color(1, 1, 1, 0.52549)
 custom_minimum_size = Vector2(0, 3)
 layout_mode = 1
@@ -209,7 +209,7 @@ grow_horizontal = 2
 size_flags_horizontal = 4
 mouse_filter = 1
 
-[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/SlideTheme/SlidePossibilities" index="3"]
+[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/SlideTheme/SlidePossibilities" index="3" unique_id=114431671]
 custom_minimum_size = Vector2(1000, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -225,34 +225,34 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="SlideContentElement" type="Label" parent="Slide2DMapper/SlideTheme/SlidePossibilities/ContentVBC" index="0"]
+[node name="SlideContentElement" type="Label" parent="Slide2DMapper/SlideTheme/SlidePossibilities/ContentVBC" index="0" unique_id=939306767]
 layout_mode = 2
 mouse_filter = 1
 text = "• content.example_2d.1.more_things"
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlidePossibilities/ContentVBC/SlideContentElement" index="0"]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlidePossibilities/ContentVBC/SlideContentElement" index="0" unique_id=807290128]
 script = ExtResource("9_yb4jm")
 
-[node name="Label" type="Label" parent="Slide2DMapper/SlideTheme/SlidePossibilities/ContentVBC" index="1"]
+[node name="Label" type="Label" parent="Slide2DMapper/SlideTheme/SlidePossibilities/ContentVBC" index="1" unique_id=90939830]
 layout_mode = 2
 mouse_filter = 1
 text = "• content.example_2d.1.background"
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlidePossibilities/ContentVBC/Label" index="0"]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlidePossibilities/ContentVBC/Label" index="0" unique_id=538952127]
 script = ExtResource("9_yb4jm")
 
-[node name="Label2" type="Label" parent="Slide2DMapper/SlideTheme/SlidePossibilities/ContentVBC" index="2"]
+[node name="Label2" type="Label" parent="Slide2DMapper/SlideTheme/SlidePossibilities/ContentVBC" index="2" unique_id=540409053]
 layout_mode = 2
 mouse_filter = 1
 text = "• content.example_2d.1.ideas"
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlidePossibilities/ContentVBC/Label2" index="0"]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlidePossibilities/ContentVBC/Label2" index="0" unique_id=1607244158]
 script = ExtResource("9_yb4jm")
 
-[node name="SlideLetsPlay" type="Control" parent="Slide2DMapper/SlideTheme" index="2"]
+[node name="SlideLetsPlay" type="Control" parent="Slide2DMapper/SlideTheme" index="2" unique_id=55130405]
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -260,12 +260,12 @@ mouse_filter = 1
 script = ExtResource("7_lx58k")
 slide_title = "Lets Play"
 
-[node name="Translations" type="Node" parent="Slide2DMapper/SlideTheme/SlideLetsPlay" index="0" node_paths=PackedStringArray("target_nodes")]
+[node name="Translations" type="Node" parent="Slide2DMapper/SlideTheme/SlideLetsPlay" index="0" unique_id=1375009985 node_paths=PackedStringArray("target_nodes")]
 script = ExtResource("8_tjfux")
 target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/SlideContentElement"), NodePath("../ContentVBC/Label"), NodePath("../ContentVBC/Label2"), NodePath("../ContentVBC/Label3")]
 translation_targets = Array[ExtResource("13_fjxqi")]([SubResource("Resource_fjxqi"), SubResource("Resource_orx0d"), SubResource("Resource_51p16"), SubResource("Resource_k14gl"), SubResource("Resource_erp8h")])
 
-[node name="TitleLabel" type="Label" parent="Slide2DMapper/SlideTheme/SlideLetsPlay" index="1"]
+[node name="TitleLabel" type="Label" parent="Slide2DMapper/SlideTheme/SlideLetsPlay" index="1" unique_id=1662597652]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -281,7 +281,7 @@ text = "content.example_2d.2.title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Separator1" type="Panel" parent="Slide2DMapper/SlideTheme/SlideLetsPlay" index="2"]
+[node name="Separator1" type="Panel" parent="Slide2DMapper/SlideTheme/SlideLetsPlay" index="2" unique_id=1260326145]
 modulate = Color(1, 1, 1, 0.52549)
 custom_minimum_size = Vector2(0, 3)
 layout_mode = 1
@@ -296,7 +296,7 @@ grow_horizontal = 2
 size_flags_horizontal = 4
 mouse_filter = 1
 
-[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/SlideTheme/SlideLetsPlay" index="3"]
+[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/SlideTheme/SlideLetsPlay" index="3" unique_id=249621329]
 custom_minimum_size = Vector2(1000, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -312,48 +312,48 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="SlideContentElement" type="Label" parent="Slide2DMapper/SlideTheme/SlideLetsPlay/ContentVBC" index="0"]
+[node name="SlideContentElement" type="Label" parent="Slide2DMapper/SlideTheme/SlideLetsPlay/ContentVBC" index="0" unique_id=1170473219]
 layout_mode = 2
 mouse_filter = 1
 text = "• content.example_2d.2.player"
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlideLetsPlay/ContentVBC/SlideContentElement" index="0"]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlideLetsPlay/ContentVBC/SlideContentElement" index="0" unique_id=189777673]
 script = ExtResource("9_yb4jm")
 
-[node name="Label" type="Label" parent="Slide2DMapper/SlideTheme/SlideLetsPlay/ContentVBC" index="1"]
+[node name="Label" type="Label" parent="Slide2DMapper/SlideTheme/SlideLetsPlay/ContentVBC" index="1" unique_id=750453755]
 layout_mode = 2
 mouse_filter = 1
 text = "• content.example_2d.2.try_it"
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlideLetsPlay/ContentVBC/Label" index="0"]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlideLetsPlay/ContentVBC/Label" index="0" unique_id=362373869]
 script = ExtResource("9_yb4jm")
 
-[node name="Example2DPlayer" parent="Slide2DMapper/SlideTheme/SlideLetsPlay/ContentVBC/Label" index="1" instance=ExtResource("14_4630g")]
+[node name="Example2DPlayer" parent="Slide2DMapper/SlideTheme/SlideLetsPlay/ContentVBC/Label" index="1" unique_id=831097044 instance=ExtResource("14_4630g")]
 position = Vector2(1097, 99)
 is_player_active = false
 is_stuck = true
 
-[node name="Label2" type="Label" parent="Slide2DMapper/SlideTheme/SlideLetsPlay/ContentVBC" index="2"]
+[node name="Label2" type="Label" parent="Slide2DMapper/SlideTheme/SlideLetsPlay/ContentVBC" index="2" unique_id=876736363]
 layout_mode = 2
 mouse_filter = 1
 text = "• content.example_2d.2.input"
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlideLetsPlay/ContentVBC/Label2" index="0"]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlideLetsPlay/ContentVBC/Label2" index="0" unique_id=320412301]
 script = ExtResource("9_yb4jm")
 
-[node name="Label3" type="Label" parent="Slide2DMapper/SlideTheme/SlideLetsPlay/ContentVBC" index="3"]
+[node name="Label3" type="Label" parent="Slide2DMapper/SlideTheme/SlideLetsPlay/ContentVBC" index="3" unique_id=525351542]
 layout_mode = 2
 mouse_filter = 1
 text = "• content.example_2d.2.hold"
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlideLetsPlay/ContentVBC/Label3" index="0"]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlideLetsPlay/ContentVBC/Label3" index="0" unique_id=2141127978]
 script = ExtResource("9_yb4jm")
 
-[node name="SlideShowMeTheWay" type="Control" parent="Slide2DMapper/SlideTheme" index="3"]
+[node name="SlideShowMeTheWay" type="Control" parent="Slide2DMapper/SlideTheme" index="3" unique_id=1674300250]
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -361,12 +361,12 @@ mouse_filter = 1
 script = ExtResource("7_lx58k")
 slide_title = "Show Me The Way"
 
-[node name="Translations" type="Node" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay" index="0" node_paths=PackedStringArray("target_nodes")]
+[node name="Translations" type="Node" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay" index="0" unique_id=820269400 node_paths=PackedStringArray("target_nodes")]
 script = ExtResource("8_tjfux")
 target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/SlideContentElement"), NodePath("../ContentVBC/Label")]
 translation_targets = Array[ExtResource("13_fjxqi")]([SubResource("Resource_p406b"), SubResource("Resource_lec6v"), SubResource("Resource_vq5c0")])
 
-[node name="TitleLabel" type="Label" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay" index="1"]
+[node name="TitleLabel" type="Label" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay" index="1" unique_id=1521792581]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -382,7 +382,7 @@ text = "content.example_2d.3.title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Separator1" type="Panel" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay" index="2"]
+[node name="Separator1" type="Panel" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay" index="2" unique_id=1848012171]
 modulate = Color(1, 1, 1, 0.52549)
 custom_minimum_size = Vector2(0, 3)
 layout_mode = 1
@@ -397,7 +397,7 @@ grow_horizontal = 2
 size_flags_horizontal = 4
 mouse_filter = 1
 
-[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay" index="3"]
+[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay" index="3" unique_id=2064626364]
 custom_minimum_size = Vector2(1000, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -413,25 +413,25 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="SlideContentElement" type="Label" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay/ContentVBC" index="0"]
+[node name="SlideContentElement" type="Label" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay/ContentVBC" index="0" unique_id=1171159212]
 layout_mode = 2
 mouse_filter = 1
 text = "• content.example_2d.3.way1"
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay/ContentVBC/SlideContentElement" index="0"]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay/ContentVBC/SlideContentElement" index="0" unique_id=1801016048]
 script = ExtResource("9_yb4jm")
 
-[node name="Label" type="Label" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay/ContentVBC" index="1"]
+[node name="Label" type="Label" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay/ContentVBC" index="1" unique_id=686017343]
 layout_mode = 2
 mouse_filter = 1
 text = "• content.example_2d.3.way2"
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay/ContentVBC/Label" index="0"]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay/ContentVBC/Label" index="0" unique_id=1672511288]
 script = ExtResource("9_yb4jm")
 
-[node name="LinearProgressTracker2D" type="Area2D" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay" index="4" node_paths=PackedStringArray("start_point", "end_point")]
+[node name="LinearProgressTracker2D" type="Area2D" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay" index="4" unique_id=906981208 node_paths=PackedStringArray("start_point", "end_point")]
 position = Vector2(984, 535)
 collision_layer = 0
 collision_mask = 2
@@ -440,16 +440,16 @@ script = ExtResource("14_bwl8n")
 start_point = NodePath("StartPoint")
 end_point = NodePath("EndPoint")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay/LinearProgressTracker2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay/LinearProgressTracker2D" index="0" unique_id=888070412]
 shape = SubResource("RectangleShape2D_4630g")
 
-[node name="StartPoint" type="Marker2D" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay/LinearProgressTracker2D" index="1"]
+[node name="StartPoint" type="Marker2D" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay/LinearProgressTracker2D" index="1" unique_id=2128227206]
 position = Vector2(-799, 0)
 
-[node name="EndPoint" type="Marker2D" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay/LinearProgressTracker2D" index="2"]
+[node name="EndPoint" type="Marker2D" parent="Slide2DMapper/SlideTheme/SlideShowMeTheWay/LinearProgressTracker2D" index="2" unique_id=1950447448]
 position = Vector2(799, 0)
 
-[node name="SlideHitMeUp" type="Control" parent="Slide2DMapper/SlideTheme" index="4"]
+[node name="SlideHitMeUp" type="Control" parent="Slide2DMapper/SlideTheme" index="4" unique_id=88211417]
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -457,12 +457,12 @@ mouse_filter = 1
 script = ExtResource("7_lx58k")
 slide_title = "Hit Me Up"
 
-[node name="Translations" type="Node" parent="Slide2DMapper/SlideTheme/SlideHitMeUp" index="0" node_paths=PackedStringArray("target_nodes")]
+[node name="Translations" type="Node" parent="Slide2DMapper/SlideTheme/SlideHitMeUp" index="0" unique_id=1953745576 node_paths=PackedStringArray("target_nodes")]
 script = ExtResource("8_tjfux")
 target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/SlideContentElement"), NodePath("../ContentVBC/Label")]
 translation_targets = Array[ExtResource("13_fjxqi")]([SubResource("Resource_kurep"), SubResource("Resource_yf12r"), SubResource("Resource_emggn")])
 
-[node name="TitleLabel" type="Label" parent="Slide2DMapper/SlideTheme/SlideHitMeUp" index="1"]
+[node name="TitleLabel" type="Label" parent="Slide2DMapper/SlideTheme/SlideHitMeUp" index="1" unique_id=1553892700]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -478,7 +478,7 @@ text = "content.example_2d.4.title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Separator1" type="Panel" parent="Slide2DMapper/SlideTheme/SlideHitMeUp" index="2"]
+[node name="Separator1" type="Panel" parent="Slide2DMapper/SlideTheme/SlideHitMeUp" index="2" unique_id=1607850397]
 modulate = Color(1, 1, 1, 0.52549)
 custom_minimum_size = Vector2(0, 3)
 layout_mode = 1
@@ -493,7 +493,7 @@ grow_horizontal = 2
 size_flags_horizontal = 4
 mouse_filter = 1
 
-[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/SlideTheme/SlideHitMeUp" index="3"]
+[node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/SlideTheme/SlideHitMeUp" index="3" unique_id=654215396]
 custom_minimum_size = Vector2(1000, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -509,58 +509,58 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="SlideContentElement" type="Label" parent="Slide2DMapper/SlideTheme/SlideHitMeUp/ContentVBC" index="0"]
+[node name="SlideContentElement" type="Label" parent="Slide2DMapper/SlideTheme/SlideHitMeUp/ContentVBC" index="0" unique_id=418922466]
 layout_mode = 2
 mouse_filter = 1
 text = "• content.example_2d.4.box1"
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlideHitMeUp/ContentVBC/SlideContentElement" index="0"]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlideHitMeUp/ContentVBC/SlideContentElement" index="0" unique_id=177415100]
 script = ExtResource("9_yb4jm")
 
-[node name="Label" type="Label" parent="Slide2DMapper/SlideTheme/SlideHitMeUp/ContentVBC" index="1"]
+[node name="Label" type="Label" parent="Slide2DMapper/SlideTheme/SlideHitMeUp/ContentVBC" index="1" unique_id=1084080912]
 layout_mode = 2
 mouse_filter = 1
 text = "• content.example_2d.4.box2"
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlideHitMeUp/ContentVBC/Label" index="0"]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/SlideTheme/SlideHitMeUp/ContentVBC/Label" index="0" unique_id=148827488]
 script = ExtResource("9_yb4jm")
 
-[node name="ExampleJumpbox" parent="Slide2DMapper/SlideTheme/SlideHitMeUp" index="4" instance=ExtResource("12_l32h8")]
+[node name="ExampleJumpbox" parent="Slide2DMapper/SlideTheme/SlideHitMeUp" index="4" unique_id=1243224584 instance=ExtResource("12_l32h8")]
 position = Vector2(573, 862)
 target_progress = 0.5
 label_text = "1"
 
-[node name="ExampleJumpbox2" parent="Slide2DMapper/SlideTheme/SlideHitMeUp" index="5" instance=ExtResource("12_l32h8")]
+[node name="ExampleJumpbox2" parent="Slide2DMapper/SlideTheme/SlideHitMeUp" index="5" unique_id=2013500162 instance=ExtResource("12_l32h8")]
 position = Vector2(1308, 864)
 target_progress = 1.0
 label_text = "2"
 
-[node name="SlideFinal" parent="Slide2DMapper/SlideTheme" index="5" instance=ExtResource("17_17rhe")]
+[node name="SlideFinal" parent="Slide2DMapper/SlideTheme" index="5" unique_id=1244398138 instance=ExtResource("17_17rhe")]
 layout_mode = 0
 
-[node name="ExampleJumpbox2" parent="Slide2DMapper/SlideTheme/SlideFinal" index="5" instance=ExtResource("12_l32h8")]
+[node name="ExampleJumpbox2" parent="Slide2DMapper/SlideTheme/SlideFinal" index="5" unique_id=1424527110 instance=ExtResource("12_l32h8")]
 position = Vector2(1617, 987)
 target_progress = 1.0
 label_text = "Fin"
 
-[node name="Camera2D" type="Camera2D" parent="." index="4"]
+[node name="Camera2D" type="Camera2D" parent="." index="4" unique_id=729603950]
 zoom = Vector2(0.8, 0.8)
 
-[node name="Ground" type="StaticBody2D" parent="." index="5"]
+[node name="Ground" type="StaticBody2D" parent="." index="5" unique_id=2011700282]
 position = Vector2(0, 1080)
 
-[node name="Sprite2D" type="Sprite2D" parent="Ground" index="0"]
+[node name="Sprite2D" type="Sprite2D" parent="Ground" index="0" unique_id=1500496581]
 position = Vector2(13283, -10.5)
 scale = Vector2(89.5533, -0.05)
 texture = SubResource("GradientTexture2D_xt4ha")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" index="1" unique_id=1567369769]
 position = Vector2(8085, 0)
 shape = SubResource("RectangleShape2D_l687c")
 
-[node name="ActivatePlayer" type="Node" parent="." index="6" node_paths=PackedStringArray("player", "slide_for_activation", "target_parent")]
+[node name="ActivatePlayer" type="Node" parent="." index="6" unique_id=27271789 node_paths=PackedStringArray("player", "slide_for_activation", "target_parent")]
 script = ExtResource("11_n0igl")
 player = NodePath("../Slide2DMapper/SlideTheme/SlideLetsPlay/ContentVBC/Label/Example2DPlayer")
 slide_for_activation = NodePath("../Slide2DMapper/SlideTheme/SlideLetsPlay")

@@ -9,6 +9,7 @@ signal progress_changed(new_progress: float)
 signal pointing_at_pos(global_pos: Vector2, is_drawing: bool, paint_properties: PaintProperties)
 signal stop_drawing()
 signal restore_side_window()
+signal side_window_settings_updated()
 @warning_ignore_restore("unused_signal")
 
 var presentation: Presentation
@@ -17,6 +18,7 @@ var slide_controller: SlideController
 var current_slide: Slide
 var has_context: bool
 var _context: SlideContext
+var is_side_window_restorable: bool = false
 
 func is_2d_node_presentation() -> bool:
 	return _context is SlideContext2D

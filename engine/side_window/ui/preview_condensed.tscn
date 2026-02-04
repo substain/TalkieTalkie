@@ -1,31 +1,61 @@
-[gd_scene load_steps=2 format=3 uid="uid://rgndpyhb5p7q"]
+[gd_scene format=3 uid="uid://rgndpyhb5p7q"]
 
 [ext_resource type="Script" uid="uid://bl3ab6j4oqu7u" path="res://engine/side_window/ui/preview_condensed.gd" id="1_7movi"]
+[ext_resource type="Texture2D" uid="uid://cd1pjw2q6fjmh" path="res://style/ui/eye.svg" id="2_2npo3"]
+[ext_resource type="ButtonGroup" uid="uid://kmh7n651yx3b" path="res://engine/resources/preview_on_top_button_group.tres" id="2_vluah"]
+[ext_resource type="Texture2D" uid="uid://bvfk64gc8bu7u" path="res://style/ui/eye_pressed.svg" id="3_1fbv5"]
+[ext_resource type="Texture2D" uid="uid://b21tjxv25abxe" path="res://style/ui/eye_hover.svg" id="4_n7py8"]
+[ext_resource type="Texture2D" uid="uid://d3adhuikjybp8" path="res://style/ui/in_front.svg" id="6_fglao"]
+[ext_resource type="Texture2D" uid="uid://dxtb0jo14fepd" path="res://style/ui/in_front_selected.svg" id="7_d3w7f"]
+[ext_resource type="Texture2D" uid="uid://cqdqhuinm53xg" path="res://style/ui/in_front_hover.svg" id="8_hf8i7"]
+[ext_resource type="Texture2D" uid="uid://5oel722e7mda" path="res://style/ui/in_front_disabled.svg" id="9_d3w7f"]
 
-[node name="PreviewCondensed" type="VBoxContainer" node_paths=PackedStringArray("title_label", "slide_title_label", "popup_button")]
+[node name="PreviewCondensed" type="VBoxContainer" unique_id=409356169 node_paths=PackedStringArray("title_label", "slide_title_label", "popup_button", "preview_on_top_button")]
 custom_minimum_size = Vector2(120, 0)
+offset_right = 123.0
+offset_bottom = 87.0
+theme_override_constants/separation = 0
 script = ExtResource("1_7movi")
 title_label = NodePath("TitleLabel")
 slide_title_label = NodePath("SlideTitleLabel")
-popup_button = NodePath("PopupButton")
+popup_button = NodePath("VBoxContainer/PopupButton")
+preview_on_top_button = NodePath("VBoxContainer/PreviewOnTopButton")
 
-[node name="TitleLabel" type="Label" parent="."]
+[node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=1941246971]
 layout_mode = 2
-theme_type_variation = &"LabelHeader"
-text = "[preview_name]"
-horizontal_alignment = 1
+theme_override_constants/separation = 10
+alignment = 1
 
-[node name="SlideTitleLabel" type="Label" parent="."]
-layout_mode = 2
-text = "[slide title]                "
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PopupButton" type="Button" parent="."]
+[node name="PopupButton" type="TextureButton" parent="VBoxContainer" unique_id=117886296]
 layout_mode = 2
 focus_mode = 0
 toggle_mode = true
 button_pressed = true
-text = "Show Preview"
+texture_normal = ExtResource("2_2npo3")
+texture_pressed = ExtResource("3_1fbv5")
+texture_hover = ExtResource("4_n7py8")
 
-[connection signal="toggled" from="PopupButton" to="." method="_on_popup_button_toggled"]
+[node name="PreviewOnTopButton" type="TextureButton" parent="VBoxContainer" unique_id=78280270]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_vluah")
+texture_normal = ExtResource("6_fglao")
+texture_pressed = ExtResource("7_d3w7f")
+texture_hover = ExtResource("8_hf8i7")
+texture_disabled = ExtResource("9_d3w7f")
+
+[node name="TitleLabel" type="Label" parent="." unique_id=1510696833]
+layout_mode = 2
+text = "[preview_name]"
+horizontal_alignment = 1
+
+[node name="SlideTitleLabel" type="Label" parent="." unique_id=970183651]
+layout_mode = 2
+theme_type_variation = &"LabelHeader"
+text = "[slide title]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="toggled" from="VBoxContainer/PopupButton" to="." method="_on_popup_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/PreviewOnTopButton" to="." method="_on_preview_on_top_button_toggled"]

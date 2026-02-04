@@ -1,4 +1,5 @@
 keys;en;de
+ui.settings.show_side_window;Show Side Window;Nebenfenster anzeigen
 ui.settings.language;Language;Sprache (Language)
 ui.settings.overall_volume;Volume;Lautstärke
 ui.settings.mute;Mute;Stumm
@@ -6,8 +7,6 @@ ui.timeview.target_duration;Target Duration:;Zieldauer:
 ui.timeview.passed_time;Passed Time:;Vergangene Zeit:
 ui.timeview.time_left;Time left:;Übrige Zeit:
 ui.comments;Comments;Kommentare
-ui.preview.show_preview;Show Preview;Vorschau zeigen
-ui.preview.hide_preview;Hide Preview;Vorschau verstecken
 ui.preview.preview_disabled;preview disabled;Vorschau deaktiviert
 ui.relative_slide.previous;Previous Slide;Letzte Folie
 ui.relative_slide.current;Current Slide;Aktuelle Folie

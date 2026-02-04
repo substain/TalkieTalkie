@@ -5,13 +5,16 @@ signal show_about_window
 @export var show_settings_extended: bool = false
 
 @export_category("internal nodes")
-@export var open_button: Button
+@export var open_button: BaseButton
 @export var lang_option_button: OptionButton
 @export var overall_volume_slider: HSlider
 @export var overall_volume_mute_button: CheckBox 
 @export var settings_container: PanelContainer
 @export var dummy_ui_replacement_button: Button
 @export var about_button: Button
+@export var restore_side_window_button: Button
+
+var side_window_allowed: bool = false
 
 func _ready() -> void:
 	super()
@@ -19,6 +22,11 @@ func _ready() -> void:
 	lang_option_button.selected = get_locale_button_id(Preferences.language)
 	about_button.text = Util.get_talkie_talkie_version()
 	set_settings_extended(show_settings_extended)
+	update_restore_side_window_button()
+	SlideHelper.side_window_settings_updated.connect(update_restore_side_window_button)
+	
+func update_restore_side_window_button() -> void:
+	restore_side_window_button.visible = SlideHelper.is_side_window_restorable
 
 func toggle_settings_extended() -> void:
 	set_settings_extended(!show_settings_extended)
@@ -26,11 +34,14 @@ func toggle_settings_extended() -> void:
 func set_settings_extended(is_extended_new: bool) -> void:
 	show_settings_extended = is_extended_new
 	settings_container.visible = is_extended_new
-	open_button.text = "^" if is_extended_new else "..."
+	#open_button.text = "^" if is_extended_new else "..."
 
 func _on_open_button_pressed() -> void:
 	toggle_settings_extended()
 
+func _on_open_button_toggled(toggled_on: bool) -> void:
+	set_settings_extended(toggled_on)
+	
 func _load_values() -> void:
 	change_locale(Preferences.language)
 	Preferences.language_changed.emit()
@@ -78,3 +89,6 @@ func update_ui_button_position(include_in_settings_ui: bool, ui_button: Button) 
 		
 func _on_about_button_pressed() -> void:
 	show_about_window.emit()
+
+func _on_restore_side_window_button_pressed() -> void:
+	SlideHelper.restore_side_window.emit()

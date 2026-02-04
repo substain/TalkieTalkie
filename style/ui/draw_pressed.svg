@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="1"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="8"
-     inkscape:cx="28.25"
-     inkscape:cy="56.5625"
+     inkscape:zoom="4"
+     inkscape:cx="46.25"
+     inkscape:cy="82.375"
      inkscape:window-width="2560"
      inkscape:window-height="1361"
      inkscape:window-x="2391"
@@ -37,14 +37,15 @@
   <g
      inkscape:label="Ebene 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-0.4530904,-0.01964845)">
     <path
-       style="fill:#859686;stroke:#eeeeee;stroke-width:1.05833333;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1;stroke-dasharray:none"
-       d="M 9.9218749,20.174478 22.58175,6.0202443 19.208028,2.997313 5.4632323,15.655892 c 2.0135644,0.67909 3.6153026,2.158252 4.4586426,4.518586 z"
+       style="fill:#c4cac4;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M 10.39,19.777603 22.319372,6.3864411 18.974956,3.0634589 5.6925377,15.204964 C 7.589915,15.847444 9.5953229,17.544517 10.39,19.777603 Z"
        id="path1"
        sodipodi:nodetypes="ccccc" />
     <path
-       style="fill:#859686;fill-opacity:1;stroke:#eeeeee;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#c4cac4;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
        d="m 4.7873046,16.213998 c 2.3112637,0.681448 3.8584363,2.215204 4.5888671,4.539257 l -5.7893629,1.222583 z"
        id="path2"
        sodipodi:nodetypes="cccc" />

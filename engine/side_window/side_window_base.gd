@@ -10,7 +10,7 @@ enum EnableOptions {
 const SIDE_WINDOW_SCENE: PackedScene = preload("res://engine/side_window/side_window.tscn")
 @export_category("SideWindow Settings")
 @export var enabled: EnableOptions = EnableOptions.IF_SECOND_SCREEN_EXISTS
-@export var quit_on_close: bool = true
+@export var quit_on_close: bool = false
 @export var preview_theme_settings: PreviewThemeSettings
 
 ## Overwrites the default settings for the side window's time ui, if set.
@@ -24,13 +24,18 @@ var _side_window: SideWindow
 var is_side_window_active: bool = false
 
 func _enter_tree() -> void:
-	if enabled == EnableOptions.ALWAYS || (enabled == EnableOptions.IF_SECOND_SCREEN_EXISTS && DisplayServer.get_screen_count() >= 2):
-		set_side_window_active(true)
-
+	set_side_window_active(true)
+	update_state_in_helper()
+	
 	SlideHelper.restore_side_window.connect(_on_restore_side_window)
+	#DisplayServer.screenchanged.connect(update_state_in_helper)
 
 func set_side_window_active(is_active_new: bool) -> void:
+	if is_active_new && !is_side_window_allowed():
+		return
+	
 	is_side_window_active = is_active_new
+	update_state_in_helper()
 	
 	if is_active_new:
 		_side_window = SIDE_WINDOW_SCENE.instantiate() as SideWindow
@@ -48,6 +53,10 @@ func configure_side_window(side_window: SideWindow) -> void:
 	_side_window.side_window_ui.set_preview_theme_settings(preview_theme_settings)
 	side_window.side_window_ui.time_view.override_settings(time_view_settings)
 
+func update_state_in_helper() -> void:
+	SlideHelper.is_side_window_restorable = is_side_window_restorable()
+	SlideHelper.side_window_settings_updated.emit()
+
 func _on_close_requested() -> void:
 	if quit_on_close:
 		get_tree().quit()
@@ -64,3 +73,9 @@ func _on_restore_side_window() -> void:
 		set_side_window_active(true)
 	else:
 		_side_window.center_to_current_screen()
+
+func is_side_window_restorable() -> bool:
+	return !is_side_window_active && is_side_window_allowed()
+
+func is_side_window_allowed() -> bool:
+	return enabled == EnableOptions.ALWAYS || (enabled == EnableOptions.IF_SECOND_SCREEN_EXISTS && DisplayServer.get_screen_count() >= 2)

@@ -25,7 +25,7 @@
      inkscape:document-units="mm"
      inkscape:zoom="4"
      inkscape:cx="15"
-     inkscape:cy="13.125"
+     inkscape:cy="113.125"
      inkscape:window-width="2560"
      inkscape:window-height="1361"
      inkscape:window-x="2391"
@@ -38,16 +38,18 @@
      inkscape:label="Ebene 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-0.2933167,0.0645861)">
+     transform="translate(-0.2933167,0.06458585)">
     <path
-       style="fill:#abc0ac;fill-opacity:1;stroke:#ffffff;stroke-width:0.758;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
-       d="m 1.9949624,9.2401848 v -7.5 h 8.4999996 v 2 H 3.9949624 v 5.5 z"
-       id="path1-4-6-5-3"
-       sodipodi:nodetypes="ccccccc" />
-    <path
-       style="fill:#abc0ac;fill-opacity:1;stroke:#ffffff;stroke-width:0.758;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
-       d="M 15.591671,7.6306431 V 15.130643 H 7.0916707 v -2 H 13.591671 V 7.6306431 Z"
+       style="fill:#eff3ef;fill-opacity:1;stroke:none;stroke-width:0.758;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M 16.385421,7.5366811 V 15.912353 H 6.892993 V 13.67884 h 7.258916 V 7.5366811 Z"
        id="path1-4-6-5-3-4"
-       sodipodi:nodetypes="ccccccc" />
+       sodipodi:nodetypes="ccccccc"
+       inkscape:label="pathbotright" />
+    <path
+       style="fill:#eff3ef;fill-opacity:1;stroke:none;stroke-width:0.758;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M 1.2012124,9.3341468 V 0.95847531 H 10.69364 V 3.1919877 H 3.4347248 v 6.1421591 z"
+       id="path1-4-6-5-3"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:label="pathtopleft" />
   </g>
 </svg>
