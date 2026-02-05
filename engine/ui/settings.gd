@@ -34,7 +34,6 @@ func toggle_settings_extended() -> void:
 func set_settings_extended(is_extended_new: bool) -> void:
 	show_settings_extended = is_extended_new
 	settings_container.visible = is_extended_new
-	#open_button.text = "^" if is_extended_new else "..."
 
 func _on_open_button_pressed() -> void:
 	toggle_settings_extended()
