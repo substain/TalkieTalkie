@@ -51,7 +51,7 @@ All files in `/demo/example*` are mainly used for reference purposes and can saf
 * **Draw with PaintingPointer 1** (`tt_draw_pointer_1`) - Ctrl (Hold) + any mouse button (Hold)
 * **Draw with PaintingPointer 2** (`tt_draw_pointer_2`) - Alt (Hold) + any mouse button (Hold)
 
-* **Movement** for the 2D example (`move_*`) - W, A, S, D
+* **Movement** for the 2D example (`tt_move_*`) - W, A, S, D
 
 **Note:** Unhandled left click input events trigger a slide continue as well. You can modify this behavior by setting the `CONTINUE_ON_UNHANDLED_LEFT_CLICK` variable in `talkietalkie.gd` to false.
 
