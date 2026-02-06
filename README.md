@@ -1,20 +1,19 @@
 # TalkieTalkie
 <img align="right" width="100" height="100" src="https://github.com/substain/TalkieTalkie/blob/main/icon.svg">
-A plugin for creating interactive presentations within Godot.
+A plugin for creating interactive presentations within [Godot](https://godotengine.org/).
 
 Check out the [TalkieTalkie itch page](https://substain.itch.io/talkietalkie) for a live build of the example presentation.
 
-Disclaimer: This project is already functional and provides a feature-rich framework for presentations. However, you need a basic understanding of Godot to use this since presentations are built in Godot. Especially if you want to create more custom slides, you may need to familiarise yourself with the inner workings of this plugin. 
-In any case, feel free to [open an issue](https://github.com/substain/TalkieTalkie/issues) or [ask a question](https://github.com/substain/TalkieTalkie/discussions).
-
+*Disclaimer: This is already a functional plugin that provides a framework for presentations. However, you need a basic understanding of Godot to use this, since the presentations are built in Godot and exported as builds, just like games made in Godot. Especially if you want to create more custom slides, you may need to familiarise yourself with the inner workings of this plugin.
+In any case, feel free to [open an issue](https://github.com/substain/TalkieTalkie/issues) or [ask a question](https://github.com/substain/TalkieTalkie/discussions).*
 
 ## Overview
 - [Installation](#installation)
 - [Quickstart](#quickstart)
-- [Documentation](#documentation)
-- [Testing](#testing)
-- [Credits](#credits)
-- [License](#license)
+- [Keybindings](#keybindings)
+- [Components](#components)
+- [Planned Features](#planned-features)
+- [License](license)
 
 ## Installation
 1. Install the addon via the Asset Library (recommended) or manually
@@ -120,3 +119,6 @@ Here is an incomplete list of features you can hope to see in the future:
 * Better UI Scaling and mobile UX improvements
 * A way to theme slides more conveniently
 * An example scene for 3D presentations
+
+## License
+ See [LICENSE.md](LICENSE)
