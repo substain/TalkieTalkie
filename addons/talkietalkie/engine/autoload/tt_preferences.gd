@@ -1,10 +1,11 @@
 class_name TTPreferencesClass extends Node
-		
 
 signal language_changed
 
 const FULLSCREEN_IS_BORDERLESS: bool = true
+
 const SETTINGS_PATH: String = "user://tt_preferences.save"
+const PLUGIN_CFG_PATH: String = TTSetup.PLUGIN_ROOT+"/plugin.cfg"
 
 var preferences_version: StringName
 var audio_volume: float = 0.5
@@ -25,9 +26,14 @@ func _enter_tree() -> void:
 		TranslationServer.add_translation(translation)
 
 func _ready() -> void:
-	preferences_version = (ProjectSettings.get_setting("application/config/version") as String).strip_edges()
+	preferences_version = load_version_from_plugin_cfg()
 	load_from_file()
 	apply_values()
+
+func load_version_from_plugin_cfg() -> String:
+	var conf: ConfigFile = ConfigFile.new()
+	conf.load(PLUGIN_CFG_PATH)
+	return (conf.get_value("plugin", "version", "0.0.0") as String).strip_edges()
 	
 func apply_values() -> void:
 	set_bus_volume(TTSetup.TARGET_AUDIO_BUS, audio_volume)	
