@@ -72,8 +72,8 @@ AnimSlides collect all SlideAnimation nodes in its children and start them based
 ### SlideAnimation
 These nodes define how a slide is progressed and how changes within a slide are animated. The `targetNodes` property specifies which nodes are affected by the animation. If this property is empty, the SlideAnimation's parent node will be used as the target for the animation.
 
-### SlideHelper and SlideContext
-**SlideHelper** is an autoload used for globally accessing the current state and main components of the presentation. It provides access to the **SlideContext** which holds context-specific information such as the Camera2D in 2D presentations. 
+### TTSlideHelper and SlideContext
+**TTSlideHelper** is an autoload used for globally accessing the current state and main components of the presentation. It provides access to the **SlideContext** which holds context-specific information such as the Camera2D in 2D presentations. 
 
 ### UI
 The UI contains the following components:
