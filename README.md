@@ -1,10 +1,10 @@
 # TalkieTalkie
-<img align="right" width="100" height="100" src="https://github.com/substain/TalkieTalkie/blob/main/icon.svg">
-A plugin for creating interactive presentations within [Godot](https://godotengine.org/).
+<img align="right" width="100" height="100" src="https://github.com/substain/TalkieTalkie/blob/main/addons/talkietalkie/style/tt_icon.svg">
+A plugin for creating interactive presentations within <a href="https://godotengine.org/" target="_blank">Godot</a>.
 
 Check out the [TalkieTalkie itch page](https://substain.itch.io/talkietalkie) for a live build of the example presentation.
 
-*Disclaimer: This is already a functional plugin that provides a framework for presentations. However, you need a basic understanding of Godot to use this, since the presentations are built in Godot and exported as builds, just like games made in Godot. Especially if you want to create more custom slides, you may need to familiarise yourself with the inner workings of this plugin.
+*Disclaimer: To use this addon, you need a basic understanding of Godot, since the presentations are built in the engine and exported as builds. Especially if you want to create more customized slides/presentations, you may need to familiarise yourself with the inner workings of this addon.
 In any case, feel free to [open an issue](https://github.com/substain/TalkieTalkie/issues) or [ask a question](https://github.com/substain/TalkieTalkie/discussions).*
 
 ## Overview
