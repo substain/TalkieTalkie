@@ -13,7 +13,7 @@ class TranslationTemplate:
 		for tt: TranslationTarget in translation_targets:
 			var this_translation: String = tr(tt.translation_key).format(tt.positional_placeholders)
 			res = res.replace(tt.translation_key, this_translation)
-			res = TalkieTalkie.replace_plugin_path(res)
+			res = TTSetup.replace_plugin_path(res)
 		return res
 
 @export var target_nodes: Array[Node]

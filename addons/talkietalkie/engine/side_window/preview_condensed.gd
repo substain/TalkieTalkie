@@ -1,13 +1,13 @@
 class_name PreviewCondensed
 extends Control
 
-const TEX_EYE: Texture2D = preload(TalkieTalkie.PLUGIN_ROOT + "style/ui/eye.svg")
-const TEX_EYE_HOVER: Texture2D = preload(TalkieTalkie.PLUGIN_ROOT + "style/ui/eye_hover.svg")
-const TEX_EYE_PRESSED: Texture2D = preload(TalkieTalkie.PLUGIN_ROOT + "style/ui/eye_pressed.svg")
+const TEX_EYE: Texture2D = preload(TTSetup.PLUGIN_ROOT + "style/ui/eye.svg")
+const TEX_EYE_HOVER: Texture2D = preload(TTSetup.PLUGIN_ROOT + "style/ui/eye_hover.svg")
+const TEX_EYE_PRESSED: Texture2D = preload(TTSetup.PLUGIN_ROOT + "style/ui/eye_pressed.svg")
 
-const TEX_EYE_CROSSED: Texture2D = preload(TalkieTalkie.PLUGIN_ROOT + "style/ui/eye_crossed.svg")
-const TEX_EYE_CROSSED_HOVER: Texture2D = preload(TalkieTalkie.PLUGIN_ROOT + "style/ui/eye_crossed_hover.svg")
-const TEX_EYE_CROSSED_PRESSED: Texture2D = preload(TalkieTalkie.PLUGIN_ROOT + "style/ui/eye_crossed_pressed.svg")
+const TEX_EYE_CROSSED: Texture2D = preload(TTSetup.PLUGIN_ROOT + "style/ui/eye_crossed.svg")
+const TEX_EYE_CROSSED_HOVER: Texture2D = preload(TTSetup.PLUGIN_ROOT + "style/ui/eye_crossed_hover.svg")
+const TEX_EYE_CROSSED_PRESSED: Texture2D = preload(TTSetup.PLUGIN_ROOT + "style/ui/eye_crossed_pressed.svg")
 
 signal toggle_preview_visible(is_visible_new: bool)
 signal toggle_preview_on_top(is_on_top_new: bool)

@@ -5,7 +5,7 @@ extends Node
 ## A simple slideshow feature (automatic continueing slides) can be activated by enabling "Autostart"
 ## in the SlideshowTimer node, and setting "Wait Time" to the desired delay.
 
-const NO_PREVIEW_SLIDE_SCENE: PackedScene = preload(TalkieTalkie.PLUGIN_ROOT + "/engine/side_window/no_preview_slide.tscn")
+const NO_PREVIEW_SLIDE_SCENE: PackedScene = preload(TTSetup.PLUGIN_ROOT + "/engine/side_window/no_preview_slide.tscn")
 
 ## the current index of the slide 
 @export var slide_index: int = 0
@@ -30,7 +30,6 @@ var transition_tween: Tween = null
 var last_from_slide: Slide = null
 
 func _ready() -> void:
-	print_rich("[color='88AAAA']Thank you for using [/color][img height=20]"+TalkieTalkie.PLUGIN_ROOT+"style/tt_icon.svg[/img][b][color='99AABB']TalkieTalkie[/color][/b]. [color='88AAAA']More information about this plugin can be found in "+TalkieTalkie.PLUGIN_ROOT+"README.md[/color]") # Prints "Hello world!", in green with a bold font.
 	init_context()
 	TTSlideHelper.presentation = self	
 	
@@ -90,7 +89,7 @@ func _input(event: InputEvent) -> void:
 	handle_input(event)
 	
 func _unhandled_input(event: InputEvent) -> void:
-	if TalkieTalkie.CONTINUE_ON_UNHANDLED_LEFT_CLICK && event is InputEventMouseButton && (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT && (event as InputEventMouseButton).pressed:
+	if TTSetup.CONTINUE_ON_UNHANDLED_LEFT_CLICK && event is InputEventMouseButton && (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT && (event as InputEventMouseButton).pressed:
 		slide_controller.do_continue()
 		
 func _on_ui_continue_slide() -> void:

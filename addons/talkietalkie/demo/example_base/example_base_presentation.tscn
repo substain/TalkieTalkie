@@ -19,12 +19,7 @@ duration = 0.5
 metadata/_custom_type_script = "uid://b8pqmhx61eehf"
 
 [node name="ExampleBasePresentation" unique_id=240725052 instance=ExtResource("1_janv2")]
-slide_index = null
-remember_slide_index_from_last_session = null
-use_slide_numbering_order = null
-manual_navigation_stops_auto_slideshow = null
 default_transition = SubResource("Resource_qkey0")
-slide_size = null
 
 [node name="ExampleBaseBackground" parent="Background" index="0" unique_id=1533207821 instance=ExtResource("3_ndiw7")]
 hue_values = Array[float]([0.0, 0.5, 0.3, 0.8])

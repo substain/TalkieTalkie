@@ -66,7 +66,7 @@ func set_stuck() -> void:
 	is_stuck = true
 
 func handle_stuck_player(delta: float) -> void:
-	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_down", "move_up")
+	var direction: Vector2 = Input.get_vector("tt_move_left", "tt_move_right", "tt_move_down", "tt_move_up")
 	
 	if direction.is_zero_approx():
 		_unstuck_progress = max(0, _unstuck_progress - delta)
@@ -100,7 +100,7 @@ func do_move(delta: float) -> void:
 	if !is_grounded:
 		velocity += get_gravity() * delta * 6
 
-	if Input.is_action_just_pressed("move_up") and is_on_floor():
+	if Input.is_action_just_pressed("tt_move_up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		is_jumping = true
 		is_grounded = false
@@ -111,7 +111,7 @@ func do_move(delta: float) -> void:
 	anim_player.set_grounded(is_grounded)
 	anim_player.set_y_velocity(velocity.y)
 
-	var x_direction: float = Input.get_axis("move_left", "move_right")
+	var x_direction: float = Input.get_axis("tt_move_left", "tt_move_right")
 	if !is_zero_approx(x_direction):
 		_slide_switch_movement_x = 0.0
 		has_moved_manually = true

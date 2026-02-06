@@ -68,7 +68,7 @@ static func get_locale_button_id(locale_short: StringName) -> int:
 	return 0
 	
 func _on_overall_volume_slider_value_changed(value: float) -> void:
-	TTPreferencesClass.set_bus_volume(TalkieTalkie.TARGET_AUDIO_BUS, value)
+	TTPreferencesClass.set_bus_volume(TTSetup.TARGET_AUDIO_BUS, value)
 	TTPreferences.set_audio_volume(value, false)
 	
 func _on_overall_volume_slider_drag_ended(value_changed: bool) -> void:
@@ -76,7 +76,7 @@ func _on_overall_volume_slider_drag_ended(value_changed: bool) -> void:
 		TTPreferences.set_audio_volume(overall_volume_slider.value)
 
 func _on_overall_volume_mute_button_toggled(toggled_on: bool) -> void:
-	TTPreferencesClass.set_bus_muted(TalkieTalkie.TARGET_AUDIO_BUS, toggled_on)
+	TTPreferencesClass.set_bus_muted(TTSetup.TARGET_AUDIO_BUS, toggled_on)
 	TTPreferences.set_audio_muted(toggled_on)
 
 func update_ui_button_position(include_in_settings_ui: bool, ui_button: Button) -> void:

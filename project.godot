@@ -15,10 +15,14 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="TalkieTalkie"
-config/version="0.0.85"
+config/version="0.0.89"
 run/main_scene="uid://6x6xa75307sd"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://addons/talkietalkie/style/tt_icon.svg"
+
+[audio]
+
+buses/default_bus_layout=""
 
 [autoload]
 
@@ -39,6 +43,10 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/talkietalkie/plugin.cfg")
 
 [gui]
 

@@ -4,8 +4,8 @@ extends Control
 const MIN_DRAW_DIST: float = 5.0
 
 ## Backup icon
-const CIRCLE_1X1: Texture2D = preload(TalkieTalkie.PLUGIN_ROOT + "style/ui/circle_1x1.svg")
-const PAINT_GRADIENT: Gradient = preload(TalkieTalkie.PLUGIN_ROOT + "style/ui/paint_gradient.tres")
+const CIRCLE_1X1: Texture2D = preload(TTSetup.PLUGIN_ROOT + "style/ui/circle_1x1.svg")
+const PAINT_GRADIENT: Gradient = preload(TTSetup.PLUGIN_ROOT + "style/ui/paint_gradient.tres")
 
 const DP_1_INDEX: int = 0
 const DP_2_INDEX: int = 1

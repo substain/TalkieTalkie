@@ -7,7 +7,7 @@ enum EnableOptions {
 	NEVER
 }
 
-const SIDE_WINDOW_SCENE: PackedScene = preload(TalkieTalkie.PLUGIN_ROOT + "engine/side_window/side_window.tscn")
+const SIDE_WINDOW_SCENE: PackedScene = preload(TTSetup.PLUGIN_ROOT + "engine/side_window/side_window.tscn")
 @export_category("SideWindow Settings")
 @export var enabled: EnableOptions = EnableOptions.IF_SECOND_SCREEN_EXISTS
 @export var quit_on_close: bool = false

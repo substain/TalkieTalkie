@@ -17,7 +17,7 @@ var side_window_layout_settings: SideWindowLayoutSettings
 var last_slide: int = 0
 var last_presentation_scene: StringName = &""
 
-const TRANSLATION_PATHS = [TalkieTalkie.PLUGIN_ROOT + "localization/talkie_talkie_translation.en.translation", TalkieTalkie.PLUGIN_ROOT + "localization/talkie_talkie_translation.de.translation"]
+const TRANSLATION_PATHS = [TTSetup.PLUGIN_ROOT + "localization/talkie_talkie_translation.en.translation", TTSetup.PLUGIN_ROOT + "localization/talkie_talkie_translation.de.translation"]
 
 func _enter_tree() -> void:
 	for tr_path: String in TRANSLATION_PATHS:
@@ -30,8 +30,8 @@ func _ready() -> void:
 	apply_values()
 	
 func apply_values() -> void:
-	set_bus_volume(TalkieTalkie.TARGET_AUDIO_BUS, audio_volume)	
-	set_bus_muted(TalkieTalkie.TARGET_AUDIO_BUS, audio_muted)
+	set_bus_volume(TTSetup.TARGET_AUDIO_BUS, audio_volume)	
+	set_bus_muted(TTSetup.TARGET_AUDIO_BUS, audio_muted)
 	
 	TranslationServer.set_locale(language)
 	set_fullscreen(fullscreen_active)

@@ -2,7 +2,7 @@ class_name TabNavigationBar extends HidableUI
 
 signal jump_to_slide(slide_index: int)
 
-const _SLIDE_NAVIGATION_TAB: PackedScene = preload(TalkieTalkie.PLUGIN_ROOT + "engine/ui/slide_navigation_tab.tscn")
+const _SLIDE_NAVIGATION_TAB: PackedScene = preload(TTSetup.PLUGIN_ROOT + "engine/ui/slide_navigation_tab.tscn")
 
 @export var _slide_navigation_hbox: HBoxContainer
 @export var _slide_index_label: Label

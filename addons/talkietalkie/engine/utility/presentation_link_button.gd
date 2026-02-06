@@ -6,7 +6,7 @@ extends Button
 @export_file_path("*.tscn") var presentation_scene: String
 
 func _ready() -> void:
-	presentation_scene = TalkieTalkie.replace_plugin_path(presentation_scene)
+	presentation_scene = TTSetup.replace_plugin_path(presentation_scene)
 	
 	if presentation_scene.is_empty():
 		push_warning(name, ": This presentation link button has no scene set up!")
