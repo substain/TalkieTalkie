@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://bp5mgabsdn7i4"]
+
+[ext_resource type="Script" uid="uid://bre0fh3ao4yq1" path="res://addons/talkietalkie/engine/side_window/side_window_ui.gd" id="1_7iuc4"]
+[ext_resource type="PackedScene" uid="uid://cprx301afsox0" path="res://addons/talkietalkie/engine/ui/time_view.tscn" id="2_jyfea"]
+[ext_resource type="Texture2D" uid="uid://bodks10l4yybe" path="res://addons/talkietalkie/style/ui/settings.svg" id="4_6ktk5"]
+[ext_resource type="PackedScene" uid="uid://rgndpyhb5p7q" path="res://addons/talkietalkie/engine/side_window/preview_condensed.tscn" id="4_mmjlk"]
+[ext_resource type="PackedScene" uid="uid://d3o1poh7bdxgc" path="res://addons/talkietalkie/engine/side_window/slide_preview.tscn" id="4_npmih"]
+[ext_resource type="Texture2D" uid="uid://ba8qp1w614ndp" path="res://addons/talkietalkie/style/ui/settings_pressed.svg" id="5_53bcx"]
+[ext_resource type="PackedScene" uid="uid://8r006t5y8nxp" path="res://addons/talkietalkie/engine/ui/comments_view.tscn" id="5_npmih"]
+[ext_resource type="Texture2D" uid="uid://bb0j6frns3e87" path="res://addons/talkietalkie/style/ui/settings_hover.svg" id="6_frqc4"]
+
+[node name="SideWindowUI" type="CanvasLayer" unique_id=496651986 node_paths=PackedStringArray("slide_previews_by_rel_index", "preview_condensed_by_rel_index", "time_view", "edit_button")]
+script = ExtResource("1_7iuc4")
+slide_previews_by_rel_index = {
+-1: NodePath("SlidePanelBase/PreviousSlidePreview"),
+0: NodePath("SlidePanelBase/CurrentSlidePreview"),
+1: NodePath("SlidePanelBase/NextSlidePreview")
+}
+preview_condensed_by_rel_index = {
+-1: NodePath("PreviewCondensedMC/PanelContainer/HBoxContainer/PreviousPreviewCondensed"),
+0: NodePath("PreviewCondensedMC/PanelContainer/HBoxContainer/CurrentPreviewCondensed"),
+1: NodePath("PreviewCondensedMC/PanelContainer/HBoxContainer/NextPreviewCondensed")
+}
+time_view = NodePath("TimeView")
+edit_button = NodePath("PreviewCondensedMC/PanelContainer/HBoxContainer/EditButton")
+
+[node name="TimeView" parent="." unique_id=1955618064 instance=ExtResource("2_jyfea")]
+offset_left = -122.0
+offset_right = 122.0
+offset_bottom = 136.0
+
+[node name="SlidePanelBase" type="Control" parent="." unique_id=1973781285]
+modulate = Color(1, 1, 1, 0.43529412)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PreviousSlidePreview" parent="SlidePanelBase" unique_id=1762507129 instance=ExtResource("4_npmih")]
+disable_3d = true
+title = "ui.relative_slide.previous"
+position = Vector2i(0, 227)
+size = Vector2i(240, 135)
+offset_from_current_slide = -1
+
+[node name="CurrentSlidePreview" parent="SlidePanelBase" unique_id=1401450500 instance=ExtResource("4_npmih")]
+disable_3d = true
+title = "ui.relative_slide.current"
+position = Vector2i(240, 210)
+size = Vector2i(320, 180)
+always_on_top = true
+
+[node name="NextSlidePreview" parent="SlidePanelBase" unique_id=180883408 instance=ExtResource("4_npmih")]
+disable_3d = true
+title = "ui.relative_slide.next"
+position = Vector2i(560, 227)
+size = Vector2i(240, 135)
+offset_from_current_slide = 1
+
+[node name="PreviewCondensedMC" type="MarginContainer" parent="." unique_id=1835208019]
+z_index = 15
+offset_right = 459.0
+offset_bottom = 103.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="PanelContainer" type="PanelContainer" parent="PreviewCondensedMC" unique_id=1705075904]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PreviewCondensedMC/PanelContainer" unique_id=399338421]
+layout_mode = 2
+
+[node name="EditButton" type="TextureButton" parent="PreviewCondensedMC/PanelContainer/HBoxContainer" unique_id=897769147]
+layout_mode = 2
+size_flags_horizontal = 0
+toggle_mode = true
+texture_normal = ExtResource("4_6ktk5")
+texture_pressed = ExtResource("5_53bcx")
+texture_hover = ExtResource("6_frqc4")
+stretch_mode = 3
+
+[node name="PreviousPreviewCondensed" parent="PreviewCondensedMC/PanelContainer/HBoxContainer" unique_id=1646287137 node_paths=PackedStringArray("target_slide_preview") instance=ExtResource("4_mmjlk")]
+layout_mode = 2
+target_slide_preview = NodePath("../../../../SlidePanelBase/PreviousSlidePreview")
+preview_title = "ui.relative_slide.previous"
+
+[node name="VSeparator" type="VSeparator" parent="PreviewCondensedMC/PanelContainer/HBoxContainer" unique_id=1523241366]
+layout_mode = 2
+
+[node name="CurrentPreviewCondensed" parent="PreviewCondensedMC/PanelContainer/HBoxContainer" unique_id=988335701 node_paths=PackedStringArray("target_slide_preview") instance=ExtResource("4_mmjlk")]
+layout_mode = 2
+target_slide_preview = NodePath("../../../../SlidePanelBase/CurrentSlidePreview")
+preview_title = "ui.relative_slide.current"
+
+[node name="VSeparator2" type="VSeparator" parent="PreviewCondensedMC/PanelContainer/HBoxContainer" unique_id=731675341]
+layout_mode = 2
+
+[node name="NextPreviewCondensed" parent="PreviewCondensedMC/PanelContainer/HBoxContainer" unique_id=2143973167 node_paths=PackedStringArray("target_slide_preview") instance=ExtResource("4_mmjlk")]
+layout_mode = 2
+target_slide_preview = NodePath("../../../../SlidePanelBase/NextSlidePreview")
+preview_title = "ui.relative_slide.next"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1527691892]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -178.0
+offset_right = 150.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="SlideCommentMC" type="PanelContainer" parent="MarginContainer" unique_id=1271235835]
+layout_mode = 2
+
+[node name="CommentsView" parent="MarginContainer/SlideCommentMC" unique_id=557140225 instance=ExtResource("5_npmih")]
+layout_mode = 2
+
+[connection signal="toggled" from="PreviewCondensedMC/PanelContainer/HBoxContainer/EditButton" to="." method="_on_edit_button_toggled"]

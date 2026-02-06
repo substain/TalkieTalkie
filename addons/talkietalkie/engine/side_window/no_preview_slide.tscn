@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bh76ys1r6xqs4"]
+
+[ext_resource type="Script" uid="uid://f4nc4x1v6n3" path="res://addons/talkietalkie/engine/slides/scene_slide.gd" id="1_gcy0d"]
+[ext_resource type="Script" uid="uid://cemii7i4pkkpt" path="res://addons/talkietalkie/engine/translation/translations.gd" id="2_pfir2"]
+[ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://addons/talkietalkie/engine/translation/translation_target.gd" id="3_plcxa"]
+
+[sub_resource type="Resource" id="Resource_7hbwj"]
+script = ExtResource("3_plcxa")
+translation_key = "ui.preview.preview_disabled"
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[node name="NoPreviewSlide" type="Control" node_paths=PackedStringArray("preview_info_elements")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_gcy0d")
+slide_title = "set via Presentation.create_slide_template"
+slide_content = "set via Presentation.create_slide_template"
+comments = "set via Presentation.create_slide_template"
+preview_info_elements = [NodePath("RichTextLabel")]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." node_paths=PackedStringArray("target_nodes")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 80
+theme_override_font_sizes/italics_font_size = 80
+bbcode_enabled = true
+text = "[i]ui.preview.preview_disabled[/i]"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_pfir2")
+target_nodes = [NodePath(".")]
+translation_targets = Array[ExtResource("3_plcxa")]([SubResource("Resource_7hbwj")])

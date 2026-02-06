@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://8r006t5y8nxp"]
+
+[ext_resource type="Script" uid="uid://dvxwu46vp3aer" path="res://addons/talkietalkie/engine/ui/comments_view.gd" id="1_y0nqy"]
+
+[node name="CommentsView" type="VBoxContainer" node_paths=PackedStringArray("title_label", "comments_rtl")]
+alignment = 1
+script = ExtResource("1_y0nqy")
+comments_title = "ui.comments"
+title_label = NodePath("TitleLabel")
+comments_rtl = NodePath("CommentsRTL")
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 2
+theme_type_variation = &"LabelHeader"
+text = "[comments_title]"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="CommentsRTL" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+bbcode_enabled = true
+text = "This is an example text for comments. All of the comment text will be in this box. What happens if the text doesn't fit?
+
+I don't know."
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="meta_clicked" from="CommentsRTL" to="." method="_on_comments_rtl_meta_clicked"]

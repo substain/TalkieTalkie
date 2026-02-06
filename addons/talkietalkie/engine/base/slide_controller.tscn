@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://biybkd8ytuhhn"]
+
+[ext_resource type="Script" uid="uid://dd7jhmddmhlro" path="res://addons/talkietalkie/engine/base/slide_controller.gd" id="1_2js2n"]
+
+[node name="SlideController" type="Node" node_paths=PackedStringArray("auto_slideshow_timer")]
+script = ExtResource("1_2js2n")
+auto_slideshow_timer = NodePath("AutoSlideshowTimer")
+
+[node name="AutoSlideshowTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="AutoSlideshowTimer" to="." method="_on_auto_slideshow_timer_timeout"]

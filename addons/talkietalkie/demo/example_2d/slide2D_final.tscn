@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dlbj81kqetdpc"]
+
+[ext_resource type="PackedScene" uid="uid://ddf7utr1vtc3d" path="res://addons/talkietalkie/engine/default_template/default_title_layout.tscn" id="1_lh3n3"]
+[ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://addons/talkietalkie/engine/slides/slide_animation.gd" id="2_2ivlx"]
+[ext_resource type="Script" uid="uid://l1ac5g7c3d0w" path="res://addons/talkietalkie/engine/utility/presentation_link_button.gd" id="3_6xhwb"]
+
+[node name="SlideFinal" unique_id=1522349452 instance=ExtResource("1_lh3n3")]
+slide_title = "Final"
+
+[node name="IntroLabel" parent="." index="1"]
+theme_override_colors/font_outline_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
+text = ""
+
+[node name="TitleLabel" parent="TitleControl" index="1"]
+theme_override_colors/default_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
+theme_override_colors/font_outline_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
+text = "fin."
+
+[node name="FadeAnimation" type="Node" parent="TitleControl" index="3" unique_id=1646185096]
+script = ExtResource("2_2ivlx")
+animation_dur = 0.5
+
+[node name="SubTitleLabel" parent="." index="3"]
+text = ""
+
+[node name="BasicPresentationLink" type="Button" parent="." index="4" unique_id=596843870]
+layout_mode = 0
+offset_left = 780.5
+offset_top = 788.0
+offset_right = 1139.5
+offset_bottom = 830.0
+theme_override_font_sizes/font_size = 24
+text = "check out the basic presentation"
+script = ExtResource("3_6xhwb")
+presentation_scene = "ttplugin://demo/example_base/example_base_presentation.tscn"
+
+[node name="FadeAnimation" type="Node" parent="BasicPresentationLink" index="0" unique_id=1099876999]
+script = ExtResource("2_2ivlx")
+animation_dur = 0.5

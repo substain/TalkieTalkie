@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://hbvk7dsw6lru"]
+
+[ext_resource type="Script" uid="uid://dq0nd5bo0tp00" path="res://addons/talkietalkie/engine/ui/settings.gd" id="1_pss60"]
+[ext_resource type="Texture2D" uid="uid://du2dxdv0diwh7" path="res://addons/talkietalkie/style/ui/gear.svg" id="2_70mxq"]
+[ext_resource type="Texture2D" uid="uid://b7626k74i30bn" path="res://addons/talkietalkie/style/tt_icon.svg" id="2_ckigq"]
+[ext_resource type="Texture2D" uid="uid://dgv5ocfrj3y3b" path="res://addons/talkietalkie/style/ui/gear_pressed.svg" id="3_5ciuv"]
+[ext_resource type="Texture2D" uid="uid://cejppi3qwf4kn" path="res://addons/talkietalkie/style/ui/gear_hover.svg" id="4_a62kg"]
+
+[node name="Settings" type="MarginContainer" unique_id=243812098 node_paths=PackedStringArray("open_button", "lang_option_button", "overall_volume_slider", "overall_volume_mute_button", "settings_container", "dummy_ui_replacement_button", "about_button", "restore_side_window_button")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -140.0
+offset_bottom = 183.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+script = ExtResource("1_pss60")
+open_button = NodePath("")
+lang_option_button = NodePath("VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/LangVBox/LangOptionButton")
+overall_volume_slider = NodePath("VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox/OverallVolumeSlider")
+overall_volume_mute_button = NodePath("VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox/OverallVolumeMuteButton")
+settings_container = NodePath("VBoxContainer/SettingsContainer")
+dummy_ui_replacement_button = NodePath("VBoxContainer/HBoxContainer/DummyButtonForUIReplacement")
+about_button = NodePath("VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/AboutHBox/AboutButton")
+restore_side_window_button = NodePath("VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/RestoreSideWindowButton")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=74302742]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1326284377]
+layout_mode = 2
+alignment = 2
+
+[node name="OpenButtonPanel" type="PanelContainer" parent="VBoxContainer/HBoxContainer" unique_id=1441132772]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+
+[node name="OpenButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/OpenButtonPanel" unique_id=2141969434]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("2_70mxq")
+texture_pressed = ExtResource("3_5ciuv")
+texture_hover = ExtResource("4_a62kg")
+stretch_mode = 3
+
+[node name="DummyButtonForUIReplacement" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=454941711]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+focus_mode = 0
+text = "XXX"
+
+[node name="SettingsContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1630179282]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TabNavigationMc" type="MarginContainer" parent="VBoxContainer/SettingsContainer" unique_id=363142911]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="SettingVBox" type="VBoxContainer" parent="VBoxContainer/SettingsContainer/TabNavigationMc" unique_id=253259075]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="RestoreSideWindowButton" type="Button" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox" unique_id=1388960451]
+layout_mode = 2
+text = "ui.settings.show_side_window"
+
+[node name="LangVBox" type="VBoxContainer" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox" unique_id=528821671]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="LanguageLabel" type="Label" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/LangVBox" unique_id=614502823]
+layout_mode = 2
+text = "ui.settings.language"
+horizontal_alignment = 1
+
+[node name="LangOptionButton" type="OptionButton" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/LangVBox" unique_id=1515765814]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_1/text = "Deutsch"
+popup/item_1/id = 1
+
+[node name="OverallVolumeVBox" type="VBoxContainer" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox" unique_id=191289887]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="LanguageLabel" type="Label" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox" unique_id=1736406206]
+layout_mode = 2
+text = "ui.settings.overall_volume"
+horizontal_alignment = 1
+
+[node name="OverallVolumeSlider" type="HSlider" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox" unique_id=1140103335]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="OverallVolumeMuteButton" type="CheckBox" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox" unique_id=628879458]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "ui.settings.mute"
+
+[node name="AboutHBox" type="HBoxContainer" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox" unique_id=1155684612]
+layout_mode = 2
+alignment = 2
+
+[node name="AboutButton" type="Button" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/AboutHBox" unique_id=682234751]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+text = "vX.X.XX"
+icon = ExtResource("2_ckigq")
+expand_icon = true
+
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/OpenButtonPanel/OpenButton" to="." method="_on_open_button_toggled"]
+[connection signal="pressed" from="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/RestoreSideWindowButton" to="." method="_on_restore_side_window_button_pressed"]
+[connection signal="item_selected" from="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/LangVBox/LangOptionButton" to="." method="_on_lang_option_button_item_selected"]
+[connection signal="drag_ended" from="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox/OverallVolumeSlider" to="." method="_on_overall_volume_slider_drag_ended"]
+[connection signal="value_changed" from="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox/OverallVolumeSlider" to="." method="_on_overall_volume_slider_value_changed"]
+[connection signal="toggled" from="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox/OverallVolumeMuteButton" to="." method="_on_overall_volume_mute_button_toggled"]
+[connection signal="pressed" from="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/AboutHBox/AboutButton" to="." method="_on_about_button_pressed"]

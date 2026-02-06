@@ -1,40 +1,60 @@
 # TalkieTalkie
 <img align="right" width="100" height="100" src="https://github.com/substain/TalkieTalkie/blob/main/icon.svg">
-A presentation template/framework to create interactive presentations within Godot.
+A plugin for creating interactive presentations within Godot.
 
-You can test the example presentation here: [https://substain.itch.io/talkietalkie](https://substain.itch.io/talkietalkie).
+Check out the [TalkieTalkie itch page](https://substain.itch.io/talkietalkie) for a live build of the example presentation.
 
-## Requirements
-* Godot 4.x (*This template was only tested with Godot 4.4+. Using an earlier version should be possible with minor modifications.*)
-* A basic understanding of how to use Godot
+Disclaimer: This project is already functional and provides a feature-rich framework for presentations. However, you need a basic understanding of Godot to use this since presentations are built in Godot. Especially if you want to create more custom slides, you may need to familiarise yourself with the inner workings of this plugin. 
+In any case, feel free to [open an issue](https://github.com/substain/TalkieTalkie/issues) or [ask a question](https://github.com/substain/TalkieTalkie/discussions).
 
-## Quickstart: How to create a new presentation
+
+## Overview
+- [Installation](#installation)
+- [Quickstart](#quickstart)
+- [Documentation](#documentation)
+- [Testing](#testing)
+- [Credits](#credits)
+- [License](#license)
+
+## Installation
+1. Install the addon via the Asset Library (recommended) or manually
+ - Asset Library: with your project opened in Godot, open the `AssetLib` Tab, search for TalkieTalkie, **Download** and **Install**
+ - manually: download the latest release from Github, unpack it, and copy the `addons/talkietalkie` folder to the `addons` folder in your project.
+2. Enable the addon via `Project Settings` -> `Plugins`. This will prompt you to restart the Godot Editor (to reload the Input Map)
+
+If you want to use a different path, make sure to update the `PLUGIN_ROOT` variable in `talkietalkie.gd`.
+
+**Note:** This template is being developed in the latest version of Godot. Using a version earlier than Godot 4.4 may require you to fix typing errors.
+
+## Quickstart
 The following steps are intended to provide a quick introduction to creating a new presentation with this framework.
 
-1) Create an inherited scene from `engine/base/presentation.tscn`. Using a separate folder for your presentation and its assets may be helpful, e.g. in `content/my_presentation`
-2) Create the slides and add them to the tree
-	* The fastest way to set up a slide or a template is to use/modify a slide from the examples, e.g. `content/example_base/template/example_*.tscn`
+1) Create an inherited scene from `/engine/base/presentation.tscn`. Using a dedicated folder for your presentation and its assets may be helpful.
+2) Create the slides and add them to your presentation scene.
+	* The fastest way to set up a slide or a template is to use/modify a slide from the examples, e.g. `/demo/example_base/template/example_*.tscn`
 	* You can use the SlideGenerator to quickly create multiple text slides from markdown-like text and a template slide
-3) Add your custom background as child of the Background CanvasLayer
-4) Edit the exported properties in the Presentation & UI nodes and/or update the input actions according to your preferences
+3) Optional: add a custom background as child of the Background node
+4) Optional: Edit the exported properties in the Presentation & UI nodes and/or update the input actions according to your preferences
 
-You can have a look at `content/example_base/example_base_presentation.tscn` and/or `content/example_2d/example_2d_presentation.tscn` for examples. 
-All files in `content/example*` are mainly used for reference purposes and can safely be deleted, if necessary.
+You can have a look at `/demo/example_base/example_base_presentation.tscn` and/or `/demo/example_2d/example_2d_presentation.tscn` for examples. 
+All files in `/demo/example*` are mainly used for reference purposes and can safely be deleted, if necessary.
 
 ## Keybindings
 *These are the default keybindings, they can be configured via Godot's input action map*
 
-* **Continue Slide** (`continue`) - Right Arrow Key / Down Arrow Key / Space / Enter / Mouse Wheel Down / Left Click
-* **Previous Slide** (`back`) - Left Arrow Key / Up Arrow Key / Page Up / Mouse Wheel Up
-* **Skip Slide** (`skip_slide`) - Page Down / Mouse Wheel Down
-* **Show/Hide UI** (`toggle_ui`) - F1 / Tab / Right Click
-* **Restore/Center Side Window** (`restore_side_window`) - F11
-* **Fullscreen** (`fullscreen`) - F12
-* **Quit** (`quit`) - Escape
-* **Draw with PaintingPointer 1** (`draw_pointer_1`) - Ctrl (Hold) + any mouse button (Hold)
-* **Draw with PaintingPointer 2** (`draw_pointer_2`) - Alt (Hold) + any mouse button (Hold)
+* **Continue Slide** (`tt_continue`) - Right Arrow Key / Down Arrow Key / Space / Left Click
+* **Previous Slide** (`tt_back`) - Left Arrow Key / Up Arrow Key / Page Up / Mouse Wheel Up
+* **Skip Slide** (`tt_skip_slide`) - Page Down / Mouse Wheel Down
+* **Show/Hide UI** (`tt_toggle_ui`) - F1 / Tab / Right Click
+* **Restore/Center Side Window** (`tt_restore_side_window`) - F11
+* **Fullscreen** (`tt_fullscreen`) - F12
+* **Quit** (`tt_quit`) - Escape
+* **Draw with PaintingPointer 1** (`tt_draw_pointer_1`) - Ctrl (Hold) + any mouse button (Hold)
+* **Draw with PaintingPointer 2** (`tt_draw_pointer_2`) - Alt (Hold) + any mouse button (Hold)
 
 * **Movement** for the 2D example (`move_*`) - W, A, S, D
+
+**Note:** Unhandled left click input events trigger a slide continue as well. You can modify this behavior by setting the `CONTINUE_ON_UNHANDLED_LEFT_CLICK` variable in `talkietalkie.gd` to false.
 
 ## Components
 This section aims to provide a basic documentation of the components.
@@ -70,13 +90,13 @@ Note that if the side window is active, the UI will show up there.
 ### Side-Window
 An optional window showing presentation infos. You can configure the basic behavior of this via the SideWindowBase node, which is part of the presentation. In this window, previews for the last, current, and next slides can be displayed. Also, the side window shows time informations and slide comments as well as the UI, if active.
 
-Note that currently, slide previews are shown by packing them into packed scenes. This may lead to an error with signals on packed scenes inside these slides:
+Note that currently, slide previews are created by packing them into packed scenes when starting a presentation. This may lead to an error with signals on packed scenes inside these slides:
 
 `load_slide_by_packed_scene(): Signal x is already connected to given callable y in that object.`
 
 You can make the packed scene local inside the slide to avoid this error. It also seems like you can safely ignore this error.
 
-The layout of this window (size, position, and preview layouts) is stored in the preferences and loaded on startup.
+The layout of this window (size, position, and preview layouts) is saved in the preferences and loaded on startup.
 
 ### PaintingPointer
 This Node is currently located within the UI and adds the possibility to highlight specific sections of a slide. Holding a button (Default: Ctrl and Alt) will show an icon, and lets you draw onto the slides. Drawings are removed after some seconds have passed or the slide is changed.
@@ -94,6 +114,7 @@ Hit `Generate Slides` to generate the slides.
 ## Planned Features
 Here is an incomplete list of features you can hope to see in the future:
 
+* A presentation generator that helps building presentations more easily
 * A searchable table of contents (UI) that that provides improved slide navigation
 * Workflow improvements for creating slides, especially regarding translations
 * Better UI Scaling and mobile UX improvements

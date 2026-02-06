@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://ddevahegd5vcv"]
+
+[ext_resource type="Script" uid="uid://emii6ih5lh0j" path="res://addons/talkietalkie/engine/slides/anim_slide.gd" id="1_ue0yv"]
+[ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://addons/talkietalkie/engine/slides/slide_animation.gd" id="2_joi4n"]
+[ext_resource type="Texture2D" uid="uid://b7626k74i30bn" path="res://addons/talkietalkie/style/tt_icon.svg" id="3_5wpn4"]
+
+[node name="ExampleBaseAnimSlide" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 1
+script = ExtResource("1_ue0yv")
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -819.0
+offset_top = -385.0
+offset_right = 820.0
+offset_bottom = -240.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -55.0
+offset_right = 20.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="ElementLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Element1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="VBoxContainer/ElementLabel"]
+script = ExtResource("2_joi4n")
+
+[node name="ElementLabel2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Element2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="VBoxContainer/ElementLabel2"]
+script = ExtResource("2_joi4n")
+animation_dur = 1.0
+sort_order = 4
+
+[node name="ElementLabel3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Element3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1083.0
+offset_top = 167.0
+offset_right = 1211.0
+offset_bottom = 295.0
+texture = ExtResource("3_5wpn4")
+
+[node name="TargetFadeAnimation" type="Node" parent="." node_paths=PackedStringArray("targets")]
+script = ExtResource("2_joi4n")
+targets = [NodePath("../VBoxContainer/ElementLabel3"), NodePath("../TextureRect")]

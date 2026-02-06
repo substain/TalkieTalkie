@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dsx2v4kghiq3y"]
+
+[ext_resource type="PackedScene" uid="uid://ddf7utr1vtc3d" path="res://addons/talkietalkie/engine/default_template/default_title_layout.tscn" id="1_5dq7b"]
+[ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://addons/talkietalkie/engine/slides/slide_animation.gd" id="2_wotk1"]
+[ext_resource type="Script" uid="uid://l1ac5g7c3d0w" path="res://addons/talkietalkie/engine/utility/presentation_link_button.gd" id="3_iyvvw"]
+
+[node name="SlideFinal" unique_id=1018725892 instance=ExtResource("1_5dq7b")]
+slide_title = "Final"
+
+[node name="IntroLabel" parent="." index="1"]
+text = ""
+
+[node name="TitleLabel" parent="TitleControl" index="1"]
+text = "fin."
+
+[node name="FadeAnimation" type="Node" parent="TitleControl" index="3" unique_id=909684441]
+script = ExtResource("2_wotk1")
+animation_dur = 0.5
+
+[node name="SubTitleLabel" parent="." index="3"]
+text = ""
+
+[node name="2DPresentationLink" type="Button" parent="." index="4" unique_id=1585262910]
+layout_mode = 0
+offset_left = 780.5
+offset_top = 788.0
+offset_right = 1139.5
+offset_bottom = 830.0
+theme_override_font_sizes/font_size = 24
+text = "check out the 2D presentation"
+script = ExtResource("3_iyvvw")
+presentation_scene = "ttplugin://demo/example_2d/example_2d_presentation.tscn"
+
+[node name="FadeAnimation" type="Node" parent="2DPresentationLink" index="0" unique_id=792674977]
+script = ExtResource("2_wotk1")
+animation_dur = 0.5

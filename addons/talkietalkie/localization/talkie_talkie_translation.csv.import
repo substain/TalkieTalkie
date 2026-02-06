@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bbrd00123budm"
+
+[deps]
+
+files=["res://addons/talkietalkie/localization/talkie_talkie_translation.en.translation", "res://addons/talkietalkie/localization/talkie_talkie_translation.de.translation"]
+
+source_file="res://addons/talkietalkie/localization/talkie_talkie_translation.csv"
+dest_files=["res://addons/talkietalkie/localization/talkie_talkie_translation.en.translation", "res://addons/talkietalkie/localization/talkie_talkie_translation.de.translation"]
+
+[params]
+
+compress=false
+delimiter=1
+unescape_keys=false
+unescape_translations=true

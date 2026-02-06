@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://ciwolqdv6staj"]
+
+[ext_resource type="PackedScene" uid="uid://ddf7utr1vtc3d" path="res://addons/talkietalkie/engine/default_template/default_title_layout.tscn" id="1_p6c7c"]
+[ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://addons/talkietalkie/engine/translation/translation_target.gd" id="2_u3ctn"]
+[ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://addons/talkietalkie/engine/slides/slide_animation.gd" id="3_u3ctn"]
+
+[sub_resource type="Resource" id="Resource_jk5wk"]
+script = ExtResource("2_u3ctn")
+translation_key = "content.base_example.0.hello"
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_msju5"]
+script = ExtResource("2_u3ctn")
+translation_key = "content.base_example.0.this_is_x"
+positional_placeholders = Array[String](["[img]ttplugin://style/tt_icon.svg[/img][color=\\\"112233\\\"]TalkieTalkie[/color]"])
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_wa3te"]
+script = ExtResource("2_u3ctn")
+translation_key = "content.base_example.0.an_example_presentation"
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[node name="SlideTitle" unique_id=1434352918 instance=ExtResource("1_p6c7c")]
+slide_content = "content.base_example.0.hello
+content.base_example.0.this_is_x
+(content.base_example.0.an_example_presentation)"
+comments = "this is the title slide"
+
+[node name="Translations" parent="." index="0"]
+translation_targets = Array[ExtResource("2_u3ctn")]([SubResource("Resource_jk5wk"), SubResource("Resource_msju5"), SubResource("Resource_wa3te")])
+
+[node name="IntroLabel" parent="." index="1"]
+theme_override_colors/font_color = Color(0.2231029, 0.2231029, 0.22310287, 1)
+text = "content.base_example.0.hello"
+
+[node name="FadeAnimation" type="Node" parent="IntroLabel" index="0" unique_id=676745335]
+script = ExtResource("3_u3ctn")
+animation_dur = 0.5
+
+[node name="TitleLabel" parent="TitleControl" index="1"]
+text = "content.base_example.0.this_is_x"
+
+[node name="FadeAnimation" type="Node" parent="TitleControl" index="3" unique_id=1342030231]
+script = ExtResource("3_u3ctn")
+animation_dur = 0.5
+
+[node name="SubTitleLabel" parent="." index="3"]
+theme_override_colors/font_color = Color(0.2231029, 0.2231029, 0.22310287, 1)
+text = "(content.base_example.0.an_example_presentation)"
+
+[node name="FadeAnimation" type="Node" parent="SubTitleLabel" index="0" unique_id=1258415696]
+script = ExtResource("3_u3ctn")
+animation_dur = 0.5
