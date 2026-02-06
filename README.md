@@ -1,6 +1,6 @@
 # TalkieTalkie
 <img align="right" width="100" height="100" src="https://github.com/substain/TalkieTalkie/blob/main/addons/talkietalkie/style/tt_icon.svg">
-A plugin for creating interactive presentations within <a href="https://godotengine.org/" target="_blank">Godot</a>.
+An addon for creating interactive presentations within <a href="https://godotengine.org/" target="_blank">Godot</a>.
 
 Check out the [TalkieTalkie itch page](https://substain.itch.io/talkietalkie) for a live build of the example presentation.
 
@@ -16,12 +16,12 @@ In any case, feel free to [open an issue](https://github.com/substain/TalkieTalk
 - [License](license)
 
 ## Installation
-1. Install the addon via the Asset Library (recommended) or manually
+1. **Install the addon** via the Asset Library (recommended) or manually:
  - Asset Library: with your project opened in Godot, open the `AssetLib` Tab, search for TalkieTalkie, **Download** and **Install**
  - manually: download the latest release from Github, unpack it, and copy the `addons/talkietalkie` folder to the `addons` folder in your project.
-2. Enable the addon via `Project Settings` -> `Plugins`. This will prompt you to restart the Godot Editor (to reload the Input Map)
+2. **Enable the addon** via `Project Settings` -> `Plugins`. This will prompt you to restart the Godot Editor (to reload the Input Map)
 
-If you want to use a different path, make sure to update the `PLUGIN_ROOT` variable in `talkietalkie.gd`.
+If you want to use a different path for this addon, make sure to update the `PLUGIN_ROOT` variable in `talkietalkie.gd`.
 
 **Note:** This template is being developed in the latest version of Godot. Using a version earlier than Godot 4.4 may require you to fix typing errors.
 
