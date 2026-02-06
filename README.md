@@ -121,4 +121,4 @@ Here is an incomplete list of features you can hope to see in the future:
 * An example scene for 3D presentations
 
 ## License
- See [LICENSE.md](LICENSE)
+MIT License (see [LICENSE.md](LICENSE.md))
