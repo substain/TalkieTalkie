@@ -1,10 +1,10 @@
 # TalkieTalkie
-<img align="right" width="100" height="100" src="https://github.com/substain/TalkieTalkie/blob/main/icon.svg">
-A plugin for creating interactive presentations within [Godot](https://godotengine.org/).
+<img align="right" width="100" height="100" src="https://github.com/substain/TalkieTalkie/blob/main/addons/talkietalkie/style/tt_icon.svg">
+An addon for creating interactive presentations within <a href="https://godotengine.org/" target="_blank">Godot</a>.
 
 Check out the [TalkieTalkie itch page](https://substain.itch.io/talkietalkie) for a live build of the example presentation.
 
-*Disclaimer: This is already a functional plugin that provides a framework for presentations. However, you need a basic understanding of Godot to use this, since the presentations are built in Godot and exported as builds, just like games made in Godot. Especially if you want to create more custom slides, you may need to familiarise yourself with the inner workings of this plugin.
+*Disclaimer: To use this addon, you need a basic understanding of Godot, since the presentations are built in the engine and exported as builds. Especially if you want to create more customized slides/presentations, you may need to familiarise yourself with the inner workings of this addon.
 In any case, feel free to [open an issue](https://github.com/substain/TalkieTalkie/issues) or [ask a question](https://github.com/substain/TalkieTalkie/discussions).*
 
 ## Overview
@@ -16,12 +16,12 @@ In any case, feel free to [open an issue](https://github.com/substain/TalkieTalk
 - [License](license)
 
 ## Installation
-1. Install the addon via the Asset Library (recommended) or manually
+1. **Install the addon** via the Asset Library (recommended) or manually:
  - Asset Library: with your project opened in Godot, open the `AssetLib` Tab, search for TalkieTalkie, **Download** and **Install**
  - manually: download the latest release from Github, unpack it, and copy the `addons/talkietalkie` folder to the `addons` folder in your project.
-2. Enable the addon via `Project Settings` -> `Plugins`. This will prompt you to restart the Godot Editor (to reload the Input Map)
+2. **Enable the addon** via `Project Settings` -> `Plugins`. This will prompt you to restart the Godot Editor (to reload the Input Map)
 
-If you want to use a different path, make sure to update the `PLUGIN_ROOT` variable in `talkietalkie.gd`.
+If you want to use a different path for this addon, make sure to update the `PLUGIN_ROOT` variable in `talkietalkie.gd`.
 
 **Note:** This template is being developed in the latest version of Godot. Using a version earlier than Godot 4.4 may require you to fix typing errors.
 
@@ -51,7 +51,7 @@ All files in `/demo/example*` are mainly used for reference purposes and can saf
 * **Draw with PaintingPointer 1** (`tt_draw_pointer_1`) - Ctrl (Hold) + any mouse button (Hold)
 * **Draw with PaintingPointer 2** (`tt_draw_pointer_2`) - Alt (Hold) + any mouse button (Hold)
 
-* **Movement** for the 2D example (`move_*`) - W, A, S, D
+* **Movement** for the 2D example (`tt_move_*`) - W, A, S, D
 
 **Note:** Unhandled left click input events trigger a slide continue as well. You can modify this behavior by setting the `CONTINUE_ON_UNHANDLED_LEFT_CLICK` variable in `talkietalkie.gd` to false.
 
@@ -72,8 +72,8 @@ AnimSlides collect all SlideAnimation nodes in its children and start them based
 ### SlideAnimation
 These nodes define how a slide is progressed and how changes within a slide are animated. The `targetNodes` property specifies which nodes are affected by the animation. If this property is empty, the SlideAnimation's parent node will be used as the target for the animation.
 
-### SlideHelper and SlideContext
-**SlideHelper** is an autoload used for globally accessing the current state and main components of the presentation. It provides access to the **SlideContext** which holds context-specific information such as the Camera2D in 2D presentations. 
+### TTSlideHelper and SlideContext
+**TTSlideHelper** is an autoload used for globally accessing the current state and main components of the presentation. It provides access to the **SlideContext** which holds context-specific information such as the Camera2D in 2D presentations. 
 
 ### UI
 The UI contains the following components:
