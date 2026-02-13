@@ -32,7 +32,7 @@ While you can manually create presentations manually, using the presentation gen
 You can create presentations easily via the presentation generator, which can be found at **Project** -> **Tools** -> **TalkieTalkie: Generate Presentation** (if the plugin is active).
 This will prompt you with a popup where you can specify the name, type (Control, 2D or 3D), content, background and theme of the presentation. Most options should be self-explanatory. Everything can be customized after creation, the content generation via markdown can also be done later using the SlideGenerator.
 
-**Note** Using the 2D or 3D type option currently only have an impact on the layout of the slides. You can have a control type presentation and use a 2D background, if you want to. Also note that 3D presentations have not really been tested so far.
+**Note:** Using the 2D or 3D type option currently only have an impact on the layout of the slides. You can have a control type presentation and use a 2D background, if you want to. Also note that 3D presentations have not really been tested so far.
 
 ### Manually
 The following steps are intended to provide a quick introduction to creating a new presentation with this framework.
@@ -112,9 +112,10 @@ This Node is currently located within the UI and adds the possibility to highlig
 There are some configuration options exposed via `all_paint_properties` on that node.
 
 ### SlideGenerator
-With the **SlideGenerator**, you can generate slides from markdown-like text. This tool script can be attached to any node, and will generate Slides based on the text provided via the `input_text` property. 
-* For each header, marked by "# ", a slide is generated based on the `slide_scene`.
-* The `content_scene` will be used for the nodes created for the content (which is everything below the header).
+With the **SlideGenerator**, you can generate slides from markdown-like text. This tool script can be attached to any node, and will generate Slides based on the text provided via the `input_text` property. The format is based on Markdown-Syntax, although not all functionality is implemented currently.
+* For each header (lines beginning with e.g. #, ##, ###, ...), a slide is generated based on the `slide_scene`.
+* The `content_scene` will be used for the nodes created for the content (which is everything below the header, except for comments).
+* Comments are, by default, created from lines that begin with // , [//] or [comment]. This behavior can be edited with the 'comment_line_regex'
 * With `slide_title_path`, you can specify the path in the template scene that represents the title of the slide whereas `slide_content_parent_path` specifies under which node the content scene(s) are placed as children.
 * Besides not creating duplicated slides with the same title via `ignore_if_slide_name_exists` you can also choose to `replace_existing_instatiated_slides` (dangerous!)
 
