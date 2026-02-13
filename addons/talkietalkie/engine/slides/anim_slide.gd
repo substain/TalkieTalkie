@@ -16,7 +16,7 @@ var current_progress: float = 0.0
 func _ready() -> void:
 	super()
 	animations = collect_anims_in_children(self, 0)
-	animations.sort_custom(compare_by_sort_order)
+	animations.sort_custom(Util.compare_by_sort_order)
 	anim_steps = animations.size()
 	_prepare_progress_elements()
 	reset()
@@ -119,12 +119,6 @@ func is_finished() -> bool:
 			
 func is_at_start() -> bool:
 	return current_anim_step == -1
-		
-static func compare_by_sort_order(a: SlideAnimation, b: SlideAnimation) -> int:
-	if a.sort_order != b.sort_order:
-		return a.sort_order < b.sort_order
-		
-	return a.tree_index < b.tree_index
 	
 static func collect_anims_in_children(node: Node, current_index: int) -> Array[SlideAnimation]:
 	var res: Array[SlideAnimation] = []

@@ -4,16 +4,16 @@ extends Control
 const MIN_DRAW_DIST: float = 5.0
 
 ## Backup icon
-const CIRCLE_1X1: Texture2D = preload(TTSetup.PLUGIN_ROOT + "style/ui/circle_1x1.svg")
-const PAINT_GRADIENT: Gradient = preload(TTSetup.PLUGIN_ROOT + "style/ui/paint_gradient.tres")
+static var _CIRCLE_1X1: Texture2D = load(TTSetup.get_plugin_path() + "/style/ui/circle_1x1.svg")
+static var _PAINT_GRADIENT: Gradient = load(TTSetup.get_plugin_path() + "/style/ui/paint_gradient.tres")
 
 const DP_1_INDEX: int = 0
 const DP_2_INDEX: int = 1
 
 const META_IS_TRAIL: String = "is_trail_line"
 
-var DEFAULT_DA_1: PaintProperties = PaintProperties.new(Color.html("ff9595"), 4.0, 100, 8.0, CIRCLE_1X1, 0.5, true)
-var DEFAULT_DA_2: PaintProperties = PaintProperties.new(Color.BLUE, 10.0, -1, 4.0, CIRCLE_1X1, 1.0, true)
+var DEFAULT_DA_1: PaintProperties = PaintProperties.new(Color.html("ff9595"), 4.0, 100, 8.0, _CIRCLE_1X1, 0.5, true)
+var DEFAULT_DA_2: PaintProperties = PaintProperties.new(Color.BLUE, 10.0, -1, 4.0, _CIRCLE_1X1, 1.0, true)
 
 ## The draw attributes. Currently only the first two are used and statically mapped to the two "draw_pointer" actions.
 ## If there are less than 2 entries, default draw attributes are used.
@@ -43,7 +43,8 @@ func _ready() -> void:
 	for paint_prop: PaintProperties in all_paint_properties:
 		# fallback if no icon is provided
 		if paint_prop.icon == null:
-			paint_prop.icon = CIRCLE_1X1
+			paint_prop.icon = _CIRCLE_1X1
+
 
 func _process(_delta: float) -> void:
 	if managed_lines.size() > 0:
@@ -177,6 +178,6 @@ static func get_line(p_props: PaintProperties) -> Line2D:
 	var is_trail: bool = p_props.trail_points >= 1
 	line.set_meta(META_IS_TRAIL, is_trail)
 	if is_trail:
-		line.gradient = PAINT_GRADIENT
+		line.gradient = _PAINT_GRADIENT
 
 	return line

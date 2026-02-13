@@ -2,12 +2,19 @@
 
 [ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://addons/talkietalkie/engine/slides/slide_animation.gd" id="1_lqjqy"]
 
-[node name="SlideContentElement" type="Label"]
+[node name="SlideContentElement" type="RichTextLabel" unique_id=1084168272]
+offset_right = 101.0
+offset_bottom = 69.0
 mouse_filter = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 50
+theme_override_font_sizes/bold_italics_font_size = 50
+theme_override_font_sizes/italics_font_size = 50
+theme_override_font_sizes/mono_font_size = 50
 text = "Test"
+fit_content = true
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="."]
+[node name="FadeAnimation" type="Node" parent="." unique_id=2520107]
 script = ExtResource("1_lqjqy")

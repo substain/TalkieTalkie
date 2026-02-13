@@ -5,20 +5,20 @@
 [ext_resource type="PackedScene" uid="uid://biybkd8ytuhhn" path="res://addons/talkietalkie/engine/base/slide_controller.tscn" id="3_dw1e4"]
 [ext_resource type="Script" uid="uid://bv3hx7cq2m31h" path="res://addons/talkietalkie/engine/side_window/side_window_base.gd" id="4_vuvl8"]
 
-[node name="Presentation" type="Node" node_paths=PackedStringArray("ui", "slide_controller")]
+[node name="Presentation" type="Node" unique_id=2023499157 node_paths=PackedStringArray("ui", "slide_controller")]
 script = ExtResource("1_8fa7n")
 ui = NodePath("UI")
 slide_controller = NodePath("SlideController")
 
-[node name="SlideController" parent="." instance=ExtResource("3_dw1e4")]
+[node name="SlideController" parent="." unique_id=905671642 instance=ExtResource("3_dw1e4")]
 
-[node name="Background" type="CanvasLayer" parent="."]
+[node name="Background" type="CanvasLayer" parent="." unique_id=2040651926]
 layer = -100
 
-[node name="UI" parent="." instance=ExtResource("1_ymvtf")]
+[node name="UI" parent="." unique_id=513529895 instance=ExtResource("1_ymvtf")]
 layer = 100
 
-[node name="SideWindowBase" type="Node" parent="." node_paths=PackedStringArray("presentation", "ui")]
+[node name="SideWindowBase" type="Node" parent="." unique_id=1747735963 node_paths=PackedStringArray("presentation", "ui")]
 script = ExtResource("4_vuvl8")
 presentation = NodePath("..")
 ui = NodePath("../UI")

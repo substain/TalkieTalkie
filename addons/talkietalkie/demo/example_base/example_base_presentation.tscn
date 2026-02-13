@@ -3,11 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://c4fiin221skal" path="res://addons/talkietalkie/engine/base/presentation.tscn" id="1_janv2"]
 [ext_resource type="Script" uid="uid://b8pqmhx61eehf" path="res://addons/talkietalkie/engine/transitions/transition.gd" id="2_mu1ha"]
 [ext_resource type="PackedScene" uid="uid://c4m85ihv1jedf" path="res://addons/talkietalkie/demo/example_base/example_base_background.tscn" id="3_ndiw7"]
-[ext_resource type="Script" uid="uid://deou7up6h48pg" path="res://addons/talkietalkie/engine/utility/slide_generator.gd" id="4_vye0f"]
+[ext_resource type="Script" uid="uid://deou7up6h48pg" path="res://addons/talkietalkie/engine/generation/slide_generator.gd" id="4_vye0f"]
 [ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://addons/talkietalkie/engine/default_template/default_text_layout.tscn" id="5_6agrk"]
 [ext_resource type="PackedScene" uid="uid://u5p5x65m3ulh" path="res://addons/talkietalkie/engine/default_template/default_content_element.tscn" id="6_qcjxg"]
 [ext_resource type="PackedScene" uid="uid://ciwolqdv6staj" path="res://addons/talkietalkie/demo/example_base/slide_1_title.tscn" id="7_7sfr6"]
+[ext_resource type="Script" uid="uid://ctvajj1saxvh4" path="res://addons/talkietalkie/engine/generation/line_format_rule.gd" id="7_h5kbk"]
 [ext_resource type="PackedScene" uid="uid://c4dp0lcwxox74" path="res://addons/talkietalkie/demo/example_base/slide_2_setup.tscn" id="8_nlnoq"]
+[ext_resource type="Resource" uid="uid://dfe6wjonsvave" path="res://addons/talkietalkie/engine/resources/bullet_point_lfr.tres" id="8_u6u3c"]
 [ext_resource type="PackedScene" uid="uid://g7nqgjyqndo7" path="res://addons/talkietalkie/demo/example_base/slide_3_controls.tscn" id="9_jg62n"]
 [ext_resource type="PackedScene" uid="uid://8iusfi7r8xlf" path="res://addons/talkietalkie/demo/example_base/slide_4_transitions.tscn" id="10_hxvdo"]
 [ext_resource type="PackedScene" uid="uid://424xywruff3v" path="res://addons/talkietalkie/demo/example_base/slide_5_various.tscn" id="12_3hxdd"]
@@ -15,35 +17,30 @@
 
 [sub_resource type="Resource" id="Resource_qkey0"]
 script = ExtResource("2_mu1ha")
-duration = 0.5
 metadata/_custom_type_script = "uid://b8pqmhx61eehf"
 
 [node name="ExampleBasePresentation" unique_id=240725052 instance=ExtResource("1_janv2")]
+presentation_name = "Example Presentation"
 default_transition = SubResource("Resource_qkey0")
 
-[node name="ExampleBaseBackground" parent="Background" index="0" unique_id=1533207821 instance=ExtResource("3_ndiw7")]
+[node name="ExampleBaseBackground" parent="Background" parent_id_path=PackedInt32Array(2040651926) index="0" unique_id=1533207821 instance=ExtResource("3_ndiw7")]
 hue_values = Array[float]([0.0, 0.5, 0.3, 0.8])
 alpha_factor = 0.8
 hue_factor = 0.08
 
-[node name="UI" parent="." index="2"]
+[node name="UI" parent="." index="2" unique_id=513529895]
 layer = 50
 
 [node name="SlideGenerator" type="Node" parent="." index="3" unique_id=1818530702 node_paths=PackedStringArray("target_parent")]
 script = ExtResource("4_vye0f")
-input_text = "# Example
-Some content
-* and bulletcontent
-
-
-# Example2
-Some Content, Part 2
-* one bullet
-   * bullet with spaces in front
-* another bullet"
+input_text = "# Generation Example
+* This is an example of a generated slide
+* You can create the slide by hitting \"Generate Slides\"
+// Comments are also supported. These will only show up in the Side Window"
 slide_scene = ExtResource("5_6agrk")
 content_scene = ExtResource("6_qcjxg")
 target_parent = NodePath("../Slides")
+line_format_rules = Array[ExtResource("7_h5kbk")]([ExtResource("8_u6u3c")])
 
 [node name="Slides" type="CanvasLayer" parent="." index="4" unique_id=835058405]
 
@@ -65,5 +62,5 @@ visible = false
 [node name="SlideFinal" parent="Slides" index="5" unique_id=1377010556 instance=ExtResource("13_2ftvy")]
 visible = false
 
-[node name="SideWindowBase" parent="." index="5"]
+[node name="SideWindowBase" parent="." index="5" unique_id=1747735963]
 enabled = 0

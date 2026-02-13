@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LineFormatRule" format=3 uid="uid://dfe6wjonsvave"]
+
+[ext_resource type="Script" uid="uid://ctvajj1saxvh4" path="res://addons/talkietalkie/engine/generation/line_format_rule.gd" id="1_0f1fa"]
+
+[resource]
+script = ExtResource("1_0f1fa")
+search_regex = "^\\s*\\*"
+to_replace_str = "*"
+replace_with_str = "•"
+metadata/_custom_type_script = "uid://ctvajj1saxvh4"

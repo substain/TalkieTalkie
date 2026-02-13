@@ -5,17 +5,23 @@ extends Node
 ## A simple slideshow feature (automatic continueing slides) can be activated by enabling "Autostart"
 ## in the SlideshowTimer node, and setting "Wait Time" to the desired delay.
 
-const NO_PREVIEW_SLIDE_SCENE: PackedScene = preload(TTSetup.PLUGIN_ROOT + "/engine/side_window/no_preview_slide.tscn")
+static var NO_PREVIEW_SLIDE_SCENE: PackedScene = load(TTSetup.get_plugin_path() + "/engine/side_window/no_preview_slide.tscn")
 
-## the current index of the slide 
+## The name of this presentation
+@export var presentation_name: String = ""
+
+## The current index of the slide.
 @export var slide_index: int = 0
-## if true, the slide_index will be loaded from the last session if the presentation name matches
+## If true, the slide_index will be loaded from the last session if the presentation name matches.
 @export var remember_slide_index_from_last_session: bool = false
-## Use the number of the slide nodes instead of the order in the tree (top to bottom)
+## If true, the last number of the slide node names are used instead of the default top to bottom order in the tree.
 @export var use_slide_numbering_order: bool = false
 ## If set to "true", using manual navigation (e.g. clicking the forward button) will stop the automatic slideshow.
 @export var manual_navigation_stops_auto_slideshow: bool = true
+## The default transition for slides. If null, a default transition will be set according to the presentation type:
+## Transition for default Control-based presentations, MoveTransition2D for 2D Presentations and MoveTransition3D for 3D Presentations.
 @export var default_transition: Transition
+## The size of the slides in pixels.
 @export var slide_size: Vector2 = Vector2(1920, 1080)
 
 @export_category("internal nodes")
@@ -30,15 +36,15 @@ var transition_tween: Tween = null
 var last_from_slide: Slide = null
 
 func _ready() -> void:
+	ensure_basic_setup()
 	init_context()
+
 	TTSlideHelper.presentation = self	
 	
 	var has_faulty_configuration: bool = false
 	
 	slide_instances = Util.collect_slides_in_children(self)
 	
-	if default_transition == null:
-		default_transition = Transition.new()
 	
 	if remember_slide_index_from_last_session && TTPreferences.last_presentation_scene == get_tree().current_scene.scene_file_path:
 		slide_index = TTPreferences.last_slide
@@ -67,6 +73,13 @@ func _ready() -> void:
 	slide_controller.init(slide_instances, default_transition, manual_navigation_stops_auto_slideshow, has_faulty_configuration)
 	slide_controller.setup_initial_state(slide_index)
 
+func ensure_basic_setup() -> void:
+	if default_transition == null:
+		default_transition = Transition.new()
+	
+func init_context() -> void:
+	TTSlideHelper.set_context(SlideContext.new(slide_size))
+	
 func create_slide_template(target_slide: Slide) -> PackedScene:
 	var packed_scene: PackedScene = PackedScene.new()
 	if target_slide.is_previewable:
@@ -81,9 +94,7 @@ func create_slide_template(target_slide: Slide) -> PackedScene:
 		packed_scene.pack(no_preview_slide)
 
 	return packed_scene
-	
-func init_context() -> void:
-	TTSlideHelper.set_context(SlideContext.new(slide_size))
+
 	
 func _input(event: InputEvent) -> void:
 	handle_input(event)

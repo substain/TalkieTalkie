@@ -2,7 +2,7 @@ class_name Transition
 extends Resource
 ## Default implementation for a transition: Mix Transition. Does not completely cover background.
 
-@export var duration: float
+@export var duration: float = 0.5
 
 func start_transition(from_slide: Slide, to_slide: Slide) -> Tween:
 	from_slide.modulate.a = 1.0

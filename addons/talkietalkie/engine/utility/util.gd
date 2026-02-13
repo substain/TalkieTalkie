@@ -41,7 +41,7 @@ static func is_mobile() -> bool:
 	return OS.get_name() == ANDROID_OS_NAME || OS.get_name() == IOS_OS_NAME || OS.has_feature("web_android") || OS.has_feature("web_ios") 
 
 static func get_talkie_talkie_version() -> String:
-	return "v" + ProjectSettings.get_setting("application/config/version")
+	return "v" + TTPreferencesClass.load_version_from_plugin_cfg()
 
 static func get_godot_version() -> String:
 	return Engine.get_version_info()["string"]
@@ -57,3 +57,15 @@ static func has_text_property(node: Node) -> bool:
 	
 static func has_position_property(node: Node) -> bool:
 	return "position" in node
+
+static func to_vec3(vec2: Vector2, y: float) -> Vector3:
+	return Vector3(vec2.x, y, vec2.y)
+
+## expects two properties on the target nodes: "sort_order" and "tree_index"
+static func compare_by_sort_order(a: Node, b: Node) -> int:
+	@warning_ignore_start("unsafe_property_access")
+	if a.sort_order != b.sort_order:
+		return a.sort_order < b.sort_order
+		
+	return a.tree_index < b.tree_index
+	@warning_ignore_restore("unsafe_property_access")

@@ -2,7 +2,7 @@ class_name TabNavigationBar extends HidableUI
 
 signal jump_to_slide(slide_index: int)
 
-const _SLIDE_NAVIGATION_TAB: PackedScene = preload(TTSetup.PLUGIN_ROOT + "engine/ui/slide_navigation_tab.tscn")
+static var _SLIDE_NAVIGATION_TAB_SCENE: PackedScene = load(TTSetup.get_plugin_path() + "/engine/ui/slide_navigation_tab.tscn")
 
 @export var _slide_navigation_hbox: HBoxContainer
 @export var _slide_index_label: Label
@@ -25,7 +25,7 @@ func set_available_slides(slides: Array[Slide]) -> void:
 	
 	for slide: Slide in slides:
 		var target_slide_index: int = slide.get_order_index()
-		var slide_nav_button: Button = _SLIDE_NAVIGATION_TAB.instantiate()
+		var slide_nav_button: Button = _SLIDE_NAVIGATION_TAB_SCENE.instantiate()
 		slide_nav_button.pressed.connect(_slide_nav_button_pressed.bind(target_slide_index))
 		simple_slide_buttons.append(slide_nav_button)
 		_slide_nav_dictionary[target_slide_index] = slide_nav_button

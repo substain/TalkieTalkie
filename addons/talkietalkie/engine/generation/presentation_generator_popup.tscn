@@ -1,0 +1,391 @@
+[gd_scene format=3 uid="uid://db3b30nurj4it"]
+
+[ext_resource type="Script" uid="uid://b33kjsjwvefjs" path="res://addons/talkietalkie/engine/generation/presentation_generator_popup.gd" id="1_fwmt1"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_kggum"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_fwmt1"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_3gs8w"]
+
+[node name="PresentationGeneratorPopup" type="PopupPanel" unique_id=1116980255 node_paths=PackedStringArray("target_scene_line_edit", "type_control_radio_button", "add_camera_check_button", "bg_none_radio_button", "content_none_radio_button", "content_from_md_radio_button", "name_line_edit", "name_info_label", "markdown_vbc", "md_content_text_edit", "background_color_picker_button", "background_scene_label", "background_scene_select_button", "background_scene_info_label", "background_scene_file_dialog", "generate_scene_file_dialog", "md_file_dialog", "theme_file_dialog", "selected_theme_label", "clear_theme_button", "generate_button")]
+oversampling_override = 1.0
+size = Vector2i(550, 900)
+visible = true
+transient_to_focused = true
+max_size = Vector2i(550, 900)
+script = ExtResource("1_fwmt1")
+target_scene_line_edit = NodePath("ContentMarginContainer/VBoxContainer/NameVBC/NameSettingHBC/NameLineEdit")
+type_control_radio_button = NodePath("ContentMarginContainer/VBoxContainer/TypeVBC/HBC/HBC/TypeControlRadioButton")
+add_camera_check_button = NodePath("ContentMarginContainer/VBoxContainer/TypeVBC/AddCameraCheckButton")
+bg_none_radio_button = NodePath("ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer/BgNoneRadioButton")
+content_none_radio_button = NodePath("ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/HBoxContainer/ContentNoneRadioButton")
+content_from_md_radio_button = NodePath("ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/HBoxContainer/ContentFromMDRadioButton")
+name_line_edit = NodePath("ContentMarginContainer/VBoxContainer/NameVBC/NameSettingHBC/NameLineEdit")
+name_info_label = NodePath("ContentMarginContainer/VBoxContainer/NameVBC/NameInfoLabel")
+markdown_vbc = NodePath("ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/MarkdownVBC")
+md_content_text_edit = NodePath("ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/MarkdownVBC/HBC/MDContentTextEdit")
+background_color_picker_button = NodePath("ContentMarginContainer/VBoxContainer/BackgroundVBC/BackgroundColorPickerButton")
+background_scene_label = NodePath("ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer2/BackgroundSceneLabel")
+background_scene_select_button = NodePath("ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer2/BackgroundSceneSelectButton")
+background_scene_info_label = NodePath("ContentMarginContainer/VBoxContainer/BackgroundVBC/BackgroundSceneInfoLabel")
+background_scene_file_dialog = NodePath("BackgroundSceneFileDialog")
+generate_scene_file_dialog = NodePath("GenerateSceneFileDialog")
+md_file_dialog = NodePath("MDFileDialog")
+theme_file_dialog = NodePath("ThemeFileDialog")
+selected_theme_label = NodePath("ContentMarginContainer/VBoxContainer/ThemeHBC/VBoxContainer/VBoxContainer/SelectedThemeHBC/SelectedThemeLabel")
+clear_theme_button = NodePath("ContentMarginContainer/VBoxContainer/ThemeHBC/VBoxContainer/VBoxContainer/SelectedThemeHBC/ClearThemeButton")
+generate_button = NodePath("ContentMarginContainer/VBoxContainer/ButtonsHBox/GenerateButton")
+
+[node name="ContentMarginContainer" type="MarginContainer" parent="." unique_id=1892771650]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -271.0
+offset_top = 4.0
+offset_right = 271.0
+offset_bottom = 896.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentMarginContainer" unique_id=2110189616]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="GeneratorTitleLabel" type="Label" parent="ContentMarginContainer/VBoxContainer" unique_id=1721073208]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "TalkieTalkie Presentation Generator"
+horizontal_alignment = 1
+
+[node name="GeneratorInfoLabel" type="RichTextLabel" parent="ContentMarginContainer/VBoxContainer" unique_id=424840155]
+layout_mode = 2
+theme_override_font_sizes/italics_font_size = 12
+bbcode_enabled = true
+text = "[i]Note: The resulting presentation scene can be customized after creation.[/i]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator1" type="HSeparator" parent="ContentMarginContainer/VBoxContainer" unique_id=1247897918]
+layout_mode = 2
+
+[node name="NameVBC" type="VBoxContainer" parent="ContentMarginContainer/VBoxContainer" unique_id=1330949020]
+layout_mode = 2
+
+[node name="NameSettingHBC" type="HBoxContainer" parent="ContentMarginContainer/VBoxContainer/NameVBC" unique_id=1930113419]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="ContentMarginContainer/VBoxContainer/NameVBC/NameSettingHBC" unique_id=2095659813]
+layout_mode = 2
+text = "* Name:"
+
+[node name="NameLineEdit" type="LineEdit" parent="ContentMarginContainer/VBoxContainer/NameVBC/NameSettingHBC" unique_id=1637184354]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+placeholder_text = "My Presentation"
+alignment = 1
+
+[node name="NameInfoLabel" type="RichTextLabel" parent="ContentMarginContainer/VBoxContainer/NameVBC" unique_id=76478688]
+visible = false
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 0.62, 0.62, 1)
+theme_override_font_sizes/italics_font_size = 12
+bbcode_enabled = true
+text = "[i]No presentation name specified[/i]"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="ContentMarginContainer/VBoxContainer" unique_id=2127884342]
+layout_mode = 2
+
+[node name="TypeVBC" type="VBoxContainer" parent="ContentMarginContainer/VBoxContainer" unique_id=212531443]
+layout_mode = 2
+
+[node name="HBC" type="HBoxContainer" parent="ContentMarginContainer/VBoxContainer/TypeVBC" unique_id=833384545]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="TypeLabel" type="Label" parent="ContentMarginContainer/VBoxContainer/TypeVBC/HBC" unique_id=30786780]
+layout_mode = 2
+text = "Type"
+
+[node name="HBC" type="HBoxContainer" parent="ContentMarginContainer/VBoxContainer/TypeVBC/HBC" unique_id=1924045646]
+layout_mode = 2
+
+[node name="TypeControlRadioButton" type="CheckBox" parent="ContentMarginContainer/VBoxContainer/TypeVBC/HBC/HBC" unique_id=1976141059]
+layout_mode = 2
+button_pressed = true
+button_group = SubResource("ButtonGroup_kggum")
+text = "Control"
+
+[node name="TypeTwoDRadioButton" type="CheckBox" parent="ContentMarginContainer/VBoxContainer/TypeVBC/HBC/HBC" unique_id=183293984]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_kggum")
+text = "2D"
+
+[node name="TypeThreeDRadioButton" type="CheckBox" parent="ContentMarginContainer/VBoxContainer/TypeVBC/HBC/HBC" unique_id=1988439549]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_kggum")
+text = "3D"
+
+[node name="AddCameraCheckButton" type="CheckButton" parent="ContentMarginContainer/VBoxContainer/TypeVBC" unique_id=1689686732]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Add Camera"
+alignment = 1
+icon_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="ContentMarginContainer/VBoxContainer" unique_id=1675382624]
+layout_mode = 2
+
+[node name="ContentHBC" type="HBoxContainer" parent="ContentMarginContainer/VBoxContainer" unique_id=1840538015]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentMarginContainer/VBoxContainer/ContentHBC" unique_id=449779502]
+layout_mode = 2
+
+[node name="TitleCheckButton" type="CheckButton" parent="ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer" unique_id=361070697]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Create Title Slide"
+alignment = 1
+icon_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer" unique_id=197043172]
+layout_mode = 2
+alignment = 1
+
+[node name="ContentLabel" type="Label" parent="ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/HBoxContainer" unique_id=181588360]
+layout_mode = 2
+text = "Initial Content:"
+
+[node name="ContentNoneRadioButton" type="CheckBox" parent="ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/HBoxContainer" unique_id=1961879268]
+layout_mode = 2
+button_pressed = true
+button_group = SubResource("ButtonGroup_fwmt1")
+text = "None"
+
+[node name="ContentFromMDRadioButton" type="CheckBox" parent="ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/HBoxContainer" unique_id=1556286030]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_fwmt1")
+text = "Generate from Markdown"
+
+[node name="MarkdownVBC" type="VBoxContainer" parent="ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer" unique_id=1084091104]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="HBC" type="HBoxContainer" parent="ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/MarkdownVBC" unique_id=695917857]
+layout_mode = 2
+alignment = 1
+
+[node name="MDContentTextEdit" type="TextEdit" parent="ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/MarkdownVBC/HBC" unique_id=59979704]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+
+[node name="LoadMDFileButton" type="Button" parent="ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/MarkdownVBC/HBC" unique_id=695430704]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Load .md-File..."
+
+[node name="MDInfoLabel" type="RichTextLabel" parent="ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/MarkdownVBC" unique_id=941601414]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.96, 0.93888, 0.32639998, 1)
+theme_override_font_sizes/italics_font_size = 12
+bbcode_enabled = true
+text = "[i]Markdown support is currently limited / experimental[/i]"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="HSeparator4" type="HSeparator" parent="ContentMarginContainer/VBoxContainer" unique_id=1830848491]
+layout_mode = 2
+
+[node name="BackgroundVBC" type="VBoxContainer" parent="ContentMarginContainer/VBoxContainer" unique_id=134025573]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="ContentMarginContainer/VBoxContainer/BackgroundVBC" unique_id=1504707575]
+layout_mode = 2
+alignment = 1
+
+[node name="BackgroundLabel" type="Label" parent="ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer" unique_id=1141655403]
+layout_mode = 2
+text = "Background:"
+
+[node name="BgNoneRadioButton" type="CheckBox" parent="ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer" unique_id=154800879]
+layout_mode = 2
+button_pressed = true
+button_group = SubResource("ButtonGroup_3gs8w")
+text = "None"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer" unique_id=339594205]
+layout_mode = 2
+
+[node name="BgColorRadioButton" type="CheckBox" parent="ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer/HBoxContainer" unique_id=989504694]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_3gs8w")
+text = "Color"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer" unique_id=872222118]
+layout_mode = 2
+
+[node name="BgSceneRadioButton" type="CheckBox" parent="ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer/HBoxContainer2" unique_id=848807818]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_3gs8w")
+text = "Scene"
+
+[node name="BackgroundColorPickerButton" type="ColorPickerButton" parent="ContentMarginContainer/VBoxContainer/BackgroundVBC" unique_id=1420497576]
+visible = false
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(1, 1, 1, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ContentMarginContainer/VBoxContainer/BackgroundVBC" unique_id=208591381]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="BackgroundSceneSelectButton" type="Button" parent="ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer2" unique_id=406099966]
+visible = false
+layout_mode = 2
+text = "Select Scene..."
+
+[node name="BackgroundSceneLabel" type="Label" parent="ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer2" unique_id=600720552]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "a very long path to an example_scene.tscn"
+
+[node name="BackgroundSceneInfoLabel" type="RichTextLabel" parent="ContentMarginContainer/VBoxContainer/BackgroundVBC" unique_id=340797431]
+visible = false
+layout_mode = 2
+theme_override_colors/default_color = Color(0.96, 0.93888, 0.32639998, 1)
+theme_override_font_sizes/italics_font_size = 12
+bbcode_enabled = true
+text = "[i]Scenes may contain embedded scripts, so make sure you only use scenes from trusted sources.[/i]"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="HSeparator5" type="HSeparator" parent="ContentMarginContainer/VBoxContainer" unique_id=331277822]
+layout_mode = 2
+
+[node name="ThemeHBC" type="HBoxContainer" parent="ContentMarginContainer/VBoxContainer" unique_id=1992139744]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="ThemeLabel" type="Label" parent="ContentMarginContainer/VBoxContainer/ThemeHBC" unique_id=702282204]
+layout_mode = 2
+text = "Theme:"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentMarginContainer/VBoxContainer/ThemeHBC" unique_id=397401681]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentMarginContainer/VBoxContainer/ThemeHBC/VBoxContainer" unique_id=1280288777]
+layout_mode = 2
+
+[node name="ThemeSelectButton" type="Button" parent="ContentMarginContainer/VBoxContainer/ThemeHBC/VBoxContainer/VBoxContainer" unique_id=155769906]
+layout_mode = 2
+text = "Select Theme..."
+
+[node name="SelectedThemeHBC" type="HBoxContainer" parent="ContentMarginContainer/VBoxContainer/ThemeHBC/VBoxContainer/VBoxContainer" unique_id=648884224]
+layout_mode = 2
+
+[node name="SelectedThemeLabel" type="Label" parent="ContentMarginContainer/VBoxContainer/ThemeHBC/VBoxContainer/VBoxContainer/SelectedThemeHBC" unique_id=260013934]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "No theme selected"
+
+[node name="ClearThemeButton" type="Button" parent="ContentMarginContainer/VBoxContainer/ThemeHBC/VBoxContainer/VBoxContainer/SelectedThemeHBC" unique_id=638371719]
+visible = false
+layout_mode = 2
+text = "Clear"
+
+[node name="HSeparator6" type="HSeparator" parent="ContentMarginContainer/VBoxContainer" unique_id=367854606]
+layout_mode = 2
+
+[node name="ButtonsHBox" type="HBoxContainer" parent="ContentMarginContainer/VBoxContainer" unique_id=49092731]
+layout_mode = 2
+alignment = 1
+
+[node name="GenerateButton" type="Button" parent="ContentMarginContainer/VBoxContainer/ButtonsHBox" unique_id=1057534175]
+layout_mode = 2
+disabled = true
+text = "Generate at..."
+
+[node name="CancelButton" type="Button" parent="ContentMarginContainer/VBoxContainer/ButtonsHBox" unique_id=1665383663]
+layout_mode = 2
+text = "Cancel"
+
+[node name="BackgroundSceneFileDialog" type="FileDialog" parent="." unique_id=510672558]
+oversampling_override = 1.0
+title = "Open a File"
+ok_button_text = "Select"
+file_mode = 0
+filters = PackedStringArray("*.tscn")
+
+[node name="ThemeFileDialog" type="FileDialog" parent="." unique_id=972486225]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 25)
+ok_button_text = "Select"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.tres, *.res, *.theme")
+
+[node name="MDFileDialog" type="FileDialog" parent="." unique_id=583101352]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 25)
+ok_button_text = "Load"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.md")
+
+[node name="GenerateSceneFileDialog" type="FileDialog" parent="." unique_id=500166459]
+oversampling_override = 1.0
+title = "Generate Presentation at..."
+ok_button_text = "Generate"
+display_mode = 1
+filters = PackedStringArray("*.tscn")
+
+[connection signal="popup_hide" from="." to="." method="_on_popup_hide"]
+[connection signal="focus_exited" from="ContentMarginContainer/VBoxContainer/NameVBC/NameSettingHBC/NameLineEdit" to="." method="_on_name_line_edit_focus_exited"]
+[connection signal="text_changed" from="ContentMarginContainer/VBoxContainer/NameVBC/NameSettingHBC/NameLineEdit" to="." method="_on_name_line_edit_text_changed"]
+[connection signal="text_submitted" from="ContentMarginContainer/VBoxContainer/NameVBC/NameSettingHBC/NameLineEdit" to="." method="_on_name_line_edit_text_submitted"]
+[connection signal="pressed" from="ContentMarginContainer/VBoxContainer/TypeVBC/HBC/HBC/TypeControlRadioButton" to="." method="_on_type_control_radio_button_pressed"]
+[connection signal="pressed" from="ContentMarginContainer/VBoxContainer/TypeVBC/HBC/HBC/TypeTwoDRadioButton" to="." method="_on_type_two_d_radio_button_pressed"]
+[connection signal="pressed" from="ContentMarginContainer/VBoxContainer/TypeVBC/HBC/HBC/TypeThreeDRadioButton" to="." method="_on_type_three_d_radio_button_pressed"]
+[connection signal="toggled" from="ContentMarginContainer/VBoxContainer/TypeVBC/AddCameraCheckButton" to="." method="_on_add_camera_check_button_toggled"]
+[connection signal="toggled" from="ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/TitleCheckButton" to="." method="_on_title_check_button_toggled"]
+[connection signal="pressed" from="ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/HBoxContainer/ContentNoneRadioButton" to="." method="_on_content_none_radio_button_pressed"]
+[connection signal="pressed" from="ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/HBoxContainer/ContentFromMDRadioButton" to="." method="_on_content_from_md_radio_button_pressed"]
+[connection signal="pressed" from="ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/MarkdownVBC/HBC/LoadMDFileButton" to="." method="_on_load_md_file_button_pressed"]
+[connection signal="pressed" from="ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer/BgNoneRadioButton" to="." method="_on_bg_none_radio_button_pressed"]
+[connection signal="pressed" from="ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer/HBoxContainer/BgColorRadioButton" to="." method="_on_bg_color_radio_button_pressed"]
+[connection signal="pressed" from="ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer/HBoxContainer2/BgSceneRadioButton" to="." method="_on_bg_scene_radio_button_pressed"]
+[connection signal="pressed" from="ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer2/BackgroundSceneSelectButton" to="." method="_on_file_selection_button_pressed"]
+[connection signal="pressed" from="ContentMarginContainer/VBoxContainer/ThemeHBC/VBoxContainer/VBoxContainer/ThemeSelectButton" to="." method="_on_theme_select_button_pressed"]
+[connection signal="pressed" from="ContentMarginContainer/VBoxContainer/ThemeHBC/VBoxContainer/VBoxContainer/SelectedThemeHBC/ClearThemeButton" to="." method="_on_clear_theme_button_pressed"]
+[connection signal="pressed" from="ContentMarginContainer/VBoxContainer/ButtonsHBox/GenerateButton" to="." method="_on_generate_button_pressed"]
+[connection signal="pressed" from="ContentMarginContainer/VBoxContainer/ButtonsHBox/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="file_selected" from="BackgroundSceneFileDialog" to="." method="_on_background_scene_file_dialog_file_selected"]
+[connection signal="file_selected" from="ThemeFileDialog" to="." method="_on_theme_file_dialog_file_selected"]
+[connection signal="file_selected" from="MDFileDialog" to="." method="_on_md_file_dialog_file_selected"]
+[connection signal="file_selected" from="GenerateSceneFileDialog" to="." method="_on_generate_scene_file_dialog_file_selected"]

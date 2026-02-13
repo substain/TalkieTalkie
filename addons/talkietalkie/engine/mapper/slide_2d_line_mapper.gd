@@ -5,7 +5,7 @@ extends Node2D
 ## Also sets the slide center positions for the 2D context for the TTSlideHelper autoload, which is used for 2D transition.
 
 @export var target_parent: Node
-@export var slide_separation: Vector2 = Vector2(200, 0)
+@export var slide_separation: Vector2 = Vector2(50, 0)
 @export var slide_parent_scene: PackedScene = null
 @export var theme_source: Control = null
 
@@ -30,7 +30,7 @@ func map_slides_to_2d() -> void:
 		
 	for i: int in children.size():
 		var child: Slide = children[i]
-		var new_pos: Vector2 = i*(slide_size * direction + slide_separation)
+		var new_pos: Vector2 = i * (slide_size * direction + slide_separation)
 
 		var slide_parent: Node2D = null
 		if slide_parent_scene != null:
@@ -53,10 +53,10 @@ func map_slides_to_2d() -> void:
 	slide_context.slide_center_locations = slide_center_locations
 
 static func get_theme(theme_target_parent: Node, theme_parent_opt: Control) -> Theme:
+	if theme_target_parent != null && theme_target_parent is Control && (theme_target_parent as Control).theme != null:
+		return (theme_target_parent as Control).theme
+	
 	if theme_parent_opt != null:
 		return theme_parent_opt.theme
-		
-	if theme_target_parent is Control && (theme_target_parent as Control).theme != null:
-		return (theme_target_parent as Control).theme
 		
 	return null

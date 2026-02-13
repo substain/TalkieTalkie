@@ -7,7 +7,8 @@ enum EnableOptions {
 	NEVER
 }
 
-const SIDE_WINDOW_SCENE: PackedScene = preload(TTSetup.PLUGIN_ROOT + "engine/side_window/side_window.tscn")
+static var SIDE_WINDOW_SCENE: PackedScene = load(TTSetup.get_plugin_path() + "/engine/side_window/side_window.tscn")
+
 @export_category("SideWindow Settings")
 @export var enabled: EnableOptions = EnableOptions.IF_SECOND_SCREEN_EXISTS
 @export var quit_on_close: bool = false

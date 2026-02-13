@@ -1,10 +1,5 @@
-@tool
 class_name TTSetup
 extends RefCounted
-
-## Used for preloaded assets. 
-## Update this if you have changed the name or location of this addon's directory.
-const PLUGIN_ROOT: String = "res://addons/talkietalkie/"
 
 ## Automatically restart Godot if the Plugin is enabled or disabled to refresh the input map.
 ## You can set this to false if you don't need an updated input map with the default inputs below added/removed.
@@ -20,7 +15,7 @@ const CONTINUE_ON_UNHANDLED_LEFT_CLICK: bool = true
 
 ## The inputs used by this plugin. These will be added to the input map when the plugin is activated. 
 ## You can change these in the input map in the project settings when the plugin is active.
-var default_inputs: Dictionary[String, Array] = {
+static var default_inputs: Dictionary[String, Array] = {
 	"tt_continue": [input_key(KEY_RIGHT), input_key(KEY_DOWN), input_key(KEY_SPACE)],
 	"tt_back": [input_key(KEY_LEFT), input_key(KEY_UP), input_key(KEY_PAGEUP),input_mouse(MOUSE_BUTTON_WHEEL_UP)],
 	"tt_skip_slide": [input_key(KEY_PAGEDOWN),input_mouse(MOUSE_BUTTON_WHEEL_DOWN)],
@@ -36,11 +31,20 @@ var default_inputs: Dictionary[String, Array] = {
 	"tt_quit": [input_key(KEY_ESCAPE)],
 }
 	
-## A placeholder for internal paths. Will be replaced with PLUGIN_ROOT 
+## A placeholder for internal paths. Will be replaced with the path of the plugin (see replace_plugin_path())
 const PLUGIN_PLACEHOLDER: String = "ttplugin://"
 
+static var instance: TTSetup
+static var plugin_path: String = ""
+
+static func get_plugin_path() -> String:
+	if plugin_path.is_empty():
+		plugin_path = (TTSetup.new().get_script() as Script).resource_path.get_base_dir()
+		
+	return plugin_path
+
 static func replace_plugin_path(str: String) -> String:
-	return str.replace(PLUGIN_PLACEHOLDER, PLUGIN_ROOT)
+	return str.replace(PLUGIN_PLACEHOLDER, get_plugin_path() + "/")
 
 static func input_key(key_code: Key) -> InputEventKey:
 	var in_event_key: InputEventKey = InputEventKey.new()

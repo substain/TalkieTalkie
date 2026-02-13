@@ -5,7 +5,7 @@ signal language_changed
 const FULLSCREEN_IS_BORDERLESS: bool = true
 
 const SETTINGS_PATH: String = "user://tt_preferences.save"
-const PLUGIN_CFG_PATH: String = TTSetup.PLUGIN_ROOT+"/plugin.cfg"
+static var PLUGIN_CFG_PATH: String = TTSetup.get_plugin_path()+"/plugin.cfg"
 
 var preferences_version: StringName
 var audio_volume: float = 0.5
@@ -18,7 +18,7 @@ var side_window_layout_settings: SideWindowLayoutSettings
 var last_slide: int = 0
 var last_presentation_scene: StringName = &""
 
-const TRANSLATION_PATHS = [TTSetup.PLUGIN_ROOT + "localization/talkie_talkie_translation.en.translation", TTSetup.PLUGIN_ROOT + "localization/talkie_talkie_translation.de.translation"]
+static var TRANSLATION_PATHS = [TTSetup.get_plugin_path()+ "/localization/talkie_talkie_translation.en.translation", TTSetup.get_plugin_path()+ "/localization/talkie_talkie_translation.de.translation"]
 
 func _enter_tree() -> void:
 	for tr_path: String in TRANSLATION_PATHS:
@@ -26,14 +26,9 @@ func _enter_tree() -> void:
 		TranslationServer.add_translation(translation)
 
 func _ready() -> void:
-	preferences_version = load_version_from_plugin_cfg()
+	preferences_version = TTPreferencesClass.load_version_from_plugin_cfg()
 	load_from_file()
 	apply_values()
-
-func load_version_from_plugin_cfg() -> String:
-	var conf: ConfigFile = ConfigFile.new()
-	conf.load(PLUGIN_CFG_PATH)
-	return (conf.get_value("plugin", "version", "0.0.0") as String).strip_edges()
 	
 func apply_values() -> void:
 	set_bus_volume(TTSetup.TARGET_AUDIO_BUS, audio_volume)	
@@ -51,8 +46,7 @@ func reset(do_save: bool = true) -> void:
 
 	if do_save:
 		save_to_file()
-		
-		
+
 func save_to_file() -> void:
 	var settings_file_access: FileAccess = FileAccess.open(SETTINGS_PATH, FileAccess.WRITE)
 	var save_dict: Dictionary = {
@@ -165,3 +159,8 @@ static func set_fullscreen(is_fullscreen: bool) -> void:
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+		
+static func load_version_from_plugin_cfg() -> String:
+	var conf: ConfigFile = ConfigFile.new()
+	conf.load(PLUGIN_CFG_PATH)
+	return (conf.get_value("plugin", "version", "0.0.0") as String).strip_edges()

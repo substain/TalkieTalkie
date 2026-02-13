@@ -13,14 +13,16 @@ const SL_SWITCH_TARGET_POS: float = 0.9
 ## if false, player does not process input / movement
 @export var is_player_active: bool = true
 
+## y position if the player teleports to a different slide
 @export var spawn_y_offset: float = -900
 
+## the used transition if the player changes screens
 @export var move_transition: MoveTransition2D
 
 ## if true, player needs to hold any movement key to "escape" being stuck
 @export var is_stuck: bool = false
 @export var unstuck_duration: float = 1.2
-@export var show_all_on_unstuck: bool = true
+@export var set_slide_progress_full_on_unstuck: bool = true
 
 @export_category("internal nodes")
 @export var anim_player: ExamplePlayerAnims
@@ -83,7 +85,7 @@ func handle_stuck_player(delta: float) -> void:
 		is_stuck = false
 		anim_player.set_stuck(false)
 		anim_player.update_anim()
-		if show_all_on_unstuck:
+		if set_slide_progress_full_on_unstuck:
 			TTSlideHelper.slide_controller.set_current_slide_progress(1.0)
 			
 func do_move(delta: float) -> void:
