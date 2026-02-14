@@ -130,5 +130,13 @@ Here is an incomplete list of features you can hope to see in the future:
 * An example scene for 3D presentations
 * Theming, UI/UX and mobile improvements
 
+## Screenshots
+
+<p align="center">
+	<img height="200px" title="Example Presentation (v0.0.9)" alt="Example Presentation (v0.0.9)" src="https://github.com/user-attachments/assets/ab18c73a-2665-4560-858a-ff7e7bd7e499" />
+	<img height="200px" title="Side Window (v0.0.9)" alt="Side Window (v0.0.9)" src="https://github.com/user-attachments/assets/8017d5c8-26da-471f-b288-1ad34bbc670a" />
+	<img height="200px" title="Presentation Generator UI (v0.0.9)" alt="Presentation Generator UI (v0.0.9)" src="https://github.com/user-attachments/assets/5215b809-22ed-480b-ba3c-9eec3e2a8636" />
+</p>
+
 ## License
 MIT License (see [LICENSE.md](LICENSE.md))
