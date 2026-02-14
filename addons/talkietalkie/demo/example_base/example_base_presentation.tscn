@@ -7,9 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://addons/talkietalkie/engine/default_template/default_text_layout.tscn" id="5_6agrk"]
 [ext_resource type="PackedScene" uid="uid://u5p5x65m3ulh" path="res://addons/talkietalkie/engine/default_template/default_content_element.tscn" id="6_qcjxg"]
 [ext_resource type="PackedScene" uid="uid://ciwolqdv6staj" path="res://addons/talkietalkie/demo/example_base/slide_1_title.tscn" id="7_7sfr6"]
-[ext_resource type="Script" uid="uid://ctvajj1saxvh4" path="res://addons/talkietalkie/engine/generation/line_format_rule.gd" id="7_h5kbk"]
 [ext_resource type="PackedScene" uid="uid://c4dp0lcwxox74" path="res://addons/talkietalkie/demo/example_base/slide_2_setup.tscn" id="8_nlnoq"]
-[ext_resource type="Resource" uid="uid://dfe6wjonsvave" path="res://addons/talkietalkie/engine/resources/bullet_point_lfr.tres" id="8_u6u3c"]
 [ext_resource type="PackedScene" uid="uid://g7nqgjyqndo7" path="res://addons/talkietalkie/demo/example_base/slide_3_controls.tscn" id="9_jg62n"]
 [ext_resource type="PackedScene" uid="uid://8iusfi7r8xlf" path="res://addons/talkietalkie/demo/example_base/slide_4_transitions.tscn" id="10_hxvdo"]
 [ext_resource type="PackedScene" uid="uid://424xywruff3v" path="res://addons/talkietalkie/demo/example_base/slide_5_various.tscn" id="12_3hxdd"]
@@ -34,13 +32,13 @@ layer = 50
 [node name="SlideGenerator" type="Node" parent="." index="3" unique_id=1818530702 node_paths=PackedStringArray("target_parent")]
 script = ExtResource("4_vye0f")
 input_text = "# Generation Example
-* This is an example of a generated slide
+* This is an example of a **generated slide**
 * You can create the slide by hitting \"Generate Slides\"
 // Comments are also supported. These will only show up in the Side Window"
 slide_scene = ExtResource("5_6agrk")
 content_scene = ExtResource("6_qcjxg")
 target_parent = NodePath("../Slides")
-line_format_rules = Array[ExtResource("7_h5kbk")]([ExtResource("8_u6u3c")])
+ignore_if_slide_name_exists = false
 
 [node name="Slides" type="CanvasLayer" parent="." index="4" unique_id=835058405]
 

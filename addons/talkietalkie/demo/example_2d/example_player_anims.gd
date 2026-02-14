@@ -50,7 +50,7 @@ func set_y_velocity(y_velocity: float) -> void:
 func set_x_velocity(x_velocity_new: float) -> void:
 	x_velocity = x_velocity_new
 	
-func _on_pointing_at_pos(point_pos: Vector2, _is_drawing: bool, _paint_properties: PaintProperties) -> void:
+func _on_pointing_at_pos(point_pos: Vector2, _is_drawing: bool, _draw_properties: DrawProperties) -> void:
 	is_pointing = true
 	point_position = point_pos
 

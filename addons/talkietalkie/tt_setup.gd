@@ -43,8 +43,8 @@ static func get_plugin_path() -> String:
 		
 	return plugin_path
 
-static func replace_plugin_path(str: String) -> String:
-	return str.replace(PLUGIN_PLACEHOLDER, get_plugin_path() + "/")
+static func replace_plugin_path(ppstr: String) -> String:
+	return ppstr.replace(PLUGIN_PLACEHOLDER, get_plugin_path() + "/")
 
 static func input_key(key_code: Key) -> InputEventKey:
 	var in_event_key: InputEventKey = InputEventKey.new()

@@ -1,4 +1,4 @@
-class_name PaintProperties 
+class_name DrawProperties 
 extends Resource
 
 

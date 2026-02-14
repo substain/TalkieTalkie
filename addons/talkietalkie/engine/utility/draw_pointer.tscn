@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bd70i4nugd7aw"]
 
-[ext_resource type="Script" uid="uid://b0mng3ara11f1" path="res://addons/talkietalkie/engine/utility/painting_pointer.gd" id="1_agcvw"]
+[ext_resource type="Script" uid="uid://b0mng3ara11f1" path="res://addons/talkietalkie/engine/utility/draw_pointer.gd" id="1_agcvw"]
 [ext_resource type="Texture2D" uid="uid://dfgyj4wldg65x" path="res://addons/talkietalkie/style/ui/circle_1x1.svg" id="2_4qkmi"]
 
-[node name="PaintingPointer" type="Control" unique_id=308603982 node_paths=PackedStringArray("icon_rect")]
+[node name="DrawPointer" type="Control" unique_id=308603982 node_paths=PackedStringArray("icon_rect")]
 z_index = 10
 layout_mode = 3
 anchors_preset = 0

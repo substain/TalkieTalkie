@@ -12,6 +12,7 @@ theme_override_font_sizes/bold_font_size = 50
 theme_override_font_sizes/bold_italics_font_size = 50
 theme_override_font_sizes/italics_font_size = 50
 theme_override_font_sizes/mono_font_size = 50
+bbcode_enabled = true
 text = "Test"
 fit_content = true
 vertical_alignment = 1

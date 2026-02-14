@@ -1,23 +1,23 @@
-class_name PaintingPointer
+class_name DrawPointer
 extends Control
 
 const MIN_DRAW_DIST: float = 5.0
 
 ## Backup icon
 static var _CIRCLE_1X1: Texture2D = load(TTSetup.get_plugin_path() + "/style/ui/circle_1x1.svg")
-static var _PAINT_GRADIENT: Gradient = load(TTSetup.get_plugin_path() + "/style/ui/paint_gradient.tres")
+static var _DRAW_GRADIENT: Gradient = load(TTSetup.get_plugin_path() + "/style/ui/draw_gradient.tres")
 
 const DP_1_INDEX: int = 0
 const DP_2_INDEX: int = 1
 
 const META_IS_TRAIL: String = "is_trail_line"
 
-var DEFAULT_DA_1: PaintProperties = PaintProperties.new(Color.html("ff9595"), 4.0, 100, 8.0, _CIRCLE_1X1, 0.5, true)
-var DEFAULT_DA_2: PaintProperties = PaintProperties.new(Color.BLUE, 10.0, -1, 4.0, _CIRCLE_1X1, 1.0, true)
+var DEFAULT_DA_1: DrawProperties = DrawProperties.new(Color.html("ff9595"), 4.0, 100, 8.0, _CIRCLE_1X1, 0.5, true)
+var DEFAULT_DA_2: DrawProperties = DrawProperties.new(Color.BLUE, 10.0, -1, 4.0, _CIRCLE_1X1, 1.0, true)
 
 ## The draw attributes. Currently only the first two are used and statically mapped to the two "draw_pointer" actions.
 ## If there are less than 2 entries, default draw attributes are used.
-@export var all_paint_properties: Array[PaintProperties] = []
+@export var all_draw_properties: Array[DrawProperties] = []
 
 @export_category("internal nodes")
 @export var icon_rect: TextureRect
@@ -32,18 +32,19 @@ var icon_offset: Vector2 = Vector2.ZERO
 var managed_lines: Array[Line2D] = []
 
 func _ready() -> void:
+	
 	TTSlideHelper.slide_changed.connect(_on_slide_changed)
 	
-	if all_paint_properties.size() < 1:
-		all_paint_properties.append(DEFAULT_DA_1)
+	if all_draw_properties.size() < 1:
+		all_draw_properties.append(DEFAULT_DA_1)
 	
-	if all_paint_properties.size() < 2:
-		all_paint_properties.append(DEFAULT_DA_2)
+	if all_draw_properties.size() < 2:
+		all_draw_properties.append(DEFAULT_DA_2)
 	
-	for paint_prop: PaintProperties in all_paint_properties:
+	for draw_prop: DrawProperties in all_draw_properties:
 		# fallback if no icon is provided
-		if paint_prop.icon == null:
-			paint_prop.icon = _CIRCLE_1X1
+		if draw_prop.icon == null:
+			draw_prop.icon = _CIRCLE_1X1
 
 
 func _process(_delta: float) -> void:
@@ -62,10 +63,10 @@ func _process(_delta: float) -> void:
 			
 	if !is_pointing:
 		return
-	var paint_props: PaintProperties = all_paint_properties[current_da_index]
+	var draw_props: DrawProperties = all_draw_properties[current_da_index]
 	var target_pos: Vector2 = get_global_mouse_position()
 	icon_rect.global_position = target_pos + icon_offset
-	TTSlideHelper.pointing_at_pos.emit(target_pos, is_drawing, paint_props)
+	TTSlideHelper.pointing_at_pos.emit(target_pos, is_drawing, draw_props)
 
 	if is_drawing:
 		
@@ -82,8 +83,8 @@ func _process(_delta: float) -> void:
 			current_line.add_point(target_pos)
 			
 		var is_trail: bool = current_line.get_meta(META_IS_TRAIL, false) as bool
-		if is_trail && paint_props.trail_points > 0 && current_line.points.size() > paint_props.trail_points:
-			for i: int in current_line.points.size()-paint_props.trail_points:
+		if is_trail && draw_props.trail_points > 0 && current_line.points.size() > draw_props.trail_points:
+			for i: int in current_line.points.size()-draw_props.trail_points:
 				current_line.remove_point(0)
 
 func _input(event: InputEvent) -> void:
@@ -112,12 +113,12 @@ func check_pointing(event: InputEvent) -> void:
 
 
 	
-	# update paint properties
-	var paint_props: PaintProperties = all_paint_properties[current_da_index]
-	icon_rect.texture = paint_props.icon
-	icon_rect.scale = Vector2.ONE * paint_props.icon_scale
-	if paint_props.modulate_icon_with_color:
-		icon_rect.modulate = paint_props.color
+	# update draw properties
+	var draw_props: DrawProperties = all_draw_properties[current_da_index]
+	icon_rect.texture = draw_props.icon
+	icon_rect.scale = Vector2.ONE * draw_props.icon_scale
+	if draw_props.modulate_icon_with_color:
+		icon_rect.modulate = draw_props.color
 	else:
 		icon_rect.modulate = Color.WHITE
 		
@@ -125,10 +126,10 @@ func check_pointing(event: InputEvent) -> void:
 	icon_rect.visible = is_pointing
 	
 	if da_index_before != current_da_index && is_drawing:
-		create_new_line(paint_props)
+		create_new_line(draw_props)
 
 func check_drawing(event: InputEvent) -> void:
-	var p_props: PaintProperties = all_paint_properties[current_da_index]
+	var p_props: DrawProperties = all_draw_properties[current_da_index]
 	if event is InputEventMouseButton:
 		if is_pointing && (event as InputEventMouseButton).is_pressed():
 			if !is_drawing:
@@ -139,13 +140,13 @@ func check_drawing(event: InputEvent) -> void:
 		if (event as InputEventMouseButton).is_released():
 			if is_instance_valid(current_line):
 				managed_lines.append(current_line)
-				set_line_timed(current_line, all_paint_properties[current_da_index].time_alive)
+				set_line_timed(current_line, all_draw_properties[current_da_index].time_alive)
 				current_line = null
 			if is_drawing:
 				get_viewport().set_input_as_handled()
 			is_drawing = false
 
-func create_new_line(p_props: PaintProperties) -> void:
+func create_new_line(p_props: DrawProperties) -> void:
 	if is_instance_valid(current_line):
 		managed_lines.append(current_line)
 		set_line_timed(current_line, p_props.time_alive)
@@ -168,7 +169,7 @@ func _on_slide_changed(_new_slide: Slide) -> void:
 		line.queue_free()
 	managed_lines.clear()
 
-static func get_line(p_props: PaintProperties) -> Line2D:
+static func get_line(p_props: DrawProperties) -> Line2D:
 	var line: Line2D = Line2D.new()
 	line.width = p_props.thickness
 	line.modulate = p_props.color
@@ -178,6 +179,6 @@ static func get_line(p_props: PaintProperties) -> Line2D:
 	var is_trail: bool = p_props.trail_points >= 1
 	line.set_meta(META_IS_TRAIL, is_trail)
 	if is_trail:
-		line.gradient = _PAINT_GRADIENT
+		line.gradient = _DRAW_GRADIENT
 
 	return line

@@ -18,7 +18,7 @@ var side_window_layout_settings: SideWindowLayoutSettings
 var last_slide: int = 0
 var last_presentation_scene: StringName = &""
 
-static var TRANSLATION_PATHS = [TTSetup.get_plugin_path()+ "/localization/talkie_talkie_translation.en.translation", TTSetup.get_plugin_path()+ "/localization/talkie_talkie_translation.de.translation"]
+static var TRANSLATION_PATHS: Array[String] = [TTSetup.get_plugin_path()+ "/localization/talkie_talkie_translation.en.translation", TTSetup.get_plugin_path()+ "/localization/talkie_talkie_translation.de.translation"]
 
 func _enter_tree() -> void:
 	for tr_path: String in TRANSLATION_PATHS:

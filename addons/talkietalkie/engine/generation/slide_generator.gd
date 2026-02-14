@@ -5,6 +5,18 @@ extends Node
 const HEADER_INDICATOR: String = "#"
 const HEADER_REGEX: String = "^ *#+\\s"
 
+static var MD_FORMAT_BASICS_LFR: Array[LineFormatRule] = [
+	## make sure links are processed first, because they may interact with bbcode
+	load(TTSetup.get_plugin_path() + "/engine/resources/link_lfr.tres"), # [test](target) -> [url=target]test[/url]
+	load(TTSetup.get_plugin_path() + "/engine/resources/bullet_point_lfr.tres"), # * -> •
+	load(TTSetup.get_plugin_path() + "/engine/resources/bold_italics_lfr.tres"), # ***test*** -> [b][i]test[/i][/b]
+	load(TTSetup.get_plugin_path() + "/engine/resources/bold_lfr.tres"), # **test** -> [b]test[/b]
+	load(TTSetup.get_plugin_path() + "/engine/resources/italics_lfr.tres"), # *test* -> [i]test[/i]
+	load(TTSetup.get_plugin_path() + "/engine/resources/code_lfr.tres"), # `test` -> [code]test[/code]
+	load(TTSetup.get_plugin_path() + "/engine/resources/strikethrough_lfr.tres"), # ~~test~~ -> [s]test[/s]
+	load(TTSetup.get_plugin_path() + "/engine/resources/underline_lfr.tres") # ***test*** -> [b][i]test[/i][/b]
+]
+
 static var _header_regex: RegEx
 
 class SlideInfo: 
@@ -52,6 +64,10 @@ class SlideInfo:
 ## The rules will be applied in their order in the list
 ## A common rule might be to create bullet points from "*"-characters (see /engine/resources/bullet_point_lfr.tres 
 @export var line_format_rules: Array[LineFormatRule] = []
+
+## If true, before line_format_rules, (basic) default markdown formatting will be applied to each line.
+## This includes bullet_point_lfr,  
+@export var use_markdown_format_basics: bool = true
 
 ## A regex to indicate lines that should be comments.
 ## The default matches lines that starts with either '//', '[//]' or '[comment]'
@@ -258,6 +274,11 @@ func _init_regex() -> void:
 	
 func _format_string_by_rules(line: String) -> String:
 	var res: String = line
+	
+	if use_markdown_format_basics:
+		for rule: LineFormatRule in MD_FORMAT_BASICS_LFR:
+			res = rule.format(res)
+	
 	for rule: LineFormatRule in line_format_rules:
 		res = rule.format(res)
 	return res

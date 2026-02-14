@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="LineFormatRuleMdLink" format=3 uid="uid://r70278nk01s4"]
+
+[ext_resource type="Script" uid="uid://dh0dy8mtqbug1" path="res://addons/talkietalkie/engine/generation/line_format_rule_mdlink.gd" id="1_7co3v"]
+
+[resource]
+script = ExtResource("1_7co3v")
+metadata/_custom_type_script = "uid://ctvajj1saxvh4"

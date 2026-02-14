@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LineFormatRuleRegex" format=3 uid="uid://bcjp6hfcabsic"]
+
+[ext_resource type="Script" uid="uid://dwsawcr4qd3t1" path="res://addons/talkietalkie/engine/generation/line_format_rule_regex.gd" id="1_i40ni"]
+
+[resource]
+script = ExtResource("1_i40ni")
+search_regex = "(~{2,})(?:.*?)(~{2,})"
+replacement_strings = Array[String](["[s]", "[/s]"])
+metadata/_custom_type_script = "uid://ctvajj1saxvh4"

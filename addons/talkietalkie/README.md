@@ -49,7 +49,7 @@ All files in `/demo/example*` are mainly used for reference purposes and can saf
 
 
 ## Keybindings
-*These are the default keybindings, they can be configured via Godot's input action map*
+*These are the default keybindings that are added when the plugin is activated. These can be configured via Godot's input action map*
 
 * **Continue Slide** (`tt_continue`) - Right Arrow Key / Down Arrow Key / Space / Left Click
 * **Previous Slide** (`tt_back`) - Left Arrow Key / Up Arrow Key / Page Up / Mouse Wheel Up
@@ -58,8 +58,8 @@ All files in `/demo/example*` are mainly used for reference purposes and can saf
 * **Restore/Center Side Window** (`tt_restore_side_window`) - F11
 * **Fullscreen** (`tt_fullscreen`) - F12
 * **Quit** (`tt_quit`) - Escape
-* **Draw with PaintingPointer 1** (`tt_draw_pointer_1`) - Ctrl (Hold) + any mouse button (Hold)
-* **Draw with PaintingPointer 2** (`tt_draw_pointer_2`) - Alt (Hold) + any mouse button (Hold)
+* **Draw with DrawPointer 1** (`tt_draw_pointer_1`) - Ctrl (Hold) + any mouse button (Hold)
+* **Draw with DrawPointer 2** (`tt_draw_pointer_2`) - Alt (Hold) + any mouse button (Hold)
 
 * **Movement** for the 2D example (`tt_move_*`) - W, A, S, D
 
@@ -107,9 +107,9 @@ You can make the packed scene local inside the slide to avoid this error. It als
 
 The layout of this window (size, position, and preview layouts) is saved in the preferences and loaded on startup.
 
-### PaintingPointer
+### DrawPointer
 This Node is currently located within the UI and adds the possibility to highlight specific sections of a slide. Holding a button (Default: Ctrl and Alt) will show an icon, and lets you draw onto the slides. Drawings are removed after some seconds have passed or the slide is changed.
-There are some configuration options exposed via `all_paint_properties` on that node.
+There are some configuration options exposed via `all_draw_properties` on that node.
 
 ### SlideGenerator
 With the **SlideGenerator**, you can generate slides from markdown-like text. This tool script can be attached to any node, and will generate Slides based on the text provided via the `input_text` property. The format is based on Markdown-Syntax, although not all functionality is implemented currently.
@@ -124,12 +124,11 @@ Hit `Generate Slides` to generate the slides.
 ## Planned Features
 Here is an incomplete list of features you can hope to see in the future:
 
-* A presentation generator that helps building presentations more easily
 * A searchable table of contents (UI) that that provides improved slide navigation
-* Workflow improvements for creating slides, especially regarding translations
-* Better UI Scaling and mobile UX improvements
-* A way to theme slides more conveniently
+* Look into workflow improvements for Game Showcases 
+* Workflow improvements for creating slides (translations, images, markdown)
 * An example scene for 3D presentations
+* Theming, UI/UX and mobile improvements
 
 ## License
 MIT License (see [LICENSE.md](LICENSE.md))
