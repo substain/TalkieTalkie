@@ -45,6 +45,8 @@ func set_side_window_active(is_active_new: bool) -> void:
 		_side_window.input_received.connect(presentation._on_side_window_input_received)
 		configure_side_window(_side_window)
 		_side_window.set_as_ui_parent(true, ui)
+		if TTPreferences.side_window_layout_settings == null:
+			set_initial_side_window_position()
 	else:
 		_close_side_window()
 
@@ -79,4 +81,18 @@ func is_side_window_restorable() -> bool:
 	return !is_side_window_active && is_side_window_allowed()
 
 func is_side_window_allowed() -> bool:
-	return enabled == EnableOptions.ALWAYS || (enabled == EnableOptions.IF_SECOND_SCREEN_EXISTS && DisplayServer.get_screen_count() >= 2)
+	return !Util.is_web() && (enabled == EnableOptions.ALWAYS || (enabled == EnableOptions.IF_SECOND_SCREEN_EXISTS && DisplayServer.get_screen_count() >= 2))
+
+func set_initial_side_window_position() -> void:
+	var num_screens: int = DisplayServer.get_screen_count()
+	if num_screens < 2:
+		_side_window.center_to_current_screen()
+		return
+		
+	var current_screen_id: int = DisplayServer.window_get_current_screen(get_window().get_window_id())
+	var next_screen: int = (current_screen_id + 1) % num_screens
+	
+	DisplayServer.window_set_current_screen(next_screen, _side_window.get_window_id())
+	_side_window.center_to_current_screen()
+	
+	#var : int = DisplayServer.get_screen_from_rect(Rect2(position, size_with_deco))

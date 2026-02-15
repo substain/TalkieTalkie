@@ -1,0 +1,180 @@
+[gd_scene format=3 uid="uid://8iusfi7r8xlf"]
+
+[ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://addons/talkietalkie/engine/default_template/default_text_layout.tscn" id="1_qd6b0"]
+[ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://addons/talkietalkie/engine/translation/translation_target.gd" id="2_dqcn0"]
+[ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://addons/talkietalkie/engine/slides/slide_animation.gd" id="2_uu3o7"]
+[ext_resource type="Script" uid="uid://baueqijlwnlx" path="res://addons/talkietalkie/engine/slides/slide_move_animation.gd" id="3_udv5u"]
+
+[sub_resource type="Resource" id="Resource_08ar6"]
+script = ExtResource("2_dqcn0")
+translation_key = "content.base_example.3.title"
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_xi6wh"]
+script = ExtResource("2_dqcn0")
+translation_key = "content.base_example.3.overview"
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_hps66"]
+script = ExtResource("2_dqcn0")
+translation_key = "content.base_example.3.transitions"
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_1yv4c"]
+script = ExtResource("2_dqcn0")
+translation_key = "content.base_example.3.default_tr"
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_41uad"]
+script = ExtResource("2_dqcn0")
+translation_key = "content.base_example.3.individual_tr"
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_q1n4b"]
+script = ExtResource("2_dqcn0")
+translation_key = "content.base_example.3.animations"
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[sub_resource type="Resource" id="Resource_3egd6"]
+script = ExtResource("2_dqcn0")
+translation_key = "content.base_example.3.animslides"
+metadata/_custom_type_script = "uid://dnjg462pg7agr"
+
+[node name="SlideTransitionsAnimations" unique_id=602115405 instance=ExtResource("1_qd6b0")]
+slide_title = "Transitions"
+
+[node name="Translations" parent="." index="0" unique_id=45252630]
+translation_targets = Array[ExtResource("2_dqcn0")]([SubResource("Resource_08ar6"), SubResource("Resource_xi6wh"), SubResource("Resource_hps66"), SubResource("Resource_1yv4c"), SubResource("Resource_41uad"), SubResource("Resource_q1n4b"), SubResource("Resource_3egd6")])
+
+[node name="TitleLabel" parent="." index="1" unique_id=1103154569]
+text = "content.base_example.3.title"
+
+[node name="OverviewLabel" type="Label" parent="ContentVBC" parent_id_path=PackedInt32Array(1357447640) index="0" unique_id=444872151]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 46
+text = "• content.base_example.3.overview"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="FadeAnimation" type="Node" parent="ContentVBC/OverviewLabel" index="0" unique_id=338265864]
+script = ExtResource("2_uu3o7")
+
+[node name="TransitionsLabel" type="RichTextLabel" parent="ContentVBC" parent_id_path=PackedInt32Array(1357447640) index="1" unique_id=74303771]
+clip_contents = false
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 46
+theme_override_font_sizes/bold_font_size = 46
+theme_override_font_sizes/bold_italics_font_size = 46
+theme_override_font_sizes/italics_font_size = 46
+theme_override_font_sizes/mono_font_size = 46
+bbcode_enabled = true
+text = "• content.base_example.3.transitions"
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="ContentVBC/TransitionsLabel" index="2" unique_id=239104114]
+script = ExtResource("2_uu3o7")
+
+[node name="MarginContainer" type="MarginContainer" parent="ContentVBC" parent_id_path=PackedInt32Array(1357447640) index="2" unique_id=1468572542]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="DefaultTrLabel" type="RichTextLabel" parent="ContentVBC/MarginContainer" index="0" unique_id=1357010403]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 40
+theme_override_font_sizes/bold_italics_font_size = 40
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/mono_font_size = 40
+bbcode_enabled = true
+text = "• content.base_example.3.default_tr"
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="ContentVBC/MarginContainer/DefaultTrLabel" index="2" unique_id=2064310407]
+script = ExtResource("2_uu3o7")
+animation_dur = 0.35
+
+[node name="MarginContainer3" type="MarginContainer" parent="ContentVBC" parent_id_path=PackedInt32Array(1357447640) index="3" unique_id=508840907]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="IndividualTrLabel" type="RichTextLabel" parent="ContentVBC/MarginContainer3" index="0" unique_id=994768693]
+clip_contents = false
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 40
+theme_override_font_sizes/bold_italics_font_size = 40
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/mono_font_size = 40
+bbcode_enabled = true
+text = "• content.base_example.3.individual_tr"
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+
+[node name="FadeAnimation" type="Node" parent="ContentVBC/MarginContainer3/IndividualTrLabel" index="2" unique_id=744527624]
+script = ExtResource("2_uu3o7")
+animation_dur = 0.35
+
+[node name="AnimationsLabel" type="RichTextLabel" parent="ContentVBC" parent_id_path=PackedInt32Array(1357447640) index="4" unique_id=1966406340]
+clip_contents = false
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 46
+theme_override_font_sizes/bold_font_size = 46
+theme_override_font_sizes/bold_italics_font_size = 46
+theme_override_font_sizes/italics_font_size = 46
+theme_override_font_sizes/mono_font_size = 46
+bbcode_enabled = true
+text = "• content.base_example.3.animations"
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+
+[node name="MoveYAnimation" type="Node" parent="ContentVBC/AnimationsLabel" index="2" unique_id=1250382924]
+script = ExtResource("3_udv5u")
+initial_element_offset = Vector2(0, -1200)
+animation_dur = 0.5
+
+[node name="MarginContainer2" type="MarginContainer" parent="ContentVBC" parent_id_path=PackedInt32Array(1357447640) index="5" unique_id=1930323698]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="AnimSlidesLabel" type="RichTextLabel" parent="ContentVBC/MarginContainer2" index="0" unique_id=607187880]
+clip_contents = false
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 40
+theme_override_font_sizes/bold_italics_font_size = 40
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/mono_font_size = 40
+bbcode_enabled = true
+text = "• content.base_example.3.animslides"
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+
+[node name="MoveXAnimation" type="Node" parent="ContentVBC/MarginContainer2/AnimSlidesLabel" index="2" unique_id=1420860397]
+script = ExtResource("3_udv5u")
+initial_element_offset = Vector2(2000, 0)
+animation_dur = 0.5

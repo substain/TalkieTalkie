@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://u5p5x65m3ulh" path="res://addons/talkietalkie/engine/default_template/default_content_element.tscn" id="6_qcjxg"]
 [ext_resource type="PackedScene" uid="uid://ciwolqdv6staj" path="res://addons/talkietalkie/demo/example_base/slide_1_title.tscn" id="7_7sfr6"]
 [ext_resource type="PackedScene" uid="uid://c4dp0lcwxox74" path="res://addons/talkietalkie/demo/example_base/slide_2_setup.tscn" id="8_nlnoq"]
-[ext_resource type="PackedScene" uid="uid://g7nqgjyqndo7" path="res://addons/talkietalkie/demo/example_base/slide_3_controls.tscn" id="9_jg62n"]
-[ext_resource type="PackedScene" uid="uid://8iusfi7r8xlf" path="res://addons/talkietalkie/demo/example_base/slide_4_transitions.tscn" id="10_hxvdo"]
+[ext_resource type="PackedScene" uid="uid://g7nqgjyqndo7" path="res://addons/talkietalkie/demo/example_base/slide_3_generating.tscn" id="9_jg62n"]
+[ext_resource type="PackedScene" uid="uid://8iusfi7r8xlf" path="res://addons/talkietalkie/demo/example_base/slide_4_transitions_animations.tscn" id="10_hxvdo"]
 [ext_resource type="PackedScene" uid="uid://424xywruff3v" path="res://addons/talkietalkie/demo/example_base/slide_5_various.tscn" id="12_3hxdd"]
 [ext_resource type="PackedScene" uid="uid://dsx2v4kghiq3y" path="res://addons/talkietalkie/demo/example_base/slide_6_final.tscn" id="13_2ftvy"]
 
@@ -48,10 +48,10 @@ slide_title = "Title"
 [node name="SlideSetup" parent="Slides" index="1" unique_id=1954797177 instance=ExtResource("8_nlnoq")]
 visible = false
 
-[node name="SlideControls" parent="Slides" index="2" unique_id=1499345791 instance=ExtResource("9_jg62n")]
+[node name="SlideGenerating" parent="Slides" index="2" unique_id=1499345791 instance=ExtResource("9_jg62n")]
 visible = false
 
-[node name="SlideTransitions" parent="Slides" index="3" unique_id=378390168 instance=ExtResource("10_hxvdo")]
+[node name="SlideTransitionsAnimations" parent="Slides" index="3" unique_id=378390168 instance=ExtResource("10_hxvdo")]
 visible = false
 
 [node name="SlideVarious" parent="Slides" index="4" unique_id=1143992911 instance=ExtResource("12_3hxdd")]

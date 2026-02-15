@@ -65,11 +65,12 @@ func save_side_window_layout_settings() -> void:
 	TTPreferences.set_side_window_layout_settings(side_window_layout_settings)
 	
 func load_side_window_layout_settings() -> void:
-	if TTPreferences.side_window_layout_settings == null || !debug_is_valid(TTPreferences.side_window_layout_settings):
+	if TTPreferences.side_window_layout_settings == null:
 		side_window_layout_settings = SideWindowLayoutSettings.new()
 		update_settings_by_current_values()
 	else:
 		side_window_layout_settings = TTPreferences.side_window_layout_settings
+	
 
 	var matching_screen_id: int = DisplayServer.get_screen_from_rect(Rect2(side_window_layout_settings.side_window_pos, side_window_layout_settings.side_window_size))
 	if matching_screen_id == -1:
@@ -86,9 +87,6 @@ func load_side_window_layout_settings() -> void:
 	size = side_window_layout_settings.side_window_size.min(DisplayServer.screen_get_usable_rect(current_screen).size)
 	position = constrain_to_bounds(target_pos, get_size_with_deco(), DisplayServer.screen_get_usable_rect(matching_screen_id))
 	side_window_ui.load_side_window_layout_settings(side_window_layout_settings.preview_layout_settings_by_rel_index)
-	
-func debug_is_valid(side_window_layout_settings_to_test: SideWindowLayoutSettings) -> bool:
-	return side_window_layout_settings_to_test.preview_layout_settings_by_rel_index.size() == 3
 	
 func update_settings_by_current_values() -> void:
 	side_window_layout_settings.side_window_pos = position
@@ -109,7 +107,6 @@ func _notification(what: int) -> void:
 		
 	if what == NOTIFICATION_WM_SIZE_CHANGED:
 		on_resize()
-
 
 func center_to_current_screen() -> void:
 	var size_with_deco: Vector2i = get_size_with_deco()

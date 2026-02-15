@@ -13,7 +13,7 @@ signal set_slideshow_duration(new_duration: float)
 ## always show a button to toggle the ui for non-mobile presentations
 @export var _always_show_toggle_ui_button: bool = false
 
-## always show a button to toggle the ui on mobile devices. 
+## always show a button to toggle the ui on mobile devices.
 @export var _always_show_toggle_ui_button_on_mobile: bool = true
 
 ## disables the control bar in the ui view

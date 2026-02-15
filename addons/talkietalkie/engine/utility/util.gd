@@ -6,7 +6,7 @@ const IOS_OS_NAME: String = "iOS"
 
 static var extract_num_regex: RegEx = null
 
-static func compare_by_last_number(a: Slide, b: Slide) -> int:
+static func compare_by_last_number(a: Slide, b: Slide) -> bool:
 	return last_number_or_zero(a.name) < last_number_or_zero(b.name)
 
 static func ensure_extract_num_regex_initialized() -> void:
@@ -30,6 +30,17 @@ static func collect_slides_in_children(node: Node) -> Array[Slide]:
 		
 	for child: Node in node.get_children():
 		var children_nodes: Array[Slide]= collect_slides_in_children(child)
+		res.append_array(children_nodes)
+				
+	return res
+	
+static func collect_text_nodes_in_children(node: Node) -> Array[Node]:
+	var res: Array[Node] = []
+	if has_text_property(node):
+		res.append(node)
+		
+	for child: Node in node.get_children():
+		var children_nodes: Array[Node]= collect_text_nodes_in_children(child)
 		res.append_array(children_nodes)
 				
 	return res
@@ -62,7 +73,7 @@ static func to_vec3(vec2: Vector2, y: float) -> Vector3:
 	return Vector3(vec2.x, y, vec2.y)
 
 ## expects two properties on the target nodes: "sort_order" and "tree_index"
-static func compare_by_sort_order(a: Node, b: Node) -> int:
+static func compare_by_sort_order(a: Node, b: Node) -> bool:
 	@warning_ignore_start("unsafe_property_access")
 	if a.sort_order != b.sort_order:
 		return a.sort_order < b.sort_order

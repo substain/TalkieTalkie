@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://emii6ih5lh0j" path="res://addons/talkietalkie/engine/slides/anim_slide.gd" id="1_dqc13"]
 [ext_resource type="Script" uid="uid://cemii7i4pkkpt" path="res://addons/talkietalkie/engine/translation/translations.gd" id="2_dqc13"]
 
-[node name="ExampleTextLayoutNoBg" type="Control"]
+[node name="ExampleTextLayoutNoBg" type="Control" unique_id=49887508]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
@@ -11,11 +11,10 @@ offset_bottom = 1080.0
 mouse_filter = 1
 script = ExtResource("1_dqc13")
 
-[node name="Translations" type="Node" parent="." node_paths=PackedStringArray("target_nodes")]
+[node name="Translations" type="Node" parent="." unique_id=45252630]
 script = ExtResource("2_dqc13")
-target_nodes = [NodePath("../TitleLabel")]
 
-[node name="TitleLabel" type="Label" parent="."]
+[node name="TitleLabel" type="Label" parent="." unique_id=1103154569]
 layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
@@ -31,7 +30,7 @@ text = "Title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Separator1" type="Panel" parent="."]
+[node name="Separator1" type="Panel" parent="." unique_id=1938874902]
 modulate = Color(1, 1, 1, 0.52549)
 custom_minimum_size = Vector2(0, 3)
 layout_mode = 0
@@ -45,7 +44,7 @@ grow_horizontal = 2
 size_flags_horizontal = 4
 mouse_filter = 1
 
-[node name="ContentVBC" type="VBoxContainer" parent="."]
+[node name="ContentVBC" type="VBoxContainer" parent="." unique_id=1357447640]
 custom_minimum_size = Vector2(1000, 0)
 layout_mode = 0
 anchor_left = 0.5

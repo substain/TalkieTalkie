@@ -12,14 +12,14 @@ func format(line: String) -> String:
 	if search_matches.is_empty():
 		return line
 
-	print("replacing ", search_matches.size(), " matches in '", line, "'")
+	#print("replacing ", search_matches.size(), " matches in '", line, "'")
 	var res: String = line
 	var index_offset: int = 0
 	for rgmatch: RegExMatch in search_matches:
 		var length_before: int = res.length()
 		var res_before_debug: String = res
 		res = replace_at_pos(res, get_replaced_string(rgmatch), rgmatch.get_start() + index_offset, rgmatch.get_end() + index_offset)
-		print("io: ", index_offset, ": rgm(",rgmatch.get_group_count(),") at (",rgmatch.get_start(),"|",rgmatch.get_end(),"). changed '", res_before_debug, "' to '", res, "'")
+		#print("io: ", index_offset, ": rgm(",rgmatch.get_group_count(),") at (",rgmatch.get_start(),"|",rgmatch.get_end(),"). changed '", res_before_debug, "' to '", res, "'")
 
 		index_offset = index_offset + res.length() - length_before
 		

@@ -38,7 +38,7 @@ metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [sub_resource type="Resource" id="Resource_tjfux"]
 script = ExtResource("13_fjxqi")
-translation_key = "content.example_2d.1.more_things"
+translation_key = "content.example_2d.1.layout"
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [sub_resource type="Resource" id="Resource_yb4jm"]
@@ -150,6 +150,7 @@ texture = SubResource("GradientTexture2D_l32h8")
 [node name="Slide2DMapper" type="Node2D" parent="." index="3" unique_id=1279440841 node_paths=PackedStringArray("target_parent")]
 script = ExtResource("5_17rhe")
 target_parent = NodePath("Slides")
+slide_separation = Vector2(250, 0)
 slide_parent_scene = ExtResource("6_fjxqi")
 
 [node name="Slides" type="Control" parent="Slide2DMapper" index="0" unique_id=91644123]
@@ -172,9 +173,8 @@ mouse_filter = 1
 script = ExtResource("7_lx58k")
 slide_title = "Possibilities"
 
-[node name="Translations" type="Node" parent="Slide2DMapper/Slides/SlidePossibilities" index="0" unique_id=1271646789 node_paths=PackedStringArray("target_nodes")]
+[node name="Translations" type="Node" parent="Slide2DMapper/Slides/SlidePossibilities" index="0" unique_id=1271646789]
 script = ExtResource("8_tjfux")
-target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/SlideContentElement"), NodePath("../ContentVBC/Label"), NodePath("../ContentVBC/Label2")]
 translation_targets = Array[ExtResource("13_fjxqi")]([SubResource("Resource_lx58k"), SubResource("Resource_tjfux"), SubResource("Resource_yb4jm"), SubResource("Resource_x1gbi")])
 
 [node name="TitleLabel" type="Label" parent="Slide2DMapper/Slides/SlidePossibilities" index="1" unique_id=512922488]
@@ -227,7 +227,7 @@ theme_override_constants/separation = 20
 [node name="SlideContentElement" type="Label" parent="Slide2DMapper/Slides/SlidePossibilities/ContentVBC" index="0" unique_id=939306767]
 layout_mode = 2
 mouse_filter = 1
-text = "• content.example_2d.1.more_things"
+text = "• content.example_2d.1.layout"
 vertical_alignment = 1
 
 [node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slides/SlidePossibilities/ContentVBC/SlideContentElement" index="0" unique_id=807290128]
@@ -259,9 +259,8 @@ mouse_filter = 1
 script = ExtResource("7_lx58k")
 slide_title = "Lets Play"
 
-[node name="Translations" type="Node" parent="Slide2DMapper/Slides/SlideLetsPlay" index="0" unique_id=1375009985 node_paths=PackedStringArray("target_nodes")]
+[node name="Translations" type="Node" parent="Slide2DMapper/Slides/SlideLetsPlay" index="0" unique_id=1375009985]
 script = ExtResource("8_tjfux")
-target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/SlideContentElement"), NodePath("../ContentVBC/Label"), NodePath("../ContentVBC/Label2"), NodePath("../ContentVBC/Label3")]
 translation_targets = Array[ExtResource("13_fjxqi")]([SubResource("Resource_fjxqi"), SubResource("Resource_orx0d"), SubResource("Resource_51p16"), SubResource("Resource_k14gl"), SubResource("Resource_erp8h")])
 
 [node name="TitleLabel" type="Label" parent="Slide2DMapper/Slides/SlideLetsPlay" index="1" unique_id=1662597652]
@@ -296,7 +295,7 @@ size_flags_horizontal = 4
 mouse_filter = 1
 
 [node name="ContentVBC" type="VBoxContainer" parent="Slide2DMapper/Slides/SlideLetsPlay" index="3" unique_id=249621329]
-custom_minimum_size = Vector2(1000, 0)
+custom_minimum_size = Vector2(700, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -305,51 +304,53 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -763.0
 offset_top = -221.0
-offset_right = 763.0
+offset_right = 279.0
 offset_bottom = 399.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
 [node name="SlideContentElement" type="Label" parent="Slide2DMapper/Slides/SlideLetsPlay/ContentVBC" index="0" unique_id=1170473219]
+custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 mouse_filter = 1
 text = "• content.example_2d.2.player"
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slides/SlideLetsPlay/ContentVBC/SlideContentElement" index="0" unique_id=189777673]
 script = ExtResource("9_yb4jm")
 
-[node name="Label" type="Label" parent="Slide2DMapper/Slides/SlideLetsPlay/ContentVBC" index="1" unique_id=750453755]
+[node name="Label" type="RichTextLabel" parent="Slide2DMapper/Slides/SlideLetsPlay/ContentVBC" index="1" unique_id=2004403999]
+clip_contents = false
+custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 mouse_filter = 1
 text = "• content.example_2d.2.try_it"
+fit_content = true
+scroll_active = false
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slides/SlideLetsPlay/ContentVBC/Label" index="0" unique_id=362373869]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slides/SlideLetsPlay/ContentVBC/Label" index="2" unique_id=362373869]
 script = ExtResource("9_yb4jm")
 
-[node name="Example2DPlayer" parent="Slide2DMapper/Slides/SlideLetsPlay/ContentVBC/Label" index="1" unique_id=831097044 instance=ExtResource("14_4630g")]
+[node name="Example2DPlayer" parent="Slide2DMapper/Slides/SlideLetsPlay/ContentVBC/Label" index="3" unique_id=831097044 instance=ExtResource("14_4630g")]
 position = Vector2(1097, 99)
 is_player_active = false
 is_stuck = true
 
-[node name="Label2" type="Label" parent="Slide2DMapper/Slides/SlideLetsPlay/ContentVBC" index="2" unique_id=876736363]
+[node name="Label3" type="RichTextLabel" parent="Slide2DMapper/Slides/SlideLetsPlay/ContentVBC" index="2" unique_id=9194203]
+clip_contents = false
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 mouse_filter = 1
+bbcode_enabled = true
 text = "• content.example_2d.2.input"
+fit_content = true
+scroll_active = false
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slides/SlideLetsPlay/ContentVBC/Label2" index="0" unique_id=320412301]
-script = ExtResource("9_yb4jm")
-
-[node name="Label3" type="Label" parent="Slide2DMapper/Slides/SlideLetsPlay/ContentVBC" index="3" unique_id=525351542]
-layout_mode = 2
-mouse_filter = 1
-text = "• content.example_2d.2.hold"
-vertical_alignment = 1
-
-[node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slides/SlideLetsPlay/ContentVBC/Label3" index="0" unique_id=2141127978]
+[node name="FadeAnimation" type="Node" parent="Slide2DMapper/Slides/SlideLetsPlay/ContentVBC/Label3" index="2" unique_id=1043026241]
 script = ExtResource("9_yb4jm")
 
 [node name="SlideShowMeTheWay" type="Control" parent="Slide2DMapper/Slides" index="3" unique_id=1674300250]
@@ -362,8 +363,8 @@ slide_title = "Show Me The Way"
 
 [node name="Translations" type="Node" parent="Slide2DMapper/Slides/SlideShowMeTheWay" index="0" unique_id=820269400 node_paths=PackedStringArray("target_nodes")]
 script = ExtResource("8_tjfux")
-target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/SlideContentElement"), NodePath("../ContentVBC/Label")]
 translation_targets = Array[ExtResource("13_fjxqi")]([SubResource("Resource_p406b"), SubResource("Resource_lec6v"), SubResource("Resource_vq5c0")])
+target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/SlideContentElement"), NodePath("../ContentVBC/Label")]
 
 [node name="TitleLabel" type="Label" parent="Slide2DMapper/Slides/SlideShowMeTheWay" index="1" unique_id=1521792581]
 layout_mode = 1
@@ -458,8 +459,8 @@ slide_title = "Hit Me Up"
 
 [node name="Translations" type="Node" parent="Slide2DMapper/Slides/SlideHitMeUp" index="0" unique_id=1953745576 node_paths=PackedStringArray("target_nodes")]
 script = ExtResource("8_tjfux")
-target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/SlideContentElement"), NodePath("../ContentVBC/Label")]
 translation_targets = Array[ExtResource("13_fjxqi")]([SubResource("Resource_kurep"), SubResource("Resource_yf12r"), SubResource("Resource_emggn")])
+target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/SlideContentElement"), NodePath("../ContentVBC/Label")]
 
 [node name="TitleLabel" type="Label" parent="Slide2DMapper/Slides/SlideHitMeUp" index="1" unique_id=1553892700]
 layout_mode = 1

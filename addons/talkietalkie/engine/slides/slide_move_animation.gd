@@ -26,8 +26,8 @@ func _ready() -> void:
 	if ci_targets.is_empty():
 		return
 
-	#await ci_targets[0].draw
-	await get_tree().process_frame
+	await ci_targets[0].draw
+	#await get_tree().process_frame
 	was_drawn = true
 	init_positions()
 
@@ -84,17 +84,19 @@ func is_valid() -> bool:
 func _insert_control_node_as_target_parent(target: Control) -> void:
 	var node_to_insert: Control = Control.new()
 	node_to_insert.name = target.name + "CP"
-	node_to_insert.custom_minimum_size = target.size
+	node_to_insert.custom_minimum_size = target.custom_minimum_size
 	node_to_insert.anchor_bottom = target.anchor_bottom
 	node_to_insert.anchor_left = target.anchor_left
 	node_to_insert.anchor_right = target.anchor_right
 	node_to_insert.anchor_top = target.anchor_top
+	node_to_insert.mouse_filter = Control.MOUSE_FILTER_PASS
 	var child_index: int = target.get_index()
 	target.get_parent().add_child(node_to_insert)
 	target.get_parent().move_child(node_to_insert, child_index)
 	node_to_insert.position = target.position
 
 	target.reparent(node_to_insert)
+	node_to_insert.custom_minimum_size = target.size
 	target.position = Vector2.ZERO
 
 # ignore warnings for these property accesses since we know they are valid

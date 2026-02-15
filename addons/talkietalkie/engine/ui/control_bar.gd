@@ -28,7 +28,7 @@ var slideshow_duration: float
 func _ready() -> void:
 	super()
 	_quit_button.visible = !Util.is_web()
-	set_fullscreen_active(TTPreferences.fullscreen_active)
+	set_fullscreen_active(TTPreferences.fullscreen_active, false)
 
 func set_ui_disabled(is_disabled_new: bool) -> void:
 	_slideshow_button.disabled = is_disabled_new
@@ -36,7 +36,7 @@ func set_ui_disabled(is_disabled_new: bool) -> void:
 		set_slide_status_flags(true, true)
 		set_slide_progress_flags(true, true)
 		
-func set_fullscreen_active(is_active_new: bool) -> void:
+func set_fullscreen_active(is_active_new: bool, do_save: bool = true) -> void:
 	fullscreen_active = is_active_new
 	TTPreferencesClass.set_fullscreen(is_active_new)
 	TTPreferences.set_fullscreen_active(is_active_new, true)

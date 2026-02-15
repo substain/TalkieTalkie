@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://cvtb6gj6itur4" path="res://addons/talkietalkie/engine/default_template/default_text_layout.tscn" id="1_vot30"]
 [ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://addons/talkietalkie/engine/slides/slide_animation.gd" id="2_egq7i"]
 [ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://addons/talkietalkie/engine/translation/translation_target.gd" id="2_qxx3v"]
-[ext_resource type="Script" uid="uid://7d8yi8qqlkvr" path="res://addons/talkietalkie/engine/utility/slide_link.gd" id="3_egq7i"]
 
 [sub_resource type="Resource" id="Resource_3qsds"]
 script = ExtResource("2_qxx3v")
@@ -12,123 +11,134 @@ metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [sub_resource type="Resource" id="Resource_olf4c"]
 script = ExtResource("2_qxx3v")
-translation_key = "content.base_example.5.dynamic1"
+translation_key = "content.base_example.4.side_window"
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [sub_resource type="Resource" id="Resource_jnsve"]
 script = ExtResource("2_qxx3v")
-translation_key = "content.base_example.5.dynamic2"
+translation_key = "content.base_example.4.side_window_ui"
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [sub_resource type="Resource" id="Resource_4jwlx"]
 script = ExtResource("2_qxx3v")
-translation_key = "content.base_example.5.translation1"
+translation_key = "content.base_example.4.translation1"
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [sub_resource type="Resource" id="Resource_oevkm"]
 script = ExtResource("2_qxx3v")
-translation_key = "content.base_example.5.translation2"
+translation_key = "content.base_example.4.translation2"
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
-[sub_resource type="Resource" id="Resource_jmis7"]
+[sub_resource type="Resource" id="Resource_gsa58"]
 script = ExtResource("2_qxx3v")
-translation_key = "content.base_example.5.slide_generator"
+translation_key = "content.base_example.4.drawpointer"
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
-[sub_resource type="Resource" id="Resource_buyoe"]
-script = ExtResource("2_qxx3v")
-translation_key = "content.base_example.5.slide_links"
-positional_placeholders = Array[String](["[url=\"0\"]1[/url]", "[url=\"1\"]2[/url]", "[url=\"2\"]3[/url]"])
-metadata/_custom_type_script = "uid://dnjg462pg7agr"
-
-[node name="SlideVarious" instance=ExtResource("1_vot30")]
+[node name="SlideVarious" unique_id=807314584 instance=ExtResource("1_vot30")]
 slide_title = "Various"
 
-[node name="Translations" parent="." index="0" node_paths=PackedStringArray("target_nodes")]
-target_nodes = [NodePath("../TitleLabel"), NodePath("../ContentVBC/ElementLabel"), NodePath("../ContentVBC/ElementLabel6"), NodePath("../ContentVBC/ElementLabel2"), NodePath("../ContentVBC/ElementLabel3"), NodePath("../ContentVBC/ElementLabel4"), NodePath("../ContentVBC/ElementLabel5")]
-translation_targets = Array[ExtResource("2_qxx3v")]([SubResource("Resource_3qsds"), SubResource("Resource_olf4c"), SubResource("Resource_jnsve"), SubResource("Resource_4jwlx"), SubResource("Resource_oevkm"), SubResource("Resource_jmis7"), SubResource("Resource_buyoe")])
+[node name="Translations" parent="." index="0" unique_id=45252630]
+translation_targets = Array[ExtResource("2_qxx3v")]([SubResource("Resource_3qsds"), SubResource("Resource_olf4c"), SubResource("Resource_jnsve"), SubResource("Resource_4jwlx"), SubResource("Resource_oevkm"), SubResource("Resource_gsa58")])
 
-[node name="TitleLabel" parent="." index="1"]
-text = "content.base_example.5.title"
+[node name="TitleLabel" parent="." index="1" unique_id=1103154569]
+text = "content.base_example.4.title"
 
-[node name="ElementLabel" type="Label" parent="ContentVBC" index="0"]
+[node name="SideWindowVBC" type="VBoxContainer" parent="ContentVBC" parent_id_path=PackedInt32Array(1357447640) index="0" unique_id=298432672]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="SideWindowLabel" type="Label" parent="ContentVBC/SideWindowVBC" index="0" unique_id=2122522414]
+custom_minimum_size = Vector2(1200, 0)
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "• content.base_example.5.dynamic1"
+text = "• content.base_example.4.side_window"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="ContentVBC/SideWindowVBC" index="1" unique_id=1713380942]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="SideWindowUILabel" type="RichTextLabel" parent="ContentVBC/SideWindowVBC/MarginContainer" index="0" unique_id=1209352233]
+clip_contents = false
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 40
+theme_override_font_sizes/bold_italics_font_size = 40
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/mono_font_size = 40
+bbcode_enabled = true
+text = "• content.base_example.4.side_window_ui"
+fit_content = true
+scroll_active = false
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel" index="0"]
+[node name="FadeAnimation" type="Node" parent="ContentVBC/SideWindowVBC" index="2" unique_id=1747770991]
 script = ExtResource("2_egq7i")
 animation_dur = 0.5
-sort_order = 2
 
-[node name="ElementLabel6" type="Label" parent="ContentVBC" index="1"]
+[node name="TranslationVBC" type="VBoxContainer" parent="ContentVBC" parent_id_path=PackedInt32Array(1357447640) index="1" unique_id=1757155829]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Translation1Label" type="Label" parent="ContentVBC/TranslationVBC" index="0" unique_id=188950490]
+custom_minimum_size = Vector2(1200, 0)
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "    • content.base_example.5.dynamic2"
+text = "• content.base_example.4.translation1"
 vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel6" index="0"]
-script = ExtResource("2_egq7i")
-animation_dur = 0.5
-sort_order = 3
+[node name="MarginContainer" type="MarginContainer" parent="ContentVBC/TranslationVBC" index="1" unique_id=788373403]
+layout_mode = 2
+theme_override_constants/margin_left = 40
 
-[node name="ElementLabel2" type="Label" parent="ContentVBC" index="2"]
+[node name="Translation2Label" type="RichTextLabel" parent="ContentVBC/TranslationVBC/MarginContainer" index="0" unique_id=2098624837]
+clip_contents = false
+custom_minimum_size = Vector2(1200, 0)
 layout_mode = 2
 mouse_filter = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
-text = "• content.base_example.5.translation1"
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 40
+theme_override_font_sizes/bold_italics_font_size = 40
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/mono_font_size = 40
+bbcode_enabled = true
+text = "• content.base_example.4.translation2"
+fit_content = true
+scroll_active = false
 vertical_alignment = 1
 
-[node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel2" index="0"]
+[node name="FadeAnimation" type="Node" parent="ContentVBC/TranslationVBC" index="2" unique_id=1343490514]
 script = ExtResource("2_egq7i")
 animation_dur = 0.5
 
-[node name="ElementLabel3" type="Label" parent="ContentVBC" index="3"]
-layout_mode = 2
-mouse_filter = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
-text = "    • content.base_example.5.translation2"
-vertical_alignment = 1
-
-[node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel3" index="0"]
-script = ExtResource("2_egq7i")
-animation_dur = 0.5
-sort_order = 1
-
-[node name="ElementLabel4" type="Label" parent="ContentVBC" index="4"]
-layout_mode = 2
-mouse_filter = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
-text = "• content.base_example.5.slide_generator"
-vertical_alignment = 1
-
-[node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel4" index="0"]
-script = ExtResource("2_egq7i")
-animation_dur = 0.5
-sort_order = 4
-
-[node name="ElementLabel5" type="RichTextLabel" parent="ContentVBC" index="5"]
+[node name="DrawPointerLabel" type="RichTextLabel" parent="ContentVBC" parent_id_path=PackedInt32Array(1357447640) index="2" unique_id=1683520724]
+clip_contents = false
+custom_minimum_size = Vector2(1200, 0)
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 50
+theme_override_font_sizes/bold_italics_font_size = 50
+theme_override_font_sizes/italics_font_size = 50
+theme_override_font_sizes/mono_font_size = 50
 bbcode_enabled = true
-text = "• content.base_example.5.slide_links"
+text = "• content.base_example.4.drawpointer"
 fit_content = true
+scroll_active = false
 vertical_alignment = 1
-script = ExtResource("3_egq7i")
 
-[node name="FadeAnimation" type="Node" parent="ContentVBC/ElementLabel5" index="1"]
+[node name="FadeAnimation" type="Node" parent="ContentVBC/DrawPointerLabel" index="2" unique_id=547598776]
 script = ExtResource("2_egq7i")
 animation_dur = 0.5
-sort_order = 5
-
-[connection signal="meta_clicked" from="ContentVBC/ElementLabel5" to="ContentVBC/ElementLabel5" method="_on_meta_clicked"]

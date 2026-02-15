@@ -2,7 +2,7 @@ class_name TTSetup
 extends RefCounted
 
 ## Automatically restart Godot if the Plugin is enabled or disabled to refresh the input map.
-## You can set this to false if you don't need an updated input map with the default inputs below added/removed.
+## You can set this to false if you don't need an updated input map with the default inputs below added/removed within the same session.
 const RESTART_EDITOR_ON_PLUGIN_TOGGLED: bool = true
 
 ## The audio bus that will be affected by the audio slider, if the bus exists. 

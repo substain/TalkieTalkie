@@ -59,7 +59,7 @@ func save_to_file() -> void:
 		"last_presentation_scene": last_presentation_scene,
 		"side_window_layout_settings": var_to_str(side_window_layout_settings)
 	}
-	
+
 	var json_string: String = JSON.stringify(save_dict)
 	settings_file_access.store_line(json_string)
 	

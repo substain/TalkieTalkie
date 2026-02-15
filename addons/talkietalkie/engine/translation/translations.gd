@@ -16,12 +16,13 @@ class TranslationTemplate:
 			res = TTSetup.replace_plugin_path(res)
 		return res
 
-@export var target_nodes: Array[Node]
-
 ## Nodes that have a "text" property to be translated with the given translation_target
 @export var translation_targets: Array[TranslationTarget]
 
-#@export var translation_targets: Array[Node]
+## The target nodes that should be translated.
+## If this is empty, all children nodes that have a "text" property are collected and setup as targets. This is slightly less performant.
+@export var target_nodes: Array[Node]
+
 var translation_templates: Dictionary[Node, TranslationTemplate] = {}
 
 func _ready() -> void:
@@ -34,13 +35,10 @@ func infer_target_nodes() -> void:
 	if !target_nodes.is_empty():
 		return
 	
-	var children: Array[Node] = get_children()
-	if !children.is_empty():
-		target_nodes = []
-		for ch: Node in children:
-			if Util.has_text_property(ch):
-				target_nodes.append(ch)
-		target_nodes = children
+	var text_children: Array[Node] = Util.collect_text_nodes_in_children(get_parent())
+	if !text_children.is_empty():
+		target_nodes = text_children
+		#target_nodes = children
 		return
 		
 	if Util.has_text_property(self):
@@ -54,6 +52,9 @@ func infer_target_nodes() -> void:
 	print("No translation target set up for '", self.name, "'")
 
 func prepare_translation() -> void:
+	# ensure translation targets are sorted by the length of their translation keys (descending), because they can contain each other
+	translation_targets.sort_custom(sort_by_tt_key_length_desc)
+	
 	for target_node: Node in target_nodes:
 		if !Util.has_text_property(target_node):
 			push_warning("Translations expects all target nodes to have a 'text' property, but '", target_node, "' does not have one. Skipping this node.")
@@ -75,3 +76,6 @@ func translate() -> void:
 	for target_node: Node in translation_templates.keys():
 		@warning_ignore("unsafe_property_access")
 		target_node.text = translation_templates[target_node].translate()
+
+func sort_by_tt_key_length_desc(tt1: TranslationTarget, tt2: TranslationTarget) -> bool:
+	return tt1.translation_key.length() > tt2.translation_key.length()

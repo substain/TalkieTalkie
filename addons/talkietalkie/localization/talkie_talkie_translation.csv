@@ -1,5 +1,5 @@
 keys;en;de
-ui.settings.show_side_window;Show Side Window;Nebenfenster anzeigen
+ui.settings.show_side_window;Show Side Window;Side-Window anzeigen
 ui.settings.language;Language;Sprache (Language)
 ui.settings.overall_volume;Volume;Lautstärke
 ui.settings.mute;Mute;Stumm
@@ -15,47 +15,44 @@ content.base_example.0.hello;Hello!;Hallo!
 content.base_example.0.this_is_x;This is {0};Das ist {0}
 content.base_example.0.an_example_presentation;an example presentation;eine Beispiel-Präsentation
 content.base_example.1.setup;Setup;Aufbau
-content.base_example.1.presentation_combined;A presentation is combined with the following nodes:;Eine Präsentation wird durch folgende Nodes zusammengesetzt:
-content.base_example.1.main_scene;a Presentation scene with a SlideController and UI node;eine Presentation-Szene mit einem SlideController und UI-Node
-content.base_example.1.slide_node;at least one Slide node (any class inheriting from slide.gd);mindestens ein Slide Node (irgendeine Klasse, die von slide.gd erbt)
+content.base_example.1.presentation_combined;A presentation is combined with the following nodes:;Eine Präsentation wird aus folgenden Nodes zusammengesetzt:
+content.base_example.1.main_scene;a Presentation scene with SlideController and UI nodes;eine Presentation-Szene mit SlideController und UI Nodes
+content.base_example.1.slide_node;at least one Slide node;mindestens ein Slide Node
 content.base_example.1.background;a node for the background;ein Node für den Hintergrund
-content.base_example.1.use_inherited_scenes;A good idea might be to use inherited scenes\n(see this example presentation);Es kann eine gute Idee sein, Inherited Scenes zu benutzen\n(wie in dieser Beispiel-Präsentation)
-content.base_example.2.controls;Controls (Default);Steuerung (Standard)
-content.base_example.2.continue;Right/Down/Space/Left Click to continue;Rechts/Nach Unten/Space/Linksklick um fortzufahren
-content.base_example.2.skip;PageDown to skip;Bild Ab zum Überspringen
-content.base_example.2.back;Left/Up/PageUp to go back;Links/Nach Oben/Bild Auf, um zurück zu navigieren
-content.base_example.2.pointer;Ctrl or Alt to point, click to draw with them;Strg oder Alt zum Zeigen, Klicken um damit zu malen
-content.base_example.2.ui;F1/Tab/Right Click to show UI;F1/Tab/Rechtsklick, um die UI anzuzeigen
-content.base_example.2.fullscreen;F12 for fullscreen;F12 für Vollbild
-content.base_example.2.quit;ESC to quit (not in the Browser);ESC zum Verlassen (nicht im Browser)
-content.base_example.3.title;Transitions;Übergänge
-content.base_example.3.transitions1;A default transition between slides can be set up for a presentation;Ein Default-Übergang zwischen Folien kann für eine \nPräsentation aufgesetzt werden
-content.base_example.3.transitions2;You can also overwrite \nthe default for each slide;Du kannst auch den Default für eine Folie \nüberschreiben
-content.base_example.4.animations1;You can use AnimSlides for Animations;Du kannst AnimSlides für Animationen benutzen
-content.base_example.4.animations2;These collect and make use of all SlideAnimations \nplaced in their children;Diese sammeln und benutzen alle SlideAnimations \nin ihren Children
-content.base_example.5.title;Various;Verschiedenes
-content.base_example.5.dynamic1;Currently slides are not loaded dynamically ;Aktuell werden Folien nicht dynamisch geladen
-content.base_example.5.dynamic2;This means having a lot of slides could lead to bad performance;Das bedeutet, zu viele Folien können zu schlechter Performance führen
-content.base_example.5.translation1;Slides can be translated and changed via the settings;Folien können übersetzt und in den Einstellungen geändert werden 
-content.base_example.5.translation2;Translations need some extra steps \nand will probably be revised later;Übersetzungen benötigen ein paar extra Schritte \nund werden später vermutlich überarbeitet
-content.base_example.5.slide_generator;Slides can be generated automatically from markdown-like \ntext via the SlideGenerator;Slides können mithilfe des SlideGenerators \nautomatisch aus markdown-ähnlichem Text generiert werden
-content.base_example.5.slide_links;You can also use slide links: {0}, {1}, {2};Du kannst auch Folien-Links benutzen: {0}, {1}, {2}
-content.example_2d.0.header;A new TalkieTalkie presentation;Eine neue TalkieTalkie-Präsentation
+content.base_example.1.use_inherited_scenes;You can use an inherited scene from presentation.tscn to start with a basic setup.\n;Du kannst eine Inherited Scene von presentation.tscn benutzen, um mit einem grundlegenden Setup zu starten.
+content.base_example.2.generation;Generating Presentations;Generieren von Präsentationen
+content.base_example.2.overview;Presentations and slides can be generated with these tools:;Präsentationen und Slides lassen sich mit diesen Tools generieren:
+content.base_example.2.presentation_generator;The presentation generator is available via menu item in the editor:;Der Präsentations-Generator ist als Menüpunkt im Editor verfügbar:
+content.base_example.2.slide_generator;The Slide Generator is a tool script that creates slides from markdown-like text;Der Slide Generator ist ein Tool-Script, das Slides anhand von Markdown-ähnlichem Text erstellt.
+content.base_example.2.slide_gen_attach;You can attach this to any node in your presentation:;Du kannst diesen an einem beliebigen Node in deiner Präsentation hängen:
+content.base_example.2.pr_gen_image_title;The Presentation Generator can help you with setting up presentations;Der Präsentations-Generator kann dich beim Aufsetzen einer Präsentation unterstützen.  
+content.base_example.3.title;Transitions and Animations;Transitions und Animations
+content.base_example.3.overview;Presentations can use Transitions and Animations;Präsentationen können Transitionen und Animationen benutzen
+content.base_example.3.transitions;[b]Transitions[/b] define how changing slide looks;[b]Transitionen[/b] definieren, wie das Wechseln von Slides aussieht
+content.base_example.3.default_tr;Default transitions can be set on the Presentation node;Default-Transitionen können auf dem Presentation-Node gesetzt werden.
+content.base_example.3.individual_tr;Slides can also have individual transitions (in_transition_override);Slides können auch individuelle Transitionen haben ([i]in_transition_override[/i])
+content.base_example.3.animations;[b]Animations[/b] define how elements within a slide change;[b]Animationen[/b] definieren wie sich die Elemente innerhalb einer Slide verändern
+content.base_example.3.animslides;They can be used within specific Slides, 'AnimSlides';Sie können innerhalb bestimmter Slides, [i]AnimSlides[/i], verwendet werden.
+content.base_example.4.title;Various;Verschiedenes
+content.base_example.4.side_window;The 'SideWindow' is a separate, configurable view with useful information;Das 'SideWindow' ist eine separate, konfigurierbare Ansicht mit hilfreichen Informationen
+content.base_example.4.side_window_ui;When active, the UI will be shown there;Wenn es aktiv ist, wird die UI dort angezeigt 
+content.base_example.4.translation1;Translations of slides are supported;Übersetzungen von Slides werden unterstützt
+content.base_example.4.translation2;The locale can be changed in the settings;Die Locale kann in den Einstellungen geändert werden
+content.base_example.4.drawpointer;Draw on the slides by holding [i]Ctrl[/i] or [i]Alt[/i] and using the left mouse button;Male auf die Slides, indem du [i]Strg[/i] oder [i]Alt[/i] gedrückt hälst und die linke Maustaste benutzt
 content.example_2d.0.a_2d_presentation;2D Showcase;2D Showcase
-content.example_2d.0.subtitle;Let's try a few things!;Lass uns ein paar Dinge ausprobieren!
+content.example_2d.0.subtitle;an_example_presentation in 2D;eine Beispiel-Präsentation in 2D
 content.example_2d.1.title;Possibilities;Möglichkeiten
-content.example_2d.1.more_things;You can do more things with 2D scenes;Mit 2D-Szenen kannst du mehr machen
-content.example_2d.1.background;Parallax backgrounds are just the beginning;Parallaxe Hintergründe sind nur der Anfang
-content.example_2d.1.ideas;The following slides will give you a few ideas...;Die folgenden Folien geben dir ein paar Ideen...
+content.example_2d.1.layout;In this presentation, the slides are lined up in 2D space;In dieser Präsentation sind die Slides im 2D-Raum aufgereiht
+content.example_2d.1.background;A 2D camera and a parallax background are used here as well;Eine 2D-Kamera und ein parallaxer Hintergrund werden hier auch benutzt
+content.example_2d.1.ideas;This way, slides can be used in more interactive ways;Dadurch lassen sich die Slides auf interaktivere Art einsetzen
 content.example_2d.2.title;Let's Play!;Lass uns spielen!
-content.example_2d.2.player;We could have a player character running around;Wir könnten eine Spielfigur herumrennen lassen
-content.example_2d.2.try_it;Let's try this out:;Lass uns das ausprobieren:
-content.example_2d.2.input;Use WASD to move;Benutze WASD, um dich zu bewegen
-content.example_2d.2.hold;(hold to escape);(Halten, um zu entkommen)
-content.example_2d.3.title;Show me the way;Zeig mir den Weg
-content.example_2d.3.way1;Update the content by walking around;Aktualisiere den Inhalt durch herumlaufen
-content.example_2d.3.way2;Feels kind of immersive;Fühlt sich etwas immersiv an
+content.example_2d.2.player;For this presentation, we can use a player running around;Für diese Präsentation können wir eine Spielfigur herumrennen lassen
+content.example_2d.2.try_it;Try it out:\n;Probiere es aus:\n
+content.example_2d.2.input;Hold one of the [b]WASD[/b] keys to move;Halte eine der [b]WASD[/b]-Tasten gedrückt, um dich zu bewegen
+content.example_2d.3.title;Going further;Weitergehen
+content.example_2d.3.way1;We can use trigger areas to update the slide's content;Wir können Trigger-Areas benutzen, um den Inhalt der Slides zu aktualisieren
+content.example_2d.3.way2;You can also walk (or jump) back;Du kannst auch zurücklaufen (oder springen)
 content.example_2d.4.title;Hit me up!;Hit me up!
 content.example_2d.4.box1;Is this still a presentation?;Ist das immer noch eine Präsentation?
-content.example_2d.4.box2;You can still navigate with the other keys, by the way;Du kannst übrigens immer noch mit den anderen Tasten navigieren
+content.example_2d.4.box2;You can still navigate the presentation with the other keys;Du kannst die Präsentation immer noch mit den anderen Tasten navigieren
 content.example_2d.5.Fin;Fin;Fin

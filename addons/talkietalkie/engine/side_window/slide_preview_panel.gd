@@ -133,7 +133,6 @@ func _on_size_changed() -> void:
 func on_resize_parent_window(new_window_size: Vector2) -> void:
 	current_window_size = new_window_size
 	max_size = current_window_size * MAX_REL_SIZE
-
 	do_resize(true)
 	
 func do_resize(update_this_window_size: bool) -> void:
@@ -269,11 +268,11 @@ func update_settings() -> void:
 	#print("updated settings...")
 
 func load_settings(preview_layout_settings_new: PreviewLayoutSettings) -> void:
-	var target_pos: Vector2 = preview_layout_settings.position
-	target_pos = SideWindow.constrain_to_bounds(target_pos, preview_layout_settings.size, Rect2(Vector2(0, min_y_pos), parent_window.size), 0)
+	var target_pos: Vector2 = preview_layout_settings_new.position
 
+	target_pos = SideWindow.constrain_to_bounds(target_pos, preview_layout_settings_new.size, Rect2(Vector2(0, min_y_pos), parent_window.size), 0)
 	await get_tree().process_frame
-	
+
 	preview_layout_settings = preview_layout_settings_new
 
 	ignore_next_resize_signal = true
