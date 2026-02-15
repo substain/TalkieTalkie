@@ -9,6 +9,7 @@ In any case, feel free to [open an issue](https://github.com/substain/TalkieTalk
 
 ## Overview
 - [Installation](#installation)
+- [Examples](#examples)
 - [Quickstart](#quickstart)
 - [Keybindings](#keybindings)
 - [Components](#components)
@@ -21,9 +22,12 @@ In any case, feel free to [open an issue](https://github.com/substain/TalkieTalk
  - manually: download the latest release from Github, unpack it, and copy the `addons/talkietalkie` folder to the `addons` folder in your project.
 2. **Enable the addon** via `Project Settings` -> `Plugins`. This will prompt you to restart the Godot Editor (to reload the Input Map)
 
-If you want to use a different path for this addon, make sure to update the `PLUGIN_ROOT` variable in `tt_setup.gd`.
 
-**Note:** This template is being developed in the latest version of Godot. Using a version earlier than Godot 4.4 may require you to fix typing errors.
+**Note:** This template is being developed in the latest version of Godot and has been tested with 4.5+. Using a Godot 4.4 is currently possible with some modifications to the SideWindow, earlier versions require further changes to the code base.
+
+## Examples
+You can find the example presentation at `/demo/example_base/example_base_presentation.tscn` and `/demo/example_2d/example_2d_presentation.tscn`.
+All files in `/demo/example*` are mainly used for reference purposes and can safely be deleted, if necessary.
 
 ## Quickstart
 While you can manually create presentations manually, using the presentation generator is recommended. Even if you create a presentation manually, feel free to have a look at `presentation_generator.gd`, as it also serves as a configuration example.
@@ -43,10 +47,6 @@ The following steps are intended to provide a quick introduction to creating a n
 	* You can use the SlideGenerator to quickly create multiple text slides from markdown-like text and a template slide
 3) Optional: add a custom background as child of the Background node
 4) Optional: Edit the exported properties in the Presentation & UI nodes and/or update the input actions according to your preferences
-
-You can have a look at `/demo/example_base/example_base_presentation.tscn` and/or `/demo/example_2d/example_2d_presentation.tscn` for examples. 
-All files in `/demo/example*` are mainly used for reference purposes and can safely be deleted, if necessary.
-
 
 ## Keybindings
 *These are the default keybindings that are added when the plugin is activated. These can be configured via Godot's input action map*
@@ -68,9 +68,8 @@ All files in `/demo/example*` are mainly used for reference purposes and can saf
 ## Components
 This section aims to provide a basic documentation of the components.
 
-*Note that this project is currently rather in a prototype status and some functionality may be reworked in the future.*
+### Presentation*Note that this project is currently rather in a prototype status and some functionality may be reworked in the future.*
 
-### Presentation
 The Presentation, Presentation2D and Presentation3D nodes are used for a basic setup and act as a glue for UI and the controller. They also contain properties for configuring the overall presentation, such as the default transition between slides. Slides below this nodes receive an index based on their order in the tree (unless a custom order is used).
 
 The presentation nodes usually have a **SlideController** child, which handles the state of the presentation, i.e. changing slides, playing animations, and jumping between slides.
@@ -99,16 +98,15 @@ Note that if the side window is active, the UI will show up there.
 ### Side-Window
 An optional window showing presentation infos. You can configure the basic behavior of this via the SideWindowBase node, which is part of the presentation. In this window, previews for the last, current, and next slides can be displayed. Also, the side window shows time informations and slide comments as well as the UI, if active.
 
-Note that currently, slide previews are created by packing them into packed scenes when starting a presentation. This may lead to an error with signals on packed scenes inside these slides:
+Note that currently, slide previews are created by packing them into packed scenes when starting a presentation. This may lead to an error message with signals on packed scenes inside these slides:
 
 `load_slide_by_packed_scene(): Signal x is already connected to given callable y in that object.`
-
 You can make the packed scene local inside the slide to avoid this error. It also seems like you can safely ignore this error.
 
 The layout of this window (size, position, and preview layouts) is saved in the preferences and loaded on startup.
 
 ### DrawPointer
-This Node is currently located within the UI and adds the possibility to highlight specific sections of a slide. Holding a button (Default: Ctrl and Alt) will show an icon, and lets you draw onto the slides. Drawings are removed after some seconds have passed or the slide is changed.
+This Node is currently located within the UI and adds the possibility to draw onto the slides. Holding a button (Default: Ctrl and Alt) will show an icon, and pressing the left mouse button lets you draw onto the slides. Drawings are removed after some seconds have passed or the slide is changed.
 There are some configuration options exposed via `all_draw_properties` on that node.
 
 ### SlideGenerator
@@ -125,7 +123,7 @@ Hit `Generate Slides` to generate the slides.
 Here is an incomplete list of features you can hope to see in the future:
 
 * A searchable table of contents (UI) that that provides improved slide navigation
-* Look into workflow improvements for Game Showcases 
+* A better integration for Game Showcases
 * Workflow improvements for creating slides (translations, images, markdown)
 * An example scene for 3D presentations
 * Theming, UI/UX and mobile improvements
