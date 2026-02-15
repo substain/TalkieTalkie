@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_0f1fa")
-search_regex = "^(?:\\t| *)(\\*).*$"
+search_regex = "^(?:\\t| *)(\\*) .*$"
 replacement_strings = Array[String](["•"])
 metadata/_custom_type_script = "uid://ctvajj1saxvh4"

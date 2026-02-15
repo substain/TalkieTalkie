@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="TalkieTalkie"
-config/version="0.0.9"
+config/version="0.0.91"
 run/main_scene="uid://6x6xa75307sd"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://addons/talkietalkie/style/tt_icon.svg"
