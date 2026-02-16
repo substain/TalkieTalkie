@@ -27,7 +27,7 @@ In any case, feel free to [open an issue](https://github.com/substain/TalkieTalk
 
 ## Examples
 You can find the example presentation at `/demo/example_base/example_base_presentation.tscn` and `/demo/example_2d/example_2d_presentation.tscn`.
-All files in `/demo/example*` are mainly used for reference purposes and can safely be deleted, if necessary.
+All files in `/demo/example/` are mainly used for reference purposes and can be deleted, if necessary.
 
 ## Quickstart
 While you can manually create presentations manually, using the presentation generator is recommended. Even if you create a presentation manually, feel free to have a look at `presentation_generator.gd`, as it also serves as a configuration example.
@@ -49,7 +49,7 @@ The following steps are intended to provide a quick introduction to creating a n
 4) Optional: Edit the exported properties in the Presentation & UI nodes and/or update the input actions according to your preferences
 
 ## Keybindings
-*These are the default keybindings that are added when the plugin is activated. These can be configured via Godot's input action map*
+*These are the default keybindings that are added when the plugin is activated and can be configured via Godot's input action map.*
 
 * **Continue Slide** (`tt_continue`) - Right Arrow Key / Down Arrow Key / Space / Left Click
 * **Previous Slide** (`tt_back`) - Left Arrow Key / Up Arrow Key / Page Up / Mouse Wheel Up
@@ -68,7 +68,7 @@ The following steps are intended to provide a quick introduction to creating a n
 ## Components
 This section aims to provide a basic documentation of the components.
 
-### Presentation*Note that this project is currently rather in a prototype status and some functionality may be reworked in the future.*
+### Presentation
 
 The Presentation, Presentation2D and Presentation3D nodes are used for a basic setup and act as a glue for UI and the controller. They also contain properties for configuring the overall presentation, such as the default transition between slides. Slides below this nodes receive an index based on their order in the tree (unless a custom order is used).
 
@@ -106,14 +106,14 @@ You can make the packed scene local inside the slide to avoid this error. It als
 The layout of this window (size, position, and preview layouts) is saved in the preferences and loaded on startup.
 
 ### DrawPointer
-This Node is currently located within the UI and adds the possibility to draw onto the slides. Holding a button (Default: Ctrl and Alt) will show an icon, and pressing the left mouse button lets you draw onto the slides. Drawings are removed after some seconds have passed or the slide is changed.
+This Node is currently located within the UI and adds the possibility to draw onto the slides. Holding a button (Default: Ctrl or Alt) will show an icon, and pressing the left mouse button lets you draw onto the slides. Drawings are removed after some seconds have passed or the slide is changed.
 There are some configuration options exposed via `all_draw_properties` on that node.
 
 ### SlideGenerator
 With the **SlideGenerator**, you can generate slides from markdown-like text. This tool script can be attached to any node, and will generate Slides based on the text provided via the `input_text` property. The format is based on Markdown-Syntax, although not all functionality is implemented currently.
 * For each header (lines beginning with e.g. #, ##, ###, ...), a slide is generated based on the `slide_scene`.
+* Comments are, by default, created from lines that begin with `//`, `[//]` or `[comment]`. This behavior can be edited with the 'comment_line_regex' property
 * The `content_scene` will be used for the nodes created for the content (which is everything below the header, except for comments).
-* Comments are, by default, created from lines that begin with // , [//] or [comment]. This behavior can be edited with the 'comment_line_regex'
 * With `slide_title_path`, you can specify the path in the template scene that represents the title of the slide whereas `slide_content_parent_path` specifies under which node the content scene(s) are placed as children.
 * Besides not creating duplicated slides with the same title via `ignore_if_slide_name_exists` you can also choose to `replace_existing_instatiated_slides` (dangerous!)
 
