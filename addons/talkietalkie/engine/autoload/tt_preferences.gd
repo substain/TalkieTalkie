@@ -62,17 +62,18 @@ func save_to_file() -> void:
 
 	var json_string: String = JSON.stringify(save_dict)
 	settings_file_access.store_line(json_string)
+	settings_file_access.close()
 	
 func load_from_file() -> void:
-	if not FileAccess.file_exists(SETTINGS_PATH):
+	if !FileAccess.file_exists(SETTINGS_PATH):
 		return # We don't have a file to load.
 
 	var save_game: FileAccess = FileAccess.open(SETTINGS_PATH, FileAccess.READ)
 	while save_game.get_position() < save_game.get_length():
 		var json_string: String = save_game.get_line()
 		var json: JSON = JSON.new()
-		var parseResult: Error = json.parse(json_string)
-		if not parseResult == OK:
+		var parse_result: Error = json.parse(json_string)
+		if parse_result != OK:
 			push_warning("TTPreferences: JSON Parse Error: '" + json.get_error_message() + "'  at line " + str(json.get_error_line()))
 			continue
 		var save_dict: Dictionary = json.get_data()
@@ -95,6 +96,8 @@ func load_from_file() -> void:
 			last_presentation_scene = save_dict["last_presentation_scene"]
 		if save_dict.has("side_window_layout_settings"):
 			side_window_layout_settings = str_to_var(save_dict["side_window_layout_settings"] as String)
+		
+		save_game.close()
 			
 func set_audio_volume(vol_new: float, do_save: bool = true) -> void:
 	audio_volume = vol_new

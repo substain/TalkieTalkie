@@ -110,8 +110,6 @@ func check_pointing(event: InputEvent) -> void:
 	
 	else:
 		return
-
-
 	
 	# update draw properties
 	var draw_props: DrawProperties = all_draw_properties[current_da_index]

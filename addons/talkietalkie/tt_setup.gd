@@ -15,7 +15,8 @@ const CONTINUE_ON_UNHANDLED_LEFT_CLICK: bool = true
 
 ## The inputs used by this plugin. These will be added to the input map when the plugin is activated. 
 ## You can change these in the input map in the project settings when the plugin is active.
-static var default_inputs: Dictionary[String, Array] = {
+static func get_inputs() -> Dictionary[String, Array]:
+	return {
 	"tt_continue": [input_key(KEY_RIGHT), input_key(KEY_DOWN), input_key(KEY_SPACE)],
 	"tt_back": [input_key(KEY_LEFT), input_key(KEY_UP), input_key(KEY_PAGEUP),input_mouse(MOUSE_BUTTON_WHEEL_UP)],
 	"tt_skip_slide": [input_key(KEY_PAGEDOWN),input_mouse(MOUSE_BUTTON_WHEEL_DOWN)],

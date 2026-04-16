@@ -14,15 +14,21 @@ func _enable_plugin() -> void:
 	if OS.has_feature("editor"):
 		print_rich("[color='88AAAA']Thank you for using [/color][img height=20]"+TTSetup.get_plugin_path()+"/style/tt_icon.svg[/img][b][color='99AABB']TalkieTalkie[/color][/b]. [color='88AAAA']More information about this plugin can be found in "+TTSetup.get_plugin_path()+"/README.md[/color]") # Prints "Hello world!", in green with a bold font.
 	add_autoloads()
-	var ttsetup: TTSetup = TTSetup.new()
-	add_inputs()
+	var has_changed_inputs: bool = add_inputs()
 	print("TalkieTalkie addon enabled.")
 
+	ProjectSettings.save()
+	if has_changed_inputs && TTSetup.RESTART_EDITOR_ON_PLUGIN_TOGGLED:
+		EditorInterface.restart_editor(true)
+		
 func _disable_plugin() -> void:
 	remove_autoloads()
-	var ttsetup: TTSetup = TTSetup.new()
-	remove_inputs()
+	var has_changed_inputs: bool = remove_inputs()
 	print("TalkieTalkie addon disabled.")
+
+	ProjectSettings.save()
+	if has_changed_inputs && TTSetup.RESTART_EDITOR_ON_PLUGIN_TOGGLED:
+		EditorInterface.restart_editor(true)
 
 func _enter_tree() -> void:
 	if Engine.is_editor_hint():
@@ -57,41 +63,30 @@ func on_generate_presentation_clicked() -> void:
 	EditorInterface.get_base_control().add_child(pr_generator_popup)
 	pr_generator_popup.popup_centered()
 
-func add_inputs() -> void:
+func add_inputs() -> bool:
 	print("TalkieTalkie: adding inputs...")
 	var is_any_changed: bool = false
-	var ttsetup: TTSetup = TTSetup.new()
-	for input_name in ttsetup.default_inputs.keys():
+	var inputs: Dictionary[String, Array] = TTSetup.get_inputs()
+	for input_name in inputs:
 		if ProjectSettings.has_setting("input/" + input_name):
 			print("TalkieTalkie.add_inputs(): ProjectSettings already has an input '", input_name, "'. Skipped adding this input.")
 			continue
 		var input: Dictionary = {
 			"deadzone": 0.5,
-			"events": ttsetup.default_inputs[input_name]
+			"events": inputs[input_name]
 		}
 		ProjectSettings.set_setting("input/" + input_name, input)
 		is_any_changed = true
-		
-	
-	ProjectSettings.save()
-	if TTSetup.RESTART_EDITOR_ON_PLUGIN_TOGGLED:
-		EditorInterface.restart_editor(true)
-	
-func remove_inputs() -> void:
+	return is_any_changed
+
+func remove_inputs() -> bool:
 	print("TalkieTalkie: removing inputs...")
 	var is_any_changed: bool = false
-	var ttsetup: TTSetup = TTSetup.new()
-	for input_name in ttsetup.default_inputs.keys():
+	for input_name in TTSetup.get_inputs():
 		if !ProjectSettings.has_setting("input/" + input_name):
 			print("TalkieTalkie.remove_inputs(): ProjectSettings does not have input '", input_name, "'. Skipped removing this input.")
 			continue
 			
 		ProjectSettings.set_setting("input/" + input_name, null)
 		is_any_changed = true
-		
-	if !is_any_changed:
-		return
-
-	ProjectSettings.save()
-	if TTSetup.RESTART_EDITOR_ON_PLUGIN_TOGGLED:
-		EditorInterface.restart_editor(true)
+	return is_any_changed
