@@ -97,7 +97,7 @@ func load_from_file() -> void:
 		if save_dict.has("side_window_layout_settings"):
 			side_window_layout_settings = str_to_var(save_dict["side_window_layout_settings"] as String)
 		
-		save_game.close()
+	save_game.close()
 			
 func set_audio_volume(vol_new: float, do_save: bool = true) -> void:
 	audio_volume = vol_new

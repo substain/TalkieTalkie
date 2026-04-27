@@ -27,9 +27,19 @@ var translation_templates: Dictionary[Node, TranslationTemplate] = {}
 
 func _ready() -> void:
 	TTPreferences.language_changed.connect(translate)
+	clean_target_nodes()
 	infer_target_nodes()
 	prepare_translation()
 	translate()
+	
+func clean_target_nodes() -> void:
+	if target_nodes.is_empty():
+		return
+	
+	for i: int in target_nodes.size():
+		var rev_i: int = target_nodes.size()-1 - i
+		if target_nodes[rev_i] == null:
+			target_nodes.remove_at(rev_i)
 	
 func infer_target_nodes() -> void:
 	if !target_nodes.is_empty():
@@ -49,7 +59,8 @@ func infer_target_nodes() -> void:
 		target_nodes = [get_parent()]
 		return
 	
-	print("No translation target set up for '", self.name, "'")
+	print("No translation target set up for '", self.name, "'. Freeing...")
+	queue_free()
 
 func prepare_translation() -> void:
 	# ensure translation targets are sorted by the length of their translation keys (descending), because they can contain each other

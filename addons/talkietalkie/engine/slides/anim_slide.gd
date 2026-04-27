@@ -34,6 +34,7 @@ func reset() -> void:
 	for animation: SlideAnimation in animations:
 		if !is_instance_valid(animation):
 			push_warning("found invalid slide animation reference in ", self.name)
+			continue
 		animation.reset()
 		progress_elements[animation as Variant] = false
 		

@@ -23,8 +23,10 @@ static var SIDE_WINDOW_SCENE: PackedScene = load(TTSetup.get_plugin_path() + "/e
 
 var _side_window: SideWindow
 var is_side_window_active: bool = false
+var _is_windows_embedded = true
 
 func _enter_tree() -> void:
+	check_second_window_embedded()
 	set_side_window_active(true)
 	update_state_in_helper()
 	
@@ -80,8 +82,16 @@ func _on_restore_side_window() -> void:
 func is_side_window_restorable() -> bool:
 	return !is_side_window_active && is_side_window_allowed()
 
+func check_second_window_embedded() -> void:
+	if ProjectSettings.get("display/window/subwindows/embed_subwindows") as bool == true:
+		push_warning("Your project settings embeds subwindows. To enable the preview window, set 'display/window/subwindows/embed_subwindows' to false.")
+		_is_windows_embedded = true
+		return
+		
+	_is_windows_embedded = false
+	
 func is_side_window_allowed() -> bool:
-	return !Util.is_web() && (enabled == EnableOptions.ALWAYS || (enabled == EnableOptions.IF_SECOND_SCREEN_EXISTS && DisplayServer.get_screen_count() >= 2))
+	return !Util.is_web() && !_is_windows_embedded && (enabled == EnableOptions.ALWAYS || (enabled == EnableOptions.IF_SECOND_SCREEN_EXISTS && DisplayServer.get_screen_count() >= 2))
 
 func set_initial_side_window_position() -> void:
 	var num_screens: int = DisplayServer.get_screen_count()
