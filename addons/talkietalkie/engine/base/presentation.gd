@@ -12,12 +12,9 @@ static var NO_PREVIEW_SLIDE_SCENE: PackedScene = load(TTSetup.get_plugin_path() 
 
 ## The current index of the slide.
 @export var slide_index: int = 0
-## If true, the slide_index will be loaded from the last session if the presentation name matches.
-@export var remember_slide_index_from_last_session: bool = false
 ## If true, the last number of the slide node names are used instead of the default top to bottom order in the tree.
 @export var use_slide_numbering_order: bool = false
 ## If set to "true", using manual navigation (e.g. clicking the forward button) will stop the automatic slideshow.
-@export var manual_navigation_stops_auto_slideshow: bool = true
 ## The default transition for slides. If null, a default transition will be set according to the presentation type:
 ## Transition for default Control-based presentations, MoveTransition2D for 2D Presentations and MoveTransition3D for 3D Presentations.
 @export var default_transition: Transition
@@ -35,7 +32,10 @@ var current_slide: Slide = null
 var transition_tween: Tween = null
 var last_from_slide: Slide = null
 
+var continue_on_unhandled_left_click: bool
+
 func _ready() -> void:
+	continue_on_unhandled_left_click = TTPreferences.tt_config.continue_on_unhandled_left_click
 	ensure_basic_setup()
 	init_context()
 
@@ -46,7 +46,7 @@ func _ready() -> void:
 	slide_instances = Util.collect_slides_in_children(self)
 	
 	
-	if remember_slide_index_from_last_session && TTPreferences.last_presentation_scene == get_tree().current_scene.scene_file_path:
+	if TTPreferences.tt_config.remember_slide && TTPreferences.last_presentation_scene == get_tree().current_scene.scene_file_path:
 		slide_index = TTPreferences.last_slide
 	
 	if slide_instances.size() == 0:
@@ -70,7 +70,7 @@ func _ready() -> void:
 	ui.control_bar.set_auto_slideshow_active(slide_controller.auto_slideshow_timer.autostart == true)
 	ui.control_bar.update_auto_slideshow_duration(slide_controller.auto_slideshow_timer.wait_time)
 	
-	slide_controller.init(slide_instances, default_transition, manual_navigation_stops_auto_slideshow, has_faulty_configuration)
+	slide_controller.init(slide_instances, default_transition, TTPreferences.tt_config.stop_auto_slideshow_on_continue, has_faulty_configuration)
 	slide_controller.setup_initial_state(slide_index)
 
 func ensure_basic_setup() -> void:
@@ -100,7 +100,7 @@ func _input(event: InputEvent) -> void:
 	handle_input(event)
 	
 func _unhandled_input(event: InputEvent) -> void:
-	if TTSetup.CONTINUE_ON_UNHANDLED_LEFT_CLICK && event is InputEventMouseButton && (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT && (event as InputEventMouseButton).pressed:
+	if continue_on_unhandled_left_click && event is InputEventMouseButton && (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT && (event as InputEventMouseButton).pressed:
 		slide_controller.do_continue()
 		
 func _on_ui_continue_slide() -> void:
@@ -129,7 +129,7 @@ func _on_ui_toggle_slideshow(slideshow_active: bool) -> void:
 func _on_ui_jump_to_slide(new_slide_index: int) -> void:
 	slide_controller.set_slide(new_slide_index)	
 	slide_controller.skip_to_current_slide_full()
-	if manual_navigation_stops_auto_slideshow:
+	if TTPreferences.tt_config.stop_auto_slideshow_on_continue:
 		slide_controller.stop_auto_slideshow()
 
 func _on_side_window_input_received(event: InputEvent) -> void:
@@ -138,6 +138,11 @@ func _on_side_window_input_received(event: InputEvent) -> void:
 func handle_input(event: InputEvent) -> void:
 	if ui.has_overlay:
 		return
+		
+	if event is InputEventMouseButton:
+		var iemb: InputEventMouseButton = event as InputEventMouseButton
+		if TTSlideHelper.is_tab_hover_active && (iemb.button_index == MOUSE_BUTTON_WHEEL_UP || iemb.button_index == MOUSE_BUTTON_WHEEL_DOWN):
+			return
 	
 	if event.is_action_pressed("tt_continue"):
 		slide_controller.do_continue()

@@ -19,6 +19,7 @@ var current_slide: Slide
 var has_context: bool
 var _context: SlideContext
 var is_side_window_restorable: bool = false
+var is_tab_hover_active: bool = false
 
 func is_2d_node_presentation() -> bool:
 	return _context is SlideContext2D

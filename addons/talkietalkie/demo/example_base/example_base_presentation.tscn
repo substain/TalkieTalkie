@@ -59,6 +59,3 @@ visible = false
 
 [node name="SlideFinal" parent="Slides" index="5" unique_id=1377010556 instance=ExtResource("13_2ftvy")]
 visible = false
-
-[node name="SideWindowBase" parent="." index="5" unique_id=1747735963]
-enabled = 0

@@ -2,8 +2,9 @@
 
 [ext_resource type="ButtonGroup" uid="uid://cs67nykarvlg4" path="res://addons/talkietalkie/engine/resources/slide_navigation_tab_button_group.tres" id="1_m46h8"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nudmj"]
-bg_color = Color(0.741385, 0.741385, 0.741384, 0.87451)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vsph1"]
+resource_local_to_scene = true
+bg_color = Color(0.41598, 0.41598, 0.41598, 0.784314)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
@@ -16,21 +17,20 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vsph1"]
-resource_local_to_scene = true
-bg_color = Color(0.41598, 0.41598, 0.41598, 0.784314)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nudmj"]
+bg_color = Color(0.741385, 0.741385, 0.741384, 0.87451)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[node name="SimpleSlideNavButton" type="Button"]
+[node name="SimpleSlideNavButton" type="Button" unique_id=1322044788]
 custom_minimum_size = Vector2(50, 10)
 size_flags_horizontal = 3
 size_flags_vertical = 4
 focus_mode = 0
-theme_override_styles/hover = SubResource("StyleBoxFlat_nudmj")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_m46h8")
 theme_override_styles/normal = SubResource("StyleBoxFlat_vsph1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_m46h8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nudmj")
 toggle_mode = true
 button_group = ExtResource("1_m46h8")

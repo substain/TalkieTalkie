@@ -31,11 +31,11 @@ class SlideInfo:
 ## The scene that will be instantiated. Is expected to be a Slide scene/node
 @export var slide_scene: PackedScene
 
-## The name of the child in slide_scene_to_use that should be used for setting the title of the slide.
+## The name of the child in slide_scene that should be used for setting the title of the slide.
 ## If no name is given, no title will be set. Will also fail if no "text" property exists on that child
 @export var slide_title_path: String = "TitleLabel"
 
-## The name of the child in slide_scene_to_use that should be used as parent for the content nodes.
+## The name of the child in slide_scene that should be used as parent for the content nodes.
 @export var slide_content_parent_path: String = "ContentVBC"
 
 ## The scene that will be instantiated for content. Is expected to have a "text" property, will fail otherwise
@@ -92,7 +92,7 @@ func do_generate() -> void:
 
 func _instantiate_as_slides(slide_infos: Array[SlideInfo]) -> Array[SceneSlide]:
 	if slide_scene == null:
-		push_warning("Cannot instantiate a null slide scene. Ensure slide_scene_to_use is set in the edtior.")
+		push_warning("Cannot instantiate a null slide scene. Ensure slide_scene is set in the edtior.")
 		return []
 		
 	_generated_node_names = []

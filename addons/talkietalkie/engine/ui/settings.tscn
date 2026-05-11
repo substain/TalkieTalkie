@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dgv5ocfrj3y3b" path="res://addons/talkietalkie/style/ui/gear_pressed.svg" id="3_5ciuv"]
 [ext_resource type="Texture2D" uid="uid://cejppi3qwf4kn" path="res://addons/talkietalkie/style/ui/gear_hover.svg" id="4_a62kg"]
 
-[node name="Settings" type="MarginContainer" unique_id=243812098 node_paths=PackedStringArray("open_button", "lang_option_button", "overall_volume_slider", "overall_volume_mute_button", "settings_container", "dummy_ui_replacement_button", "about_button", "restore_side_window_button")]
+[node name="Settings" type="MarginContainer" unique_id=243812098 node_paths=PackedStringArray("lang_option_button", "overall_volume_slider", "overall_volume_mute_button", "settings_container", "dummy_ui_replacement_button", "about_button", "restore_side_window_button", "lang_v_box", "overall_volume_v_box")]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -18,7 +18,6 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 script = ExtResource("1_pss60")
-open_button = NodePath("")
 lang_option_button = NodePath("VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/LangVBox/LangOptionButton")
 overall_volume_slider = NodePath("VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox/OverallVolumeSlider")
 overall_volume_mute_button = NodePath("VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox/OverallVolumeMuteButton")
@@ -26,6 +25,8 @@ settings_container = NodePath("VBoxContainer/SettingsContainer")
 dummy_ui_replacement_button = NodePath("VBoxContainer/HBoxContainer/DummyButtonForUIReplacement")
 about_button = NodePath("VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/AboutHBox/AboutButton")
 restore_side_window_button = NodePath("VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/RestoreSideWindowButton")
+lang_v_box = NodePath("VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/LangVBox")
+overall_volume_v_box = NodePath("VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=74302742]
 layout_mode = 2
@@ -104,7 +105,7 @@ layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="LanguageLabel" type="Label" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox" unique_id=1736406206]
+[node name="OverallVolumeLabel" type="Label" parent="VBoxContainer/SettingsContainer/TabNavigationMc/SettingVBox/OverallVolumeVBox" unique_id=1736406206]
 layout_mode = 2
 text = "ui.settings.overall_volume"
 horizontal_alignment = 1

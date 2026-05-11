@@ -3,10 +3,11 @@ extends CanvasLayer
 
 signal close_overlay
 
+const TT_ASSET_LIB_URL: String = "https://godotengine.org/asset-library/asset/4783"
+const TT_CODEBERG_URL: String = "https://codeberg.org/substain/TalkieTalkie"
 const TT_GITHUB_URL: String = "https://github.com/substain/TalkieTalkie"
 const TT_DESCRIPTION: String = "TalkieTalkie is a framework for creating presentations in the Godot Engine."
 
-@export var enable_links: bool = true
 @export_category("internal nodes")
 
 @export var talkie_talkie_label: Label
@@ -23,14 +24,22 @@ func _ready() -> void:
 
 func get_about_talkie_talkie_text_rich() -> String:
 	var result: String = TT_DESCRIPTION + "\n"
-	result += "Github: [url='%s']https://github.com/substain/TalkieTalkie[/url]" % TT_GITHUB_URL
+	result += "Asset Library: " + get_rich_link(TT_ASSET_LIB_URL) + "\n" 
+	result += "codeberg: " + get_rich_link(TT_CODEBERG_URL) + "\n" 
+	result += "Github (Mirror): " + get_rich_link(TT_GITHUB_URL) + "\n" 
 	return result
+
+func get_rich_link(link: String) -> String:
+	if !TTPreferences.tt_config.enable_about_window_links:
+		return link
+	
+	return "[url='%s']%s[/url]" % [link, link]
 
 func get_about_godot_text_rich() -> String:
 	return Engine.get_license_text()
 
 func _on_meta_clicked(meta: Variant) -> void:
-	if !enable_links:
+	if !TTPreferences.tt_config.enable_about_window_links:
 		return
 	OS.shell_open(str(meta))
 

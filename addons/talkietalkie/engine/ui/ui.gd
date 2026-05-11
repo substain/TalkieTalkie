@@ -7,24 +7,6 @@ signal jump_to_slide(slide_index: int)
 signal toggle_slideshow(slideshow_active: bool)
 signal set_slideshow_duration(new_duration: float)
 
-## if true, the ui will be visible on start
-@export var is_ui_visible: bool = false
-
-## always show a button to toggle the ui for non-mobile presentations
-@export var _always_show_toggle_ui_button: bool = false
-
-## always show a button to toggle the ui on mobile devices.
-@export var _always_show_toggle_ui_button_on_mobile: bool = true
-
-## disables the control bar in the ui view
-@export var control_bar_enabled: bool = true
-
-## disables the tab navigation bar in the ui view
-@export var tab_navigation_bar_enabled: bool = true
-
-## disables settings in the ui view
-@export var settings_enabled: bool = true
-
 @export_category("internal nodes")
 @export var control_bar: ControlBar
 @export var tab_navigation_bar: TabNavigationBar
@@ -39,25 +21,20 @@ signal set_slideshow_duration(new_duration: float)
 @export var side_window_nodes: Array[Node]
 
 var has_overlay: bool = false
+var is_ui_visible: bool = false
 
 func _ready() -> void:
-	setup_mobile()
-	
 	TTSlideHelper.ui = self
 	
-	control_bar.visible = control_bar_enabled
-	tab_navigation_bar.visible = tab_navigation_bar_enabled
-	settings.visible = settings_enabled
+	control_bar.visible = TTPreferences.tt_config.enable_control_bar
+	tab_navigation_bar.visible = TTPreferences.tt_config.enable_tabnav_bar
+	settings.visible = TTPreferences.tt_config.enable_settings
 	
-	settings.update_ui_button_position(!_always_show_toggle_ui_button, _toggle_ui_button)
-
-	set_ui_visible(is_ui_visible, true)
+	settings.update_ui_button_position(!TTPreferences.tt_config.get_show_toggle_ui_button_bool(), _toggle_ui_button)
+	
+	set_ui_visible(TTPreferences.tt_config.get_open_ui_on_startup_bool(), true)
 	set_about_overlay_visible(false)
-	
-func setup_mobile() -> void:
-	if Util.is_mobile():
-		_always_show_toggle_ui_button = _always_show_toggle_ui_button_on_mobile
-		
+
 func set_ui_disabled(is_disabled_new: bool) -> void:	
 	tab_navigation_bar.set_ui_disabled(is_disabled_new)
 	control_bar.set_ui_disabled(is_disabled_new)

@@ -5,14 +5,6 @@ extends RefCounted
 ## You can set this to false if you don't need an updated input map with the default inputs below added/removed within the same session.
 const RESTART_EDITOR_ON_PLUGIN_TOGGLED: bool = true
 
-## The audio bus that will be affected by the audio slider, if the bus exists. 
-## Update this if you want to target a different bus.
-const TARGET_AUDIO_BUS: StringName = &"Master"
-
-## If enabled, unhandled left click input events trigger a slide continue as well.
-## You can set this to false if you want to disable this behavior
-const CONTINUE_ON_UNHANDLED_LEFT_CLICK: bool = true
-
 ## The inputs used by this plugin. These will be added to the input map when the plugin is activated. 
 ## You can change these in the input map in the project settings when the plugin is active.
 static func get_inputs() -> Dictionary[String, Array]:

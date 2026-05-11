@@ -179,7 +179,7 @@ func _on_file_selection_button_pressed() -> void:
 
 func _on_background_scene_file_dialog_file_selected(path: String) -> void:
 	if !FileAccess.file_exists(path):
-		push_warning("could not select background scene from '", path, "'")
+		push_warning("PresentationGenerator: could not select background scene from '", path, "'")
 		return
 	
 	background_scene_file_dialog.visible = false
@@ -189,7 +189,11 @@ func _on_background_scene_file_dialog_file_selected(path: String) -> void:
 	background_scene_label.text = shorten_path(path)
 	
 func _on_generate_scene_file_dialog_file_selected(path: String) -> void:
+	if !path.is_valid_filename():
+		push_warning("PresentationGenerator: invalid file path:", path)
+		return
 	target_file_path = path
+
 	start_generate()
 	
 func _on_load_md_file_button_pressed() -> void:
@@ -197,7 +201,7 @@ func _on_load_md_file_button_pressed() -> void:
 
 func _on_md_file_dialog_file_selected(path: String) -> void:
 	if !FileAccess.file_exists(path):
-		push_warning("could not load markdown from '", md_file_load_path, "'")
+		push_warning("PresentationGenerator: could not load markdown from '", md_file_load_path, "'")
 		return
 	md_file_load_path = path
 
@@ -221,7 +225,7 @@ func _on_theme_file_dialog_file_selected(path: String) -> void:
 		return
 		
 	if !FileAccess.file_exists(path):
-		push_warning("could not load thene from '", path, "'")
+		push_warning("PresentationGenerator: could not load theme from '", path, "'")
 		return
 	
 	selected_theme = load(path) as Theme

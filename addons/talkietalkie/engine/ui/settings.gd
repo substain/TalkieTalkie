@@ -13,11 +13,17 @@ signal show_about_window
 @export var dummy_ui_replacement_button: Button
 @export var about_button: Button
 @export var restore_side_window_button: Button
+@export var lang_v_box: VBoxContainer
+@export var overall_volume_v_box: VBoxContainer
 
 var side_window_allowed: bool = false
 
 func _ready() -> void:
 	super()
+	
+	overall_volume_v_box.visible = TTPreferences.tt_config.show_audio_controls
+	lang_v_box.visible = TTPreferences.tt_config.show_translation_control
+
 	overall_volume_slider.set_value_no_signal(TTPreferences.audio_volume)
 	lang_option_button.selected = get_locale_button_id(TTPreferences.language)
 	about_button.text = Util.get_talkie_talkie_version()
@@ -68,7 +74,7 @@ static func get_locale_button_id(locale_short: StringName) -> int:
 	return 0
 	
 func _on_overall_volume_slider_value_changed(value: float) -> void:
-	TTPreferencesClass.set_bus_volume(TTSetup.TARGET_AUDIO_BUS, value)
+	TTPreferencesClass.set_bus_volume(TTPreferences.tt_config.target_audio_bus, value)
 	TTPreferences.set_audio_volume(value, false)
 	
 func _on_overall_volume_slider_drag_ended(value_changed: bool) -> void:
@@ -76,7 +82,7 @@ func _on_overall_volume_slider_drag_ended(value_changed: bool) -> void:
 		TTPreferences.set_audio_volume(overall_volume_slider.value)
 
 func _on_overall_volume_mute_button_toggled(toggled_on: bool) -> void:
-	TTPreferencesClass.set_bus_muted(TTSetup.TARGET_AUDIO_BUS, toggled_on)
+	TTPreferencesClass.set_bus_muted(TTPreferences.tt_config.target_audio_bus, toggled_on)
 	TTPreferences.set_audio_muted(toggled_on)
 
 func update_ui_button_position(include_in_settings_ui: bool, ui_button: Button) -> void:

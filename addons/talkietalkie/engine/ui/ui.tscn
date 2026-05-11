@@ -22,10 +22,10 @@ side_window_nodes = [NodePath("TabNavigationPivot"), NodePath("ControlBarPivot")
 
 [node name="TabNavigationPivot" type="Control" parent="." unique_id=471084985]
 layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = 10
+anchor_right = 1.0
 grow_horizontal = 2
+size_flags_horizontal = 3
 
 [node name="TabNavigationBar" parent="TabNavigationPivot" unique_id=1527443836 instance=ExtResource("2_pdji7")]
 layout_mode = 1

@@ -18,12 +18,16 @@ var side_window_layout_settings: SideWindowLayoutSettings
 var last_slide: int = 0
 var last_presentation_scene: StringName = &""
 
+var tt_config: TTConfigHandler.Config
+
 static var TRANSLATION_PATHS: Array[String] = [TTSetup.get_plugin_path()+ "/localization/talkie_talkie_translation.en.translation", TTSetup.get_plugin_path()+ "/localization/talkie_talkie_translation.de.translation"]
 
 func _enter_tree() -> void:
 	for tr_path: String in TRANSLATION_PATHS:
 		var translation: Translation = load(tr_path) as Translation
 		TranslationServer.add_translation(translation)
+		
+	tt_config = TTConfigHandler.load_config()
 
 func _ready() -> void:
 	preferences_version = TTPreferencesClass.load_version_from_plugin_cfg()
@@ -31,8 +35,8 @@ func _ready() -> void:
 	apply_values()
 	
 func apply_values() -> void:
-	set_bus_volume(TTSetup.TARGET_AUDIO_BUS, audio_volume)	
-	set_bus_muted(TTSetup.TARGET_AUDIO_BUS, audio_muted)
+	set_bus_volume(tt_config.target_audio_bus, audio_volume)	
+	set_bus_muted(tt_config.target_audio_bus, audio_muted)
 	
 	TranslationServer.set_locale(language)
 	set_fullscreen(fullscreen_active)
@@ -166,4 +170,4 @@ static func set_fullscreen(is_fullscreen: bool) -> void:
 static func load_version_from_plugin_cfg() -> String:
 	var conf: ConfigFile = ConfigFile.new()
 	conf.load(PLUGIN_CFG_PATH)
-	return (conf.get_value("plugin", "version", "0.0.0") as String).strip_edges()
+	return (conf.get_value("plugin", "version", "?") as String).strip_edges()

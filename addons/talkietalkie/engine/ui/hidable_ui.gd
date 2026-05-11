@@ -8,12 +8,16 @@ var _base_pos: Vector2
 var _hidden_pos: Vector2
 
 func _ready() -> void:
-	_base_pos = position
-	update_positions()
+	update_base_pos(position)
 	
+func update_base_pos(new_position: Vector2) -> void:
+	_base_pos = new_position
+	update_positions()
+
 func update_positions() -> void:
 	var local_hidden_dir: Vector2 = get_direction_from_anchors(anchor_top, anchor_bottom, anchor_left, anchor_right)
 	_hidden_pos = _base_pos + (local_hidden_dir * 100)
+	set_visible_tween(_is_visible_ui, true)
 	
 func set_visible_tween(is_visible_ui_new: bool, force_set: bool = false) -> void:
 	if is_visible_ui_new == _is_visible_ui && !force_set:

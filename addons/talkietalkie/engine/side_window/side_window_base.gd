@@ -1,17 +1,9 @@
 class_name SideWindowBase extends Node
 ## Handles creation and removal of the side window.
 
-enum EnableOptions {
-	ALWAYS,
-	IF_SECOND_SCREEN_EXISTS,
-	NEVER
-}
-
 static var SIDE_WINDOW_SCENE: PackedScene = load(TTSetup.get_plugin_path() + "/engine/side_window/side_window.tscn")
 
 @export_category("SideWindow Settings")
-@export var enabled: EnableOptions = EnableOptions.IF_SECOND_SCREEN_EXISTS
-@export var quit_on_close: bool = false
 @export var preview_theme_settings: PreviewThemeSettings
 
 ## Overwrites the default settings for the side window's time ui, if set.
@@ -24,10 +16,13 @@ static var SIDE_WINDOW_SCENE: PackedScene = load(TTSetup.get_plugin_path() + "/e
 var _side_window: SideWindow
 var is_side_window_active: bool = false
 var _is_windows_embedded = true
+var _is_enabled_by_config: bool
 
 func _enter_tree() -> void:
+	_is_enabled_by_config = TTPreferences.tt_config.get_enable_side_window_bool()
 	check_second_window_embedded()
-	set_side_window_active(true)
+	if TTPreferences.tt_config.open_sw_on_start:
+		set_side_window_active(true)
 	update_state_in_helper()
 	
 	TTSlideHelper.restore_side_window.connect(_on_restore_side_window)
@@ -63,7 +58,7 @@ func update_state_in_helper() -> void:
 	TTSlideHelper.side_window_settings_updated.emit()
 
 func _on_close_requested() -> void:
-	if quit_on_close:
+	if  TTPreferences.tt_config.quit_on_close_sw:
 		get_tree().quit()
 	else:
 		set_side_window_active(false)
@@ -91,8 +86,8 @@ func check_second_window_embedded() -> void:
 	_is_windows_embedded = false
 	
 func is_side_window_allowed() -> bool:
-	return !Util.is_web() && !_is_windows_embedded && (enabled == EnableOptions.ALWAYS || (enabled == EnableOptions.IF_SECOND_SCREEN_EXISTS && DisplayServer.get_screen_count() >= 2))
-
+	return _is_enabled_by_config && !Util.is_web() && !_is_windows_embedded
+	
 func set_initial_side_window_position() -> void:
 	var num_screens: int = DisplayServer.get_screen_count()
 	if num_screens < 2:
