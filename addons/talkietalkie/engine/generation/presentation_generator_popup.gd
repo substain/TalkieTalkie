@@ -14,9 +14,15 @@ const MAX_PATH_LABEL_LENGTH: int = 40
 @export var target_scene_line_edit: LineEdit
 
 @export var type_control_radio_button: CheckBox
+@export var type_two_d_radio_button: CheckBox
+@export var type_three_d_radio_button: CheckBox
+
 @export var add_camera_check_button: CheckButton
 
 @export var bg_none_radio_button: CheckBox
+@export var bg_color_radio_button: CheckBox
+@export var bg_scene_radio_button: CheckBox
+
 @export var content_none_radio_button: CheckBox
 @export var content_from_md_radio_button: CheckBox
 
@@ -25,6 +31,7 @@ const MAX_PATH_LABEL_LENGTH: int = 40
 
 @export var markdown_vbc: VBoxContainer
 @export var md_content_text_edit: TextEdit
+@export var title_check_button: CheckButton
 
 @export var background_color_picker_button: ColorPickerButton
 @export var background_scene_label: Label
@@ -40,70 +47,87 @@ const MAX_PATH_LABEL_LENGTH: int = 40
 @export var clear_theme_button: Button
 
 @export var generate_button: Button
-	
-var presentation_name: String = ""
-var target_file_path: String = ""
-var background_file_path: String = ""
-var md_file_load_path: String = ""
-var selected_theme: Theme
 
-var create_title_slide: bool = false
-var add_camera_node: bool = false
+static var pg_data: PresentationGenerator.PresentationGenerationData = null
+static var selected_theme_path: String
 
-var presentation_type: PresentationGenerator.PresentationType = PresentationGenerator.PresentationType.CONTROL
-var background_type: PresentationGenerator.BackgroundType = PresentationGenerator.BackgroundType.NONE
+#var md_file_load_path: String = ""
+#var selected_theme: Theme
 
 func _ready() -> void:
-	
-	#popup_centered()
-	type_control_radio_button.button_pressed = true
-	bg_none_radio_button.button_pressed = true
-	content_none_radio_button.button_pressed = true
-	
-	markdown_vbc.visible = false
+	if pg_data == null:
+		pg_data = PresentationGenerator.PresentationGenerationData.default()
 
-	background_color_picker_button.visible = false
-	background_scene_select_button.visible = false
-	background_scene_info_label.visible = false
-	background_scene_label.visible = false
-	clear_theme_button.visible = false
-	selected_theme_label.text = "No theme selected"
+	#popup_centered()
 	
 	if background_scene_file_dialog != null:
 		background_scene_file_dialog.visible = false
 		generate_scene_file_dialog.visible = false
 		md_file_dialog.visible = false
 	
-	update_name_from_input("")
 	name_info_label.visible = false
-	add_camera_check_button.visible = false
 
+
+	title_check_button.button_pressed = pg_data.create_title_slide
+
+	match pg_data.presentation_type: 
+		PresentationGenerator.PresentationType.CONTROL:
+			type_control_radio_button.button_pressed = true
+			_on_type_control_radio_button_pressed()
+		PresentationGenerator.PresentationType.TWO_D:
+			type_two_d_radio_button.button_pressed = true
+		
+			_on_type_two_d_radio_button_pressed()
+		PresentationGenerator.PresentationType.THREE_D:
+			type_three_d_radio_button.button_pressed = true
+			
+			_on_type_three_d_radio_button_pressed()
+			
+	add_camera_check_button.button_pressed = pg_data.add_camera_node
+	_on_add_camera_check_button_toggled(pg_data.add_camera_node)
+
+	match pg_data.background_type:
+		PresentationGenerator.BackgroundType.NONE:
+			bg_none_radio_button.button_pressed = true
+			_on_bg_none_radio_button_pressed()
+		PresentationGenerator.BackgroundType.COLOR:
+			bg_color_radio_button.button_pressed = true
+			_on_bg_color_radio_button_pressed()
+			background_color_picker_button.color = pg_data.background_color
+		PresentationGenerator.BackgroundType.SCENE:
+			bg_scene_radio_button.button_pressed = true
+			_on_bg_scene_radio_button_pressed()
+			_on_background_scene_file_dialog_file_selected(pg_data.background_file_path)
+			
+			#_on_background_scene_file_dialog_file_selected()
+	
+	_on_name_line_edit_text_submitted(pg_data.presentation_name)
 	name_line_edit.grab_focus()
 
-func start_generate() -> void:
+	if pg_data.create_content_from_md:
+		_on_content_from_md_radio_button_pressed()
+		content_from_md_radio_button.button_pressed = true
+		md_content_text_edit.text = pg_data.content_md_text
+	else:
+		_on_content_none_radio_button_pressed()
+		content_none_radio_button.button_pressed = true
+
+	if !selected_theme_path.is_empty():
+		_on_theme_file_dialog_file_selected(selected_theme_path)
+	else:
+		_on_clear_theme_button_pressed()
 		
-	var pg_data: PresentationGenerator.PresentationGenerationData = PresentationGenerator.PresentationGenerationData.new(
-		target_file_path,
-		presentation_name,
-		presentation_type,
-		add_camera_node,
-		background_type,
-		background_file_path,
-		background_color_picker_button.color,
-		create_title_slide,
-		content_from_md_radio_button.button_pressed,
-		md_content_text_edit.text,
-		selected_theme
-	)
-	
+func start_generate() -> void:
 	await PresentationGenerator.do_generate(pg_data)
+
+	pg_data = null
 
 	## close this popup
 	queue_free()
 
 #region ui handling
 func _on_generate_button_pressed() -> void:
-	generate_scene_file_dialog.current_path = presentation_name.to_snake_case()
+	generate_scene_file_dialog.current_path = pg_data.presentation_name.to_snake_case()
 	generate_scene_file_dialog.popup_centered() 
 		
 func _on_cancel_button_pressed() -> void:
@@ -113,12 +137,12 @@ func _on_name_line_edit_text_changed(new_text: String) -> void:
 	update_name_from_input(new_text)
 	
 func update_name_from_input(new_name: String) -> void:
-	presentation_name = clean_path(new_name)
-	name_info_label.visible = presentation_name.is_empty()
-	if presentation_name.is_empty():
+	pg_data.presentation_name = clean_path(new_name)
+	name_info_label.visible = pg_data.presentation_name.is_empty()
+	if pg_data.presentation_name.is_empty():
 		name_info_label.text = "[i]No presentation name specified[/i]"
 
-	generate_button.disabled = presentation_name.is_empty()
+	generate_button.disabled = pg_data.presentation_name.is_empty()
 
 func check_path_validity(path: String) -> bool:
 	return !FileAccess.file_exists(path)
@@ -140,39 +164,42 @@ func _on_name_line_edit_focus_exited() -> void:
 	update_name_from_input(name_line_edit.text)
 
 func _on_type_control_radio_button_pressed() -> void:
-	presentation_type = PresentationGenerator.PresentationType.CONTROL
+	pg_data.presentation_type = PresentationGenerator.PresentationType.CONTROL
 	add_camera_check_button.visible = false
 
 func _on_type_two_d_radio_button_pressed() -> void:
-	presentation_type = PresentationGenerator.PresentationType.TWO_D
+	pg_data.presentation_type = PresentationGenerator.PresentationType.TWO_D
 	add_camera_check_button.text = "Add Camera2D"
 	add_camera_check_button.visible = true
 
 func _on_type_three_d_radio_button_pressed() -> void:
-	presentation_type = PresentationGenerator.PresentationType.THREE_D
+	pg_data.presentation_type = PresentationGenerator.PresentationType.THREE_D
 	add_camera_check_button.text = "Add Camera3D"
 	add_camera_check_button.visible = true
 
 func _on_bg_none_radio_button_pressed() -> void:
-	background_type = PresentationGenerator.BackgroundType.NONE
+	pg_data.background_type = PresentationGenerator.BackgroundType.NONE
 	background_color_picker_button.visible = false
 	background_scene_select_button.visible = false
 	background_scene_label.visible = false
 	background_scene_info_label.visible = false
 
 func _on_bg_color_radio_button_pressed() -> void:
-	background_type = PresentationGenerator.BackgroundType.COLOR
+	pg_data.background_type = PresentationGenerator.BackgroundType.COLOR
 	background_color_picker_button.visible = true
 	background_scene_select_button.visible = false
 	background_scene_label.visible = false
 	background_scene_info_label.visible = false
 
 func _on_bg_scene_radio_button_pressed() -> void:
-	background_type = PresentationGenerator.BackgroundType.SCENE
+	pg_data.background_type = PresentationGenerator.BackgroundType.SCENE
 	background_color_picker_button.visible = false
 	background_scene_select_button.visible = true
-	background_scene_label.visible = !background_file_path.is_empty()
+	background_scene_label.visible = !pg_data.background_file_path.is_empty()
 	background_scene_info_label.visible = true
+
+func _on_background_color_picker_button_color_changed(color: Color) -> void:
+	pg_data.background_color = color
 
 func _on_file_selection_button_pressed() -> void:
 	background_scene_file_dialog.popup_centered()
@@ -183,16 +210,16 @@ func _on_background_scene_file_dialog_file_selected(path: String) -> void:
 		return
 	
 	background_scene_file_dialog.visible = false
-	background_file_path = path
+	pg_data.background_file_path = path
 	background_scene_label.visible = !path.is_empty()
 	
 	background_scene_label.text = shorten_path(path)
 	
 func _on_generate_scene_file_dialog_file_selected(path: String) -> void:
-	if !path.is_valid_filename():
+	if !path.get_file().is_valid_filename():
 		push_warning("PresentationGenerator: invalid file path:", path)
 		return
-	target_file_path = path
+	pg_data.target_file_path = path
 
 	start_generate()
 	
@@ -201,25 +228,27 @@ func _on_load_md_file_button_pressed() -> void:
 
 func _on_md_file_dialog_file_selected(path: String) -> void:
 	if !FileAccess.file_exists(path):
-		push_warning("PresentationGenerator: could not load markdown from '", md_file_load_path, "'")
+		push_warning("PresentationGenerator: could not load markdown from '", path, "'")
 		return
-	md_file_load_path = path
 
-	var file_access: FileAccess = FileAccess.open(md_file_load_path, FileAccess.READ)
+	var file_access: FileAccess = FileAccess.open(path, FileAccess.READ)
 	md_content_text_edit.text = file_access.get_as_text()
+	pg_data.content_md_text = md_content_text_edit.text
 
 func _on_title_check_button_toggled(toggled_on: bool) -> void:
-	create_title_slide = toggled_on
+	pg_data.create_title_slide = toggled_on
 
 func _on_add_camera_check_button_toggled(toggled_on: bool) -> void:
-	add_camera_node = toggled_on
+	pg_data.add_camera_node = toggled_on
 
 func _on_content_none_radio_button_pressed() -> void:
 	markdown_vbc.visible = false
-
+	pg_data.create_content_from_md = false
+	
 func _on_content_from_md_radio_button_pressed() -> void:
 	markdown_vbc.visible = true
-
+	pg_data.create_content_from_md = true
+	
 func _on_theme_file_dialog_file_selected(path: String) -> void:
 	if path.is_empty():
 		return
@@ -228,12 +257,14 @@ func _on_theme_file_dialog_file_selected(path: String) -> void:
 		push_warning("PresentationGenerator: could not load theme from '", path, "'")
 		return
 	
-	selected_theme = load(path) as Theme
+	pg_data.selected_theme = load(path) as Theme
+	selected_theme_path = path
 	selected_theme_label.text = shorten_path(path)
 	clear_theme_button.visible = true
 
 func _on_clear_theme_button_pressed() -> void:
-	selected_theme = null
+	pg_data.selected_theme = null
+	selected_theme_path = ""
 	selected_theme_label.text = "No theme selected"
 	clear_theme_button.visible = false
 
@@ -245,3 +276,6 @@ static func shorten_path(path: String) -> String:
 		return "..." + path.substr(path.length()-(MAX_PATH_LABEL_LENGTH-3))
 	
 	return path
+
+func _on_md_content_text_edit_text_changed() -> void:
+	pg_data.content_md_text = md_content_text_edit.text

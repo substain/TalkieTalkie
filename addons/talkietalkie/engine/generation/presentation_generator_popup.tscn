@@ -8,7 +8,7 @@
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_3gs8w"]
 
-[node name="PresentationGeneratorPopup" type="PopupPanel" unique_id=1116980255 node_paths=PackedStringArray("target_scene_line_edit", "type_control_radio_button", "add_camera_check_button", "bg_none_radio_button", "content_none_radio_button", "content_from_md_radio_button", "name_line_edit", "name_info_label", "markdown_vbc", "md_content_text_edit", "background_color_picker_button", "background_scene_label", "background_scene_select_button", "background_scene_info_label", "background_scene_file_dialog", "generate_scene_file_dialog", "md_file_dialog", "theme_file_dialog", "selected_theme_label", "clear_theme_button", "generate_button")]
+[node name="PresentationGeneratorPopup" type="PopupPanel" unique_id=1116980255 node_paths=PackedStringArray("target_scene_line_edit", "type_control_radio_button", "type_two_d_radio_button", "type_three_d_radio_button", "add_camera_check_button", "bg_none_radio_button", "bg_color_radio_button", "bg_scene_radio_button", "content_none_radio_button", "content_from_md_radio_button", "name_line_edit", "name_info_label", "markdown_vbc", "md_content_text_edit", "title_check_button", "background_color_picker_button", "background_scene_label", "background_scene_select_button", "background_scene_info_label", "background_scene_file_dialog", "generate_scene_file_dialog", "md_file_dialog", "theme_file_dialog", "selected_theme_label", "clear_theme_button", "generate_button")]
 oversampling_override = 1.0
 size = Vector2i(550, 900)
 visible = true
@@ -17,14 +17,19 @@ max_size = Vector2i(550, 900)
 script = ExtResource("1_fwmt1")
 target_scene_line_edit = NodePath("ContentMarginContainer/VBoxContainer/NameVBC/NameSettingHBC/NameLineEdit")
 type_control_radio_button = NodePath("ContentMarginContainer/VBoxContainer/TypeVBC/HBC/HBC/TypeControlRadioButton")
+type_two_d_radio_button = NodePath("ContentMarginContainer/VBoxContainer/TypeVBC/HBC/HBC/TypeTwoDRadioButton")
+type_three_d_radio_button = NodePath("ContentMarginContainer/VBoxContainer/TypeVBC/HBC/HBC/TypeThreeDRadioButton")
 add_camera_check_button = NodePath("ContentMarginContainer/VBoxContainer/TypeVBC/AddCameraCheckButton")
 bg_none_radio_button = NodePath("ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer/BgNoneRadioButton")
+bg_color_radio_button = NodePath("ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer/HBoxContainer/BgColorRadioButton")
+bg_scene_radio_button = NodePath("ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer/HBoxContainer2/BgSceneRadioButton")
 content_none_radio_button = NodePath("ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/HBoxContainer/ContentNoneRadioButton")
 content_from_md_radio_button = NodePath("ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/HBoxContainer/ContentFromMDRadioButton")
 name_line_edit = NodePath("ContentMarginContainer/VBoxContainer/NameVBC/NameSettingHBC/NameLineEdit")
 name_info_label = NodePath("ContentMarginContainer/VBoxContainer/NameVBC/NameInfoLabel")
 markdown_vbc = NodePath("ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/MarkdownVBC")
 md_content_text_edit = NodePath("ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/MarkdownVBC/HBC/MDContentTextEdit")
+title_check_button = NodePath("ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/TitleCheckButton")
 background_color_picker_button = NodePath("ContentMarginContainer/VBoxContainer/BackgroundVBC/BackgroundColorPickerButton")
 background_scene_label = NodePath("ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer2/BackgroundSceneLabel")
 background_scene_select_button = NodePath("ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer2/BackgroundSceneSelectButton")
@@ -95,7 +100,6 @@ placeholder_text = "My Presentation"
 alignment = 1
 
 [node name="NameInfoLabel" type="RichTextLabel" parent="ContentMarginContainer/VBoxContainer/NameVBC" unique_id=76478688]
-visible = false
 layout_mode = 2
 theme_override_colors/default_color = Color(1, 0.62, 0.62, 1)
 theme_override_font_sizes/italics_font_size = 12
@@ -376,10 +380,12 @@ filters = PackedStringArray("*.tscn")
 [connection signal="toggled" from="ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/TitleCheckButton" to="." method="_on_title_check_button_toggled"]
 [connection signal="pressed" from="ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/HBoxContainer/ContentNoneRadioButton" to="." method="_on_content_none_radio_button_pressed"]
 [connection signal="pressed" from="ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/HBoxContainer/ContentFromMDRadioButton" to="." method="_on_content_from_md_radio_button_pressed"]
+[connection signal="text_changed" from="ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/MarkdownVBC/HBC/MDContentTextEdit" to="." method="_on_md_content_text_edit_text_changed"]
 [connection signal="pressed" from="ContentMarginContainer/VBoxContainer/ContentHBC/VBoxContainer/MarkdownVBC/HBC/LoadMDFileButton" to="." method="_on_load_md_file_button_pressed"]
 [connection signal="pressed" from="ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer/BgNoneRadioButton" to="." method="_on_bg_none_radio_button_pressed"]
 [connection signal="pressed" from="ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer/HBoxContainer/BgColorRadioButton" to="." method="_on_bg_color_radio_button_pressed"]
 [connection signal="pressed" from="ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer/HBoxContainer2/BgSceneRadioButton" to="." method="_on_bg_scene_radio_button_pressed"]
+[connection signal="color_changed" from="ContentMarginContainer/VBoxContainer/BackgroundVBC/BackgroundColorPickerButton" to="." method="_on_background_color_picker_button_color_changed"]
 [connection signal="pressed" from="ContentMarginContainer/VBoxContainer/BackgroundVBC/VBoxContainer2/BackgroundSceneSelectButton" to="." method="_on_file_selection_button_pressed"]
 [connection signal="pressed" from="ContentMarginContainer/VBoxContainer/ThemeHBC/VBoxContainer/VBoxContainer/ThemeSelectButton" to="." method="_on_theme_select_button_pressed"]
 [connection signal="pressed" from="ContentMarginContainer/VBoxContainer/ThemeHBC/VBoxContainer/VBoxContainer/SelectedThemeHBC/ClearThemeButton" to="." method="_on_clear_theme_button_pressed"]

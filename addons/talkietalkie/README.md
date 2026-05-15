@@ -30,7 +30,7 @@ You can find the example presentation at `/demo/example_base/example_base_presen
 All files in `/demo/example/` are mainly used for reference purposes and can be deleted, if necessary.
 
 ## Quickstart
-While you can manually create presentations manually, using the presentation generator is recommended. Even if you create a presentation manually, feel free to have a look at `presentation_generator.gd`, as it also serves as a configuration example.
+While you can manually create presentations, using the presentation generator is recommended. Even if you do create a presentation manually, feel free to have a look at `presentation_generator.gd`, as it also serves as a configuration example.
 
 ### Via Generator
 You can create presentations easily via the presentation generator, which can be found at **Project** -> **Tools** -> **TalkieTalkie: Generate Presentation** (if the plugin is active).

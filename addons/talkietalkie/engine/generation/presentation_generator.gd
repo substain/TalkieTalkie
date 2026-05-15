@@ -56,6 +56,23 @@ class PresentationGenerationData:
 		create_content_from_md = create_content_from_md_new
 		content_md_text = content_md_text_new
 		selected_theme = selected_theme_new
+		
+	static func default() -> PresentationGenerationData:
+		
+		var res: PresentationGenerationData = PresentationGenerationData.new(
+			"",
+			"",
+			PresentationType.CONTROL,
+			false,
+			BackgroundType.NONE,
+			"",
+			Color.WHITE,
+			false,
+			false,
+			"",
+			null)
+		
+		return res
 	
 static func do_generate(pg_data: PresentationGenerationData, do_save: bool = true) -> void:
 	
@@ -207,7 +224,8 @@ static func add_background(pg_data: PresentationGenerationData, presentation: Pr
 		var background_scene: Node = (load(pg_data.background_file_path) as PackedScene).instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE) as Node
 		add_node_to_scene(background_scene, background_parent, presentation)
 		## set background anchors to full rect
-		background_scene.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		if background_scene == Control:
+			background_scene.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 
 static func add_node_to_scene(node: Node, parent: Node, target_owner: Node, node_name: String = "") -> void:
 	parent.add_child(node)
