@@ -5,7 +5,7 @@ An addon for creating interactive presentations within <a href="https://godoteng
 Check out the [TalkieTalkie itch page](https://substain.itch.io/talkietalkie) for a live build of the example presentation.
 
 *Disclaimer: To use this addon, you need a basic understanding of Godot, since the presentations are built in the engine and exported as builds. Especially if you want to create more customized slides/presentations, you may need to familiarise yourself with the inner workings of this addon.
-In any case, feel free to [open an issue](https://github.com/substain/TalkieTalkie/issues) or [ask a question](https://github.com/substain/TalkieTalkie/discussions).*
+In any case, feel free to [open an issue](https://codeberg.org/substain/TalkieTalkie/issues).*
 
 ## Overview
 - [Installation](#installation)
