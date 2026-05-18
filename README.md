@@ -1,5 +1,5 @@
 # TalkieTalkie
-<img align="right" width="100" height="100" src="https://github.com/substain/TalkieTalkie/blob/main/addons/talkietalkie/style/tt_icon.svg">
+<img align="right" width="100" height="100" src="https://codeberg.org/substain/TalkieTalkie/raw/branch/main/.github/images/icon.png">
 An addon for creating interactive presentations within <a href="https://godotengine.org/" target="_blank">Godot</a>.
 
 Check out the [TalkieTalkie itch page](https://substain.itch.io/talkietalkie) for a live build of the example presentation.
