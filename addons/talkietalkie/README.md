@@ -25,12 +25,12 @@ In any case, feel free to [open an issue](https://codeberg.org/substain/TalkieTa
 
 **Note:** This template is being developed in the latest version of Godot and has been tested with 4.5+. Using a Godot 4.4 is currently possible with some modifications to the SideWindow, earlier versions require further changes to the code base.
 
-## Examples
-You can find the example presentation at `/demo/example_base/example_base_presentation.tscn` and `/demo/example_2d/example_2d_presentation.tscn`.
+
+You can find the example presentation at `/demo/example_base/talkie_example_base_presentation.tscn` and `/demo/example_2d/talkie_example_2d_presentation.tscn`.
 All files in `/demo/example/` are mainly used for reference purposes and can be deleted, if necessary.
 
 ## Quickstart
-While you can manually create presentations, using the presentation generator is recommended. Even if you do create a presentation manually, feel free to have a look at `presentation_generator.gd`, as it also serves as a configuration example.
+While you can manually create presentations, using the presentation generator is recommended. Even if you do create a presentation manually, feel free to have a look at `talkie_presentation_generator.gd`, as it also serves as a configuration example.
 
 ### Via Generator
 You can create presentations easily via the presentation generator, which can be found at **Project** -> **Tools** -> **TalkieTalkie: Generate Presentation** (if the plugin is active).
