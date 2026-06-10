@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="TalkieTalkie"
-config/version="0.0.92"
+config/version="0.0.93"
 run/main_scene="uid://6x6xa75307sd"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://addons/talkietalkie/style/tt_icon.svg"
@@ -26,8 +26,8 @@ buses/default_bus_layout=""
 
 [autoload]
 
-TTPreferences="*uid://dlklk3s1216qx"
-TTSlideHelper="*uid://chbwd1s146nqk"
+TalkiePreferences="*uid://dlklk3s1216qx"
+TalkieSlideHelper="*uid://chbwd1s146nqk"
 
 [debug]
 

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://g7nqgjyqndo7"]
 
-[ext_resource type="Script" uid="uid://emii6ih5lh0j" path="res://addons/talkietalkie/engine/slides/anim_slide.gd" id="1_gf3bm"]
-[ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://addons/talkietalkie/engine/translation/translation_target.gd" id="2_ftjhj"]
-[ext_resource type="Script" uid="uid://cemii7i4pkkpt" path="res://addons/talkietalkie/engine/translation/translations.gd" id="2_jisa6"]
+[ext_resource type="Script" uid="uid://emii6ih5lh0j" path="res://addons/talkietalkie/engine/slides/talkie_anim_slide.gd" id="1_gf3bm"]
+[ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://addons/talkietalkie/engine/translation/talkie_translation_target.gd" id="2_ftjhj"]
+[ext_resource type="Script" uid="uid://cemii7i4pkkpt" path="res://addons/talkietalkie/engine/translation/talkie_translations.gd" id="2_jisa6"]
 [ext_resource type="Texture2D" uid="uid://b5vaa211vomm0" path="res://addons/talkietalkie/demo/example_base/assets/tt_0.0.9_pr_generator.jpg" id="4_8btxd"]
 
 [sub_resource type="Resource" id="Resource_ftjhj"]

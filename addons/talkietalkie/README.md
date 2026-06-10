@@ -1,5 +1,5 @@
 # TalkieTalkie
-<img align="right" width="100" height="100" src="https://github.com/substain/TalkieTalkie/blob/main/addons/talkietalkie/style/tt_icon.svg">
+<img align="right" width="100" height="100" src="https://codeberg.org/substain/TalkieTalkie/raw/branch/main/.github/images/icon.png">
 An addon for creating interactive presentations within <a href="https://godotengine.org/" target="_blank">Godot</a>.
 
 Check out the [TalkieTalkie itch page](https://substain.itch.io/talkietalkie) for a live build of the example presentation.
@@ -41,9 +41,9 @@ This will prompt you with a popup where you can specify the name, type (Control,
 ### Manually
 The following steps are intended to provide a quick introduction to creating a new presentation with this framework.
 
-1) Create an inherited scene from `/engine/base/presentation.tscn`. Using a dedicated folder for your presentation and its assets may be helpful.
+1) Create an inherited scene from `/engine/base/talkie_presentation.tscn`. Using a dedicated folder for your presentation and its assets may be helpful.
 2) Create the slides and add them to your presentation scene.
-	* The fastest way to set up a slide or a template is to use/modify a slide from the examples, e.g. `/demo/example_base/template/example_*.tscn`
+	* The fastest way to set up a slide or a template is to use/modify a slide from the examples, e.g. `/demo/example_base/template/talkie_example_*.tscn`
 	* You can use the SlideGenerator to quickly create multiple text slides from markdown-like text and a template slide
 3) Optional: add a custom background as child of the Background node
 4) Optional: Edit the exported properties in the Presentation & UI nodes and/or update the input actions according to your preferences
@@ -66,23 +66,23 @@ The following steps are intended to provide a quick introduction to creating a n
 **Note:** Unhandled left click input events trigger a slide continue as well. You can modify this behavior by setting the `CONTINUE_ON_UNHANDLED_LEFT_CLICK` variable in `tt_setup.gd` to false.
 
 ## Components
-This section aims to provide a basic documentation of the components.
+This section aims to provide a basic documentation of the components. Note that all gdscript classes are prefixed by `Talkie` to avoid namespace conflicts.
 
 ### Presentation
 
-The Presentation, Presentation2D and Presentation3D nodes are used for a basic setup and act as a glue for UI and the controller. They also contain properties for configuring the overall presentation, such as the default transition between slides. Slides below this nodes receive an index based on their order in the tree (unless a custom order is used).
+The TalkiePresentation, TalkiePresentation2D and TalkiePresentation3D nodes are used for a basic setup and act as a glue for UI and the controller. They also contain properties for configuring the overall presentation, such as the default transition between slides. Slides below this nodes receive an index based on their order in the tree (unless a custom order is used).
 
 The presentation nodes usually have a **SlideController** child, which handles the state of the presentation, i.e. changing slides, playing animations, and jumping between slides.
 
 ### Slide
-A slide is the main building block of a presentation in TalkieTalkie. Currently, only the **AnimSlide** implementation is used in the examples, which seems to cover the basic use cases.
+A slide is the main building block of a presentation in TalkieTalkie. Currently, only the **TalkieAnimSlide** implementation is used in the examples, which seems to cover the basic use cases.
 AnimSlides collect all SlideAnimation nodes in its children and start them based on their ordering according to their sortorder (or top-down if no sortorder is provided).
 
-### SlideAnimation
+### Animations
 These nodes define how a slide is progressed and how changes within a slide are animated. The `targetNodes` property specifies which nodes are affected by the animation. If this property is empty, the SlideAnimation's parent node will be used as the target for the animation.
 
-### TTSlideHelper and SlideContext
-**TTSlideHelper** is an autoload used for globally accessing the current state and main components of the presentation. It provides access to the **SlideContext** which holds context-specific information such as the Camera2D in 2D presentations. 
+### Autolaods
+**TalkieSlideHelper** is an autoload used for globally accessing the current state and main components of the presentation. It provides access to the **TalkieSlideContext** which holds context-specific information such as the Camera2D in 2D presentations. 
 
 ### UI
 The UI contains the following components:
@@ -105,12 +105,12 @@ You can make the packed scene local inside the slide to avoid this error. It als
 
 The layout of this window (size, position, and preview layouts) is saved in the preferences and loaded on startup.
 
-### DrawPointer
+### TalkieDrawPointer
 This Node is currently located within the UI and adds the possibility to draw onto the slides. Holding a button (Default: Ctrl or Alt) will show an icon, and pressing the left mouse button lets you draw onto the slides. Drawings are removed after some seconds have passed or the slide is changed.
 There are some configuration options exposed via `all_draw_properties` on that node.
 
-### SlideGenerator
-With the **SlideGenerator**, you can generate slides from markdown-like text. This tool script can be attached to any node, and will generate Slides based on the text provided via the `input_text` property. The format is based on Markdown-Syntax, although not all functionality is implemented currently.
+### TalkieSlideGenerator
+With the **TalkieSlideGenerator**, you can generate slides from markdown-like text. This tool script can be attached to any node, and will generate Slides based on the text provided via the `input_text` property. The format is based on Markdown-Syntax, although not all functionality is implemented currently.
 * For each header (lines beginning with e.g. #, ##, ###, ...), a slide is generated based on the `slide_scene`.
 * Comments are, by default, created from lines that begin with `//`, `[//]` or `[comment]`. This behavior can be edited with the 'comment_line_regex' property
 * The `content_scene` will be used for the nodes created for the content (which is everything below the header, except for comments).

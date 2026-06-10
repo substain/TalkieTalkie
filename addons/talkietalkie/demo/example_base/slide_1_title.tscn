@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ciwolqdv6staj"]
 
-[ext_resource type="PackedScene" uid="uid://ddf7utr1vtc3d" path="res://addons/talkietalkie/engine/default_template/default_title_layout.tscn" id="1_p6c7c"]
-[ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://addons/talkietalkie/engine/translation/translation_target.gd" id="2_u3ctn"]
-[ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://addons/talkietalkie/engine/slides/slide_animation.gd" id="3_u3ctn"]
+[ext_resource type="PackedScene" uid="uid://ddf7utr1vtc3d" path="res://addons/talkietalkie/engine/default_template/talkie_default_title_layout.tscn" id="1_p6c7c"]
+[ext_resource type="Script" uid="uid://dnjg462pg7agr" path="res://addons/talkietalkie/engine/translation/talkie_translation_target.gd" id="2_u3ctn"]
+[ext_resource type="Script" uid="uid://cc5ym4asu770w" path="res://addons/talkietalkie/engine/slides/talkie_slide_animation.gd" id="3_u3ctn"]
 
 [sub_resource type="Resource" id="Resource_jk5wk"]
 script = ExtResource("2_u3ctn")
@@ -12,7 +12,7 @@ metadata/_custom_type_script = "uid://dnjg462pg7agr"
 [sub_resource type="Resource" id="Resource_msju5"]
 script = ExtResource("2_u3ctn")
 translation_key = "content.base_example.0.this_is_x"
-positional_placeholders = Array[String](["[img]ttplugin://style/tt_icon.svg[/img][color=\\\"112233\\\"]TalkieTalkie[/color]"])
+positional_placeholders = Array[String](["[img]ttaddon://style/tt_icon.svg[/img][color=\\\"112233\\\"]TalkieTalkie[/color]"])
 metadata/_custom_type_script = "uid://dnjg462pg7agr"
 
 [sub_resource type="Resource" id="Resource_wa3te"]
