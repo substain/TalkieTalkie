@@ -34,19 +34,19 @@ static var AUTOLOADS: Dictionary[String,String] = {
 }
 
 static var PROJECT_SETTINGS: Array[ProjectSettingData] = [
-	ProjectSettingData.new("talkietalkie/general/remember_slide_on_close", false, TYPE_BOOL, PROPERTY_HINT_NONE, "", "Remember slide on close. When active, the slide index will be loaded from the last session if the presentation name matches."),
-	ProjectSettingData.new("talkietalkie/general/stop_auto_slideshow_on_continue", true, TYPE_BOOL, PROPERTY_HINT_NONE, "", "When active, slideshows are stopped if an input is pressed"),
+	ProjectSettingData.new("talkietalkie/general/remember_slide_on_close", false, TYPE_BOOL, PROPERTY_HINT_NONE, "", "Remembers the current slide on close. When active, the slide index will be loaded from the last session if the presentation name matches."),
+	ProjectSettingData.new("talkietalkie/general/stop_auto_slideshow_on_continue", true, TYPE_BOOL, PROPERTY_HINT_NONE, "", "When active, slideshows are stopped if an input is pressed."),
 	ProjectSettingData.new("talkietalkie/general/continue_on_unhandled_left_click", true, TYPE_BOOL, PROPERTY_HINT_NONE, "", "When active, using an unhandled left click input events will continue slides (additional to the other inputs). This might not be work as intended if control nodes don't propagate mouse input."),
 	
 	ProjectSettingData.new("talkietalkie/ui/open_ui_on_startup", "on_mobile", TYPE_STRING, PROPERTY_HINT_ENUM, "false,on_mobile,true", "If 'true', the UI will show up on start, if 'on_mobile', this is only be true for mobile devices. Otherwise, UI will not automatically show up."),
 	ProjectSettingData.new("talkietalkie/ui/show_toggle_ui_button", "on_mobile", TYPE_STRING, PROPERTY_HINT_ENUM, "false,on_mobile,true", "If 'true', the toggle button for the UI will show up on start, if 'on_mobile', this is only be true for mobile devices. Otherwise, the button will not be displayed."),
 	ProjectSettingData.new("talkietalkie/ui/enable_control_bar", true, TYPE_BOOL, PROPERTY_HINT_NONE, "", "When active, the Control Bar is shown in the UI."),
-	ProjectSettingData.new("talkietalkie/ui/enable_tabnav_bar", true, TYPE_BOOL, PROPERTY_HINT_NONE, "", "When active, the TabNavigation Bar is shown in the UI"),
-	ProjectSettingData.new("talkietalkie/ui/enable_settings", true, TYPE_BOOL, PROPERTY_HINT_NONE, "", "When active, the Settings are shown in the UI"),
-	ProjectSettingData.new("talkietalkie/ui/enable_about_window_links", true, TYPE_BOOL, PROPERTY_HINT_NONE, "", "Makes the links in the About section clickable, if activaed."),
+	ProjectSettingData.new("talkietalkie/ui/enable_tabnav_bar", true, TYPE_BOOL, PROPERTY_HINT_NONE, "", "When active, the TabNavigation Bar is shown in the UI."),
+	ProjectSettingData.new("talkietalkie/ui/enable_settings", true, TYPE_BOOL, PROPERTY_HINT_NONE, "", "When active, the Settings are shown in the UI."),
+	ProjectSettingData.new("talkietalkie/ui/enable_about_window_links", true, TYPE_BOOL, PROPERTY_HINT_NONE, "", "Makes the links in the About section clickable, if activated."),
 	
-	ProjectSettingData.new("talkietalkie/tab_navigation/max_visible_tabnav_elements", 12, TYPE_INT, PROPERTY_HINT_NONE, "", "The maximum amount of slides (i.e. tab nav elements) until a scroll bar is shown in the TabNavigation Bar"),
-	ProjectSettingData.new("talkietalkie/tab_navigation/tabnav_width_on_scroll", 400, TYPE_INT, PROPERTY_HINT_NONE, "", "The width of the TabNavigation Bar if the scroll bar is visible"),
+	ProjectSettingData.new("talkietalkie/tab_navigation/max_visible_tabnav_elements", 12, TYPE_INT, PROPERTY_HINT_NONE, "", "The maximum amount of slides (i.e. tab nav elements) until a scroll bar is shown in the TabNavigation Bar."),
+	ProjectSettingData.new("talkietalkie/tab_navigation/tabnav_width_on_scroll", 400, TYPE_INT, PROPERTY_HINT_NONE, "", "The width of the TabNavigation Bar if the scroll bar is visible."),
 	ProjectSettingData.new("talkietalkie/tab_navigation/tabnav_indicator", "none", TYPE_STRING, PROPERTY_HINT_ENUM, "none,number,slide_title", "How tabs are labeled in the TabNavigation Bar. 'number' shows the slide number, 'slide_title' shows the first characters of the title. 'none' for no indication."),
 	ProjectSettingData.new("talkietalkie/tab_navigation/tabnav_indicator_max_length", 3, TYPE_INT, PROPERTY_HINT_NONE, "", "The maximum allowed number of characters if the tabnav_indicator setting is set to 'slide_title'."),
 	

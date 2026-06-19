@@ -12,8 +12,8 @@ const DP_2_INDEX: int = 1
 
 const META_IS_TRAIL: String = "is_trail_line"
 
-var DEFAULT_DA_1: TalkieDrawProperties = TalkieDrawProperties.new(Color.html("ff9595"), 4.0, 100, 8.0, _CIRCLE_1X1, 0.5, true)
-var DEFAULT_DA_2: TalkieDrawProperties = TalkieDrawProperties.new(Color.BLUE, 10.0, -1, 4.0, _CIRCLE_1X1, 1.0, true)
+var DEFAULT_DA_1: TalkieDrawProperties = TalkieDrawProperties.create(Color.html("ff9595"), 4.0, 100, 8.0, _CIRCLE_1X1, 0.5, true)
+var DEFAULT_DA_2: TalkieDrawProperties = TalkieDrawProperties.create(Color.BLUE, 10.0, -1, 4.0, _CIRCLE_1X1, 1.0, true)
 
 ## The draw attributes. Currently only the first two are used and statically mapped to the two "draw_pointer" actions.
 ## If there are less than 2 entries, default draw attributes are used.
@@ -32,7 +32,6 @@ var icon_offset: Vector2 = Vector2.ZERO
 var managed_lines: Array[Line2D] = []
 
 func _ready() -> void:
-	
 	TalkieSlideHelper.slide_changed.connect(_on_slide_changed)
 	
 	if all_draw_properties.size() < 1:

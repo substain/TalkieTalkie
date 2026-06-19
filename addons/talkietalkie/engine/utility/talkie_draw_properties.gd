@@ -15,18 +15,20 @@ extends Resource
 @export var icon_scale: float = true
 @export var modulate_icon_with_color: bool = true
 	
-func _init(
+static func create(
 			color_new: Color, 
 			thickness_new: float,
 			trail_points_new: int,
 			time_alive_new: float,			
 			icon_new: Texture2D,
 			icon_scale_new: float,
-			modulate_icon_with_color_new: bool) -> void:
-	time_alive = time_alive_new
-	color = color_new
-	thickness = thickness_new
-	trail_points = trail_points_new
-	icon = icon_new
-	icon_scale = icon_scale_new
-	modulate_icon_with_color = modulate_icon_with_color_new
+			modulate_icon_with_color_new: bool) -> TalkieDrawProperties:
+	var res: TalkieDrawProperties = TalkieDrawProperties.new()
+	res.time_alive = time_alive_new
+	res.color = color_new
+	res.thickness = thickness_new
+	res.trail_points = trail_points_new
+	res.icon = icon_new
+	res.icon_scale = icon_scale_new
+	res.modulate_icon_with_color = modulate_icon_with_color_new
+	return res
