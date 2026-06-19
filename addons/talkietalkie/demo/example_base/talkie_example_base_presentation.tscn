@@ -19,10 +19,7 @@ metadata/_custom_type_script = "uid://b8pqmhx61eehf"
 
 [node name="ExampleBasePresentation" unique_id=240725052 instance=ExtResource("1_janv2")]
 presentation_name = "Example Presentation"
-slide_index = null
-use_slide_numbering_order = null
 default_transition = SubResource("Resource_qkey0")
-slide_size = null
 
 [node name="ExampleBaseBackground" parent="Background" parent_id_path=PackedInt32Array(2040651926) index="0" unique_id=1533207821 instance=ExtResource("3_ndiw7")]
 slide_change_anim_duration = null

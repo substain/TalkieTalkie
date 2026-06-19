@@ -196,7 +196,7 @@ static func set_fullscreen(is_fullscreen: bool) -> void:
 static func load_version_from_plugin_cfg() -> String:
 	var conf: ConfigFile = ConfigFile.new()
 	conf.load(PLUGIN_CFG_PATH)
-	return (conf.get_value("plugin", "version", "?") as String).strip_edges()
+	return (conf.get_value("plugin", "version", TalkieSetup.CURRENT_VERSION) as String).strip_edges()
 
 static func is_str_as_system_conditional_true(system_conditional_str: String) -> bool:
 	return is_system_conditional_true(to_system_conditional(system_conditional_str))

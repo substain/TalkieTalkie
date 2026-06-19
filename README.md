@@ -17,14 +17,13 @@ In any case, feel free to [open an issue](https://codeberg.org/substain/TalkieTa
 - [License](license)
 
 ## Installation
-1. **Install the addon** via the Asset Library (recommended) or manually:
- - Asset Library: with your project opened in Godot, open the `AssetLib` Tab, search for TalkieTalkie, **Download** and **Install**
+1. **Install the addon** via the [Asset Library](https://godotengine.org/asset-library/asset/4783) / [Asset Store](https://store.godotengine.org/asset/substain/talkietalkie/) (recommended) or manually:
+ - Asset Store: with your project opened in Godot, open the `Asset Store` tab, search for TalkieTalkie, **Download** and **Install** 
+ _(for Godot versions prior to 4.7, the tab is named `AssetLib`)_
  - manually: download the latest release from Github, unpack it, and copy the `addons/talkietalkie` folder to the `addons` folder in your project.
 2. **Enable the addon** via `Project Settings` -> `Plugins`. This will prompt you to restart the Godot Editor (to reload the Input Map)
 
-
 **Note:** This template is being developed in the latest version of Godot and has been tested with 4.5+. Using a Godot 4.4 is currently possible with some modifications to the SideWindow, earlier versions require further changes to the code base.
-
 
 You can find the example presentation at `/demo/example_base/talkie_example_base_presentation.tscn` and `/demo/example_2d/talkie_example_2d_presentation.tscn`.
 All files in `/demo/example/` are mainly used for reference purposes and can be deleted, if necessary.
