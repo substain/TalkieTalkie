@@ -7,12 +7,12 @@ Check out the [TalkieTalkie itch page](https://substain.itch.io/talkietalkie) fo
 *Disclaimer: To use this addon, you need a basic understanding of Godot, since the presentations are built in the engine and exported as builds. Especially if you want to create more customized slides/presentations, you may need to familiarise yourself with the inner workings of this addon.
 In any case, feel free to [open an issue](https://codeberg.org/substain/TalkieTalkie/issues).*
 
+The following sections should provide an introduction / overview on getting started with TalkieTalkie. Further information can be found in the [Wiki](https://codeberg.org/substain/TalkieTalkie/wiki)
+
 ## Overview
 - [Installation](#installation)
-- [Examples](#examples)
 - [Quickstart](#quickstart)
 - [Keybindings](#keybindings)
-- [Components](#components)
 - [Planned Features](#planned-features)
 - [License](license)
 
@@ -62,61 +62,8 @@ The following steps are intended to provide a quick introduction to creating a n
 
 * **Movement** for the 2D example (`tt_move_*`) - W, A, S, D
 
-**Note:** Unhandled left click input events trigger a slide continue as well. You can modify this behavior by setting the `CONTINUE_ON_UNHANDLED_LEFT_CLICK` variable in `tt_setup.gd` to false.
+**Note:** Unhandled left click input events trigger a slide continue as well. You can change this behavior in the TalkieTalkie project settings (`talkietalkie/general/continue_on_unhandled_left_click`).
 
-## Components
-This section aims to provide a basic documentation of the components. Note that all gdscript classes are prefixed by `Talkie` to avoid namespace conflicts.
-
-### Presentation
-
-The TalkiePresentation, TalkiePresentation2D and TalkiePresentation3D nodes are used for a basic setup and act as a glue for UI and the controller. They also contain properties for configuring the overall presentation, such as the default transition between slides. Slides below this nodes receive an index based on their order in the tree (unless a custom order is used).
-
-The presentation nodes usually have a **SlideController** child, which handles the state of the presentation, i.e. changing slides, playing animations, and jumping between slides.
-
-### Slide
-A slide is the main building block of a presentation in TalkieTalkie. Currently, only the **TalkieAnimSlide** implementation is used in the examples, which seems to cover the basic use cases.
-AnimSlides collect all SlideAnimation nodes in its children and start them based on their ordering according to their sortorder (or top-down if no sortorder is provided).
-
-### Animations
-These nodes define how a slide is progressed and how changes within a slide are animated. The `targetNodes` property specifies which nodes are affected by the animation. If this property is empty, the SlideAnimation's parent node will be used as the target for the animation.
-
-### Autolaods
-**TalkieSlideHelper** is an autoload used for globally accessing the current state and main components of the presentation. It provides access to the **TalkieSlideContext** which holds context-specific information such as the Camera2D in 2D presentations. 
-
-### UI
-The UI contains the following components:
-
-* A **Control Bar** used for navigation, starting an automatic slideshow, and shortcuts to fullscreen and closing the presentation
-
-* The **Tab Navigation Bar** are a quick way to see the current progress and navigate between slides. At the moment, this is mainly useful for presentations with fewer slides, because no further grouping of slides or scrolling is done.
-
-* An **Settings** menu that contain language and audio options
-
-Note that if the side window is active, the UI will show up there.
-
-### Side-Window
-An optional window showing presentation infos. You can configure the basic behavior of this via the SideWindowBase node, which is part of the presentation. In this window, previews for the last, current, and next slides can be displayed. Also, the side window shows time informations and slide comments as well as the UI, if active.
-
-Note that currently, slide previews are created by packing them into packed scenes when starting a presentation. This may lead to an error message with signals on packed scenes inside these slides:
-
-`load_slide_by_packed_scene(): Signal x is already connected to given callable y in that object.`
-You can make the packed scene local inside the slide to avoid this error. It also seems like you can safely ignore this error.
-
-The layout of this window (size, position, and preview layouts) is saved in the preferences and loaded on startup.
-
-### TalkieDrawPointer
-This Node is currently located within the UI and adds the possibility to draw onto the slides. Holding a button (Default: Ctrl or Alt) will show an icon, and pressing the left mouse button lets you draw onto the slides. Drawings are removed after some seconds have passed or the slide is changed.
-There are some configuration options exposed via `all_draw_properties` on that node.
-
-### TalkieSlideGenerator
-With the **TalkieSlideGenerator**, you can generate slides from markdown-like text. This tool script can be attached to any node, and will generate Slides based on the text provided via the `input_text` property. The format is based on Markdown-Syntax, although not all functionality is implemented currently.
-* For each header (lines beginning with e.g. #, ##, ###, ...), a slide is generated based on the `slide_scene`.
-* Comments are, by default, created from lines that begin with `//`, `[//]` or `[comment]`. This behavior can be edited with the 'comment_line_regex' property
-* The `content_scene` will be used for the nodes created for the content (which is everything below the header, except for comments).
-* With `slide_title_path`, you can specify the path in the template scene that represents the title of the slide whereas `slide_content_parent_path` specifies under which node the content scene(s) are placed as children.
-* Besides not creating duplicated slides with the same title via `ignore_if_slide_name_exists` you can also choose to `replace_existing_instatiated_slides` (dangerous!)
-
-Hit `Generate Slides` to generate the slides.
 
 ## Planned Features
 Here is an incomplete list of features you can hope to see in the future:
