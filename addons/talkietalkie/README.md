@@ -22,7 +22,10 @@ The following sections should provide an introduction / overview on getting star
  _(for Godot versions prior to 4.7, the tab is named `AssetLib`)_
  - manually: download the latest release from Github, unpack it, and copy the `addons/talkietalkie` folder to the `addons` folder in your project.
 2. **Enable the addon** via `Project Settings` -> `Plugins`. This will prompt you to restart the Godot Editor (to reload the Input Map)
-
+3. **Update the project settings**:
+    - `display/window/subwindows/embed_subwindows` to `false` in case you want to use the side window
+    - `display/window/size/viewport_width` and `display/window/size/viewport_height` to match your target slide size. This should be the same size you should set the Presentation node to, later on. For example, the Demo Scenes and the slide templates currently use 1920x1080 and will be cut off if they don't match the viewport size.
+    
 If you encounter errors during initialization, try reloading the project after enabling the addon.
 
 **Note:** This template is being developed in the latest version of Godot and has been tested with 4.5+. Using a Godot 4.4 is currently possible with some modifications to the SideWindow, earlier versions require further changes to the code base.
