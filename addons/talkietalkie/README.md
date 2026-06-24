@@ -23,6 +23,8 @@ The following sections should provide an introduction / overview on getting star
  - manually: download the latest release from Github, unpack it, and copy the `addons/talkietalkie` folder to the `addons` folder in your project.
 2. **Enable the addon** via `Project Settings` -> `Plugins`. This will prompt you to restart the Godot Editor (to reload the Input Map)
 
+If you encounter errors during initialization, try reloading the project after enabling the addon.
+
 **Note:** This template is being developed in the latest version of Godot and has been tested with 4.5+. Using a Godot 4.4 is currently possible with some modifications to the SideWindow, earlier versions require further changes to the code base.
 
 You can find the example presentation at `/demo/example_base/talkie_example_base_presentation.tscn` and `/demo/example_2d/talkie_example_2d_presentation.tscn`.
