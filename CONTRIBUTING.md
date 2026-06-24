@@ -1,0 +1,3 @@
+This project welcomes contributions. Before submitting a pull request, note the following:
+* Before working on / submitting a pull request, make sure an issue exists that describes the problem or feature and possibly the proposed changes. The issue tracker can be found [here](https://codeberg.org/substain/TalkieTalkie/issues).
+* This project does not allow contributions made with the help of generative AI / LLMs.

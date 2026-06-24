@@ -6,8 +6,12 @@ extends RefCounted
 ## https://github.com/godotengine/godot/issues/25865
 const RESTART_EDITOR_ON_PLUGIN_TOGGLED: bool = false
 
+## Removes all TalkieTalkie-specific settings once the plugin is disabled.
+## This is just a clean-up operation, but keeping the settings may be preferred if you often enable/disable the plugin
+const REMOVE_SETTINGS_ON_PLUGIN_DISABLED: bool = true
+
 ## Fallback for builds in case the plugin.cfg is not exported
-const CURRENT_VERSION: String = "0.0.931" 
+const CURRENT_VERSION: String = "0.0.94" 
 
 ## The inputs used by this addon. These will be added to the input map when the addon is activated. 
 ## You can change these in the input map in the project settings when the addon is active.

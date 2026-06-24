@@ -38,6 +38,10 @@ func _ready() -> void:
 	continue_on_unhandled_left_click = ProjectSettings.get_setting("talkietalkie/general/continue_on_unhandled_left_click", true) as bool
 	ensure_basic_setup()
 	init_context()
+	
+	var viewport_size: Vector2 = Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"), ProjectSettings.get_setting("display/window/size/viewport_height"))
+	if slide_size != viewport_size:
+		TalkieUtil.tt_warn(" " + self.name + ": The configured slide size of this presentation, %s, does not match the viewport project settings for 'display/window/size/viewport_width' and 'display/window/size/viewport_height': %s." % [slide_size, viewport_size])
 
 	TalkieSlideHelper.presentation = self	
 	

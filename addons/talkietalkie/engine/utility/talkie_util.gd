@@ -95,7 +95,7 @@ static func tt_printr(str: String, prefix: String = "TalkieTalkie:") -> void:
 	print_rich("[color='99AABB']"+prefix+"[/color] "+str)
 
 static func tt_warn(str: String, prefix: String = "TalkieTalkie Warning:") -> void:
-	push_warning("[color='99AABB']"+prefix+"[/color]"+str)
+	push_warning(prefix+str)
 
 static func tt_error(str: String, prefix: String = "TalkieTalkie Error:") -> void:
-	push_warning("[color='99AABB']"+prefix+"[/color]"+str)
+	push_error(prefix+str)

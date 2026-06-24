@@ -27,10 +27,13 @@ const PROPERTY_INFO_TYPE: String = "type"
 const PROPERTY_INFO_HINT: String = "hint"
 const PROPERTY_INFO_HINT_STRING: String = "hint_string"
 
+const PLUGIN_NAME: String = "TalkieTalkie"
+const PLUGIN_ICON: Texture2D = preload("uid://b7626k74i30bn")
+
 ## Autoloads used by the addon
 static var AUTOLOADS: Dictionary[String,String] = {
-	TalkieSetup.get_addon_path() + "/engine/autoload/talkietalkie_preferences.gd": "TalkiePreferences",
-	TalkieSetup.get_addon_path() + "/engine/autoload/talkietalkie_slide_helper.gd": "TalkieSlideHelper"
+	TalkieSetup.get_addon_path() + "/engine/autoload/talkie_preferences.gd": "TalkiePreferences",
+	TalkieSetup.get_addon_path() + "/engine/autoload/talkie_slide_helper.gd": "TalkieSlideHelper"
 }
 
 static var PROJECT_SETTINGS: Array[ProjectSettingData] = [
@@ -58,63 +61,67 @@ static var PROJECT_SETTINGS: Array[ProjectSettingData] = [
 	ProjectSettingData.new("talkietalkie/side_window/quit_on_close_sw", false, TYPE_BOOL, PROPERTY_HINT_NONE, "", "When actived, quitting the side window will also close the presentation."),
 ]
 
+func _enter_tree() -> void:
+
+	_add_autoloads()
+	
+	if Engine.is_editor_hint():
+		_add_tool_menu_items()
+		
+	_add_project_settings()
+	
 func _enable_plugin() -> void:
 	if OS.has_feature("editor"):
 		print_rich("[color='88AAAA']Thank you for using [/color][img height=20]"+TalkieSetup.get_addon_path()+"/style/tt_icon.svg[/img][b][color='99AABB']TalkieTalkie[/color][/b]. [color='88AAAA']More information about this plugin can be found in "+TalkieSetup.get_addon_path()+"/README.md[/color]")
-	add_autoloads()
-	var has_changed_inputs: bool = add_inputs()
+		
+	var has_changed_inputs: bool = _add_inputs()
 	TalkieUtil.tt_printr("addon enabled.")
 
 	ProjectSettings.save()
 	if has_changed_inputs && TalkieSetup.RESTART_EDITOR_ON_PLUGIN_TOGGLED:
 		EditorInterface.restart_editor(true)
 		
+func _exit_tree() -> void:
+	if Engine.is_editor_hint():
+		_remove_tool_menu_items()
+	_remove_project_settings()
+	
 func _disable_plugin() -> void:
-	remove_autoloads()
-	var has_changed_inputs: bool = remove_inputs()
+	_remove_autoloads()
+	var has_changed_inputs: bool = _remove_inputs()
 	TalkieUtil.tt_printr("addon disabled.")
 
 	ProjectSettings.save()
 	if has_changed_inputs && TalkieSetup.RESTART_EDITOR_ON_PLUGIN_TOGGLED:
 		EditorInterface.restart_editor(true)
 
-func _enter_tree() -> void:
-	if Engine.is_editor_hint():
-		add_tool_menu_items()
-	add_project_settings()
-
-func _exit_tree() -> void:
-	if Engine.is_editor_hint():
-		remove_tool_menu_items()
-	remove_project_settings()
-
-func add_autoloads() -> void:
-	TalkieUtil.tt_printr("adding autoloads...")
+func _add_autoloads() -> void:
+	#TalkieUtil.tt_printr("adding autoloads...")
 	for autoload_path: String in AUTOLOADS.keys():
 		add_autoload_singleton(AUTOLOADS[autoload_path], autoload_path)
 
-func remove_autoloads() -> void:
-	TalkieUtil.tt_printr("removing autoloads...")
+func _remove_autoloads() -> void:
+	#TalkieUtil.tt_printr("removing autoloads...")
 	for autoload_name: String in AUTOLOADS.values():
 		remove_autoload_singleton(autoload_name)
 
-func add_tool_menu_items() -> void:
+func _add_tool_menu_items() -> void:
 	#TalkieUtil.tt_printr("TalkieTalkie: adding tool menu items...")
-	add_tool_menu_item(TOOL_MENU_ITEM_GENERATE_PRESENTATION, on_generate_presentation_clicked)
+	add_tool_menu_item(TOOL_MENU_ITEM_GENERATE_PRESENTATION, _on_generate_presentation_clicked)
 	
-func remove_tool_menu_items() -> void:
+func _remove_tool_menu_items() -> void:
 	#TalkieUtil.tt_printr("TalkieTalkie: removing tool menu items...")
 	remove_tool_menu_item(TOOL_MENU_ITEM_GENERATE_PRESENTATION)
 
-func on_generate_presentation_clicked() -> void:
+func _on_generate_presentation_clicked() -> void:
 	var pr_generator_popup: Popup = PRESENTATION_GENERATOR_POPUP_SCENE.instantiate() as Popup
 	var scale: float = EditorInterface.get_editor_scale()
 	pr_generator_popup.visible = false
 	EditorInterface.get_base_control().add_child(pr_generator_popup)
 	pr_generator_popup.popup_centered()
 
-func add_inputs() -> bool:
-	TalkieUtil.tt_printr("adding inputs...")
+func _add_inputs() -> bool:
+	#TalkieUtil.tt_printr("adding inputs...")
 	var is_any_changed: bool = false
 	var inputs: Dictionary[String, Array] = TalkieSetup.get_inputs()
 	for input_name in inputs:
@@ -129,8 +136,8 @@ func add_inputs() -> bool:
 		is_any_changed = true
 	return is_any_changed
 
-func remove_inputs() -> bool:
-	TalkieUtil.tt_printr("removing inputs...")
+func _remove_inputs() -> bool:
+	#TalkieUtil.tt_printr("removing inputs...")
 	var is_any_changed: bool = false
 	for input_name in TalkieSetup.get_inputs():
 		if !ProjectSettings.has_setting("input/" + input_name):
@@ -141,7 +148,7 @@ func remove_inputs() -> bool:
 		is_any_changed = true
 	return is_any_changed
 
-func add_project_settings() -> void:
+func _add_project_settings() -> void:
 	for setting: ProjectSettingData in PROJECT_SETTINGS:
 		if !ProjectSettings.has_setting(setting.setting_name):
 			ProjectSettings.set_setting(setting.setting_name, setting.initial_value)
@@ -155,10 +162,16 @@ func add_project_settings() -> void:
 		}
 		ProjectSettings.add_property_info(property_info)
 	
-func remove_project_settings() -> void:
+func _remove_project_settings() -> void:
 	for setting in PROJECT_SETTINGS:
 		if !ProjectSettings.has_setting(setting.setting_name):
 			continue
 	
-		#TODO: remove?
-		#ProjectSettings.set_setting(setting.setting_name, null)
+		if TalkieSetup.REMOVE_SETTINGS_ON_PLUGIN_DISABLED:
+			ProjectSettings.set_setting(setting.setting_name, null)
+			
+func _get_plugin_name() -> String:
+	return PLUGIN_NAME
+
+func _get_plugin_icon() -> Texture2D:
+	return PLUGIN_ICON
